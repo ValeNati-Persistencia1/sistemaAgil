@@ -1,5 +1,8 @@
 package ar.sarm.unq.sga.model;
 
-public class Developer {
+import javax.persistence.Entity;
+
+@Entity
+public class Developer extends Persistible{
 
 }

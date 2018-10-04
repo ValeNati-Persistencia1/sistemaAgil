@@ -11,8 +11,11 @@ public class UserStory extends Persistible{
 	private static final long serialVersionUID = 1L;
 	
 	private int valorCliente;
+	
 	private int historiePoint;
+	
 	private boolean estaCompleta;
+	
 	private Developer Developer;
 	
 	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Developer _developer){
