@@ -2,7 +2,8 @@ package ar.sarm.unq.sga.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.request.component.IRequestablePage;
+
+import ar.sarm.unq.sga.wicket.project.ProjectPage;
 
 public class HomePage extends WebPage {
 
@@ -15,10 +16,10 @@ public class HomePage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage((IRequestablePage) new Exception("nada creado aun..rellenar"));
+				this.setResponsePage(new ProjectPage());
 			}
 
 		});
 
- }
+	}
 }

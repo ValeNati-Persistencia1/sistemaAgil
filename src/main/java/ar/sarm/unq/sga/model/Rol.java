@@ -1,6 +1,6 @@
 package ar.sarm.unq.sga.model;
 
-public enum Roles {
+public enum Rol {
 	ADMINISTRADOR, USUARIO
 
 }
