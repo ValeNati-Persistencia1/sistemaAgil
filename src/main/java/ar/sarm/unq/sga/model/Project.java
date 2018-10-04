@@ -3,17 +3,14 @@ package ar.sarm.unq.sga.model;
 import javax.persistence.Entity;
 
 @Entity
-public class Project extends Persistible{
-	
-	/**
-	 * 
-	 */
+public class Project extends Persistible {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String nombre;
-	
-	public Project(String nombre){
-		this.nombre=nombre;
+
+	public Project(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getNombre() {
@@ -23,10 +20,5 @@ public class Project extends Persistible{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-     
-     
-     
-     
+
 }
