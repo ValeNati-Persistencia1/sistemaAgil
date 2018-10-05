@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 @Entity
 public class Project extends Persistible {
 
-	private static final long serialVersionUID = 1L;
 
 	private String nombre;
 
