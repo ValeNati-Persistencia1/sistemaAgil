@@ -8,6 +8,8 @@ public class Project extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
+	
+	private Backlog backlog;
 
 	public Project(String nombre) {
 		this.nombre = nombre;
@@ -21,4 +23,13 @@ public class Project extends Persistible {
 		this.nombre = nombre;
 	}
 
+	public Backlog getBacklog() {
+		return backlog;
+	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
+
+	
 }
