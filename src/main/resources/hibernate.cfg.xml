@@ -23,6 +23,6 @@
 <!-- 		<property name="hibernate.hbm2ddl.auto">create-drop</property> -->
 
 		<mapping class="ar.sarm.unq.sga.model.Project" />
-
+		<mapping class="ar.sarm.unq.sga.model.Backlog"/>
 	</session-factory>
 </hibernate-configuration>
