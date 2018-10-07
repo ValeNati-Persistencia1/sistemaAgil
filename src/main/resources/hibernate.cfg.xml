@@ -24,5 +24,7 @@
 
 		<mapping class="ar.sarm.unq.sga.model.Project" />
 		<mapping class="ar.sarm.unq.sga.model.Backlog"/>
+		<mapping class="ar.sarm.unq.sga.model.UserStory"/>
+		<mapping class="ar.sarm.unq.sga.model.Developer"/>
 	</session-factory>
 </hibernate-configuration>

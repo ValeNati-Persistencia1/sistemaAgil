@@ -1,6 +1,11 @@
 package ar.sarm.unq.sga.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Backlog extends Persistible {
@@ -9,8 +14,8 @@ public class Backlog extends Persistible {
 
 	private String nombre;
 	
-//	@OneToMany(mappedBy="backlog", cascade= CascadeType.ALL)
-	//private List<UserStory>userStories=new ArrayList<>();
+	@OneToMany(mappedBy="backlog", cascade= CascadeType.PERSIST)
+	private List<UserStory>userStories=new ArrayList<>();
 
 	public Backlog(String nombre) {
 		super();
@@ -25,13 +30,13 @@ public class Backlog extends Persistible {
 		this.nombre = nombre;
 	}
 
-//	public List<UserStory> getUserStories() {
-//		return userStories;
-//	}
-//
-//	public void setUserStories(List<UserStory> userStories) {
-//		this.userStories = userStories;
-//	}
+	public List<UserStory> getUserStories() {
+		return userStories;
+	}
+
+	public void setUserStories(List<UserStory> userStories) {
+		this.userStories = userStories;
+	}
 	
 	
 

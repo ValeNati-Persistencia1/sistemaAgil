@@ -1,6 +1,9 @@
 package ar.sarm.unq.sga.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class UserStory extends Persistible{
@@ -20,9 +23,9 @@ public class UserStory extends Persistible{
 	
 	private String nombre;
 	
-//	@OneToMany
-//	@JoinColumn
-//	private Backlog backlog;
+	@ManyToOne(cascade=CascadeType.REFRESH)
+	@JoinColumn
+	private Backlog backlog;
 	
 	public UserStory(String nombre){
 		this.nombre=nombre;
@@ -75,13 +78,13 @@ public class UserStory extends Persistible{
 		this.nombre = nombre;
 	}
 
-//	public Backlog getBacklog() {
-//		return backlog;
-//	}
-//
-//	public void setBacklog(Backlog backlog) {
-//		this.backlog = backlog;
-//	}
+	public Backlog getBacklog() {
+		return backlog;
+	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
 	
 	
 
