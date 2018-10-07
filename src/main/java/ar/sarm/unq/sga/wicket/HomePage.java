@@ -10,7 +10,7 @@ import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 public class HomePage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
-
+	@SuppressWarnings("serial")
 	public HomePage() {
 		
 		this.add(new Link<String>("proyecto") {
