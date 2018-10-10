@@ -13,22 +13,17 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void agregarProject(Project project) {
-		this.getSession().save(project);
-	}
+//	public void agregarProject(Project project) {
+//		this.getSession().save(project);
+//	}
+//
+//	public void updateProject(Project project) {
+//		this.getSession().update(project);
+//	}
+//
+//	public void deleteProject(Project project) {
+//		this.getSession().delete(project);
+//	}
 
-	public void updateProject(Project project) {
-		this.getSession().update(project);
-	}
-
-	public void deleteProject(Project project) {
-		this.getSession().delete(project);
-	}
-
-	@Override
-	public Project find(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

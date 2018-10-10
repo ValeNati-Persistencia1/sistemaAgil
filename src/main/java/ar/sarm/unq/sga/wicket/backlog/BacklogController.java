@@ -2,8 +2,10 @@ package ar.sarm.unq.sga.wicket.backlog;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Backlog;
-import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 
 public class BacklogController implements Serializable {
 
@@ -12,6 +14,9 @@ public class BacklogController implements Serializable {
 
 	private String nombre;
 
+	@Autowired
+	private Home<Backlog> backlogStore;
+	
 	public BacklogController() {
 	}
 
@@ -41,6 +46,6 @@ public class BacklogController implements Serializable {
 
 	public void agregarBacklog() {
 		Backlog backlog = new Backlog(getNombre());
-		BacklogStore.elunico().agregarBacklog(backlog);
+		backlogStore.insert(backlog);
 	}
 }
