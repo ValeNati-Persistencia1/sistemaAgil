@@ -2,6 +2,9 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.UserStory;
 
 public class UserStoryController implements Serializable{
@@ -12,6 +15,8 @@ public class UserStoryController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
+	@Autowired
+	private Home<UserStory>userStoryStore;
 	
 	public UserStoryController(){
 		
@@ -30,8 +35,7 @@ public class UserStoryController implements Serializable{
 	
 	public void agregarUserStory(){
 		UserStory userStory=new UserStory(getNombre());
-		UserStoryStore.elUnico().agregarUserStory(userStory);
-		
+		userStoryStore.insert(userStory);
 	}
 	
     

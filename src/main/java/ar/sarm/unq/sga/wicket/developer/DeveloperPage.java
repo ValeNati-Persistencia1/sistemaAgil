@@ -5,13 +5,14 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.sarm.unq.sga.wicket.HomePage;
 
 public class DeveloperPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
-	
+	@Autowired
 	private DeveloperController controller= new DeveloperController();
 	
 	private DeveloperPage(){
