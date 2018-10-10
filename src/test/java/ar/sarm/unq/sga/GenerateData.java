@@ -1,21 +1,31 @@
 package ar.sarm.unq.sga;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.hibernate.SessionFactoryContainer;
+import ar.sarm.unq.sga.home.Home;
+import ar.sarm.unq.sga.model.Project;
 
+@Component
 public class GenerateData {
+	@Autowired
+	private SessionFactory sessionFactory;
 
-	public static void main(String[] args) {
+	@Autowired
+	private Home<Project> projectStore;
+	
 
-		SessionFactoryContainer.buildSessionFactory(true);
-		Session s = SessionFactoryContainer.getSessionFactory().getCurrentSession();
-
+	protected void generate() {
+		Session s =sessionFactory.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 
 		try {
-			
+			Project proyecto = new Project("proyectito2");
+			projectStore.insert(proyecto);
 			transaction.commit();
 			
 		} catch (RuntimeException e) {
@@ -24,9 +34,7 @@ public class GenerateData {
 			
 		} finally {
 			s.close();
-			SessionFactoryContainer.getSessionFactory().close();
 		}
-
 	}
 
 }
