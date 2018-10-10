@@ -5,13 +5,14 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.sarm.unq.sga.wicket.HomePage;
 
 
-
 public class ProjectPage extends WebPage{
-	private ProjectController controller=new ProjectController();
+	@Autowired
+	private ProjectController projectController;
 	
 	public ProjectPage(){
 		agregarForm();
@@ -24,14 +25,14 @@ public class ProjectPage extends WebPage{
 
 			@Override
 			protected void onSubmit() {
-				ProjectPage.this.controller.agregarProjecto();
+				ProjectPage.this.projectController.agregarProjecto();
 				this.setResponsePage(new HomePage());
 			
 			}	
 			
 		};
 					
-		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.controller, "nombre")));
+		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(/* */ , "nombre")));
 
 		crearProjectForm.add(new Link<String>("cancelar"){
 
