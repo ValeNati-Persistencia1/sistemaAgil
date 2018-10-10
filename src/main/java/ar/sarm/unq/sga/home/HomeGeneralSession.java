@@ -2,31 +2,32 @@
 package ar.sarm.unq.sga.home;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import ar.sarm.unq.sga.hibernate.SessionFactoryContainer;
-
+@Repository
 public abstract class HomeGeneralSession<T> implements Home<T> {
 
 	private static final long serialVersionUID = 1L;
-	static private HomeGeneralSession instance;
 
-	public static HomeGeneralSession getInstance(){
-		return  instance;
-	}
+	@Autowired
+	private SessionFactory sessionFactory;
+
 	public Session getSession() {
-		return SessionFactoryContainer.getSessionFactory().getCurrentSession();
+		return sessionFactory.getCurrentSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void insert(T object) {
-		// TODO Auto-generated method stub
+		getSession().save(object);
 
 	}
 
 	@Override
 	public void update(T object) {
-		// TODO Auto-generated method stub
-
+		getSession().update(object);
 	}
 
 	@Override
