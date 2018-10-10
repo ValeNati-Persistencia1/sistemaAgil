@@ -28,6 +28,12 @@ public class UserStoryStore extends HomeGeneralSession<UserStory>{
 		this.getSession().delete(userStory);
 	}
 
+	@Override
+	public UserStory find(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

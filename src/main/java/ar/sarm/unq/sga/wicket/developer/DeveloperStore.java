@@ -28,5 +28,11 @@ public class DeveloperStore extends HomeGeneralSession<Developer>{
 		this.getSession().delete(developer);
 	}
 
+	@Override
+	public Developer find(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

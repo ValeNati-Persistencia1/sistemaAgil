@@ -26,4 +26,10 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 	public void deleteBacklog(Backlog backlog) {
 		this.getSession().delete(backlog);
 	}
+
+	@Override
+	public Backlog find(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
