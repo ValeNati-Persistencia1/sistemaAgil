@@ -15,7 +15,7 @@ public class ProjectPage extends WebPage{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@SpringBean(name="project")
+	@SpringBean
 	private ProjectController projectController;
 	@SuppressWarnings("seria")
 	public ProjectPage(){

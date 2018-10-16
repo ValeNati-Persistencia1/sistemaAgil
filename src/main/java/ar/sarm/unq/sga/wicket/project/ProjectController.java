@@ -3,10 +3,12 @@ package ar.sarm.unq.sga.wicket.project;
 import java.io.Serializable;
 
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Project;
 
+@Component
 public class ProjectController implements Serializable{
 	
 	/**
@@ -15,7 +17,8 @@ public class ProjectController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
-	@SpringBean(name= "project")
+	
+	@SpringBean
 	private Home<Project> projectStore;
 	
 	public ProjectController(){
