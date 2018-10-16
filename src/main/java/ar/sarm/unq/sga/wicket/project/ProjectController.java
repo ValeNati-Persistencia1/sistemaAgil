@@ -2,7 +2,7 @@ package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Project;
@@ -15,7 +15,7 @@ public class ProjectController implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
-	@Autowired
+	@SpringBean(name= "project")
 	private Home<Project> projectStore;
 	
 	public ProjectController(){

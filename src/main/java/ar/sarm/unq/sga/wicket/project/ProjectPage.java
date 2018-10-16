@@ -5,15 +5,19 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.wicket.HomePage;
 
 
 public class ProjectPage extends WebPage{
-	@Autowired
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@SpringBean(name="project")
 	private ProjectController projectController;
-	
+	@SuppressWarnings("seria")
 	public ProjectPage(){
 		agregarForm();
 	}
@@ -32,7 +36,7 @@ public class ProjectPage extends WebPage{
 			
 		};
 					
-		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(/* */ , "nombre")));
+		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController , "nombre")));
 
 		crearProjectForm.add(new Link<String>("cancelar"){
 
@@ -44,7 +48,7 @@ public class ProjectPage extends WebPage{
 			@Override
 			public void onClick() {
 			this.setResponsePage(new HomePage());
-				
+			//deberia volver a la lista de  proyectos para poder agregar el backlog	
 			}
 			
 		});

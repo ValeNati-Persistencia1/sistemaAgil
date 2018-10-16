@@ -1,6 +1,7 @@
 package ar.sarm.unq.sga.model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Project extends Persistible {
@@ -8,7 +9,7 @@ public class Project extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	
+	@OneToOne
 	private Backlog backlog;
 
 	public Project(String nombre) {
