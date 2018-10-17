@@ -1,6 +1,10 @@
 package ar.sarm.unq.sga.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -11,6 +15,12 @@ public class Project extends Persistible {
 	private String nombre;
 	@OneToOne
 	private Backlog backlog;
+	
+	@ManyToMany
+	private List<Developer>developers=new ArrayList<>();
+	
+	
+	private List<Rol>roles=new ArrayList<>();
 
 	public Project(String nombre) {
 		this.nombre = nombre;
@@ -30,6 +40,14 @@ public class Project extends Persistible {
 
 	public void setBacklog(Backlog backlog) {
 		this.backlog = backlog;
+	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
 	}
 
 	
