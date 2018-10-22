@@ -1,15 +1,20 @@
 
 package ar.sarm.unq.sga.home;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.stereotype.Repository;
 
+import ar.sarm.unq.sga.model.Persistible;
 
 @Repository
-public abstract class HomeGeneralSession<T> implements Home<T> {
+@Transactional
+public abstract class HomeGeneralSession<T extends Persistible> implements Home<T> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -49,4 +54,17 @@ public abstract class HomeGeneralSession<T> implements Home<T> {
 		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(),HomeGeneralSession.class);
 		return getSession().get(genericType,id);
 	}
+	
+	@Override
+	public void attach(T result) {
+		if(this.isDetached(result)) {
+			this.getSession().lock(result, LockMode.NONE);
+		}		
+	}
+
+	public boolean isDetached(T result) {
+		return result != null && result.getId() !=null;
+	}
+	
+	
 }

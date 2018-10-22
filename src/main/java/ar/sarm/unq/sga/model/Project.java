@@ -19,7 +19,7 @@ public class Project extends Persistible {
 	private String nombre;
 	@OneToOne
 	private Backlog backlog;
-
+	
 	@ManyToMany
 	private List<Developer> developers = new ArrayList<>();
 	@Enumerated(EnumType.STRING)

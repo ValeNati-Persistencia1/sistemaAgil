@@ -4,7 +4,9 @@ package ar.sarm.unq.sga.home;
 
 import org.hibernate.Session;
 
-	public interface Home<T> extends Serializable {
+import ar.sarm.unq.sga.model.Persistible;
+
+	public interface Home<T extends Persistible>extends Serializable {
 
 		public T findByName(String name);
 		public void insert(T object);
@@ -12,6 +14,7 @@ import org.hibernate.Session;
 		public void delete(T object);
 		public T find(long id);
 		public Session getSession();
+		public void attach(T result);
 
 	}
 
