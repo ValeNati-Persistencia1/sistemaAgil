@@ -1,10 +1,9 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
+import java.util.List;
 
-import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import ar.sarm.unq.sga.home.Home;
@@ -37,8 +36,11 @@ public class ProjectController implements Serializable{
 	}
 //arreglado con leo
 	public void agregarProjecto(){
-		Project projecto=new Project(getNombre());
-		projectStore.insert(projecto);
+		Project proyecto=new Project(getNombre());
+		projectStore.insert(proyecto);
 	}
 	
+	public List<Project>getProyectos(){
+		return null; //ProjectStore.getSession().proyectos();
+	}
 }
