@@ -3,10 +3,11 @@ package ar.sarm.unq.sga.wicket.backlog;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Backlog;
-
+@Controller
 public class BacklogController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -6,12 +6,13 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 
 import ar.sarm.unq.sga.model.Project;
 
-public class ListProject extends WebPage {
+public class ListProjectPage extends WebPage {
 
 	/**
 	 * 
@@ -19,7 +20,7 @@ public class ListProject extends WebPage {
 	private static final long serialVersionUID = 1L;
 	private ProjectController projectController;
 
-	public ListProject() {
+	public ListProjectPage() {
 		tablaDeProyectos();
 		botonCancelar();
 		botonVolver();
@@ -66,9 +67,26 @@ public class ListProject extends WebPage {
 					}
 
 				});
+				
+				item.add(new Link<String>("agregarProyecto"){
+
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+//						this.setResponsePage(new ProjectPage());
+						
+					}
+					
+				});
 
 			}
+			
 		});
+		
 
 	}
 
@@ -78,7 +96,7 @@ public class ListProject extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListProject());
+//				this.setResponsePage(new ListProjectPage());
 
 			}
 
@@ -92,7 +110,7 @@ public class ListProject extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListProject());
+//				this.setResponsePage(new ListProjectPage());
 
 			}
 
