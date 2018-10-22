@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,12 +19,13 @@ public class Project extends Persistible {
 	private String nombre;
 	@OneToOne
 	private Backlog backlog;
-	
+
 	@ManyToMany
-	private List<Developer>developers=new ArrayList<>();
-	
-	
-	private List<Rol>roles=new ArrayList<>();
+	private List<Developer> developers = new ArrayList<>();
+	@Enumerated(EnumType.STRING)
+	private Rol rol;
+//	@OneToMany
+//	private List<Rol> roles = new ArrayList<>();
 
 	public Project(String nombre) {
 		this.nombre = nombre;
@@ -42,13 +47,28 @@ public class Project extends Persistible {
 		this.backlog = backlog;
 	}
 
-	public List<Rol> getRoles() {
-		return roles;
+//	public List<Rol> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(List<Rol> roles) {
+//		this.roles = roles;
+//	}
+
+	public List<Developer> getDevelopers() {
+		return developers;
 	}
 
-	public void setRoles(List<Rol> roles) {
-		this.roles = roles;
+	public void setDevelopers(List<Developer> developers) {
+		this.developers = developers;
 	}
 
-	
+	// public Rol getRol() {
+	// return rol;
+	// }
+	//
+	// public void setRol(Rol rol) {
+	// this.rol = rol;
+	// }
+
 }
