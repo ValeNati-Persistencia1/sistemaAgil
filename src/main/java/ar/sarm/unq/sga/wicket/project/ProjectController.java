@@ -38,7 +38,6 @@ public class ProjectController implements Serializable{
 	public void agregarProjecto(){
 		Project proyecto=new Project(getNombre());
 		projectStore.insert(proyecto);
-		projectStore.attach(proyecto);
 	}
 	
 //	public List<Project>getProyectos(){
