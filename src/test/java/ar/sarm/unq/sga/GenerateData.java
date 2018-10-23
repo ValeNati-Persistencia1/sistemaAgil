@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ar.sarm.unq.sga.hibernate.SessionFactoryContainer;
 import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Project;
 

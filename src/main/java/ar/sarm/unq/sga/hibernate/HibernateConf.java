@@ -56,7 +56,6 @@ public class HibernateConf {
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo);
-		hibernateProperties.setProperty("hibernate.current_session_context_class","thread");
 		return hibernateProperties;
 	}
 }
