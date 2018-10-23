@@ -15,8 +15,7 @@ public class DeveloperController<T extends Persistible> implements Serializable 
 
     private String nombre;
     @Autowired
-    private Home<Developer>developerStore;
-    private T result;
+    private DeveloperStore developerStore;
     
     public DeveloperController(){
     	

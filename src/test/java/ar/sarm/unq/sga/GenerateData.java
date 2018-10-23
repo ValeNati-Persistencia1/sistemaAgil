@@ -25,7 +25,7 @@ public class GenerateData {
 		Project proyecto = new Project("proyectito2");
 		projectStore.insert(proyecto);
 		
-		Developer dev=new Developer("jose");
+		Developer dev=new Developer("Jose");
 		developerStore.insert(dev);
 		
 		
