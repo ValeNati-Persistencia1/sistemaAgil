@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.home.Home;
+import ar.sarm.unq.sga.model.Developer;
 import ar.sarm.unq.sga.model.Project;
-
+import ar.sarm.unq.sga.wicket.developer.DeveloperStore;
 @Component
 @Transactional
 public class GenerateData {
@@ -21,3 +22,7 @@ public class GenerateData {
 	}
 
 }
+	
+	
+	
+	
