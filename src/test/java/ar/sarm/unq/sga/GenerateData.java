@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.home.Home;
+import ar.sarm.unq.sga.model.Developer;
 import ar.sarm.unq.sga.model.Project;
 @Component
 @Transactional
@@ -12,13 +13,15 @@ public class GenerateData {
 
 	@Autowired
 	private Home<Project> projectStore;
+	
+	@Autowired Home<Developer>developerStore;
 
 	protected void generate() {
 		Project proyecto = new Project("proyectito2");
 		projectStore.insert(proyecto);
 		
-//		Developer dev=new Developer();
-//		developerStore.insert(dev);
+		Developer dev=new Developer();
+		developerStore.insert(dev);
 
 	}
 
