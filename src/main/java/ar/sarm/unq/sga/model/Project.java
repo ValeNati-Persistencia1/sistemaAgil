@@ -20,8 +20,8 @@ public class Project extends Persistible {
 	
 	@ManyToMany
 	private List<Developer> developers = new ArrayList<>();
-	@Enumerated(EnumType.STRING)
-	private  TipoDeRol rol;
+//	@Enumerated(EnumType.STRING)
+//	private TipoRol tipoRol;
 //	@OneToMany
 //	private List<Rol> roles = new ArrayList<>();
 
@@ -61,13 +61,12 @@ public class Project extends Persistible {
 		this.developers = developers;
 	}
 
-	public TipoDeRol getRol() {
-		return rol;
-	}
+	// public Rol getRol() {
+	// return rol;
+	// }
+	//
+	// public void setRol(Rol rol) {
+	// this.rol = rol;
+	// }
 
-	public void setRol(TipoDeRol rol) {
-		this.rol = rol;
-	}
-
-	
 }

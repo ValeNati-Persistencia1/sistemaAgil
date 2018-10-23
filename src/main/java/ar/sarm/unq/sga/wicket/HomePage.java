@@ -5,8 +5,11 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.home.Home;
+import ar.sarm.unq.sga.model.Developer;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.backlog.BacklogPage;
+import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
@@ -16,6 +19,11 @@ public class HomePage extends WebPage {
 	
 	@SpringBean
 	private Home <Project> project; 
+	@SpringBean 
+	private Home<Developer>dev;
+	@SpringBean 
+	private Home<UserStory>user;
+	
 	public HomePage() {
 		log.debug("construyendo el formulario");
 		this.add(new Link<String>("proyecto") {
@@ -51,7 +59,7 @@ public class HomePage extends WebPage {
 
 			@Override
 			public void onClick() {
-               this.setResponsePage(new HomePage());				
+               this.setResponsePage(new DeveloperPage());				
 			}
 			
 		});

@@ -15,7 +15,7 @@ public class DeveloperPage extends WebPage{
 	@Autowired
 	private DeveloperController controller= new DeveloperController();
 	
-	private DeveloperPage(){
+	public DeveloperPage(){
 		agregarForm();
 		
 	}
