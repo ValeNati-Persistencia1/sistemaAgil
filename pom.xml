@@ -217,7 +217,7 @@
 							<value>${project.build.directory}/test-classes</value>
 						</systemProperty>
 					</systemProperties>
-					<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
+					<jettyXml>${project.basedir}/src/test/resources/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
 				</configuration>
 			</plugin>
 			<plugin>

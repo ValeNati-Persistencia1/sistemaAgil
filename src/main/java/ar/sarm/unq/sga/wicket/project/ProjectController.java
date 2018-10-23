@@ -20,7 +20,7 @@ public class ProjectController implements Serializable{
 	private String nombre;
 	
 	@Autowired
-	private Home<Project> projectStore;
+	private ProjectStore projectStore;
 	
 	public ProjectController(){
 		
@@ -38,10 +38,10 @@ public class ProjectController implements Serializable{
 	public void agregarProjecto(){
 		Project proyecto=new Project(getNombre());
 		projectStore.insert(proyecto);
-		projectStore.attach(proyecto);
 	}
 	
 	public List<Project>getProyectos(){
-		return null;
+		
+		return null ;//projectStore.proyectos();
 	}
 }
