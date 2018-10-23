@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
 
@@ -18,6 +19,7 @@ public class ListProjectPage extends WebPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@SpringBean
 	private ProjectController projectController;
 
 	public ListProjectPage() {

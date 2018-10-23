@@ -41,8 +41,7 @@ public class ProjectController implements Serializable{
 		projectStore.attach(proyecto);
 	}
 	
-//	public List<Project>getProyectos(){
-//		
-//		return projectStore.attach(result);
-//	}
+	public List<Project>getProyectos(){
+		return null;
+	}
 }
