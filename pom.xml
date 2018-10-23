@@ -151,8 +151,13 @@
 		    <artifactId>spring-orm</artifactId>
 		    <version>5.0.2.RELEASE</version>
 		</dependency>
-
-
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.1.1.RELEASE</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<resources>
