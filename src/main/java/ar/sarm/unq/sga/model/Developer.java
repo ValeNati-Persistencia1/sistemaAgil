@@ -17,6 +17,10 @@ public class Developer extends Persistible{
 	@ManyToMany
 	private List<Project>projects=new ArrayList<>();
 	
+	public Developer(String nombre){
+		this.nombre=nombre;
+	}
+	
 	
 	public String getNombre() {
 		return nombre;
