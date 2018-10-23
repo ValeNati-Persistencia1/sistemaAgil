@@ -18,6 +18,9 @@ public class GenerateData {
 	protected void generate() {
 		Project proyecto = new Project("proyectito2");
 		projectStore.insert(proyecto);
+		
+		Developer dev=new Developer();
+		developerStore.insert(dev);
 
 	}
 
