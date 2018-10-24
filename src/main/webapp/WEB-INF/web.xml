@@ -10,7 +10,7 @@
 	 </context-param>
  	<context-param>
 		     <param-name>contextConfigLocation</param-name>
-		     <param-value>ar.sarm.unq.sga.wicket;ar.sarm.unq.sga.hibernate</param-value>
+		     <param-value>ar.sarm.unq.sga.hibernate.HibernateConf</param-value>
 	 </context-param>
 	
 	<filter>

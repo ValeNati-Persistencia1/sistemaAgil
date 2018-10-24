@@ -5,7 +5,6 @@ package ar.sarm.unq.sga.home;
 import org.hibernate.Session;
 
 import ar.sarm.unq.sga.model.Persistible;
-
 	public interface Home<T extends Persistible>extends Serializable {
 
 		public T findByName(String name);

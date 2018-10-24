@@ -4,25 +4,30 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.sarm.unq.sga.home.Home;
-import ar.sarm.unq.sga.model.Developer;
-import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.backlog.BacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
+import ar.sarm.unq.sga.wicket.developer.DeveloperStore;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
+import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 public class HomePage extends WebPage {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(HomePage.class);
 	private static final long serialVersionUID = 1L;
 	
 	@SpringBean
-	private Home <Project> project; 
+	private ProjectStore projectStore; 
 	@SpringBean 
-	private Home<Developer>dev;
+	private DeveloperStore developerStore;
 	@SpringBean 
-	private Home<UserStory>user;
+	private UserStoryStore userStoryStore;
+	@SpringBean
+	private BacklogStore backlogStore;
+	
+	
+	
 	
 	public HomePage() {
 		log.debug("construyendo el formulario");

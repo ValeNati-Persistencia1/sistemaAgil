@@ -29,7 +29,7 @@ public class ProjectPage extends WebPage{
 
 			@Override
 			protected void onSubmit() {
-				ProjectPage.this.projectController.agregarProjecto();
+				ProjectPage.this.projectController.agregarProyecto();
 				this.setResponsePage(new HomePage());
 			
 			}	
@@ -47,7 +47,7 @@ public class ProjectPage extends WebPage{
 
 			@Override
 			public void onClick() {
-			this.setResponsePage(new HomePage());
+//			this.setResponsePage(new HomePage());
 			//deberia volver a la lista de  proyectos para poder agregar el backlog	
 			}
 			
