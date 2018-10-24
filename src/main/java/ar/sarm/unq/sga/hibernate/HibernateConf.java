@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -16,8 +17,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = "ar.unq.sarm.sga.wicket")
+@ComponentScan(basePackages = {"ar.unq.sarm.sga.wicket","ar.sarm.unq.sga.wicket","ar.sarm.unq.sga.hibernate"})
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class HibernateConf {
 	public static String modo = "update";
 
@@ -56,6 +58,7 @@ public class HibernateConf {
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo);
+//		hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
 		return hibernateProperties;
 	}
 }

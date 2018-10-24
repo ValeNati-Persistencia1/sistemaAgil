@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Project extends Persistible {
@@ -15,9 +16,10 @@ public class Project extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
+	@Transient
 	@OneToOne
 	private Backlog backlog;
-	
+	@Transient
 	@ManyToMany
 	private List<Developer> developers = new ArrayList<>();
 //	@Enumerated(EnumType.STRING)
