@@ -45,11 +45,11 @@ public class ProjectController implements Serializable {
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
-		projectStore.agregarProyecto(proyecto);
+		projectStore.agregarProject(proyecto);
 	}
 
 	public List<Project> getProyectos() {
 		
-		return projectStore.proyectos;
+		return projectStore.proyectos();
 	}
 }
