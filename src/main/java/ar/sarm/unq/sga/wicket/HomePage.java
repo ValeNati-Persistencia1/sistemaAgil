@@ -15,20 +15,8 @@ import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 public class HomePage extends WebPage {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(HomePage.class);
-	private static final long serialVersionUID = 1L;
-	
-	@SpringBean
-	private ProjectStore projectStore; 
-	@SpringBean 
-	private DeveloperStore developerStore;
-	@SpringBean 
-	private UserStoryStore userStoryStore;
-	@SpringBean
-	private BacklogStore backlogStore;
-	
-	
-	
-	
+	private static final long serialVersionUID = 1L;	
+
 	public HomePage() {
 		log.debug("construyendo el formulario");
 		this.add(new Link<String>("proyecto") {

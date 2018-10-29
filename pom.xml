@@ -20,6 +20,249 @@
 	<name>Sistema De Gestion Agil</name>
 	<description>TP SGA Grandi-Marzec</description>
 
+<!-- 	<licenses> -->
+<!-- 		<license> -->
+<!-- 			<name>The Apache Software License, Version 2.0</name> -->
+<!-- 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url> -->
+<!-- 			<distribution>repo</distribution> -->
+<!-- 		</license> -->
+<!-- 	</licenses> -->
+<!-- 	<properties> -->
+<!-- 		<wicket.version>7.1.0</wicket.version> -->
+<!-- 		<jetty9.version>9.4.7.v20170914</jetty9.version> -->
+<!-- 		<slf4j.version>1.7.25</slf4j.version> -->
+<!-- 		<junit.version>4.12</junit.version> -->
+<!-- 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
+<!-- 		 allowed values: R7, 1.0, 1.5, 2.0 or none --> 
+<!-- 		<wtp.version>none</wtp.version> -->
+<!-- 	</properties> -->
+<!-- 	<dependencies> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet</groupId> -->
+<!-- 			<artifactId>javax.servlet-api</artifactId> -->
+<!-- 			<version>3.0.1</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+
+<!-- 		 WICKET DEPENDENCIES --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-core</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
+
+
+<!-- 		OPTIONAL DEPENDENCY <dependency> <groupId>org.apache.wicket</groupId>  -->
+<!-- 			<artifactId>wicket-extensions</artifactId> <version>${wicket.version}</version>  -->
+<!-- 			</dependency> --> 
+<!-- 		 Integrate Wicket with Spring --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-ioc</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.wicket</groupId> -->
+<!-- 			<artifactId>wicket-spring</artifactId> -->
+<!-- 			<version>${wicket.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.aspectj</groupId> -->
+<!-- 			<artifactId>aspectjrt</artifactId> -->
+<!-- 			<version>1.9.1</version> -->
+<!-- 		</dependency> -->
+
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-aspects</artifactId> -->
+<!-- 			<version>5.1.1.RELEASE</version> -->
+<!-- 		</dependency> -->
+		
+ 		<!-- LOGGING DEPENDENCIES - SLF4J-SIMPLE --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-simple</artifactId> -->
+<!-- 			<version>${slf4j.version}</version> -->
+<!-- 		</dependency> -->
+ 		<!-- <dependency> --> 
+ 		<!-- <groupId>log4j</groupId> --> 
+ 		<!-- <artifactId>log4j</artifactId> --> 
+ 		<!-- <version>${log4j.version}</version> --> 
+ 		<!-- </dependency> --> 
+
+ 		<!-- JUNIT DEPENDENCY FOR TESTING --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>junit</groupId> -->
+<!-- 			<artifactId>junit</artifactId> -->
+<!-- 			<version>${junit.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+
+		<!-- JETTY DEPENDENCIES FOR TESTING --> 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.jetty</groupId> -->
+<!-- 			<artifactId>jetty-server</artifactId> -->
+<!-- 			<version>${jetty9.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.jetty</groupId> -->
+<!-- 			<artifactId>jetty-webapp</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 			<version>${jetty9.version}</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.jetty</groupId> -->
+<!-- 			<artifactId>jetty-util</artifactId> -->
+<!-- 			<version>${jetty9.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse.jetty</groupId> -->
+<!-- 			<artifactId>jetty-jmx</artifactId> -->
+<!-- 			<version>${jetty9.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+
+
+		<!-- uncomment if WebSocket support is needed <dependency> <groupId>org.eclipse.jetty.websocket</groupId>  -->
+<!-- 			<artifactId>javax-websocket-server-impl</artifactId> <version>${jetty9.version}</version>  -->
+<!-- 			<scope>test</scope> </dependency> --> 
+
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-core</artifactId> -->
+<!-- 			<version>5.3.5.Final</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>mysql</groupId> -->
+<!-- 			<artifactId>mysql-connector-java</artifactId> -->
+<!-- 			<version>8.0.12</version> -->
+<!-- 		</dependency> -->
+
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-context</artifactId> -->
+<!-- 			<version>4.3.7.RELEASE</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.annotation</groupId> -->
+<!-- 			<artifactId>javax.annotation-api</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-orm</artifactId> -->
+<!-- 			<version>5.0.2.RELEASE</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-web</artifactId> -->
+<!-- 			<version>5.1.1.RELEASE</version> -->
+<!-- 		</dependency> -->
+
+
+<!-- 	</dependencies> -->
+<!-- 	<build> -->
+<!-- 		<resources> -->
+<!-- 			<resource> -->
+<!-- 				<filtering>false</filtering> -->
+<!-- 				<directory>src/main/resources</directory> -->
+<!-- 			</resource> -->
+<!-- 			<resource> -->
+<!-- 				<filtering>false</filtering> -->
+<!-- 				<directory>src/main/java</directory> -->
+<!-- 				<includes> -->
+<!-- 					<include>**</include> -->
+<!-- 				</includes> -->
+<!-- 				<excludes> -->
+<!-- 					<exclude>**/*.java</exclude> -->
+<!-- 				</excludes> -->
+<!-- 			</resource> -->
+<!-- 		</resources> -->
+<!-- 		<testResources> -->
+<!-- 			<testResource> -->
+<!-- 				<filtering>false</filtering> -->
+<!-- 				<directory>src/test/resources</directory> -->
+<!-- 			</testResource> -->
+<!-- 			<testResource> -->
+<!-- 				<filtering>false</filtering> -->
+<!-- 				<directory>src/test/java</directory> -->
+<!-- 				<includes> -->
+<!-- 					<include>**</include> -->
+<!-- 				</includes> -->
+<!-- 				<excludes> -->
+<!-- 					<exclude>**/*.java</exclude> -->
+<!-- 				</excludes> -->
+<!-- 			</testResource> -->
+<!-- 		</testResources> -->
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<inherited>true</inherited> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<version>3.6.1</version> -->
+<!-- 				<configuration> -->
+<!-- 					<source>1.8</source> -->
+<!-- 					<target>1.8</target> -->
+<!-- 					<encoding>UTF-8</encoding> -->
+<!-- 					<showWarnings>true</showWarnings> -->
+<!-- 					<showDeprecation>true</showDeprecation> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.eclipse.jetty</groupId> -->
+<!-- 				<artifactId>jetty-maven-plugin</artifactId> -->
+<!-- 				<version>${jetty9.version}</version> -->
+<!-- 				<configuration> -->
+<!-- 					<systemProperties> -->
+<!-- 						<systemProperty> -->
+<!-- 							<name>maven.project.build.directory.test-classes</name> -->
+<!-- 							<value>${project.build.directory}/test-classes</value> -->
+<!-- 						</systemProperty> -->
+<!-- 					</systemProperties> -->
+<!-- 					<jettyXml>${project.basedir}/src/test/resources/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-eclipse-plugin</artifactId> -->
+<!-- 				<version>2.10</version> -->
+<!-- 				<configuration> -->
+<!-- 					<downloadSources>true</downloadSources> -->
+<!-- 					<wtpversion>${wtp.version}</wtpversion> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 		</plugins> -->
+<!-- 	</build> -->
+
+<!-- 	<repositories> -->
+<!-- 		<repository> -->
+<!-- 			<id>Apache Nexus</id> -->
+<!-- 			<url>https://repository.apache.org/content/repositories/snapshots/</url> -->
+<!-- 			<releases> -->
+<!-- 				<enabled>false</enabled> -->
+<!-- 			</releases> -->
+<!-- 			<snapshots> -->
+<!-- 				<enabled>true</enabled> -->
+<!-- 			</snapshots> -->
+<!-- 		</repository> -->
+<!-- 	</repositories> -->
+
+
+
+
+
+
+
+
+<!-- </project> -->
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -28,10 +271,11 @@
 		</license>
 	</licenses>
 	<properties>
-		<wicket.version>7.1.0</wicket.version>
+		<wicket.version>8.0.0</wicket.version>
 		<jetty9.version>9.4.7.v20170914</jetty9.version>
-		<slf4j.version>1.7.25</slf4j.version>
-		<junit.version>4.12</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<junit.version>4.11</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 		<wtp.version>none</wtp.version>
@@ -40,8 +284,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
+			<version>3.1.0</version>
 		</dependency>
 
 		<!-- WICKET DEPENDENCIES -->
@@ -50,8 +293,6 @@
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-
-
 		<!-- OPTIONAL DEPENDENCY <dependency> <groupId>org.apache.wicket</groupId> 
 			<artifactId>wicket-extensions</artifactId> <version>${wicket.version}</version> 
 			</dependency> -->
@@ -67,30 +308,17 @@
 			<version>${wicket.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.9.1</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>5.1.1.RELEASE</version>
-		</dependency>
-		
-		<!-- LOGGING DEPENDENCIES - SLF4J-SIMPLE -->
+		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
+			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>log4j</groupId> -->
-		<!-- <artifactId>log4j</artifactId> -->
-		<!-- <version>${log4j.version}</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
 
 		<!-- JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
@@ -110,17 +338,15 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-webapp</artifactId>
-			<scope>test</scope>
 			<version>${jetty9.version}</version>
+			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-util</artifactId>
 			<version>${jetty9.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-jmx</artifactId>
@@ -128,28 +354,10 @@
 			<scope>test</scope>
 		</dependency>
 
-
-		<!-- uncomment if WebSocket support is needed <dependency> <groupId>org.eclipse.jetty.websocket</groupId> 
-			<artifactId>javax-websocket-server-impl</artifactId> <version>${jetty9.version}</version> 
-			<scope>test</scope> </dependency> -->
-
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.3.5.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.12</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.3.7.RELEASE</version>
+			<version>5.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
@@ -164,9 +372,19 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>5.1.1.RELEASE</version>
+			<version>5.0.2.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.5.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.12</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -227,7 +445,7 @@
 							<value>${project.build.directory}/test-classes</value>
 						</systemProperty>
 					</systemProperties>
-					<jettyXml>${project.basedir}/src/test/resources/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
+					<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -254,12 +472,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
-
-
-
-
-
-
-
 </project>

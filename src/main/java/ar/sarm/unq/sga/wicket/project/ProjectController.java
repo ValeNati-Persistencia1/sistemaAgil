@@ -3,13 +3,10 @@ package ar.sarm.unq.sga.wicket.project;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
-import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Project;
 
 @Controller

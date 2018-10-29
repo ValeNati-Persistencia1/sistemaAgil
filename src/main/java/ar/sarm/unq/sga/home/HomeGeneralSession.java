@@ -1,7 +1,4 @@
-
 package ar.sarm.unq.sga.home;
-
-import javax.transaction.Transactional;
 
 import org.hibernate.LockMode;
 import org.hibernate.Session;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import ar.sarm.unq.sga.model.Persistible;
 
 @Repository
-@Transactional
 public abstract class HomeGeneralSession<T extends Persistible> implements Home<T> {
 
 	private static final long serialVersionUID = 1L;
@@ -45,26 +41,25 @@ public abstract class HomeGeneralSession<T extends Persistible> implements Home<
 
 	@Override
 	public T findByName(String name) {
-		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(),HomeGeneralSession.class);
+		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), HomeGeneralSession.class);
 		return getSession().get(genericType, name);
 	}
-	
+
 	@Override
 	public T find(long id) {
-		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(),HomeGeneralSession.class);
-		return getSession().get(genericType,id);
+		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), HomeGeneralSession.class);
+		return getSession().get(genericType, id);
 	}
-	
+
 	@Override
 	public void attach(T result) {
-		if(this.isDetached(result)) {
+		if (this.isDetached(result)) {
 			this.getSession().lock(result, LockMode.NONE);
-		}		
+		}
 	}
 
 	public boolean isDetached(T result) {
-		return result != null && result.getId() !=null;
+		return result != null && result.getId() != null;
 	}
-	
-	
+
 }

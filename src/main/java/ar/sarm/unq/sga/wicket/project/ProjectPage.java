@@ -17,7 +17,7 @@ public class ProjectPage extends WebPage{
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
-	@SuppressWarnings("seria")
+	@SuppressWarnings("serial")
 	public ProjectPage(){
 		agregarForm();
 	}

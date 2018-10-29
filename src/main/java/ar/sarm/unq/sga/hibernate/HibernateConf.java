@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -19,9 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan(basePackages = {"ar.unq.sarm.sga.wicket","ar.sarm.unq.sga.wicket","ar.sarm.unq.sga.hibernate"})
 @EnableTransactionManagement
-@EnableAspectJAutoProxy
 public class HibernateConf {
-	public static String modo = "update";
+	public static String modo = "server";
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -57,8 +55,12 @@ public class HibernateConf {
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo);
-//		hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+		if (modo.equals("server")) {
+			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		} else if (modo.equals("generate")) {
+			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+			hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+		}
 		return hibernateProperties;
 	}
 }
