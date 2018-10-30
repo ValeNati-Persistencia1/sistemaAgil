@@ -5,15 +5,15 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.wicket.HomePage;
 
 public class UserStoryPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
-	@Autowired
-	private UserStoryController controller=new UserStoryController();
+	@SpringBean(name="userStoryController")
+	private UserStoryController controller;
 	
 	public UserStoryPage(){
 		agregarForm();
@@ -25,7 +25,7 @@ public class UserStoryPage extends WebPage{
 			
 			@Override
 			protected void onSubmit() {
-				UserStoryPage.this.controller.agregarUserStory();;
+				UserStoryPage.this.controller.agregarUserStory();
 				this.setResponsePage(new HomePage());
 			
 			}	

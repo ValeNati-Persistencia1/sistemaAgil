@@ -40,18 +40,18 @@ public class HomePage extends WebPage {
 		});
 		this.add(new Link<String>("userstory"){
 			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
+            @Override
+            public void onClick() {
+               log.debug("antes de derivar el userStory Page");
                this.setResponsePage(new UserStoryPage());				
 			}
 			
 		});
 		this.add(new Link<String>("developer"){
 			private static final long serialVersionUID = 1L;
-
-			@Override
+            @Override
 			public void onClick() {
+               log.debug("antes de derivar el develper page");
                this.setResponsePage(new DeveloperPage());				
 			}
 			

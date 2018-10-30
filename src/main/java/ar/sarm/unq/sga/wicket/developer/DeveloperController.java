@@ -4,15 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
-import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Developer;
-import ar.sarm.unq.sga.model.Persistible;
-
-public class DeveloperController<T extends Persistible> implements Serializable {
+import ar.sarm.unq.sga.model.Project;
+@Controller
+@Transactional
+public class DeveloperController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
     private String nombre;
     @Autowired
     private DeveloperStore developerStore;
@@ -32,16 +34,17 @@ public class DeveloperController<T extends Persistible> implements Serializable 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
+
 	public void agregarDeveloper(){
-		Developer developer=new Developer(getNombre());
-        developerStore.insert(developer);
-        developerStore.attach(developer);
+		Developer dev=new Developer(getNombre());
+	    developerStore.insert(dev);
 	}
-//	public List<Developer>getDevelopers(){
-//		return
+	
+//	public List<Project> getProyectos(){
+//		return getDeveloper().getProyectos();
 //	}
+//	
+	
     
     
 }

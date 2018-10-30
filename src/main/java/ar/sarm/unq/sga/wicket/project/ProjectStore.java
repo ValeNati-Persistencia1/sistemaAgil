@@ -27,7 +27,7 @@ public class ProjectStore extends HomeGeneralSession<Project>{
 	 this.getSession().delete(project);
 	 }
 
-	public List<Project> proyectos() {
+	public List<Project> getProyectos() {
 		return getSession().createQuery("FROM Project", Project.class).list();
 	}
 	

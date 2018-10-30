@@ -5,15 +5,17 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.sarm.unq.sga.model.Developer;
 import ar.sarm.unq.sga.wicket.HomePage;
 
 public class DeveloperPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
-	@Autowired
-	private DeveloperController controller= new DeveloperController();
+	@SpringBean(name="developerController")
+	private DeveloperController controller;
 	
 	public DeveloperPage(){
 		agregarForm();
@@ -21,6 +23,7 @@ public class DeveloperPage extends WebPage{
 	}
 
 	private void agregarForm() {
+		@SuppressWarnings("rawtypes")
 		Form<DeveloperController>crearDeveloperForm=new Form<DeveloperController>("crearDeveloperForm"){
 			private static final long serialVersionUID = 1L;
 			

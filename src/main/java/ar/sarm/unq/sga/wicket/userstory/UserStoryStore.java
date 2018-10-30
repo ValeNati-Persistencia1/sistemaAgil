@@ -9,22 +9,17 @@ public class UserStoryStore extends HomeGeneralSession<UserStory>{
 
 	private static final long serialVersionUID = 1L;
 	
+  
 
-//	public void agregarUserStory(UserStory userStory){
-//		this.getSession().save(userStory);
-//	}
-//	
-//	public void updateUserStory(UserStory userStory){
-//		this.getSession().update(userStory);
-//	}
-//	
-//	public void deleteUserStory(UserStory userStory){
-//		this.getSession().delete(userStory);
-//	}
+	
+	
+	
 
 	
 	
 	
 	
-
+	
+	
+	
 }

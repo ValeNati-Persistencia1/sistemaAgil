@@ -46,7 +46,6 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<Project> getProyectos() {
-		
-		return projectStore.proyectos();
+		return projectStore.getProyectos();
 	}
 }

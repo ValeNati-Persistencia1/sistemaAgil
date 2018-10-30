@@ -3,10 +3,12 @@ package ar.sarm.unq.sga.wicket.userstory;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
-import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.UserStory;
-
+@Controller
+@Transactional
 public class UserStoryController implements Serializable{
 
 	/**
@@ -16,7 +18,8 @@ public class UserStoryController implements Serializable{
 	
 	private String nombre;
 	@Autowired
-	private Home<UserStory>userStoryStore;
+	private UserStoryStore userStoryStore;
+	private UserStory userStory;
 	
 	public UserStoryController(){
 		
@@ -32,10 +35,18 @@ public class UserStoryController implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public UserStory getUserStory(){
+		return userStory;
+	}
+//	
+//	public void agregarUserStory(){
+//		userStoryStore.attach(this.getUserStory());
+//		userStoryStore.insert(this.getUserStory());
+//	}
 	
 	public void agregarUserStory(){
-		UserStory userStory=new UserStory(getNombre());
-		userStoryStore.insert(userStory);
+        UserStory us= new UserStory(getNombre());
+		userStoryStore.insert(us);
 	}
 	
     
