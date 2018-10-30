@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
 import ar.sarm.unq.sga.model.Developer;
-import ar.sarm.unq.sga.model.Project;
 @Component
 public class DeveloperStore extends HomeGeneralSession<Developer>{
 
@@ -29,8 +28,15 @@ public class DeveloperStore extends HomeGeneralSession<Developer>{
 	
 	
 
-	public List<Developer> developers() {
+	public List<Developer> getDevelopers() {
 		return getSession().createQuery("FROM Developer", Developer.class).list();
 	}
-
+public void agregarDeveloper(Developer dev){
+	getSession().save(dev);
+}
+@Override
+public Developer findByName(String name) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }

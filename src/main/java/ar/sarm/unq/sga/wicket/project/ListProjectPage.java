@@ -1,12 +1,10 @@
 package ar.sarm.unq.sga.wicket.project;
 
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -23,13 +21,15 @@ public class ListProjectPage extends WebPage {
 	private ProjectController projectController;
 
 	public ListProjectPage() {
+		projectController.attach();
 		tablaDeProyectos();
 		botonCancelar();
 		botonVolver();
 	}
 
 	private void tablaDeProyectos() {
-		this.add(new ListView<Project>("lasProyectos", new PropertyModel<>(this.projectController, "proyectos")) {
+
+		this.add(new ListView<Project>("losProyectos", new PropertyModel<>(this.projectController, "proyectos")) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -69,8 +69,8 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
-				
-				item.add(new Link<String>("agregarProyecto"){
+
+				item.add(new Link<String>("agregarProyecto") {
 
 					/**
 					 * 
@@ -79,16 +79,15 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						this.setResponsePage(new ProjectPage());
-						
+						// this.setResponsePage(new ProjectPage());
+
 					}
-					
+
 				});
 
 			}
-			
+
 		});
-		
 
 	}
 
@@ -98,7 +97,7 @@ public class ListProjectPage extends WebPage {
 
 			@Override
 			public void onClick() {
-//				this.setResponsePage(new ListProjectPage());
+				// this.setResponsePage(new ListProjectPage());
 
 			}
 
@@ -112,7 +111,7 @@ public class ListProjectPage extends WebPage {
 
 			@Override
 			public void onClick() {
-//				this.setResponsePage(new ListProjectPage());
+				// this.setResponsePage(new ListProjectPage());
 
 			}
 

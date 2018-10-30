@@ -27,6 +27,10 @@ public class Project extends Persistible {
 //	@OneToMany
 //	private List<Rol> roles = new ArrayList<>();
 
+
+	public Project() {
+	}
+	
 	public Project(String nombre) {
 		this.nombre = nombre;
 	}

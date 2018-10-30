@@ -5,19 +5,30 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.wicket.backlog.BacklogPage;
-import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
-import ar.sarm.unq.sga.wicket.developer.DeveloperStore;
+import ar.sarm.unq.sga.wicket.project.ListProjectPage;
+import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
-import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 public class HomePage extends WebPage {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(HomePage.class);
 	private static final long serialVersionUID = 1L;	
+		public HomePage() {
+		log.debug("construyendo la lista de proyectos");
+		
+		this.add(new Link<String>("losProyectos") {
+			private static final long serialVersionUID = 1L;
 
-	public HomePage() {
+			@Override
+			public void onClick() {
+				log.debug("antes de derivar a la ListProjectPage");
+				this.setResponsePage(new ListProjectPage());
+			}
+
+		});
+
+		
 		log.debug("construyendo el formulario");
 		this.add(new Link<String>("proyecto") {
 			private static final long serialVersionUID = 1L;

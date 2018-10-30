@@ -3,10 +3,13 @@ package ar.sarm.unq.sga.wicket.userstory;
 import java.io.Serializable;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.UserStory;
-
+@Controller
+@Transactional
 public class UserStoryController implements Serializable{
 
 	/**
