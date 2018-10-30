@@ -8,6 +8,12 @@ import ar.sarm.unq.sga.model.UserStory;
 public class UserStoryStore extends HomeGeneralSession<UserStory>{
 
 	private static final long serialVersionUID = 1L;
+
+	@Override
+	public UserStory findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
   
 

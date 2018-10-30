@@ -39,11 +39,14 @@ public abstract class HomeGeneralSession<T extends Persistible> implements Home<
 
 	}
 
-	@Override
-	public T findByName(String name) {
-		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), HomeGeneralSession.class);
-		return getSession().get(genericType, name);
-	}
+//	@Override
+//	public T findByName(String name) {
+//		Class<T> genericType = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), HomeGeneralSession.class);
+//		genericType.getSimpleName();//devuelve un string
+//		
+//		return getSession().get(genericType, name);
+//		return getSession().createQuery(criteriaQuery)
+//	}
 
 	@Override
 	public T find(long id) {

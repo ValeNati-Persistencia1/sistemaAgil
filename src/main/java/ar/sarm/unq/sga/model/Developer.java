@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Developer extends Persistible{
@@ -13,7 +14,7 @@ public class Developer extends Persistible{
 	
 
 	private String nombre;
-	
+	@Transient
 	@ManyToMany
 	private List<Project>proyectos=new ArrayList<>();
 	

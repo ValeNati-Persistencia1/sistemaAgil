@@ -39,6 +39,10 @@ public class ProjectController implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public Project getProyectoNombre() {
+		return this.findByName();
+	}
+
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
@@ -46,6 +50,14 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<Project> getProyectos() {
+		projectStore.attach(getProyectoNombre());
 		return projectStore.getProyectos();
+	}
+	public void attach(){
+		projectStore.attach(getNombre());
+	}
+	
+	public Project findByName() {
+		return projectStore.findByName(getNombre());
 	}
 }

@@ -14,7 +14,7 @@ import ar.sarm.unq.sga.model.Project;
 public class DeveloperController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
     private String nombre;
     @Autowired
     private DeveloperStore developerStore;
@@ -34,7 +34,8 @@ public class DeveloperController implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
+	
 	public void agregarDeveloper(){
 		Developer dev=new Developer(getNombre());
 	    developerStore.insert(dev);
@@ -43,8 +44,6 @@ public class DeveloperController implements Serializable {
 //	public List<Project> getProyectos(){
 //		return getDeveloper().getProyectos();
 //	}
-//	
-	
     
     
 }
