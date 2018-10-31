@@ -20,10 +20,15 @@ public class ListProjectPage extends WebPage {
 	@SpringBean
 	private ProjectController projectController;
 
-	public ListProjectPage() {
-		projectController.attach();
+	public ListProjectPage(Project proy) {
+		projectController.attach(proy);
 		tablaDeProyectos();
-		botonCancelar();
+//		botonCancelar();
+		botonVolver();
+	}
+	public ListProjectPage() {
+		tablaDeProyectos();
+//		botonCancelar();
 		botonVolver();
 	}
 
@@ -104,17 +109,17 @@ public class ListProjectPage extends WebPage {
 		});
 	}
 
-	public void botonCancelar() {
-		this.add(new Link<String>("cancelar") {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				// this.setResponsePage(new ListProjectPage());
-
-			}
-
-		});
-	}
+//	public void botonCancelar() {
+//		this.add(new Link<String>("cancelar") {
+//
+//			private static final long serialVersionUID = 1L;
+//
+//			@Override
+//			public void onClick() {
+//				// this.setResponsePage(new ListProjectPage());
+//
+//			}
+//
+//		});
+//	}
 }

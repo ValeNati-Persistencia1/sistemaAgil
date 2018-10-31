@@ -23,6 +23,10 @@ public class ProjectController implements Serializable {
 	@Autowired
 	private ProjectStore projectStore;
 
+	private Project proyecto;
+
+	private String message;
+
 	public ProjectController() {
 
 	}
@@ -39,9 +43,9 @@ public class ProjectController implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Project getProyectoNombre() {
-		return this.findByName();
-	}
+//	public Project getProyectoNombre() {
+//		return this.findByName();
+//	}
 
 	// arreglado con leo
 	public void agregarProyecto() {
@@ -50,14 +54,28 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<Project> getProyectos() {
-		projectStore.attach(getProyectoNombre());
 		return projectStore.getProyectos();
 	}
-	public void attach(){
-		projectStore.attach(getNombre());
-	}
-	
+
 	public Project findByName() {
-		return projectStore.findByName(getNombre());
+		try{
+			this.setMessage(null);
+			proyecto=projectStore.findByName(getNombre());
+	}
+		catch (Exception e) {
+			setMessage("no existe el objeto");// TODO: handle exception
+			proyecto=null;
+		}
+		return proyecto;
+	}
+	public void attach(Project proy) {
+		projectStore.attach(proy);
+	}
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
