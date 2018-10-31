@@ -10,23 +10,7 @@ import ar.sarm.unq.sga.model.Developer;
 public class DeveloperStore extends HomeGeneralSession<Developer>{
 
 	private static final long serialVersionUID = 1L;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 	public List<Developer> getDevelopers() {
 		return getSession().createQuery("FROM Developer", Developer.class).list();

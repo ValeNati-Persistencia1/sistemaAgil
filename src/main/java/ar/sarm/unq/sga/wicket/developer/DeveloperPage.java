@@ -13,8 +13,8 @@ import ar.sarm.unq.sga.wicket.HomePage;
 public class DeveloperPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
-	@SpringBean
-	private DeveloperController developerController;
+	@SpringBean(name="developerController")
+	private DeveloperController controller;
 	
 	public DeveloperPage(){
 		agregarForm();
@@ -22,19 +22,20 @@ public class DeveloperPage extends WebPage{
 	}
 
 	private void agregarForm() {
+		@SuppressWarnings("rawtypes")
 		Form<DeveloperController>crearDeveloperForm=new Form<DeveloperController>("crearDeveloperForm"){
 			private static final long serialVersionUID = 1L;
 			
 			@Override
 			protected void onSubmit() {
-				DeveloperPage.this.developerController.agregarDeveloper();
+				DeveloperPage.this.controller.agregarDeveloper();
 				this.setResponsePage(new HomePage());
 			
 			}	
 					
 		};
 		
-		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(developerController, "nombre")));
+		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
 		
 		crearDeveloperForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;

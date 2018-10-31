@@ -1,17 +1,17 @@
 package ar.sarm.unq.sga.wicket.developer;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Developer;
-import ar.sarm.unq.sga.model.Persistible;
+import ar.sarm.unq.sga.model.Project;
 @Controller
 @Transactional
-public class DeveloperController<T extends Persistible> implements Serializable {
+public class DeveloperController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,13 +37,12 @@ public class DeveloperController<T extends Persistible> implements Serializable 
 	
 	
 	public void agregarDeveloper(){
-		Developer developer=new Developer(getNombre());
-//        developerStore.insert(developer);
-//        developerStore.attach(developer);
-		developerStore.agregarDeveloper(developer);
+		Developer dev=new Developer(getNombre());
+	    developerStore.insert(dev);
 	}
-//	public List<Developer>getDevelopers(){
-//		return
+	
+//	public List<Project> getProyectos(){
+//		return getDeveloper().getProyectos();
 //	}
     
     
