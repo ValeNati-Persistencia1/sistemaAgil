@@ -11,8 +11,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.backlog.AddBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -39,13 +39,12 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new AddBacklogPage());
+				this.setResponsePage(new UserStoryPageV());
 
 			}
 
 		};
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
-//		crearProjectForm.add(new Label("backlog", projectController.getBacklog().getNombre()));
 		crearProjectForm.add(new Link<String>("cancelar") {
 
 			/**

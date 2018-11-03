@@ -7,6 +7,7 @@ import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 
 public class HomePage extends WebPage {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(HomePage.class);
@@ -51,7 +52,7 @@ public class HomePage extends WebPage {
             @Override
             public void onClick() {
                log.debug("antes de derivar el userStory Page");
-               this.setResponsePage(new UserStoryPage());				
+               this.setResponsePage(new UserStoryPageV());				
 			}
 			
 		});

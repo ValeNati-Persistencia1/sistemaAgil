@@ -2,13 +2,15 @@ package ar.sarm.unq.sga.wicket.backlog;
 
 import java.io.Serializable;
 
+import org.eclipse.jetty.security.UserStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import ar.sarm.unq.sga.home.Home;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
 @Controller
 public class BacklogController implements Serializable {
@@ -23,6 +25,9 @@ public class BacklogController implements Serializable {
 	
 	@Autowired
 	private ProjectStore projectStore;
+	
+	@Autowired
+	private UserStoryController userStoryController;
 	private Object back;
 	private String message;
 
@@ -51,12 +56,12 @@ public class BacklogController implements Serializable {
 		this.nombreBacklog = nombre;
 	}
 
-	public void agregarBacklog() {
-		Backlog backlog = new Backlog(getNombre());
-		proyecto.setBacklog(backlog);
-		backlogStore.agregarBacklogStore(backlog);
+//	public void agregarUserStory() {
+//		UserStory user = new UserStory(getNombre());
+//		proyecto.getBacklog().
+	//	userStoryController.agregarBacklogStore(backlog);
 		// // getProyecto().setBacklog(getNombre());
-	}
+//	}
 
 	public Backlog findByName() {
 		try {

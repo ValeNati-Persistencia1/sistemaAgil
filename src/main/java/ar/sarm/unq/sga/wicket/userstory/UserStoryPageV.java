@@ -1,4 +1,4 @@
-package ar.sarm.unq.sga.wicket.backlog;
+package ar.sarm.unq.sga.wicket.userstory;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
@@ -9,10 +9,11 @@ import org.apache.wicket.model.PropertyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 
-public class AddBacklogPage extends WebPage {
+public class UserStoryPageV extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,14 +24,14 @@ public class AddBacklogPage extends WebPage {
 	private ProjectController projectController;
 	private Project proyecto;
 
-	public AddBacklogPage(Project proy) {
+	public UserStoryPageV(Project proy) {
 		projectController.attach(proy);
 		this.proyecto = proy;
 		agregarForm();
 
 	}
 
-	public AddBacklogPage() {
+	public UserStoryPageV() {
 		agregarForm();
 	}
 
@@ -40,7 +41,7 @@ public class AddBacklogPage extends WebPage {
 
 			@Override
 			protected void onSubmit() {
-				AddBacklogPage.this.backlogController.agregarBacklog();
+			//	UserStoryPageV.this.backlogController.agregarUserStory();
 				 this.setResponsePage(new ListProjectPage());
 
 			}
