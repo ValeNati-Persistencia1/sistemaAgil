@@ -2,12 +2,9 @@ package ar.sarm.unq.sga.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.sarm.unq.sga.wicket.backlog.BacklogPage;
 import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
-import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
@@ -40,15 +37,15 @@ public class HomePage extends WebPage {
 			}
 
 		});
-		this.add(new Link<String>("backlog") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new BacklogPage());
-			}
-
-		});
+//		this.add(new Link<String>("backlog") {
+//			private static final long serialVersionUID = 1L;
+//
+//			@Override
+//			public void onClick() {
+//				this.setResponsePage(new BacklogPage());
+//			}
+//
+//		});
 		this.add(new Link<String>("userstory"){
 			private static final long serialVersionUID = 1L;
             @Override
@@ -67,6 +64,7 @@ public class HomePage extends WebPage {
 			}
 			
 		});
+		
 
 	}
 }

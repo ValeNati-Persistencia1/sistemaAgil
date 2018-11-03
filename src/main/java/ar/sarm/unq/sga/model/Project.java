@@ -3,12 +3,12 @@ package ar.sarm.unq.sga.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+
 
 @Entity
 public class Project extends Persistible {
@@ -16,21 +16,20 @@ public class Project extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	@Transient
-	@OneToOne
+
+	@OneToOne(cascade= CascadeType.REMOVE)
 	private Backlog backlog;
 	@Transient
 	@ManyToMany
 	private List<Developer> developers = new ArrayList<>();
-//	@Enumerated(EnumType.STRING)
-//	private TipoRol tipoRol;
-//	@OneToMany
-//	private List<Rol> roles = new ArrayList<>();
-
+	// @Enumerated(EnumType.STRING)
+	// private TipoRol tipoRol;
+	// @OneToMany
+	// private List<Rol> roles = new ArrayList<>();
 
 	public Project() {
 	}
-	
+
 	public Project(String nombre) {
 		this.nombre = nombre;
 	}
@@ -51,13 +50,15 @@ public class Project extends Persistible {
 		this.backlog = backlog;
 	}
 
-//	public List<Rol> getRoles() {
-//		return roles;
-//	}
-//
-//	public void setRoles(List<Rol> roles) {
-//		this.roles = roles;
-//	}
+	// public List<Rol> getRoles() {
+	// return roles;
+	// }
+	//
+	// public void setRoles(List<Rol> roles) {
+	// this.roles = roles;
+	// }
+	
+
 
 	public List<Developer> getDevelopers() {
 		return developers;

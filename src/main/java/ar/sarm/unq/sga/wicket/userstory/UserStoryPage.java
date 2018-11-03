@@ -12,8 +12,8 @@ import ar.sarm.unq.sga.wicket.HomePage;
 public class UserStoryPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
-	@SpringBean(name="userStoryController")
-	private UserStoryController controller;
+	@SpringBean
+	private UserStoryController userStoryController;
 	
 	public UserStoryPage(){
 		agregarForm();
@@ -25,13 +25,13 @@ public class UserStoryPage extends WebPage{
 			
 			@Override
 			protected void onSubmit() {
-				UserStoryPage.this.controller.agregarUserStory();
+				UserStoryPage.this.userStoryController.agregarUserStory();
 				this.setResponsePage(new HomePage());
 			
 			}	
 		};
 		
-		crearUserStoryForm.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
+		crearUserStoryForm.add(new TextField<>("nombre", new PropertyModel<>(userStoryController, "nombre")));
 
 		crearUserStoryForm.add(new Link<String>("cancelar"){
 

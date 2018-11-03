@@ -13,9 +13,13 @@ public class Backlog extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	
-	@OneToMany(mappedBy="backlog", cascade= CascadeType.PERSIST)
-	private List<UserStory>userStories=new ArrayList<>();
+
+	@OneToMany(mappedBy = "backlog", cascade = CascadeType.PERSIST)
+	private List<UserStory> userStories = new ArrayList<>();
+
+	public Backlog() {
+
+	}
 
 	public Backlog(String nombre) {
 		super();
@@ -37,7 +41,5 @@ public class Backlog extends Persistible {
 	public void setUserStories(List<UserStory> userStories) {
 		this.userStories = userStories;
 	}
-	
-	
 
 }

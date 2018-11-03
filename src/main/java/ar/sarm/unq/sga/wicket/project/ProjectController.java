@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.wicket.backlog.BacklogController;
+import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 
 @Controller
 @Transactional
@@ -22,6 +25,11 @@ public class ProjectController implements Serializable {
 
 	@Autowired
 	private ProjectStore projectStore;
+	
+	@Autowired
+	private BacklogStore backlogStore;
+	
+	private Backlog backlog;
 
 	private Project proyecto;
 
@@ -43,14 +51,17 @@ public class ProjectController implements Serializable {
 		this.nombre = nombre;
 	}
 
-//	public Project getProyectoNombre() {
-//		return this.findByName();
-//	}
+	// public Project getProyectoNombre() {
+	// return this.findByName();
+	// }
 
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
+		Backlog back= new Backlog("Backlog");
 		projectStore.agregarProject(proyecto);
+		backlogStore.agregarBacklogStore(back);
+		proyecto.setBacklog(back);
 	}
 
 	public List<Project> getProyectos() {
@@ -58,24 +69,41 @@ public class ProjectController implements Serializable {
 	}
 
 	public Project findByName() {
-		try{
+		try {
 			this.setMessage(null);
-			proyecto=projectStore.findByName(getNombre());
-	}
-		catch (Exception e) {
+			proyecto = projectStore.findByName(getNombre());
+		} catch (Exception e) {
 			setMessage("no existe el objeto");// TODO: handle exception
-			proyecto=null;
+			proyecto = null;
 		}
 		return proyecto;
 	}
+
 	public void attach(Project proy) {
 		projectStore.attach(proy);
 	}
+
 	public String getMessage() {
 		return message;
 	}
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Backlog getBacklog() {
+		return backlog;
+	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
+	public String nombreBacklog(){
+		return this.proyecto.getBacklog().getNombre();
+	}
+
+	public void borrarProyecto(Project proy) {
+		projectStore.deleteProject(proy);
+		
 	}
 }

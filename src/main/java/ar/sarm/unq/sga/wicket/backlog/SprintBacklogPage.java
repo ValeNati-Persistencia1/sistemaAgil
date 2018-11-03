@@ -10,6 +10,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.sarm.unq.sga.model.UserStory;
+import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
 public class SprintBacklogPage extends WebPage {
@@ -69,7 +70,8 @@ public class SprintBacklogPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new BacklogPage());
+			//	this.setResponsePage(new BacklogPage());
+				this.setResponsePage(new ProjectPage());
 
 			}
 

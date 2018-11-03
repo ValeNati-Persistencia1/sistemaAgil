@@ -23,13 +23,16 @@ public class ListProjectPage extends WebPage {
 	public ListProjectPage(Project proy) {
 		projectController.attach(proy);
 		tablaDeProyectos();
-//		botonCancelar();
+		// botonCancelar();
 		botonVolver();
+		botonAgregar();
 	}
+
 	public ListProjectPage() {
 		tablaDeProyectos();
-//		botonCancelar();
+		// botonCancelar();
 		botonVolver();
+		botonAgregar();
 	}
 
 	private void tablaDeProyectos() {
@@ -43,49 +46,44 @@ public class ListProjectPage extends WebPage {
 
 				CompoundPropertyModel<Project> elProyecto = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", elProyecto.bind("nombre")));
+//				item.add(new Link<String>("detalleProyecto") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+//						this.setResponsePage(new BacklogPage(item.getModelObject()));
+//					}
+//
+//				});
 
-				item.add(new Link<String>("detalleProyecto") {
+//				 item.add(new Link<String>("addBacklog") {
+//				 private static final long serialVersionUID = 1L;
+//				
+//				 @Override
+//				 public void onClick() {
+//				  this.setResponsePage(new BacklogPage());;
+//				 }
+				
+//				 });
+
+//				item.add(new Link<String>("listaBacklog") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+////						this.setResponsePage(new AddBacklogPage());
+//						;
+//					}
+//
+//				});
+				
+				item.add(new Link<String>("borrarProyecto") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-						// this.setResponsePage(new
-						// DetalleProyecto(item.getModelObject()));
-					}
-
-				});
-
-				item.add(new Link<String>("addBacklog") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// this.setResponsePage(new Backlog());;
-					}
-
-				});
-
-				item.add(new Link<String>("listaBacklog") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// this.setResponsePage(new ListaBacklog());;
-					}
-
-				});
-
-				item.add(new Link<String>("agregarProyecto") {
-
-					/**
-					 * 
-					 */
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// this.setResponsePage(new ProjectPage());
-
+						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
+						this.setResponsePage(new ListProjectPage());
 					}
 
 				});
@@ -109,17 +107,35 @@ public class ListProjectPage extends WebPage {
 		});
 	}
 
-//	public void botonCancelar() {
-//		this.add(new Link<String>("cancelar") {
-//
-//			private static final long serialVersionUID = 1L;
-//
-//			@Override
-//			public void onClick() {
-//				// this.setResponsePage(new ListProjectPage());
-//
-//			}
-//
-//		});
-//	}
+	// public void botonCancelar() {
+	// this.add(new Link<String>("cancelar") {
+	//
+	// private static final long serialVersionUID = 1L;
+	//
+	// @Override
+	// public void onClick() {
+	// // this.setResponsePage(new ListProjectPage());
+	//
+	// }
+	//
+	// });
+	// }
+
+	public void botonAgregar() {
+		this.add(new Link<String>("agregarProyecto") {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ProjectPage());
+
+			}
+
+		});
+
+	}
 }

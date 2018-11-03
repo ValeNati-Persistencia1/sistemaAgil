@@ -1,13 +1,18 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.sarm.unq.sga.model.Backlog;
+import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.AddBacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -16,6 +21,11 @@ public class ProjectPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
+	@SpringBean
+	private BacklogController backlogController;
+
+	private Project proy;
+	private Backlog back;
 
 	@SuppressWarnings("serial")
 	public ProjectPage() {
@@ -29,14 +39,13 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new AddBacklogPage());
 
 			}
 
 		};
-
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
-
+//		crearProjectForm.add(new Label("backlog", projectController.getBacklog().getNombre()));
 		crearProjectForm.add(new Link<String>("cancelar") {
 
 			/**
@@ -46,9 +55,7 @@ public class ProjectPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				 this.setResponsePage(new HomePage());
-				// deberia volver a la lista de proyectos para poder agregar el
-				// backlog
+				this.setResponsePage(new HomePage());
 			}
 
 		});

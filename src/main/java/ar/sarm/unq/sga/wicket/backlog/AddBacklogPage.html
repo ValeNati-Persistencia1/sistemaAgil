@@ -13,18 +13,20 @@
 					<h2>Crear un nuevo proyecto</h2>
 				</div>
 				<div class="panel-body">
-					<form wicket:id ="crearNuevoProyectoBacklock" class="form-horizontal">
-					
+					<form wicket:id ="crearBacklogForm" class="form-horizontal">
 						<div class="form-group">
 							<label for="nombre" class="col-md-2 control-label">Nombre de la junta del proyecto</label>
-							      <div><label for="texto">
-							         <p>Coordine, realice un seguimiento y actualice su trabajo en un solo lugar,
-							          para que los proyectos se mantengan transparentes y en la fecha prevista
-							         </p></label>
+							      <div>
+							      		<label for="texto">
+							         		<p>Coordine, realice un seguimiento y actualice su trabajo en un solo lugar,
+							          		para que los proyectos se mantengan transparentes y en la fecha prevista
+							         		</p>
+							         	</label>
 							       </div>
 							<div class="col-md-9">
 								<input type="text" class="form-control"
 										id="nombre" wicket:id ="nombre">
+								</input>
 							</div>
 						</div>
 						
@@ -33,7 +35,7 @@
 							<textarea wicket:id="descripcion" rows="6" cols="40"></textarea>
 						</div>
 												
-<!-- 						ver esta pagina https://www.mkyong.com/wicket/wicket-textarea-example/ -->						
+<!-- 						ver esta pagina https://www.mkyong.com/wicket/wicket-textarea-example/						 -->
 		
 						<div class="row">
 							<div class="col-md-12">
@@ -42,9 +44,12 @@
 							</div>
 						</div>
 					</form>	
+				</div>
 										
 			</div>
-		   </div>
-		  </div>
-
+		</div>
+</body>
 </html>
+
+
+
