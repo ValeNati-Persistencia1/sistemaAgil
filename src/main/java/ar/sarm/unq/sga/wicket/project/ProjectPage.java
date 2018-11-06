@@ -10,15 +10,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-<<<<<<< HEAD
-=======
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
-<<<<<<< HEAD
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
-=======
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 
 public class ProjectPage extends WebPage {
 	/**
@@ -43,16 +34,7 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-<<<<<<< HEAD
 				this.setResponsePage(new ListProjectPage());
-=======
-<<<<<<< HEAD
-				this.setResponsePage(new UserStoryPage());
-=======
-				this.setResponsePage(new ListProjectPage());
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
-
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 			}
 
 		};
@@ -72,7 +54,6 @@ public class ProjectPage extends WebPage {
 
 		});
 
-		
 		this.add(crearProjectForm);
 	}
 }

@@ -21,19 +21,9 @@ public class UserStory extends Persistible {
 	private int historiePoint;
 
 	private boolean estaCompleta;
-<<<<<<< HEAD
 
 	private Usuario usuario;
 
-=======
-	
-<<<<<<< HEAD
-	private Usuario usuario;
-=======
-	private Usuario Developer;
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
-	
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	private String nombre;
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
@@ -48,25 +38,12 @@ public class UserStory extends Persistible {
 	public UserStory(String nombre) {
 		this.nombre = nombre;
 	}
-<<<<<<< HEAD
 
 	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario) {
 		this.valorCliente = _valorCliente;
 		this.historiePoint = _historiePoint;
 		this.estaCompleta = _estaCompleta;
 		this.usuario = _usuario;
-=======
-	
-<<<<<<< HEAD
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario){
-=======
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _developer){
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
-		this.valorCliente= _valorCliente;
-		this.historiePoint= _historiePoint;
-		this.estaCompleta=_estaCompleta;
-		this.usuario= _usuario;
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	}
 
 	public int getValorCliente() {
@@ -93,28 +70,13 @@ public class UserStory extends Persistible {
 		this.estaCompleta = estaCompleta;
 	}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		usuario = usuario;
-<<<<<<< HEAD
 
-=======
-=======
-	public Usuario getDeveloper() {
-		return Developer;
-	}
-
-	public void setDeveloper(Usuario developer) {
-		Developer = developer;
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	}
 
 	public String getNombre() {

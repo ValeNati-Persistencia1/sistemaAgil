@@ -9,24 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-<<<<<<< HEAD
 import ar.sarm.unq.sga.model.UserStory;
-=======
-<<<<<<< HEAD
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
-<<<<<<< HEAD
-=======
-=======
-import ar.sarm.unq.sga.model.UserStory;
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
-import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 
 @Controller
 @Transactional
@@ -40,14 +27,15 @@ public class ProjectController implements Serializable {
 	private String nombre;
 	@Autowired
 	private UserStoryStore userStoryStore; // agregado
-	@Autowired
-	private ProjectStore projectStore;
 
 	@Autowired
 	private BacklogStore backlogStore;
 
 	@Autowired
 	private UsuarioStore usuarioStore;
+
+	@Autowired
+	private ProjectStore projectStore;
 
 	private Backlog backlog;
 
@@ -129,7 +117,6 @@ public class ProjectController implements Serializable {
 
 	}
 
-<<<<<<< HEAD
 	public List<Usuario> mostrarUsuarios(Project proyecto) {
 		projectStore.attach(proyecto);
 		return usuarioStore.verUsuarios(proyecto);
@@ -138,15 +125,5 @@ public class ProjectController implements Serializable {
 
 	public void addUserStory(UserStory us) { // agregado
 		userStoryStore.insert(us);
-=======
-<<<<<<< HEAD
-	public List<Usuario> mostrarUsuarios(Project proyecto) {
-		projectStore.attach(proyecto);
-		return usuarioStore.verUsuarios(proyecto);
-=======
-	public void addUserStory(UserStory us) { //agregado
-     userStoryStore.insert(us);
->>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
->>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	}
 }
