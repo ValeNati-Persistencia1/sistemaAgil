@@ -9,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Controller
 @Transactional
@@ -28,6 +31,9 @@ public class ProjectController implements Serializable {
 	
 	@Autowired
 	private BacklogStore backlogStore;
+	
+	@Autowired
+	private UsuarioStore usuarioStore;
 	
 	private Backlog backlog;
 
@@ -91,8 +97,9 @@ public class ProjectController implements Serializable {
 		this.message = message;
 	}
 
-	public Backlog getBacklog() {
-		return backlog;
+	public Backlog getBacklog(Project proy) {
+		projectStore.attach(proy);
+		return proy.getBacklog();
 	}
 
 	public void setBacklog(Backlog backlog) {
@@ -105,5 +112,10 @@ public class ProjectController implements Serializable {
 	public void borrarProyecto(Project proy) {
 		projectStore.deleteProject(proy);
 		
+	}
+
+	public List<Usuario> mostrarUsuarios(Project proyecto) {
+		projectStore.attach(proyecto);
+		return usuarioStore.verUsuarios(proyecto);
 	}
 }

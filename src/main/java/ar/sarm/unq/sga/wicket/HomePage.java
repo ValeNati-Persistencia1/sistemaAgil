@@ -3,11 +3,12 @@ package ar.sarm.unq.sga.wicket;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 
-import ar.sarm.unq.sga.wicket.developer.DeveloperPage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
+import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class HomePage extends WebPage {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(HomePage.class);
@@ -61,7 +62,16 @@ public class HomePage extends WebPage {
             @Override
 			public void onClick() {
                log.debug("antes de derivar el develper page");
-               this.setResponsePage(new DeveloperPage());				
+               this.setResponsePage(new UsuarioPage());				
+			}
+			
+		});
+		this.add(new Link<String>("developers"){
+			private static final long serialVersionUID = 1L;
+            @Override
+			public void onClick() {
+               log.debug("antes de derivar el develper page");
+               this.setResponsePage(new ListUsuariosPage());				
 			}
 			
 		});

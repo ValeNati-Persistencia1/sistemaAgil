@@ -1,7 +1,6 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -12,6 +11,7 @@ import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 
 public class ProjectPage extends WebPage {
@@ -21,8 +21,6 @@ public class ProjectPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
-	@SpringBean
-	private BacklogController backlogController;
 
 	private Project proy;
 	private Backlog back;
@@ -39,12 +37,13 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new UserStoryPageV());
+				this.setResponsePage(new UserStoryPage());
 
 			}
 
 		};
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
+
 		crearProjectForm.add(new Link<String>("cancelar") {
 
 			/**
@@ -58,6 +57,8 @@ public class ProjectPage extends WebPage {
 			}
 
 		});
+
+		
 		this.add(crearProjectForm);
 	}
 }

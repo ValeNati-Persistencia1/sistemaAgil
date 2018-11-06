@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.model.Project;
 
 @Component
@@ -15,6 +16,7 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 	 */
 	private static final long serialVersionUID = 1L;
 	public Project project;
+
 	public void agregarProject(Project project) {
 		this.getSession().save(project);
 	}
@@ -30,7 +32,8 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 	public List<Project> getProyectos() {
 		return getSession().createQuery("FROM Project", Project.class).list();
 	}
-	public void attach(String proy){
+
+	public void attach(String proy) {
 		this.attach(getProject());
 	}
 
@@ -44,9 +47,8 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 
 	@Override
 	public Project findByName(String name) {
-		return getSession().createQuery("FROM Project WHERE nombre = :name", Project.class)
-				.setParameter("name", name)
+		return getSession().createQuery("FROM Project WHERE nombre = :name", Project.class).setParameter("name", name)
 				.getSingleResult();
 	}
-	
+
 }

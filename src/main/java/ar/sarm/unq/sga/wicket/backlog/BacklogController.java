@@ -2,7 +2,6 @@ package ar.sarm.unq.sga.wicket.backlog;
 
 import java.io.Serializable;
 
-import org.eclipse.jetty.security.UserStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -10,7 +9,8 @@ import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 @Controller
 public class BacklogController implements Serializable {
@@ -22,18 +22,18 @@ public class BacklogController implements Serializable {
 
 	@Autowired
 	private BacklogStore backlogStore;
-	
+
 	@Autowired
 	private ProjectStore projectStore;
-	
+
 	@Autowired
-	private UserStoryController userStoryController;
+	private UserStoryStore userStoryStore;
 	private Object back;
 	private String message;
 
 	public BacklogController(Project proy) {
 		projectStore.attach(proy);
-		Project proyecto= proy;
+		Project proyecto = proy;
 		Backlog back = proy.getBacklog();
 	}
 
@@ -56,12 +56,12 @@ public class BacklogController implements Serializable {
 		this.nombreBacklog = nombre;
 	}
 
-//	public void agregarUserStory() {
-//		UserStory user = new UserStory(getNombre());
-//		proyecto.getBacklog().
-	//	userStoryController.agregarBacklogStore(backlog);
-		// // getProyecto().setBacklog(getNombre());
-//	}
+	// public void agregarUserStory() {
+	// UserStory user = new UserStory(getNombre());
+	// proyecto.getBacklog().
+	// userStoryController.agregarBacklogStore(backlog);
+	// getProyecto().setBacklog(getNombre());
+	// }
 
 	public Backlog findByName() {
 		try {

@@ -19,23 +19,22 @@ public class UserStory extends Persistible{
 	
 	private boolean estaCompleta;
 	
-	private Developer Developer;
+	private Usuario usuario;
 	
 	private String nombre;
 	
 	@ManyToOne(cascade=CascadeType.REFRESH)
-	@JoinColumn
 	private Backlog backlog;
 	
 	public UserStory(String nombre){
 		this.nombre=nombre;
 	}
 	
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Developer _developer){
+	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario){
 		this.valorCliente= _valorCliente;
 		this.historiePoint= _historiePoint;
 		this.estaCompleta=_estaCompleta;
-		this.Developer= _developer;
+		this.usuario= _usuario;
 	}
 
 	public int getValorCliente() {
@@ -62,12 +61,12 @@ public class UserStory extends Persistible{
 		this.estaCompleta = estaCompleta;
 	}
 
-	public Developer getDeveloper() {
-		return Developer;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setDeveloper(Developer developer) {
-		Developer = developer;
+	public void setUsuario(Usuario usuario) {
+		usuario = usuario;
 	}
 
 	public String getNombre() {

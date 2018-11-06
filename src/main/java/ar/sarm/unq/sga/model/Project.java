@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
@@ -19,14 +20,17 @@ public class Project extends Persistible {
 
 	@OneToOne(cascade= CascadeType.REMOVE)
 	private Backlog backlog;
-	@Transient
-	@ManyToMany
-	private List<Developer> developers = new ArrayList<>();
+//	@ManyToMany
+	@OneToMany
+	private List<Usuario> usuarios = new ArrayList<>();
 	// @Enumerated(EnumType.STRING)
 	// private TipoRol tipoRol;
 	// @OneToMany
 	// private List<Rol> roles = new ArrayList<>();
-
+	@OneToOne
+	private Usuario usuario;
+	
+	
 	public Project() {
 	}
 
@@ -60,12 +64,20 @@ public class Project extends Persistible {
 	
 
 
-	public List<Developer> getDevelopers() {
-		return developers;
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setDevelopers(List<Developer> developers) {
-		this.developers = developers;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	// public Rol getRol() {
