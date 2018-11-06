@@ -17,9 +17,21 @@ public class Project extends Persistible {
 
 	@OneToOne(cascade = CascadeType.REMOVE)
 	private Backlog backlog;
+<<<<<<< HEAD
 	// @ManyToMany
 	@OneToMany
 	private List<Usuario> usuarios = new ArrayList<>();
+=======
+<<<<<<< HEAD
+//	@ManyToMany
+	@OneToMany
+	private List<Usuario> usuarios = new ArrayList<>();
+=======
+	@Transient
+	@ManyToMany
+	private List<Usuario> developers = new ArrayList<>();
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	// @Enumerated(EnumType.STRING)
 	// private TipoRol tipoRol;
 	// @OneToMany
@@ -57,7 +69,14 @@ public class Project extends Persistible {
 	// public void setRoles(List<Rol> roles) {
 	// this.roles = roles;
 	// }
+<<<<<<< HEAD
 
+=======
+	
+
+
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -72,6 +91,17 @@ public class Project extends Persistible {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+<<<<<<< HEAD
+=======
+=======
+	public List<Usuario> getDevelopers() {
+		return developers;
+	}
+
+	public void setDevelopers(List<Usuario> developers) {
+		this.developers = developers;
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	}
 
 	// public Rol getRol() {

@@ -10,8 +10,19 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+<<<<<<< HEAD
+=======
+import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
+=======
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 
 public class ListProjectPage extends WebPage {
 
@@ -84,6 +95,10 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 
 				item.add(new Link<String>("agregarUserStory") {
 					private static final long serialVersionUID = 1L;
@@ -102,6 +117,12 @@ public class ListProjectPage extends WebPage {
 
 				});
 
+<<<<<<< HEAD
+=======
+=======
+				
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 			}
 
 		});

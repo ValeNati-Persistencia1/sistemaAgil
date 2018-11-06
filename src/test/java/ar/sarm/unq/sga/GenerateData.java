@@ -25,8 +25,18 @@ public class GenerateData {
 	private ProjectStore projectStore;
 
 	@Autowired
+<<<<<<< HEAD
 	private UsuarioStore usuarioStore;
 
+=======
+<<<<<<< HEAD
+	private UsuarioStore usuarioStore;
+
+=======
+	private UsuarioStore developerStore;
+	
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 	@Autowired
 	private UserStoryStore userStoryStore;
 
@@ -40,6 +50,10 @@ public class GenerateData {
 		List<Usuario> usuarios = new ArrayList();
 		Backlog back = new Backlog("el back");
 		Project proyecto = new Project("proyectito2");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 		Project proy = new Project("proyectitio3");
 		Usuario usuario = new Usuario("lara", "larroque");
 		Usuario usuario2 = new Usuario("Brisa", "rivarola");
@@ -56,7 +70,22 @@ public class GenerateData {
 		usuarioStore.insert(usuario2);
 		usuarioStore.insert(usuario3);
 		// userStoryStore.insert(userstory);
+<<<<<<< HEAD
 		// proyecto.setBacklog(back);
+=======
+=======
+		Usuario developer=new Usuario("developer");
+        UserStory userstory=new UserStory("userstory");
+//        proyecto.setBacklog(back);
+        
+		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
+		projectStore.insert(proyecto);
+		backlogStore.insert(back);
+		
+		developerStore.insert(developer);
+		userStoryStore.insert(userstory);
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 
 		ts.commit();
 

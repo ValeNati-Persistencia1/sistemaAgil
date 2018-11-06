@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
 import ar.sarm.unq.sga.model.Usuario;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 import ar.sarm.unq.sga.model.Project;
 
 @Component
@@ -40,4 +44,25 @@ public class UsuarioStore extends HomeGeneralSession<Usuario> {
 	// return getSession().createQuery("FROM Project WHERE apellido = :
 	// apellido", Project.class).list();
 	// }
+<<<<<<< HEAD
+=======
+=======
+@Component
+public class UsuarioStore extends HomeGeneralSession<Usuario>{
+
+	private static final long serialVersionUID = 1L;
+
+
+	public List<Usuario> getDevelopers() {
+		return getSession().createQuery("FROM Developer", Usuario.class).list();
+	}
+	
+   
+    
+    @Override
+    public Usuario findByName(String name) {
+	    return null;
+    }
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 }

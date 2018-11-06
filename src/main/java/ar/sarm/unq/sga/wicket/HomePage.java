@@ -6,7 +6,15 @@ import org.apache.wicket.markup.html.link.Link;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+<<<<<<< HEAD
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+=======
+<<<<<<< HEAD
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
+import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+=======
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class HomePage extends WebPage {
@@ -62,6 +70,10 @@ public class HomePage extends WebPage {
 			public void onClick() {
                log.debug("antes de derivar el develper page");
                this.setResponsePage(new UsuarioPage());				
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 			}
 			
 		});
@@ -71,6 +83,11 @@ public class HomePage extends WebPage {
 			public void onClick() {
                log.debug("antes de derivar el develper page");
                this.setResponsePage(new ListUsuariosPage());				
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
+>>>>>>> 8a7d54169c7d1e0e3ea9a616f849a1c0fb25c324
 			}
 			
 		});
