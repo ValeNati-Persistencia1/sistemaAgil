@@ -1,9 +1,13 @@
 package ar.sarm.unq.sga.model;
 
+import java.io.IOException;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class UserStory extends Persistible{
@@ -19,19 +23,24 @@ public class UserStory extends Persistible{
 	
 	private boolean estaCompleta;
 	
-	private Developer Developer;
+	private Usuario Developer;
 	
 	private String nombre;
+	@Column(name="descripcion", nullable=true, length=1000)
+	private String descripcion;
 	
 	@ManyToOne(cascade=CascadeType.REFRESH)
 	@JoinColumn
 	private Backlog backlog;
 	
+	public UserStory(){
+		
+	}
 	public UserStory(String nombre){
 		this.nombre=nombre;
 	}
 	
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Developer _developer){
+	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _developer){
 		this.valorCliente= _valorCliente;
 		this.historiePoint= _historiePoint;
 		this.estaCompleta=_estaCompleta;
@@ -62,11 +71,11 @@ public class UserStory extends Persistible{
 		this.estaCompleta = estaCompleta;
 	}
 
-	public Developer getDeveloper() {
+	public Usuario getDeveloper() {
 		return Developer;
 	}
 
-	public void setDeveloper(Developer developer) {
+	public void setDeveloper(Usuario developer) {
 		Developer = developer;
 	}
 
@@ -85,7 +94,12 @@ public class UserStory extends Persistible{
 	public void setBacklog(Backlog backlog) {
 		this.backlog = backlog;
 	}
-	
-	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion){
+	    this.descripcion = descripcion;
+
+	}
 
 }

@@ -1,7 +1,6 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -12,7 +11,7 @@ import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -39,7 +38,7 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new UserStoryPageV());
+				this.setResponsePage(new ListProjectPage());
 
 			}
 

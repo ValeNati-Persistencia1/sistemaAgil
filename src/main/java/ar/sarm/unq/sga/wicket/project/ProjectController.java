@@ -3,14 +3,18 @@ package ar.sarm.unq.sga.wicket.project;
 import java.io.Serializable;
 import java.util.List;
 
+import org.eclipse.jetty.security.UserStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.sarm.unq.sga.home.HomeGeneralSession;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 @Controller
 @Transactional
@@ -22,7 +26,8 @@ public class ProjectController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-
+    @Autowired 
+    private UserStoryStore userStoryStore;  //agregado
 	@Autowired
 	private ProjectStore projectStore;
 	
@@ -105,5 +110,9 @@ public class ProjectController implements Serializable {
 	public void borrarProyecto(Project proy) {
 		projectStore.deleteProject(proy);
 		
+	}
+
+	public void addUserStory(UserStory us) { //agregado
+     userStoryStore.insert(us);
 	}
 }

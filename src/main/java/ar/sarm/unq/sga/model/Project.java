@@ -21,7 +21,7 @@ public class Project extends Persistible {
 	private Backlog backlog;
 	@Transient
 	@ManyToMany
-	private List<Developer> developers = new ArrayList<>();
+	private List<Usuario> developers = new ArrayList<>();
 	// @Enumerated(EnumType.STRING)
 	// private TipoRol tipoRol;
 	// @OneToMany
@@ -60,11 +60,11 @@ public class Project extends Persistible {
 	
 
 
-	public List<Developer> getDevelopers() {
+	public List<Usuario> getDevelopers() {
 		return developers;
 	}
 
-	public void setDevelopers(List<Developer> developers) {
+	public void setDevelopers(List<Usuario> developers) {
 		this.developers = developers;
 	}
 

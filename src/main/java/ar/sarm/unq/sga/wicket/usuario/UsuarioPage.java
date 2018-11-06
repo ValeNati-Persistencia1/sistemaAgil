@@ -1,4 +1,4 @@
-package ar.sarm.unq.sga.wicket.developer;
+package ar.sarm.unq.sga.wicket.usuario;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
@@ -10,25 +10,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.sarm.unq.sga.wicket.HomePage;
 
-public class DeveloperPage extends WebPage{
+public class UsuarioPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
 	@SpringBean
-	private DeveloperController developerController;
+	private UsuarioController developerController;
 	
-	public DeveloperPage(){
+	public UsuarioPage(){
 		agregarForm();
 		
 	}
 
 	private void agregarForm() {
 		@SuppressWarnings("rawtypes")
-		Form<DeveloperController>crearDeveloperForm=new Form<DeveloperController>("crearDeveloperForm"){
+		Form<UsuarioController>crearDeveloperForm=new Form<UsuarioController>("crearDeveloperForm"){
 			private static final long serialVersionUID = 1L;
 			
 			@Override
 			protected void onSubmit() {
-				DeveloperPage.this.developerController.agregarDeveloper();
+				UsuarioPage.this.developerController.agregarDeveloper();
 				this.setResponsePage(new HomePage());
 			
 			}	

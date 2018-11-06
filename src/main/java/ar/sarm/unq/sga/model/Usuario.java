@@ -8,7 +8,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Developer extends Persistible{
+public class Usuario extends Persistible{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -18,7 +18,7 @@ public class Developer extends Persistible{
 	@ManyToMany
 	private List<Project>proyectos=new ArrayList<>();
 	
-	public Developer(String nombre){
+	public Usuario(String nombre){
 		this.nombre=nombre;
 	}
 	

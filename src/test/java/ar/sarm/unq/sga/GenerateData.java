@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
-import ar.sarm.unq.sga.model.Developer;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
-import ar.sarm.unq.sga.wicket.developer.DeveloperStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Component
 @Transactional
@@ -23,7 +23,7 @@ public class GenerateData {
 	private ProjectStore projectStore;
 	
 	@Autowired
-	private DeveloperStore developerStore;
+	private UsuarioStore developerStore;
 	
 	@Autowired
 	private UserStoryStore userStoryStore;
@@ -37,16 +37,16 @@ public class GenerateData {
 	protected void generate() {
 		Backlog back = new Backlog("el back");
 		Project proyecto = new Project("proyectito2");
-//		Developer developer=new Developer("developer");
-//        UserStory userstory=new UserStory("userstory");
-        proyecto.setBacklog(back);
+		Usuario developer=new Usuario("developer");
+        UserStory userstory=new UserStory("userstory");
+//        proyecto.setBacklog(back);
         
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		projectStore.insert(proyecto);
 		backlogStore.insert(back);
 		
-//		developerStore.insert(developer);
-//		userStoryStore.insert(userstory);
+		developerStore.insert(developer);
+		userStoryStore.insert(userstory);
 
 		ts.commit();
 		

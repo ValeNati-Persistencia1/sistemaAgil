@@ -1,4 +1,4 @@
-package ar.sarm.unq.sga.wicket.developer;
+package ar.sarm.unq.sga.wicket.usuario;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,23 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.sarm.unq.sga.model.Developer;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.model.Project;
 @Controller
 @Transactional
-public class DeveloperController implements Serializable {
+public class UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
     private String nombre;
     @Autowired
-    private DeveloperStore developerStore;
+    private UsuarioStore developerStore;
     
-    public DeveloperController(){
+    public UsuarioController(){
     	
     }
     
-    public DeveloperController(String nombre){
+    public UsuarioController(String nombre){
     	this.nombre=nombre;
     }
 
@@ -37,7 +37,7 @@ public class DeveloperController implements Serializable {
 	
 	
 	public void agregarDeveloper(){
-		Developer dev=new Developer(getNombre());
+		Usuario dev=new Usuario(getNombre());
 	    developerStore.insert(dev);
 	}
 	
