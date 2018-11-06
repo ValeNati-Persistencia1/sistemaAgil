@@ -14,7 +14,11 @@ public class UsuarioPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
 	@SpringBean
+<<<<<<< HEAD:src/main/java/ar/sarm/unq/sga/wicket/usuario/UsuarioPage.java
 	private UsuarioController usuarioController;
+=======
+	private UsuarioController developerController;
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd:src/main/java/ar/sarm/unq/sga/wicket/usuario/UsuarioPage.java
 	
 	public UsuarioPage(){
 		agregarForm();
@@ -28,8 +32,13 @@ public class UsuarioPage extends WebPage{
 			
 			@Override
 			protected void onSubmit() {
+<<<<<<< HEAD:src/main/java/ar/sarm/unq/sga/wicket/usuario/UsuarioPage.java
 				UsuarioPage.this.usuarioController.agregarUsuario();
 				this.setResponsePage(new ListUsuariosPage());
+=======
+				UsuarioPage.this.developerController.agregarDeveloper();
+				this.setResponsePage(new HomePage());
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd:src/main/java/ar/sarm/unq/sga/wicket/usuario/UsuarioPage.java
 			
 			}	
 					

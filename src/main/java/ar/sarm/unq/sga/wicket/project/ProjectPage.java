@@ -12,7 +12,10 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+<<<<<<< HEAD
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
+=======
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 
 public class ProjectPage extends WebPage {
 	/**
@@ -37,7 +40,11 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
+<<<<<<< HEAD
 				this.setResponsePage(new UserStoryPage());
+=======
+				this.setResponsePage(new ListProjectPage());
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 
 			}
 

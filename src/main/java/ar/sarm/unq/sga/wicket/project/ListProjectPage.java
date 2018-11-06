@@ -11,10 +11,14 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.eclipse.jetty.security.UserStore;
 
 import ar.sarm.unq.sga.model.Project;
+<<<<<<< HEAD
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
+=======
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 
 public class ListProjectPage extends WebPage {
 
@@ -87,6 +91,7 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
+<<<<<<< HEAD
 
 				item.add(new Link<String>("agregarUserStory") {
 					private static final long serialVersionUID = 1L;
@@ -105,6 +110,9 @@ public class ListProjectPage extends WebPage {
 
 				});
 
+=======
+				
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 			}
 
 		});

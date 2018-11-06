@@ -6,8 +6,11 @@ import org.apache.wicket.markup.html.link.Link;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+<<<<<<< HEAD
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+=======
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class HomePage extends WebPage {
@@ -53,7 +56,7 @@ public class HomePage extends WebPage {
             @Override
             public void onClick() {
                log.debug("antes de derivar el userStory Page");
-               this.setResponsePage(new UserStoryPageV());				
+               this.setResponsePage(new UserStoryPage());				
 			}
 			
 		});
@@ -63,6 +66,7 @@ public class HomePage extends WebPage {
 			public void onClick() {
                log.debug("antes de derivar el develper page");
                this.setResponsePage(new UsuarioPage());				
+<<<<<<< HEAD
 			}
 			
 		});
@@ -72,9 +76,13 @@ public class HomePage extends WebPage {
 			public void onClick() {
                log.debug("antes de derivar el develper page");
                this.setResponsePage(new ListUsuariosPage());				
+=======
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 			}
 			
 		});
+		
+		
 		
 
 	}

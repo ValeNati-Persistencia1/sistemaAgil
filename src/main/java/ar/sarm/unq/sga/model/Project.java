@@ -20,9 +20,15 @@ public class Project extends Persistible {
 
 	@OneToOne(cascade= CascadeType.REMOVE)
 	private Backlog backlog;
+<<<<<<< HEAD
 //	@ManyToMany
 	@OneToMany
 	private List<Usuario> usuarios = new ArrayList<>();
+=======
+	@Transient
+	@ManyToMany
+	private List<Usuario> developers = new ArrayList<>();
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 	// @Enumerated(EnumType.STRING)
 	// private TipoRol tipoRol;
 	// @OneToMany
@@ -64,6 +70,7 @@ public class Project extends Persistible {
 	
 
 
+<<<<<<< HEAD
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -78,6 +85,14 @@ public class Project extends Persistible {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+=======
+	public List<Usuario> getDevelopers() {
+		return developers;
+	}
+
+	public void setDevelopers(List<Usuario> developers) {
+		this.developers = developers;
+>>>>>>> d99656b8b1b15837ddbbe47da59d961673fa22fd
 	}
 
 	// public Rol getRol() {
