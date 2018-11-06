@@ -14,7 +14,7 @@ public class UsuarioPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
 	@SpringBean
-	private UsuarioController developerController;
+	private UsuarioController usuarioController;
 	
 	public UsuarioPage(){
 		agregarForm();
@@ -28,14 +28,14 @@ public class UsuarioPage extends WebPage{
 			
 			@Override
 			protected void onSubmit() {
-				UsuarioPage.this.developerController.agregarDeveloper();
+				UsuarioPage.this.usuarioController.agregarUsuario();
 				this.setResponsePage(new HomePage());
 			
 			}	
 					
 		};
 		
-		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(developerController, "nombre")));
+		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(usuarioController, "nombre")));
 		
 		crearDeveloperForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;

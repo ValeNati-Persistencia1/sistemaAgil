@@ -1,6 +1,7 @@
 package ar.sarm.unq.sga.wicket.backlog;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.eclipse.jetty.security.UserStore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class BacklogController implements Serializable {
 	
 	@Autowired
 	private UserStoryController userStoryController;
+	
+	private UserStory userStory;
+	
+	private Backlog backlog;
+	
 	private Object back;
 	private String message;
 
@@ -85,5 +91,49 @@ public class BacklogController implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public Project getProyecto() {
+		return proyecto;
+	}
 
+	public void setProyecto(Project proyecto) {
+		this.proyecto = proyecto;
+	}
+
+	public String getNombreBacklog() {
+		return nombreBacklog;
+	}
+
+	public void setNombreBacklog(String nombreBacklog) {
+		this.nombreBacklog = nombreBacklog;
+	}
+
+	public UserStory getUserStory() {
+		return userStory;
+	}
+
+	public void setUserStory(UserStory userStory) {
+		this.userStory = userStory;
+	}
+	
+	private Backlog getBacklog() {
+		return backlog;
+	}
+	
+	public void setBacklog(Backlog backlog){
+		this.backlog=backlog;
+	}
+	
+	public void attach(Backlog backlog){
+		backlogStore.attach(backlog);
+	}
+	
+	public void agregarUserStoyEnBacklog(UserStory us){
+		Backlog backlog=new Backlog(getNombre());
+		backlog.setUserStory(us);
+		backlogStore.insert(backlog);	
+		
+	}
+
+	
 }

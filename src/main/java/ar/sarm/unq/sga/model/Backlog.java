@@ -16,6 +16,8 @@ public class Backlog extends Persistible {
 
 	@OneToMany(mappedBy = "backlog", cascade = CascadeType.PERSIST)
 	private List<UserStory> userStories = new ArrayList<>();
+	
+	private UserStory userStory;
 
 	public Backlog() {
 
@@ -41,5 +43,13 @@ public class Backlog extends Persistible {
 	public void setUserStories(List<UserStory> userStories) {
 		this.userStories = userStories;
 	}
+
+	public UserStory getUserStory(){
+		return userStory;
+	}
+	public void setUserStory(UserStory us) {
+       this.userStory=us;		
+	}
+
 
 }

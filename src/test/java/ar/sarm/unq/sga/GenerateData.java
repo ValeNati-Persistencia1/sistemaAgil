@@ -23,7 +23,7 @@ public class GenerateData {
 	private ProjectStore projectStore;
 	
 	@Autowired
-	private UsuarioStore developerStore;
+	private UsuarioStore usuarioStore;
 	
 	@Autowired
 	private UserStoryStore userStoryStore;
@@ -37,7 +37,7 @@ public class GenerateData {
 	protected void generate() {
 		Backlog back = new Backlog("el back");
 		Project proyecto = new Project("proyectito2");
-		Usuario developer=new Usuario("developer");
+		Usuario developer=new Usuario("usuario");
         UserStory userstory=new UserStory("userstory");
 //        proyecto.setBacklog(back);
         
@@ -45,7 +45,7 @@ public class GenerateData {
 		projectStore.insert(proyecto);
 		backlogStore.insert(back);
 		
-		developerStore.insert(developer);
+		usuarioStore.insert(developer);
 		userStoryStore.insert(userstory);
 
 		ts.commit();

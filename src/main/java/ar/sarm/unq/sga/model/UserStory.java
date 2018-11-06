@@ -23,7 +23,7 @@ public class UserStory extends Persistible{
 	
 	private boolean estaCompleta;
 	
-	private Usuario Developer;
+	private Usuario usuario;
 	
 	private String nombre;
 	@Column(name="descripcion", nullable=true, length=1000)
@@ -40,11 +40,11 @@ public class UserStory extends Persistible{
 		this.nombre=nombre;
 	}
 	
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _developer){
+	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario){
 		this.valorCliente= _valorCliente;
 		this.historiePoint= _historiePoint;
 		this.estaCompleta=_estaCompleta;
-		this.Developer= _developer;
+		this.usuario= _usuario;
 	}
 
 	public int getValorCliente() {
@@ -72,11 +72,11 @@ public class UserStory extends Persistible{
 	}
 
 	public Usuario getDeveloper() {
-		return Developer;
+		return usuario;
 	}
 
 	public void setDeveloper(Usuario developer) {
-		Developer = developer;
+		usuario = developer;
 	}
 
 	public String getNombre() {

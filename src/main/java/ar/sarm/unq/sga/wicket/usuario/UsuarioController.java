@@ -17,7 +17,7 @@ public class UsuarioController implements Serializable {
 
     private String nombre;
     @Autowired
-    private UsuarioStore developerStore;
+    private UsuarioStore usuarioStore;
     
     public UsuarioController(){
     	
@@ -36,9 +36,9 @@ public class UsuarioController implements Serializable {
 	}
 	
 	
-	public void agregarDeveloper(){
+	public void agregarUsuario(){
 		Usuario dev=new Usuario(getNombre());
-	    developerStore.insert(dev);
+	    usuarioStore.insert(dev);
 	}
 	
 //	public List<Project> getProyectos(){
