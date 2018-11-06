@@ -43,6 +43,7 @@ public class GenerateData {
 		Project proy = new Project("proyectitio3");
 		Usuario usuario = new Usuario("lara", "larroque");
 		Usuario usuario2 = new Usuario("Brisa", "rivarola");
+		Usuario usuario3= new Usuario("francisco", "barreto");
 		usuarios.add(usuario2);
 		usuarios.add(usuario);
 		// UserStory userstory=new UserStory("userstory");
@@ -53,7 +54,9 @@ public class GenerateData {
 		backlogStore.insert(back);
 		usuarioStore.insert(usuario);
 		usuarioStore.insert(usuario2);
+		usuarioStore.insert(usuario3);
 		// userStoryStore.insert(userstory);
+		// proyecto.setBacklog(back);
 
 		ts.commit();
 

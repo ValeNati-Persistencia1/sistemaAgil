@@ -10,9 +10,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -37,8 +34,7 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new UserStoryPage());
-
+				this.setResponsePage(new ListProjectPage());
 			}
 
 		};

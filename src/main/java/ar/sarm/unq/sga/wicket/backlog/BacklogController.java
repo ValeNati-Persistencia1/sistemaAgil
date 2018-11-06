@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPageV;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 @Controller

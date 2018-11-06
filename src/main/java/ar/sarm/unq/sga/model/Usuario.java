@@ -21,9 +21,7 @@ public class Usuario extends Persistible {
 
 	@ManyToOne
 	private Project proyecto;
-	
-	
-	
+
 	public Usuario(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -68,9 +66,5 @@ public class Usuario extends Persistible {
 	public void setProyecto(Project proyecto) {
 		this.proyecto = proyecto;
 	}
-	
-	
-	
-	
-	
+
 }

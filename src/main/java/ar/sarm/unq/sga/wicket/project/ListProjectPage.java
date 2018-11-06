@@ -8,13 +8,10 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.eclipse.jetty.security.UserStore;
 
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
-import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class ListProjectPage extends WebPage {
 

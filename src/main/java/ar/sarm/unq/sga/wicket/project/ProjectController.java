@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
-import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Controller
@@ -25,16 +25,17 @@ public class ProjectController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-
+	@Autowired
+	private UserStoryStore userStoryStore; // agregado
 	@Autowired
 	private ProjectStore projectStore;
-	
+
 	@Autowired
 	private BacklogStore backlogStore;
-	
+
 	@Autowired
 	private UsuarioStore usuarioStore;
-	
+
 	private Backlog backlog;
 
 	private Project proyecto;
@@ -64,7 +65,7 @@ public class ProjectController implements Serializable {
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
-		Backlog back= new Backlog("Backlog");
+		Backlog back = new Backlog("Backlog");
 		projectStore.agregarProject(proyecto);
 		backlogStore.agregarBacklogStore(back);
 		proyecto.setBacklog(back);
@@ -105,17 +106,23 @@ public class ProjectController implements Serializable {
 	public void setBacklog(Backlog backlog) {
 		this.backlog = backlog;
 	}
-	public String nombreBacklog(){
+
+	public String nombreBacklog() {
 		return this.proyecto.getBacklog().getNombre();
 	}
 
 	public void borrarProyecto(Project proy) {
 		projectStore.deleteProject(proy);
-		
+
 	}
 
 	public List<Usuario> mostrarUsuarios(Project proyecto) {
 		projectStore.attach(proyecto);
 		return usuarioStore.verUsuarios(proyecto);
+
+	}
+
+	public void addUserStory(UserStory us) { // agregado
+		userStoryStore.insert(us);
 	}
 }

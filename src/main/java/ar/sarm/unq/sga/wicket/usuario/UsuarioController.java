@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.model.Project;
 @Controller
 @Transactional
 public class UsuarioController implements Serializable {
