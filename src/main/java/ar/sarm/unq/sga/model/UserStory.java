@@ -10,41 +10,41 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class UserStory extends Persistible{
+public class UserStory extends Persistible {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int valorCliente;
-	
+
 	private int historiePoint;
-	
+
 	private boolean estaCompleta;
-	
+
 	private Usuario usuario;
-	
+
 	private String nombre;
-	@Column(name="descripcion", nullable=true, length=1000)
+	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
-	
-	@ManyToOne(cascade=CascadeType.REFRESH)
-	@JoinColumn
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Backlog backlog;
-	
-	public UserStory(){
-		
+
+	public UserStory() {
+
 	}
-	public UserStory(String nombre){
-		this.nombre=nombre;
+
+	public UserStory(String nombre) {
+		this.nombre = nombre;
 	}
-	
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario){
-		this.valorCliente= _valorCliente;
-		this.historiePoint= _historiePoint;
-		this.estaCompleta=_estaCompleta;
-		this.usuario= _usuario;
+
+	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario) {
+		this.valorCliente = _valorCliente;
+		this.historiePoint = _historiePoint;
+		this.estaCompleta = _estaCompleta;
+		this.usuario = _usuario;
 	}
 
 	public int getValorCliente() {
@@ -71,12 +71,13 @@ public class UserStory extends Persistible{
 		this.estaCompleta = estaCompleta;
 	}
 
-	public Usuario getDeveloper() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setDeveloper(Usuario developer) {
-		usuario = developer;
+	public void setUsuario(Usuario usuario) {
+		usuario = usuario;
+
 	}
 
 	public String getNombre() {
@@ -94,11 +95,13 @@ public class UserStory extends Persistible{
 	public void setBacklog(Backlog backlog) {
 		this.backlog = backlog;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
-	public void setDescripcion(String descripcion){
-	    this.descripcion = descripcion;
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 
 	}
 

@@ -39,7 +39,7 @@ public class BacklogController implements Serializable {
 
 	public BacklogController(Project proy) {
 		projectStore.attach(proy);
-		Project proyecto= proy;
+		Project proyecto = proy;
 		Backlog back = proy.getBacklog();
 	}
 
@@ -62,12 +62,12 @@ public class BacklogController implements Serializable {
 		this.nombreBacklog = nombre;
 	}
 
-//	public void agregarUserStory() {
-//		UserStory user = new UserStory(getNombre());
-//		proyecto.getBacklog().
-	//	userStoryController.agregarBacklogStore(backlog);
-		// // getProyecto().setBacklog(getNombre());
-//	}
+	// public void agregarUserStory() {
+	// UserStory user = new UserStory(getNombre());
+	// proyecto.getBacklog().
+	// userStoryController.agregarBacklogStore(backlog);
+	// getProyecto().setBacklog(getNombre());
+	// }
 
 	public Backlog findByName() {
 		try {

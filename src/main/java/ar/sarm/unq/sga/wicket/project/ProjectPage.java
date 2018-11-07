@@ -10,8 +10,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -20,8 +18,6 @@ public class ProjectPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
-	@SpringBean
-	private BacklogController backlogController;
 
 	private Project proy;
 	private Backlog back;
@@ -39,11 +35,11 @@ public class ProjectPage extends WebPage {
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
 				this.setResponsePage(new ListProjectPage());
-
 			}
 
 		};
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
+
 		crearProjectForm.add(new Link<String>("cancelar") {
 
 			/**
@@ -57,6 +53,7 @@ public class ProjectPage extends WebPage {
 			}
 
 		});
+
 		this.add(crearProjectForm);
 	}
 }

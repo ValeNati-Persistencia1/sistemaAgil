@@ -15,35 +15,80 @@ public class UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-    private String nombre;
-    @Autowired
-    private UsuarioStore usuarioStore;
-    
-    public UsuarioController(){
-    	
-    }
-    
-    public UsuarioController(String nombre){
-    	this.nombre=nombre;
-    }
+	   private String nombre;
+	    private String apellido;
+	    @Autowired
+	    private UsuarioStore usuarioStore;
 
-	public String getNombre() {
-		return nombre;
-	}
+		private Usuario usuario;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		private String message;
+	    
+	    public UsuarioController(){
+	    	
+	    }
+	    
+	    public UsuarioController(String nombre, String apellido){
+	    	this.nombre=nombre;
+	    	this.apellido= apellido;
+	    }
+
+		public String getNombre() {
+			return nombre;
+		}
+
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+		
+		
+		public String getApellido() {
+			return apellido;
+		}
+
+		public void setApellido(String apellido) {
+			this.apellido = apellido;
+		}
+
+		public void agregarUsuario(){
+			Usuario dev=new Usuario(getNombre(), getApellido());
+		    usuarioStore.insert(dev);
+		}
+
+		public void attach(Usuario developer) {
+			usuarioStore.attach(developer);
+			
+		}
+		
+//		public List<Project>getProyectos(){
+//			return developerStore.getProyectos(getApellido());
+//		}
+	    
+		public Usuario findByName() {
+			try {
+				this.setMessage(null);
+				usuario = usuarioStore.findByName(getNombre());
+			} catch (Exception e) {
+				setMessage("no existe el objeto");// TODO: handle exception
+				usuario = null;
+			}
+			return usuario;
+		}
+		public String getMessage() {
+			return message;
+		}
+
+		public void setMessage(String message) {
+			this.message = message;
+		}
+
+		public List<Usuario>getUsuarios(){
+			return usuarioStore.getUsuarios();
+		}
+
+		public void borrarUsuario(Usuario dev) {
+			usuarioStore.borrarUsuario(dev);
+			
+		}
 	}
-	
-	
-	public void agregarUsuario(){
-		Usuario dev=new Usuario(getNombre());
-	    usuarioStore.insert(dev);
-	}
-	
-//	public List<Project> getProyectos(){
-//		return getDeveloper().getProyectos();
-//	}
-    
-    
 }

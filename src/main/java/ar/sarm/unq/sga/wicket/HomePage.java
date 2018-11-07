@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.link.Link;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
+import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class HomePage extends WebPage {
@@ -55,12 +56,21 @@ public class HomePage extends WebPage {
 			}
 			
 		});
-		this.add(new Link<String>("developer"){
+		this.add(new Link<String>("usuario"){
 			private static final long serialVersionUID = 1L;
             @Override
 			public void onClick() {
                log.debug("antes de derivar el develper page");
                this.setResponsePage(new UsuarioPage());				
+			}
+			
+		});
+		this.add(new Link<String>("usuarios"){
+			private static final long serialVersionUID = 1L;
+            @Override
+			public void onClick() {
+               log.debug("antes de derivar el develper page");
+               this.setResponsePage(new ListUsuariosPage());				
 			}
 			
 		});

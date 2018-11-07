@@ -40,28 +40,50 @@
 					<tbody>
 						<tr wicket:id="losProyectos">
 							<td wicket:id="nombre" class="columna" />
-							<td>	
-								<button wicket:id="borrarProyecto"
-								class="btn btn-primary btn-sm">Borrar proyecto</button>
+							<td>
+								<button wicket:id="verBacklog"
+									class="col-md-1, btn btn-primary btn-sm">ver Backlog</button>
 							</td>
+
+							<td>
+								<button wicket:id="verUsuarios"
+									class="col-md-3, btn btn-primary btn-sm">ver usuarios</button>
+							</td>
+
+
+							<td>
+								<button wicket:id=agregarUserStory
+									class="col-md-8 btn btn-primary btn-sm">agregar user
+									story</button>
+							</td>
+							<td>
+								<button wicket:id=listaUserStory
+									class="col-md-8 btn btn-primary btn-sm">lista de user
+									story</button>
+							</td>
+
+							<td>
+								<button wicket:id="borrarProyecto"
+									class="col-md-8 btn btn-danger btn-sm">borrar proyecto</button>
+							</td>
+
 						</tr>
-<!-- 					<thead> -->
-<!-- 						<td> -->
-<!-- 							<button wicket:id="borrarProyecto" -->
-<!-- 								class="btn btn-primary btn-sm">Borrar proyecto</button> -->
-<!-- 							<button wicket:id="addBacklog" class="btn btn-info btn-sm"> -->
-<!-- 								Agregar backlog</button> -->
+						<!-- 					<thead> -->
+						<!-- 						<td> -->
+						<!-- 							<button wicket:id="borrarProyecto" -->
+						<!-- 								class="btn btn-primary btn-sm">Borrar proyecto</button> -->
+						<!-- 					
 <!-- 							<button wicket:id="listaBacklog" class="btn btn-info btn-sm"> -->
-<!-- 								Ver lista de backlog</button> -->
-								
-							
-<!-- 						</td> -->
-<!-- 					</thead> -->
-<!-- 						</tr> -->
+						<!-- 								Ver lista de backlog</button> -->
+
+
+						<!-- 						</td> -->
+						<!-- 					</thead> -->
+						<!-- 						</tr> -->
 					</tbody>
-						
+
 				</table>
-			<BUTTON wicket:id="agregarProyecto" class="btn btn-primary btn-sn">Agregar
+				<BUTTON wicket:id="agregarProyecto" class="btn btn-primary btn-sm">Agregar
 					Proyecto</BUTTON>
 			</div>
 			<div class="col-md-12">
