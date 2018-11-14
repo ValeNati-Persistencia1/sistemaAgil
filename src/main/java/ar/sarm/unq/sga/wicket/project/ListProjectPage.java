@@ -77,7 +77,6 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						 ListProjectPage.this.projectController.getUsuarios();
 						this.setResponsePage(new ListaDeUsuariosDelProyectoPage(item.getModelObject()));
 					}
 
@@ -99,6 +98,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
+		//				this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 					}
 
 				});
