@@ -27,7 +27,7 @@ public class UsuarioPage extends WebPage{
 			
 			@Override
 			protected void onSubmit() {
-				UsuarioPage.this.usuarioController.agregarUsuario();
+			UsuarioPage.this.usuarioController.agregarUsuario();
 				this.setResponsePage(new ListUsuariosPage());
 			
 			}	
@@ -41,7 +41,7 @@ public class UsuarioPage extends WebPage{
 
 			@Override
 			public void onClick() {
-                 this.setResponsePage(new HomePage());				
+                 this.setResponsePage(new ListUsuariosPage());				
 			}
 		});
 		this.add(crearDeveloperForm);

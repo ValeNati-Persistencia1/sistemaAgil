@@ -10,6 +10,9 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioPage;
 
 public class ProjectPage extends WebPage {
 	/**
@@ -18,9 +21,11 @@ public class ProjectPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
-
-	private Project proy;
-	private Backlog back;
+	@SpringBean
+	private UsuarioController usuarioController;
+//
+//	private Project proy;
+//	private Backlog back;
 
 	@SuppressWarnings("serial")
 	public ProjectPage() {
@@ -34,17 +39,15 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new ListProjectPage());
+				this.setResponsePage(new ListUsuariosPage(projectController.getProyecto()));
 			}
 
 		};
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
+//		crearProjectForm.add(new TextField<>("nombreUsuario", new PropertyModel<>(this.usuarioController, "nombre")));
+//		crearProjectForm.add(new TextField<>("apellido", new PropertyModel<>(this.usuarioController, "apellido")));
 
 		crearProjectForm.add(new Link<String>("cancelar") {
-
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override

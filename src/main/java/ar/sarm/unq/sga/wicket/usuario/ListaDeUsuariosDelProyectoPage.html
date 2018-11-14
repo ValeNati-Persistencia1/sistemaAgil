@@ -6,7 +6,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<title>Lista de Proyectos</title>
+<title>Lista de ususarios del Proyectos</title>
 <style>
 .recuadro {
 	margin-top: 20px;
@@ -30,7 +30,7 @@
 	<div class="container" style="margin-top: 2%;">
 		<div class="panel panel-primary" style="text-align: center">
 			<div class="panel-heading">
-				<h4>Listado de usuarios</h4>
+				<h4>Listado de usuarios del proyecto</h4>
 			</div>
 			<div class="panel-body">
 				<table class="table">
@@ -39,51 +39,28 @@
 						<th>Apellido del usuario</th>
 					</thead>
 					<tbody>
-						<tr wicket:id="losUsuarios">
+							<tr wicket:id="losUsuarios">
 							<td wicket:id="nombre" class="columna" />
 							<td wicket:id="apellido" class="columna" />
-							<td>
-								<button wicket:id="verProyectos"
-									class="col-md-6, btn btn-primary btn-sm">Ver listado
-									de proyectos</button>
-							</td>
-
-							<td>
-								<button wicket:id="agregarUsuarioAlProyecto"
-									class="col-md-6, btn btn-primary btn-sm">Asignar
-									usuario al proyecto</button>
-							</td>
-
-							<td>
-								<button wicket:id="volver"
-									class="col-md-4, btn btn-primary btn-sm">Volver a home</button>
-							</td>
-							<td>
-								<!-- 								<button wicket:id="verUsuarios" --> <!-- 									class="col-md-4, btn btn-primary btn-sm">Ver listado de Usuarios</button> -->
-							</td>
-
+							
+<!-- 							<td> -->
+<!-- 								<button wicket:id="volver" -->
+<!-- 									class="col-md-4, btn btn-primary btn-sm">Volver a home</button> -->
+							
+<!-- 							</td> -->
 
 							<td>
 								<button wicket:id="borrarUsuario"
-									class="col-md-4, btn btn-danger btn-sm">Borrar usuario</button>
+									class="col-md-4, btn btn-danger btn-sm">Borrar
+									usuario</button>
 							</td>
 
 
-							
 						</tr>
-
 					</tbody>
 
-
 				</table>
-	<DIV>
-	 		<button wicket:id="agregarUsuario"
-									class="col-md-4, btn btn-primary btn-sm"> agregar usuario
-								 </button>
-	
-	
-	</DIV>
-					</div>
+			</div>
 		</div>
 	</div>
 </body>
