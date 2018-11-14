@@ -12,6 +12,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 @Controller
 public class BacklogController implements Serializable {
@@ -36,6 +37,8 @@ public class BacklogController implements Serializable {
 	
 	private Object back;
 	private String message;
+	
+	private UserStoryStore userStoryStore;
 
 	public BacklogController(Project proy) {
 		projectStore.attach(proy);
@@ -134,6 +137,13 @@ public class BacklogController implements Serializable {
 		backlogStore.insert(backlog);	
 		
 	}
+	
+	public void borrarUserStoryDeListaEnBacklog(UserStory us){
+			userStoryStore.delete(us);	
+         
+	}
+	
+	
 
 	
 }

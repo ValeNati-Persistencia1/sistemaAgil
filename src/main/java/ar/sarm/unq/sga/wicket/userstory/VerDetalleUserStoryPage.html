@@ -17,7 +17,7 @@
 	padding-right: 15px;
 	border-style: solid;
 	border-width: 2px;
-	border-color: DarkBlue;
+	border-color: Green;
 	border-radius: 4px;
 }
 
@@ -40,17 +40,23 @@
 					<tbody>
 						<tr wicket:id="losUsersStories">
 							<td wicket:id="nombre" class="columna" />
-                           <td> <textarea wicket:id="descripcion" class="col-md-7 control-label" id="descripcion"></textarea></td>
-                           
+                            <td> <textarea wicket:id="descripcion" class="col-md-7 control-label" id="descripcion"></textarea></td>
+                            <td wicket:id="valorCliente" class="columna" />
+                            <td wicket:id="historyPoint" class="columna" />
+                          
                             <td>	
 								<button wicket:id="borrarUserStory"
 								class="btn btn-warning btn-sm">Borrar UserStory</button>
+							</td>
+							<td>	
+								<button wicket:id="agregarUserStoryABacklog"
+								class="btn btn-warning btn-sm">Agregar User Story a Backlog</button>
 							</td>
 						</tr>
 					</tbody>
 						
 				</table>
-			<button wicket:id="agregarUserStory" class="btn btn-primary btn-sn">Agregar User Story</button>
+			
 			<button wicket:id="salir" class="btn btn-primary btn-sn">Salir</button>
 			</div>
 			<div class="col-md-12">

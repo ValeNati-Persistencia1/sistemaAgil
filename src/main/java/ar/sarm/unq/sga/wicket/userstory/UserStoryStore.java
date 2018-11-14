@@ -2,10 +2,12 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
-import ar.sarm.unq.sga.model.Backlog;
+import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 
 @Component
@@ -18,7 +20,7 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		return findByName(name);
 	}
 
-	public List<UserStory> getUsersStories() {
+	public List<UserStory> getUsersstories() {
 		return getSession().createQuery("FROM UserStory", UserStory.class).list();
 	}
 
@@ -26,4 +28,13 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		getSession().save(user);
 	}
 
+//	public void agregarProjectAUserStory(Project project){ 
+//	Query<UserStory> query= getSession().createQuery("FROM UserStory", UserStory.class);
+//				query.setParameter("project", project);
+//				//query.setParameterList("usersStories",this.getListUsersStories());
+//	            ((Session) query).save(project);
+//         
+//	}
+
+    
 }

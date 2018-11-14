@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
-@Controller
+
+@Service
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class UserStoryController implements Serializable{
 
@@ -19,9 +24,13 @@ public class UserStoryController implements Serializable{
 	
 	private String nombre;
 	private String descripcion;
+	private String valorCliente;
+	private String historyPoint;
 	@Autowired
 	private UserStoryStore userStoryStore;
 	private UserStory userStory;
+	private Project project;
+	
 	
 	public UserStoryController(){
 		
@@ -46,30 +55,63 @@ public class UserStoryController implements Serializable{
 		this.descripcion=descripcion;
 	}
 	
-	public UserStory getUserStory(){
-		return userStory;
+	public String getValorCliente() {
+		return valorCliente;
 	}
-//	
-//	public void agregarUserStory(){
-//		userStoryStore.attach(this.getUserStory());
-//		userStoryStore.insert(this.getUserStory());
-//	}
 	
+	public void setValorCliente(String valorCliente) {
+		this.valorCliente = valorCliente;
+	}
+	
+	public String getHistoryPoint() {
+		return historyPoint;
+	}
+	
+	public void setHistoryPoint(String historyPoint) {
+		this.historyPoint = historyPoint;
+	}
+	
+	public Project getProject() {
+		return project;
+	}
+	
+	public void setProject(Project project) {
+		this.project = project;
+	}
 	public void agregarUserStoryALaLista(){
         UserStory us= new UserStory(getNombre());
         us.setDescripcion(descripcion);
+        us.setValorCliente(valorCliente);
+        us.setHistoryPoint(historyPoint);
 		userStoryStore.insert(us);
 	}
 	public void attach(UserStory us) {
         userStoryStore.attach(us);		
 	}
+	
 	public void borrarUserStory(UserStory modelObject) {
-		userStoryStore.delete(modelObject);
-		
+		userStoryStore.delete(modelObject);	
 	}
-	public List<UserStory>getUsersStories(){
-		return userStoryStore.getUsersStories();
+	
+	public void agregarUserStoryABacklog(UserStory modelObject){
+		userStoryStore.insert(modelObject);
 	}
+	
+	public List<UserStory>getUsersstories(){
+		return userStoryStore.getUsersstories();
+	}
+
+//	public void agregarProjectAUserStory(Project project){
+//	  userStoryStore.agregarProjectAUserStory(project);
+//	}
+	
+	public UserStory getUserStory() {
+		return userStory;
+	}
+	public void setUserStory(UserStory userStory) {
+		this.userStory = userStory;
+	}
+	
 	
     
 }
