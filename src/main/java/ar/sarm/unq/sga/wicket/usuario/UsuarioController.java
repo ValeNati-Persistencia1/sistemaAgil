@@ -81,6 +81,11 @@ public class UsuarioController implements Serializable {
 			setMessage("no existe el objeto");// TODO: handle exception
 			usuario = null;
 		}
+
+		public void borrarUsuario(Usuario dev) {
+			usuarioStore.borrarUsuario(dev);
+			
+		}
 		return usuario;
 	}
 

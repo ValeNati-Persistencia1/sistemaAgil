@@ -1,10 +1,13 @@
 package ar.sarm.unq.sga.wicket.backlog;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 
 @Component
 public class BacklogStore extends HomeGeneralSession<Backlog> {
@@ -31,17 +34,11 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 		this.backlog = backlog;
 	}
 
-	// public void agregarBacklog(Backlog back) {
-	// this.getSession().save(back);
-	// }
-	//
-	// public void updateBacklo(Backlog backlog) {
-	// this.getSession().update(backlog);
-	// }
-	//
-	// public void deleteBacklog(Backlog backlog) {
-	// this.getSession().delete(backlog);
-	// }
-	//
+	public List<UserStory>getListaUserStoryEnBacklog(UserStory us){
+		return getSession().createQuery("FROM Backlog WHERE userStory_id = : id",UserStory.class)
+				           .setParameter("id",us.getId())
+				           .getResultList();
+	}
+	
 
 }

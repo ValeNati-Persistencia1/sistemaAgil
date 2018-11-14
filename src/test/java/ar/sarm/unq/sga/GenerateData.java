@@ -1,5 +1,8 @@
 package ar.sarm.unq.sga;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +39,7 @@ public class GenerateData {
 	private BacklogStore backlogStore;
 
 	protected void generate() {
+		List<Usuario> usuarios = new ArrayList();
 		Backlog back = new Backlog("el back");
 
 		Project proyecto = new Project("proyectito2");

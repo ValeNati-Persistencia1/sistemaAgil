@@ -1,35 +1,39 @@
 package ar.sarm.unq.sga.model;
 
-import java.io.IOException;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 @Entity
 public class UserStory extends Persistible {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
+    @Column(name = "valorCliente", nullable = true , length= 10)
+	private String valorCliente;
+    
+    @Column(name = "historyPoint", nullable = true, length = 10)
+	private String historyPoint;
 
-	private int valorCliente;
-
-	private int historiePoint;
-
-	private boolean estaCompleta;
+	private boolean estaCompleta= false;
 
 	private Usuario usuario;
 
 	private String nombre;
+	
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Backlog backlog;
+	
+	@ManyToOne
+	private Project project;
+	
+	 
 
 	public UserStory() {
 
@@ -39,27 +43,19 @@ public class UserStory extends Persistible {
 		this.nombre = nombre;
 	}
 
-	public UserStory(int _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario) {
+	public UserStory(String _valorCliente, String _historiePoint, boolean _estaCompleta, Usuario _usuario) {
 		this.valorCliente = _valorCliente;
-		this.historiePoint = _historiePoint;
+		this.historyPoint = _historiePoint;
 		this.estaCompleta = _estaCompleta;
 		this.usuario = _usuario;
 	}
 
-	public int getValorCliente() {
+	public String getValorCliente() {
 		return valorCliente;
 	}
 
-	public void setValorCliente(int valorCliente) {
+	public void setValorCliente(String valorCliente) {
 		this.valorCliente = valorCliente;
-	}
-
-	public int getHistoriePoint() {
-		return historiePoint;
-	}
-
-	public void setHistoriePoint(int historiePoint) {
-		this.historiePoint = historiePoint;
 	}
 
 	public boolean isEstaCompleta() {
@@ -75,7 +71,7 @@ public class UserStory extends Persistible {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		usuario = usuario;
+		this.usuario = usuario;
 
 	}
 
@@ -103,5 +99,22 @@ public class UserStory extends Persistible {
 		this.descripcion = descripcion;
 
 	}
+
+	public String getHistoryPoint() {
+		return historyPoint;
+	}
+
+	public void setHistoryPoint(String historyPoint) {
+		this.historyPoint = historyPoint;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
 
 }

@@ -30,18 +30,20 @@
 	<div class="container" style="margin-top: 2%;">
 		<div class="panel panel-primary" style="text-align: center">
 			<div class="panel-heading">
-				<h4>Lista de Users Stories</h4>
+				<h4>Lista de Users Stories en Backlog</h4>
 			</div>
 			<div class="panel-body">
 				<table class="table">
 					<thead>
-						<th>Nombre de User Story</th>
+						<th>Nombre User Story</th>
 					</thead>
 					<tbody>
-						<tr wicket:id="losUsersStories">
-							<td wicket:id="nombre" class="columna" />
-                           <td> <textarea wicket:id="descripcion" class="col-md-7 control-label" id="descripcion"></textarea></td>
-                           
+						<tr wicket:id="losUsersStoriesEnBacklog">
+							<td wicket:id="nombre" class="columna" />                           
+                           <td>	
+								<button wicket:id="agregarASprintBacklog"
+								class="btn btn-warning btn-sm">Agregar a SprintBacklog</button>
+							</td>
                             <td>	
 								<button wicket:id="borrarUserStory"
 								class="btn btn-warning btn-sm">Borrar UserStory</button>
@@ -50,7 +52,6 @@
 					</tbody>
 						
 				</table>
-			<button wicket:id="agregarUserStory" class="btn btn-primary btn-sn">Agregar User Story</button>
 			<button wicket:id="salir" class="btn btn-primary btn-sn">Salir</button>
 			</div>
 			<div class="col-md-12">
