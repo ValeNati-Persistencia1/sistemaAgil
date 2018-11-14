@@ -3,10 +3,10 @@ package ar.sarm.unq.sga.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class Usuario extends Persistible {
@@ -14,12 +14,9 @@ public class Usuario extends Persistible {
 	private static final long serialVersionUID = 1L;
 	private String apellido;
 	private String nombre;
-	@Transient
-	@ManyToMany
-	private List<Project> proyectos = new ArrayList<>();
 
-	@ManyToOne
-	private Project proyecto;
+	@ManyToMany
+	private List<Project> project = new ArrayList<Project>();
 
 	public Usuario(String nombre, String apellido) {
 		this.nombre = nombre;
@@ -39,11 +36,11 @@ public class Usuario extends Persistible {
 	}
 
 	public List<Project> getProyectos() {
-		return proyectos;
+		return project;
 	}
 
-	public void setProyectos(List<Project> proyectos) {
-		this.proyectos = proyectos;
+	public void addProyecto(Project proyecto) {
+		this.project.add(proyecto);
 	}
 
 	public String getApellido() {
@@ -56,14 +53,6 @@ public class Usuario extends Persistible {
 
 	public String getApellidoNombre() {
 		return apellido + nombre;
-	}
-
-	public Project getProyecto() {
-		return proyecto;
-	}
-
-	public void setProyecto(Project proyecto) {
-		this.proyecto = proyecto;
 	}
 
 }

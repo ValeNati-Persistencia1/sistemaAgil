@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.hibernate.type.EnumType;
 
 @Entity
 public class Project extends Persistible {
@@ -17,15 +23,17 @@ public class Project extends Persistible {
 
 	@OneToOne(cascade = CascadeType.REMOVE)
 	private Backlog backlog;
-	// @ManyToMany
-	@OneToMany
-	private List<Usuario> usuarios = new ArrayList<>();
+
+	@ManyToMany(mappedBy = "project")
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
+
+	// @Column(columnDefinition = "enum('administrador', 'usuario')")
+	// @Enumerated(javax.persistence.EnumType.STRING)
+	// private TipoDeRol tipoDeRol;
+	// @Column(columnDefinition = "enum('MALE','FEMALE')")
 	// @Enumerated(EnumType.STRING)
-	// private TipoRol tipoRol;
-	// @OneToMany
-	// private List<Rol> roles = new ArrayList<>();
-	@OneToOne
-	private Usuario usuario;
+	// @Enumerated(javax.persistence.EnumType.STRING)
+	// private List<TipoDeRol> roles = new ArrayList<>();
 
 	public Project() {
 	}
@@ -50,35 +58,28 @@ public class Project extends Persistible {
 		this.backlog = backlog;
 	}
 
-	// public List<Rol> getRoles() {
+	// public List<TipoDeRol> getRoles() {
 	// return roles;
 	// }
 	//
-	// public void setRoles(List<Rol> roles) {
-	// this.roles = roles;
+	// public void setRoles(TipoDeRol roles) {
+	// this.roles.add(roles);
 	// }
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuario(Usuario usuarios) {
+		this.usuarios.add(usuarios);
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-
-	}
-	// public Rol getRol() {
-	// return rol;
+	// public TipoDeRol getTipoDeRol() {
+	// return tipoDeRol;
 	// }
 	//
-	// public void setRol(Rol rol) {
-	// this.rol = rol;
+	// public void setTipoDeRol(TipoDeRol tipoDeRol) {
+	// this.tipoDeRol = tipoDeRol;
 	// }
 
 }

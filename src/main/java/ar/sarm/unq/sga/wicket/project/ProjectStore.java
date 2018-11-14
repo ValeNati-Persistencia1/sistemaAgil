@@ -2,11 +2,12 @@ package ar.sarm.unq.sga.wicket.project;
 
 import java.util.List;
 
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
-import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.Usuario;
 
 @Component
 public class ProjectStore extends HomeGeneralSession<Project> {
@@ -19,6 +20,7 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 
 	public void agregarProject(Project project) {
 		this.getSession().save(project);
+
 	}
 
 	public void updateProject(Project project) {
@@ -49,6 +51,11 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 	public Project findByName(String name) {
 		return getSession().createQuery("FROM Project WHERE nombre = :name", Project.class).setParameter("name", name)
 				.getSingleResult();
+	}
+
+	public void setUsuario(Usuario modelObject) {
+		project.setUsuario(modelObject);
+
 	}
 
 }

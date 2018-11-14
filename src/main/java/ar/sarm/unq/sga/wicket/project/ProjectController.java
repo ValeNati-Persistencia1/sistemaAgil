@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +19,7 @@ import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Controller
 @Transactional
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ProjectController implements Serializable {
 
 	/**
@@ -43,7 +46,15 @@ public class ProjectController implements Serializable {
 
 	private String message;
 
+	private Usuario user;
+
 	public ProjectController() {
+
+	}
+
+	public ProjectController(Project proy) {
+		projectStore.attach(proy);
+		proyecto = proy;
 
 	}
 
@@ -58,10 +69,6 @@ public class ProjectController implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	// public Project getProyectoNombre() {
-	// return this.findByName();
-	// }
 
 	// arreglado con leo
 	public void agregarProyecto() {
@@ -117,13 +124,29 @@ public class ProjectController implements Serializable {
 
 	}
 
-	public List<Usuario> mostrarUsuarios(Project proyecto) {
+	public List<Usuario> getUsuarios() {
 		projectStore.attach(proyecto);
-		return usuarioStore.verUsuarios(proyecto);
-
+		return proyecto.getUsuarios();
+		// return usuarioStore.getVerUsuario(getProyecto());
 	}
 
 	public void addUserStory(UserStory us) { // agregado
 		userStoryStore.insert(us);
+	}
+
+	public void agregarUsuarioAlProyecto(Usuario modelObject, Project proy) {
+		projectStore.attach(proy);
+		usuarioStore.attach(modelObject);
+		proy.setUsuario(modelObject);
+		modelObject.addProyecto(proy);
+	}
+
+	public Project getProyecto() {
+		return proyecto;
+	}
+
+	public void setProject(Project proy) {
+		proyecto=proy;
+		
 	}
 }

@@ -10,8 +10,11 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
+import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
 
 public class ListProjectPage extends WebPage {
 
@@ -21,10 +24,16 @@ public class ListProjectPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
+	@SpringBean
+	protected UsuarioController usuarioController;
+	private Usuario user;
+	private Project proyecto;
 
-	public ListProjectPage(Project proy) {
-		projectController.attach(proy);
-		Project proj = proy;
+	public ListProjectPage(Project proy,Usuario usuario) {
+		this.usuarioController.attach(usuario);
+		this.projectController.attach(proy);
+		this.user = usuario;
+		this.proyecto=proy;
 		tablaDeProyectos();
 		// botonCancelar();
 		botonVolver();
@@ -68,8 +77,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						ListProjectPage.this.projectController.mostrarUsuarios(item.getModelObject());
-						this.setResponsePage(new ListUsuariosPage());
+//						 ListProjectPage.this.projectController.getUsuarios();
+						this.setResponsePage(new ListaDeUsuariosDelProyectoPage(item.getModelObject()));
 					}
 
 				});
@@ -101,6 +110,16 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
+				item.add(new Link<String>("agregarProyectoAlUsuario") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						ListProjectPage.this.projectController.agregarUsuarioAlProyecto(user,item.getModelObject());// proproyect.agregarUsaruiio
+						setResponsePage(new ListUsuariosPage());
+					}
+
+				});
 
 			}
 
@@ -114,7 +133,7 @@ public class ListProjectPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				// this.setResponsePage(new ListProjectPage());
+				 this.setResponsePage(new HomePage());
 
 			}
 
