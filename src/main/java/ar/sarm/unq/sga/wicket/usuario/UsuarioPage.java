@@ -6,9 +6,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 
 public class UsuarioPage extends WebPage{
 
@@ -28,7 +27,7 @@ public class UsuarioPage extends WebPage{
 			@Override
 			protected void onSubmit() {
 			UsuarioPage.this.usuarioController.agregarUsuario();
-				this.setResponsePage(new ListUsuariosPage());
+				this.setResponsePage(new ListProjectPage());
 			
 			}	
 					

@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -39,7 +40,7 @@ public class ProjectPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				ProjectPage.this.projectController.agregarProyecto();
-				this.setResponsePage(new ListUsuariosPage(projectController.getProyecto()));
+				this.setResponsePage(new ListProjectPage());
 			}
 
 		};

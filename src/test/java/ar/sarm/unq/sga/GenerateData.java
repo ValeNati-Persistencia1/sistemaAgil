@@ -55,7 +55,7 @@ public class GenerateData {
 		proyecto.setUsuario(usuario2);
 		proyecto.setUsuario(usuario3);
 		proyecto.setBacklog(back);
-		// usuario.setProyecto(proyecto);
+		 usuario.setProyecto(proyecto);
 		// usuario3.setProyecto(proyecto);
 		// usuario.setProyecto(proy);
 		// proy.setUsuarios(usuarios1);

@@ -33,26 +33,34 @@ public class ListProjectPage extends WebPage {
 	private Usuario user;
 	private Project proyecto;
 
-	public ListProjectPage(Project proy,Usuario usuario) {
+	public ListProjectPage(Usuario usuario) {
 		this.usuarioController.attach(usuario);
-		this.projectController.attach(proy);
-		this.projectController.setProject(proy);
+//		this.projectController.attach(proy);
+//		this.projectController.setProject(proy);
+		this.projectController.setUsuario(usuario);
 		this.usuarioController.setUsuario(usuario);
-		this.user = usuario;
-		this.proyecto=proy;
+//		this.user = usuario;
+//		this.proyecto=proy;
 		tablaDeProyectos();
 		// botonCancelar();
 		botonVolver();
 		botonAgregar();
 	}
 
-	public ListProjectPage() {
+	public ListProjectPage(Project proy) {
 		tablaDeProyectos();
 		// botonCancelar();
 		botonVolver();
 		botonAgregar();
+		projectController.setProject(proy);
 	}
-
+public ListProjectPage(){
+	tablaDeProyectos();
+	// botonCancelar();
+	botonVolver();
+	botonAgregar();
+	
+}
 	private void tablaDeProyectos() {
 
 		this.add(new ListView<Project>("losProyectos", new PropertyModel<>(this.projectController, "proyectos")) {
@@ -105,7 +113,7 @@ public class ListProjectPage extends WebPage {
 					@Override
 					public void onClick() {
 		
-						this.setResponsePage(new UserStoryPage(item.getModelObject()));
+//						this.setResponsePage(new UserStoryPage(item.getModelObject()));
 					}
 
 				});
@@ -124,8 +132,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						ListProjectPage.this.projectController.agregarUsuarioAlProyecto(user,item.getModelObject());// proproyect.agregarUsaruiio
-						setResponsePage(new ListUsuariosPage());
+						setResponsePage(new ListUsuariosPage(item.getModelObject()));
 					}
 
 				});

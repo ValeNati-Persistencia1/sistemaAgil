@@ -52,9 +52,11 @@ public class ProjectController implements Serializable {
 
 	}
 
-	public ProjectController(Project proy) {
+	public ProjectController(Project proy, Usuario usuario) {
 		projectStore.attach(proy);
+		usuarioStore.attach(usuario);
 		proyecto = proy;
+		user=usuario;
 
 	}
 
@@ -135,12 +137,11 @@ public class ProjectController implements Serializable {
 		userStoryStore.insert(us);
 	}
 
-	public void agregarUsuarioAlProyecto(Usuario modelObject, Project proy) {
+	public void agregarProyectoAlUsuario(Usuario modelObject, Project proy) {
 		projectStore.attach(proy);
 		usuarioStore.attach(modelObject);
-		modelObject.addProyecto(proy);
 		proy.setUsuario(modelObject);
-
+		modelObject.addProyecto(proy);
 	}
 
 	public Project getProyecto() {
@@ -154,5 +155,10 @@ public class ProjectController implements Serializable {
 
 	public List<UserStory> getListaDeUserStoryDelProyecto(Project proy) {
 		return proy.getBacklog().getUserStories();
+	}
+
+	public void setUsuario(Usuario usuario) {
+		user=usuario;
+		
 	}
 }

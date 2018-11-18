@@ -33,6 +33,7 @@ public class ListUsuariosPage extends WebPage {
 
 	public ListUsuariosPage(Project proy) {
 		this.proyecto = proy;
+		this.projectController.setProject(proy);
 		tablaDeDevelopers();
 		agregarUsusario();
 	}
@@ -94,7 +95,8 @@ public class ListUsuariosPage extends WebPage {
 
 							@Override
 							public void onClick() {
-								this.setResponsePage(new ListProjectPage(proyecto, item.getModelObject()));
+								projectController.agregarProyectoAlUsuario(item.getModelObject(), proyecto);
+								this.setResponsePage(new ListProjectPage(item.getModelObject()));
 
 							}
 

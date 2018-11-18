@@ -27,10 +27,12 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 		projectController.attach(project);
 		projectController.setProject(project);
 		tablaDeUsuarios();
+		botonVolver();
 	}
 
 	public ListaDeUsuariosDelProyectoPage() {
 		tablaDeUsuarios();
+		botonVolver();
 	}
 
 	private void tablaDeUsuarios() {
@@ -69,7 +71,7 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				// this.setResponsePage(new ListProjectPage());
+				 this.setResponsePage(new ListProjectPage());
 
 			}
 
