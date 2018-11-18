@@ -100,10 +100,6 @@ public class UserStoryController implements Serializable{
 	public List<UserStory>getUsersstories(){
 		return userStoryStore.getUsersstories();
 	}
-
-//	public void agregarProjectAUserStory(Project project){
-//	  userStoryStore.agregarProjectAUserStory(project);
-//	}
 	
 	public UserStory getUserStory() {
 		return userStory;

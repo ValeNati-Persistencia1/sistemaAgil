@@ -9,9 +9,14 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.BacklogController;
+import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
@@ -64,7 +69,7 @@ public class ListProjectPage extends WebPage {
 					@Override
 					public void onClick() {
 						ListProjectPage.this.projectController.getBacklog(item.getModelObject());
-						this.setResponsePage(new HomePage());
+						this.setResponsePage(new ListUsersStoriesEnBacklogPage()); 
 					}
 
 				});

@@ -81,11 +81,6 @@ public class UsuarioController implements Serializable {
 			setMessage("no existe el objeto");// TODO: handle exception
 			usuario = null;
 		}
-
-		public void borrarUsuario(Usuario dev) {
-			usuarioStore.borrarUsuario(dev);
-			
-		}
 		return usuario;
 	}
 
@@ -112,18 +107,19 @@ public class UsuarioController implements Serializable {
 
 	public void agregarProyectoAlUsuario(Project modelObject) {
 		projectStore.attach(modelObject);
-				usuario.addProyecto(modelObject);
-		
+		usuario.addProyecto(modelObject);
+
 	}
 
-	public List <Project> listaDeProyectosDelUsuario() {
+	public List<Project> listaDeProyectosDelUsuario() {
 		return usuario.getProyectos();
 	}
 
 	public void setUsuario(Usuario usuario2) {
-		usuario=usuario2;		
+		usuario = usuario2;
 	}
-	public Usuario getUsuario(){
+
+	public Usuario getUsuario() {
 		return usuario;
 	}
 

@@ -32,15 +32,13 @@ public class VerDetalleUserStoryPage extends WebPage {
 
 	public VerDetalleUserStoryPage(UserStory us) {
 		this.userStory = us;
-		userStoryController.attach(us);
 		this.addForm();
 		this.salir();
 		this.volverAtras();
 	}
 
 	private void addForm() {
-		this.add(new ListView<UserStory>("losUsersStories",
-				new PropertyModel<>(this.userStoryController, "usersstories")) {
+		this.add(new ListView<UserStory>("losUsersStories",new PropertyModel<>(this.userStoryController, "usersstories")) {
 
 			private static final long serialVersionUID = 1L;
 
