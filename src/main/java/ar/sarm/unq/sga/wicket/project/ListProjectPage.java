@@ -12,6 +12,10 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.userstory.ListaDeUserStoryDelProyectoPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
@@ -32,6 +36,8 @@ public class ListProjectPage extends WebPage {
 	public ListProjectPage(Project proy,Usuario usuario) {
 		this.usuarioController.attach(usuario);
 		this.projectController.attach(proy);
+		this.projectController.setProject(proy);
+		this.usuarioController.setUsuario(usuario);
 		this.user = usuario;
 		this.proyecto=proy;
 		tablaDeProyectos();
@@ -63,8 +69,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						ListProjectPage.this.projectController.getBacklog(item.getModelObject());
-						this.setResponsePage(new HomePage());
+						//ListProjectPage.this.projectController.getBacklog(item.getModelObject());
+						this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 					}
 
 				});
@@ -98,7 +104,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-		//				this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
+		
+						this.setResponsePage(new UserStoryPage(item.getModelObject()));
 					}
 
 				});
@@ -107,6 +114,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
+					//	projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
+						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
 					}
 
 				});

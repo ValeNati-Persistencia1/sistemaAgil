@@ -2,7 +2,9 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -10,38 +12,45 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.project.ListProjectPage;
+import ar.sarm.unq.sga.wicket.project.ProjectController;
 
-public class VerDetalleUserStoryPage extends WebPage {
+public class ListaDeUserStoryDelProyectoPage extends WebPage {
 
-	private static final long serialVersionUID = 5691036303664036670L;
-
+	/**
+	 * 
+	 */
 	@SpringBean
-	private UserStoryController userStoryController;
+	protected ProjectController projectController;
+	@SpringBean
+	protected UserStoryController userStoryController;
 
-	@SuppressWarnings("unused")
-	private UserStory userStory;
+	private Project proyecto;
+	private Backlog backlog;
 
-	public VerDetalleUserStoryPage() {
-		this.addForm();
-		this.salir();
-		this.volverAtras();
+	private static final long serialVersionUID = 1L;
+
+	public ListaDeUserStoryDelProyectoPage() {
+
 	}
 
-	public VerDetalleUserStoryPage(UserStory us, Project proy) {
-		this.userStory = us;
-		userStoryController.attach(us);
-		this.addForm();
-		this.salir();
-		this.volverAtras();
+	public ListaDeUserStoryDelProyectoPage(Project proy) {
+		userStoryController.attach(proy.getBacklog().getUserStory());
+		backlog =proy.getBacklog();
+		userStoryController.setProject(proy);
+		this.proyecto = proy;
+		lista();
+		volverAtras();
 	}
 
-	private void addForm() {
+	private void lista() {
 		this.add(new ListView<UserStory>("losUsersStories",
-				new PropertyModel<>(this.userStoryController, "usersstories")) {
+				new PropertyModel<>(this.userStoryController,"listaDeUerStoryProy")) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -49,17 +58,17 @@ public class VerDetalleUserStoryPage extends WebPage {
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombre")));
-				item.add(new TextArea<>("descripcion", us.bind("descripcion")));
-				item.add(new Label("valorCliente", us.bind("valorCliente")));
-				item.add(new Label("historyPoint", us.bind("historyPoint")));
+//				item.add(new TextArea<>("descripcion", us.bind("descripcion")));
+//				item.add(new Label("valorCliente", us.bind("valorCliente")));
+//				item.add(new Label("historyPoint", us.bind("historyPoint")));
 
 				item.add(new Link<String>("agregarUserStoryABacklog") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-						VerDetalleUserStoryPage.this.userStoryController.agregarUserStoryALaLista();
-						this.setResponsePage(new ListUsersStoriesEnBacklogPage());
+						ListaDeUserStoryDelProyectoPage.this.userStoryController.agregarUserStoryALaLista();
+						this.setResponsePage(new ListaDeUserStoryDelProyectoPage());
 
 					}
 
@@ -70,7 +79,7 @@ public class VerDetalleUserStoryPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						VerDetalleUserStoryPage.this.userStoryController.borrarUserStory(item.getModelObject());
+						ListaDeUserStoryDelProyectoPage.this.userStoryController.borrarUserStory(item.getModelObject());
 						this.setResponsePage(new VerDetalleUserStoryPage());
 
 					}

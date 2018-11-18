@@ -19,7 +19,8 @@ public class SprintBacklogPage extends WebPage {
 	
 	
 	@Autowired
-	private UserStoryController controller;
+	private UserStoryController userStoryController;
+	//cambie el nombre por userStoryController;
 	
 	
 	
@@ -28,8 +29,7 @@ public class SprintBacklogPage extends WebPage {
 	}
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
-		//this.add(new ListView<UserStory>("sublistaBacklogsCompletados",new PropertyModel<>(this.controller, "backlogsCompletados")){
-    this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",new PropertyModel<>(this.controller, "backlogsCompletados")) {
+    this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",new PropertyModel<>(this.userStoryController, "backlogsCompletados")) {
 	
 			private static final long serialVersionUID = 1L;
 

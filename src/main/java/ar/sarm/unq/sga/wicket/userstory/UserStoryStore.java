@@ -27,6 +27,12 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 	public void agregarUserStory(UserStory user) {
 		getSession().save(user);
 	}
+//agregue la query
+	public List<UserStory> getBacklogsCompletados() {
+		return getSession().createQuery("FROM UserStory WHERE estaCompleta = : completa", UserStory.class)
+				.setParameter("completa", true)
+				.getResultList();
+	}
 
 //	public void agregarProjectAUserStory(Project project){ 
 //	Query<UserStory> query= getSession().createQuery("FROM UserStory", UserStory.class);

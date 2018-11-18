@@ -28,6 +28,8 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	private BacklogController backlogController;
 	
 	private UserStory userStory;
+
+	private Backlog backlog;
 	
   public ListUsersStoriesEnBacklogPage(){
      this.crearForm();
@@ -35,6 +37,7 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
      this.volverAHomePage();
   }
   public ListUsersStoriesEnBacklogPage(Project project){
+         backlog= project.getBacklog();
          backlogController.setProyecto(project);
 	     this.crearForm();
 	     this.salir();

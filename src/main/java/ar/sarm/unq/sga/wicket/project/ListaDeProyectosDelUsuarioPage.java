@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
 
@@ -68,7 +69,7 @@ public class ListaDeProyectosDelUsuarioPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				setResponsePage(new ListaDeUsuariosDelProyectoPage());
+				setResponsePage(new ListUsuariosPage());
 			}
 
 		});
