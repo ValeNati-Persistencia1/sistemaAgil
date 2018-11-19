@@ -35,32 +35,30 @@ public class ListProjectPage extends WebPage {
 
 	public ListProjectPage(Usuario usuario) {
 		this.usuarioController.attach(usuario);
-//		this.projectController.attach(proy);
-//		this.projectController.setProject(proy);
 		this.projectController.setUsuario(usuario);
-		this.usuarioController.setUsuario(usuario);
-//		this.user = usuario;
-//		this.proyecto=proy;
+		// this.usuarioController.setUsuario(usuario);
 		tablaDeProyectos();
-		// botonCancelar();
+		botonCancelar();
 		botonVolver();
 		botonAgregar();
 	}
 
 	public ListProjectPage(Project proy) {
 		tablaDeProyectos();
-		// botonCancelar();
+		botonCancelar();
 		botonVolver();
 		botonAgregar();
 		projectController.setProject(proy);
 	}
-public ListProjectPage(){
-	tablaDeProyectos();
-	// botonCancelar();
-	botonVolver();
-	botonAgregar();
-	
-}
+
+	public ListProjectPage() {
+		tablaDeProyectos();
+		botonCancelar();
+		botonVolver();
+		botonAgregar();
+
+	}
+
 	private void tablaDeProyectos() {
 
 		this.add(new ListView<Project>("losProyectos", new PropertyModel<>(this.projectController, "proyectos")) {
@@ -77,7 +75,7 @@ public ListProjectPage(){
 
 					@Override
 					public void onClick() {
-						//ListProjectPage.this.projectController.getBacklog(item.getModelObject());
+						// ListProjectPage.this.projectController.getBacklog(item.getModelObject());
 						this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 					}
 
@@ -112,8 +110,9 @@ public ListProjectPage(){
 
 					@Override
 					public void onClick() {
-		
-//						this.setResponsePage(new UserStoryPage(item.getModelObject()));
+
+						// this.setResponsePage(new
+						// UserStoryPage(item.getModelObject()));
 					}
 
 				});
@@ -122,7 +121,7 @@ public ListProjectPage(){
 
 					@Override
 					public void onClick() {
-					//	projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
+						// projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
 						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
 					}
 
@@ -149,26 +148,26 @@ public ListProjectPage(){
 
 			@Override
 			public void onClick() {
-				 this.setResponsePage(new HomePage());
+				this.setResponsePage(new HomePage());
 
 			}
 
 		});
 	}
 
-	// public void botonCancelar() {
-	// this.add(new Link<String>("cancelar") {
-	//
-	// private static final long serialVersionUID = 1L;
-	//
-	// @Override
-	// public void onClick() {
-	// // this.setResponsePage(new ListProjectPage());
-	//
-	// }
-	//
-	// });
-	// }
+	public void botonCancelar() {
+		this.add(new Link<String>("cancelar") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new HomePage());
+
+			}
+
+		});
+	}
 
 	public void botonAgregar() {
 		this.add(new Link<String>("agregarProyecto") {
