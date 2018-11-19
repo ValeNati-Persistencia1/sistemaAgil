@@ -28,16 +28,11 @@ public class UserStoryPage extends WebPage {
 	public UserStoryPage() {
 		this.agregarForm();
 		this.volverAHomePage();
-		;
+		
 	}
 
-	// public UserStoryPage(Project project){
-	// this.project=project;
-	// userStoryController.setProject(project);
-	// agregarForm();
-	// }
 	public UserStoryPage(UserStory us) {
-		this.userStoryController.attach(us);
+		this.userStoryController.setUserStory(us);
 		this.setUserStory(us);
 		this.agregarForm();
 		this.volverAHomePage();

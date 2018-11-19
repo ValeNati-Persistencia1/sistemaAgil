@@ -3,9 +3,15 @@ package ar.sarm.unq.sga.wicket.backlog;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.eclipse.jetty.security.UserStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
@@ -14,7 +20,9 @@ import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
-@Controller
+@Service
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Transactional
 public class BacklogController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -39,24 +47,22 @@ public class BacklogController implements Serializable {
 	private String message;
 	
 	private UserStoryStore userStoryStore;
+	
+	protected List<UserStory>usersstories;
 
 	public BacklogController(Project proy) {
-		projectStore.attach(proy);
 		Project proyecto = proy;
 		Backlog back = proy.getBacklog();
+		backlogStore.attach(back);
+	}
+	public BacklogController(Backlog back){
+		usersstories=back.getUserStories();
+		backlogStore.attach(backlog);
 	}
 
 	public BacklogController() {
 
 	}
-	// public Project getProyecto() {
-	// return proyecto;
-	// }
-	//
-	// public void setProyecto(Project proyecto) {
-	// this.proyecto = proyecto;
-	// }
-
 	public String getNombre() {
 		return nombreBacklog;
 	}
@@ -64,13 +70,6 @@ public class BacklogController implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombreBacklog = nombre;
 	}
-
-	// public void agregarUserStory() {
-	// UserStory user = new UserStory(getNombre());
-	// proyecto.getBacklog().
-	// userStoryController.agregarBacklogStore(backlog);
-	// getProyecto().setBacklog(getNombre());
-	// }
 
 	public Backlog findByName() {
 		try {
@@ -82,10 +81,6 @@ public class BacklogController implements Serializable {
 		}
 		return (Backlog) back;
 	}
-
-	// public void attach(Project proy) {
-	// projectStore.attach(proy);
-	// }
 
 	public String getMessage() {
 		return message;
@@ -131,15 +126,23 @@ public class BacklogController implements Serializable {
 		backlogStore.attach(backlog);
 	}
 	
-	public void agregarUserStoyEnBacklog(UserStory us){
-		Backlog backlog=new Backlog(getNombre());
-		backlog.setUserStory(us);
-		backlogStore.insert(backlog);	
-		
+	 public void agregarUserStoryAListaEnBacklog() {
+		 this.backlog.setUserStory(getUserStory());
+		 userStoryStore.agregarUserStory(getUserStory());
+		 this.getUsersstories().add(getUserStory());
+	 }
+	 
+	 public List<UserStory>getUserStoriesEnBacklog(Backlog backlog){
+		return backlogStore.getListaUserStoryEnBacklog(backlog);
+	 }
+	
+	public List<UserStory>getUsersstories(){
+		return userStoryController.getUsersstories();
 	}
 	
 	public void borrarUserStoryDeListaEnBacklog(UserStory us){
-			userStoryStore.delete(us);	
+		 this.usersstories.remove(us);
+		    
          
 	}
 	

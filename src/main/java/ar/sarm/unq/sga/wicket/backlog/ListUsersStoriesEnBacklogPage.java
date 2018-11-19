@@ -18,6 +18,7 @@ import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.userstory.VerDetalleUserStoryPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
 public class ListUsersStoriesEnBacklogPage extends WebPage{
@@ -26,19 +27,20 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	
 	@SpringBean
 	private BacklogController backlogController;
-	
+	@SpringBean
+	private UserStoryController userStoryController;
 	private UserStory userStory;
-
 	private Backlog backlog;
-	
   public ListUsersStoriesEnBacklogPage(){
      this.crearForm();
      this.salir();
      this.volverAHomePage();
   }
-  public ListUsersStoriesEnBacklogPage(Project project){
-         backlog= project.getBacklog();
-         backlogController.setProyecto(project);
+  public ListUsersStoriesEnBacklogPage(Backlog back,UserStory us){
+         this.backlogController.attach(back);  
+         this.userStory=us;
+         back.setUserStory(us);
+         this.backlog=back;
 	     this.crearForm();
 	     this.salir();
 	     this.volverAHomePage();
@@ -55,30 +57,29 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 				CompoundPropertyModel<UserStory>us=new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombre")));
 			
-	         item.add(new Link<String>("borrarUserStoryEnBacklog") {
+	         item.add(new Link<String>("borrarUserStory") {
 				private static final long serialVersionUID = 1L;
 
 				@Override
 				public void onClick() {
 					ListUsersStoriesEnBacklogPage.this.backlogController.borrarUserStoryDeListaEnBacklog(item.getModelObject());
-					this.setResponsePage(new UserStoryPage());
+					this.setResponsePage(new ListUsersStoriesEnBacklogPage());
 					
 				}
 
 			});
-	         
-	         item.add(new Link<String>("AgregarUserStoryASprintBacklog") {
+	         item.add(new Link<String>("agregarUserStoryASprint") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
 						
-						
-					
+						this.setResponsePage(new SprintBacklogPage());
 						
 					}
 
 				});
+		         
 	         
 
 		}
@@ -103,7 +104,7 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
    }
 	  private void volverAHomePage(){
 		  
-		  this.add(new Link<String>("volverAHomePage"){
+		  this.add(new Link<String>("volver"){
 
 			private static final long serialVersionUID = 1L;
 

@@ -128,5 +128,5 @@ public class UsuarioController implements Serializable {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 }
