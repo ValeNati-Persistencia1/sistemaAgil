@@ -2,7 +2,6 @@ package ar.sarm.unq.sga.wicket.backlog;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -10,7 +9,9 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
+import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
 public class SprintBacklogPage extends WebPage {
@@ -20,6 +21,8 @@ public class SprintBacklogPage extends WebPage {
 	@SpringBean
 	private UserStoryController userStoryController;
 	// cambie el nombre por userStoryController;
+@SpringBean
+private ProjectController projectController;
 
 	public SprintBacklogPage() {
 		this.agregarAUserStoryFormBacklogsCompletadas();
@@ -30,6 +33,12 @@ public class SprintBacklogPage extends WebPage {
 		userStoryController.setUserStory(user);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 	}
+	public SprintBacklogPage(Project proy) {
+		projectController.setProject(proy);
+		userStoryController.setProject(proy);
+		this.agregarAUserStoryFormBacklogsCompletadas();
+	}
+
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",

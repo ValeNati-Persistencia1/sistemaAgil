@@ -33,11 +33,11 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 				.getResultList();
 	}
 
-	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
-		query.setParameter("estaEnBacklogSprint", true);
-		return query.list();
-	}
+//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+//		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+//		query.setParameter("estaEnBacklogSprint", true);
+//		return query.list();
+//	}
 //	public void agregarProjectAUserStory(Project project){ 
 //	Query<UserStory> query= getSession().createQuery("FROM UserStory", UserStory.class);
 //				query.setParameter("project", project);
@@ -52,7 +52,7 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		return query.list();
 	}
 
-    public int getTotalComplejidad(){
-    	return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u->u.getHistoryPoint()).sum();
-    }
+//    public int getTotalComplejidad(){
+//    	return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u->u.getHistoryPoint()).sum();
+//    }
 }

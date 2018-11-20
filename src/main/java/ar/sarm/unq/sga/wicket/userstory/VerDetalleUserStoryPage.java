@@ -68,8 +68,8 @@ public class VerDetalleUserStoryPage extends WebPage {
 
 				@Override
 				public void onClick() {
-					VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-					this.setResponsePage(new SprintBacklogPage());
+//					VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+//					this.setResponsePage(new SprintBacklogPage());
 
 				}
 

@@ -59,5 +59,10 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		project.setUsuario(modelObject);
 
 	}
-
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+		query.setParameter("estaEnBacklogSprint", true);
+		return query.list();
+	
+}
 }

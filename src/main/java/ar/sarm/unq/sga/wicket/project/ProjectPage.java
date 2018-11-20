@@ -40,8 +40,6 @@ public class ProjectPage extends WebPage {
 
 		};
 		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
-//		crearProjectForm.add(new TextField<>("nombreUsuario", new PropertyModel<>(this.usuarioController, "nombre")));
-//		crearProjectForm.add(new TextField<>("apellido", new PropertyModel<>(this.usuarioController, "apellido")));
 
 		crearProjectForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;

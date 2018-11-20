@@ -2,15 +2,12 @@ package ar.sarm.unq.sga.wicket.backlog;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.junit.runner.Computer;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
@@ -18,9 +15,7 @@ import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
-import ar.sarm.unq.sga.wicket.userstory.VerDetalleUserStoryPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 
 public class ListUsersStoriesEnBacklogPage extends WebPage{
 
@@ -35,6 +30,8 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	
 	@SpringBean
 	private ProjectController projectController;
+
+//	private Project project;
   public ListUsersStoriesEnBacklogPage(){
      this.crearForm();
      this.salir();
@@ -46,13 +43,15 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
          back.setUserStory(us);
          this.backlog=back;
 	     this.crearForm();
-	     this.salir();
+//	     this.salir();
 	     this.volverAHomePage();
 	  }
 
   public ListUsersStoriesEnBacklogPage(UserStory us){
       this.userStory=us;
-	     this.crearForm();
+      userStoryController.attach(us);
+	 userStoryController.setUserStory(us);
+      this.crearForm();
 	     this.salir();
 	     this.volverAHomePage();
 	  }
@@ -61,7 +60,10 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	projectController.attach(proyecto);
 	projectController.setProject(proyecto);
 	backlogController.setProyecto(proyecto);
-	   
+	userStoryController.setProject(proyecto);
+	 this.crearForm();
+     this.salir();
+     this.volverAHomePage();
 }
 private void crearForm() {
 	 this.add(new ListView<UserStory>("losUsersStoriesEnBacklog", new PropertyModel<>(this.projectController, "listaDeUserStoryDelProyecto")) {
@@ -77,7 +79,7 @@ private void crearForm() {
 
 				@Override
 				public void onClick() {
-					ListUsersStoriesEnBacklogPage.this.backlogController.borrarUserStoryDeListaEnBacklog(item.getModelObject());
+				//	ListUsersStoriesEnBacklogPage.this.projectController.borrarUserStoryDeListaEnBacklog();
 					this.setResponsePage(new ListUsersStoriesEnBacklogPage());
 					
 				}
@@ -90,6 +92,8 @@ private void crearForm() {
 					public void onClick() {
 						ListUsersStoriesEnBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
 						this.setResponsePage(new SprintBacklogPage());
+//					userStoryController.agregarUserStoryABacklogSprint();
+//						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
 						
 					}
 

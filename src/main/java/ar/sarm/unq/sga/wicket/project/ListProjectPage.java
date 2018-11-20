@@ -13,7 +13,8 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
-import ar.sarm.unq.sga.wicket.userstory.ListaDeUserStoryDelProyectoPage;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
@@ -29,6 +30,8 @@ public class ListProjectPage extends WebPage {
 	private ProjectController projectController;
 	@SpringBean
 	protected UsuarioController usuarioController;
+	@SpringBean
+	private UserStoryController userStoryController;
 	private Usuario user;
 	private Project proyecto;
 
@@ -43,11 +46,13 @@ public class ListProjectPage extends WebPage {
 
 	public ListProjectPage(Project proy) {
 		projectController.attach(proy);
+		userStoryController.setProject(proy);
 		tablaDeProyectos();
 		botonCancelar();
 		botonVolver();
 		botonAgregar();
 		projectController.setProject(proy);
+		
 	}
 
 	public ListProjectPage() {
@@ -74,7 +79,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
+						this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 					}
 
 				});
@@ -110,16 +115,17 @@ public class ListProjectPage extends WebPage {
 					public void onClick() {
 						
 						 this.setResponsePage(new UserStoryPage(item.getModelObject()));
+						 
 					}
 
 				});
-//				item.add(new Link<String>("listaUserStory") {
+//				item.add(new Link<String>("verAgregarASPrintBacklog") {
 //					private static final long serialVersionUID = 1L;
 //
 //					@Override
 //					public void onClick() {
-//						// projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
-//						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
+//						this.setResponsePage(new SprintBacklogPage());
+//					//	this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 //					}
 //
 //				});

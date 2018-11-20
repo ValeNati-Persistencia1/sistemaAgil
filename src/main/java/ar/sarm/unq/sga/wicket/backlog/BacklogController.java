@@ -22,7 +22,7 @@ import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 
 @Service
-@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class BacklogController implements Serializable {
 
@@ -33,37 +33,39 @@ public class BacklogController implements Serializable {
 
 	@Autowired
 	private BacklogStore backlogStore;
-	
+
 	@Autowired
 	private ProjectStore projectStore;
-	
+
 	@Autowired
 	private UserStoryController userStoryController;
-	
+
 	private UserStory userStory;
-	
+
 	private Backlog backlog;
-	
+
 	private Object back;
 	private String message;
-	
+
 	private UserStoryStore userStoryStore;
-	
-	protected List<UserStory>usersstories;
+
+	protected List<UserStory> usersstories;
 
 	public BacklogController(Project proy) {
 		Project proyecto = proy;
 		Backlog back = proy.getBacklog();
 		backlogStore.attach(back);
 	}
-	public BacklogController(Backlog back){
-		usersstories=back.getUserStories();
+
+	public BacklogController(Backlog back) {
+		usersstories = back.getUserStories();
 		backlogStore.attach(backlog);
 	}
 
 	public BacklogController() {
 
 	}
+
 	public String getNombre() {
 		return nombreBacklog;
 	}
@@ -90,7 +92,7 @@ public class BacklogController implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	public Project getProyecto() {
 		return proyecto;
 	}
@@ -114,40 +116,36 @@ public class BacklogController implements Serializable {
 	public void setUserStory(UserStory userStory) {
 		this.userStory = userStory;
 	}
-	
+
 	private Backlog getBacklog() {
 		return backlog;
 	}
-	
-	public void setBacklog(Backlog backlog){
-		this.backlog=backlog;
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
 	}
-	
-	public void attach(Backlog backlog){
+
+	public void attach(Backlog backlog) {
 		backlogStore.attach(backlog);
 	}
-	
-	 public void agregarUserStoryAListaEnBacklog() {
-		 this.backlog.setUserStory(getUserStory());
-		 userStoryStore.agregarUserStory(getUserStory());
-		 this.getUsersstories().add(getUserStory());
-	 }
-	 
-	 public List<UserStory>getUserStoriesEnBacklog(Backlog backlog){
-		return backlogStore.getListaUserStoryEnBacklog(backlog);
-	 }
-	
-	public List<UserStory>getUsersstories(){
+
+	// public void agregarUserStoryAListaEnBacklog() {
+	// this.backlog.setUserStory(getUserStory());
+	// userStoryStore.agregarUserStory(getUserStory());
+	// this.getUsersstories().add(getUserStory());
+	// }
+	//
+	// public List<UserStory>getUserStoriesEnBacklog(Backlog backlog){
+	// return backlogStore.getListaUserStoryEnBacklog(backlog);
+	// }
+
+	public List<UserStory> getUsersstories() {
 		return userStoryController.getUsersstories();
 	}
-	
-	public void borrarUserStoryDeListaEnBacklog(UserStory us){
-		 this.usersstories.remove(us);
-		    
-         
-	}
-	
-	
 
-	
+	public void borrarUserStoryDeListaEnBacklog(UserStory us) {
+		this.usersstories.remove(us);
+
+	}
+
 }

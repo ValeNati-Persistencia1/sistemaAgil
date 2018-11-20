@@ -14,6 +14,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
@@ -54,6 +55,8 @@ public class ProjectController implements Serializable {
 
 	private int historyPoint;
 
+	private UserStory story;
+
 	public ProjectController() {
 
 	}
@@ -62,8 +65,13 @@ public class ProjectController implements Serializable {
 		projectStore.attach(proy);
 		usuarioStore.attach(usuario);
 		proyecto = proy;
-		user=usuario;
+		user = usuario;
 
+	}
+
+	public ProjectController(UserStory user) {
+		userStoryStore.attach(user);
+		story = user;
 	}
 
 	public ProjectController(String name) {
@@ -85,7 +93,6 @@ public class ProjectController implements Serializable {
 		projectStore.agregarProject(proyecto);
 		backlogStore.agregarBacklogStore(back);
 		proyecto.setBacklog(back);
-		//back.setProject(proyecto);
 	}
 
 	public List<Project> getProyectos() {
@@ -137,18 +144,6 @@ public class ProjectController implements Serializable {
 		return proyecto.getUsuarios();
 		// return usuarioStore.getVerUsuario(getProyecto());
 	}
-
-//	public void addUserStory() { // agregado
-//		UserStory us = new UserStory(getNombre());
-//		us.setDescripcion(descripcion);
-//		us.setValorCliente(valorCliente);
-//		us.setHistoryPoint(historyPoint);
-//		
-//		userStoryStore.insert(us);
-//		
-//
-//	}
-
 	public void agregarProyectoAlUsuario(Usuario modelObject, Project proy) {
 		projectStore.attach(proy);
 		usuarioStore.attach(modelObject);
@@ -168,13 +163,18 @@ public class ProjectController implements Serializable {
 	public List<UserStory> getListaDeUserStoryDelProyecto() {
 		return proyecto.getBacklog().getUserStories();
 	}
-///deberia devolver userstory
+
+	/// deberia devolver el usuario
 	public void setUsuario(Usuario usuario) {
-		user=usuario;
-		
+		user = usuario;
+
 	}
-//	public List<UserStory>getListaDeUserStorieDelProyecto(){
-//		return proyecto.getBacklog().getUserStories();
+
+//	public void agregarUserStoryAlBacklogSprint() {
+//		UserStory la = proyecto.getBacklog().getUserStory();
+//		la.setEstaEnBacklogSprint(true);
+//
 //	}
-	
+
+
 }

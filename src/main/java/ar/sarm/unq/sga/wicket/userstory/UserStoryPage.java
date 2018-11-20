@@ -44,8 +44,9 @@ private ProjectController projectController;
 	}
 	
 
-	public UserStoryPage(Project modelObject) {
-		userStoryController.setProject(modelObject);
+	public UserStoryPage(Project proy) {
+		projectController.attach(proy);
+		userStoryController.setProject(proy);
 		this.agregarForm();
 		this.volverAHomePage();
 	}
@@ -73,6 +74,9 @@ private ProjectController projectController;
 
 		crearUserStoryForm
 				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
+
+//		crearUserStoryForm
+//		.add(new TextField<>("usuario", new PropertyModel<>(this.userStoryController, "usuario")));
 
 //		crearUserStoryForm.add(new Link<String>("verDetalleUserStory") {
 //			private static final long serialVersionUID = 1L;

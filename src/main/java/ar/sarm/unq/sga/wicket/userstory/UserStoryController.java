@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
+import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 
@@ -29,29 +30,32 @@ public class UserStoryController implements Serializable {
 	private String descripcion;
 	private String valorCliente;
 	private int historyPoint;
+	private Usuario usuario;
+
 	@Autowired
 	private UserStoryStore userStoryStore;
-	private UserStory userStory;
+	private UserStory user;
 	private Project project;
+
 	@Autowired
 	private ProjectStore projectStore;
-
 
 	public UserStoryController() {
 
 	}
-	public UserStoryController(UserStory user) {
-		userStoryStore.attach(user);
-		userStory=user;
-		
+
+	public UserStoryController(UserStory userStory) {
+		userStoryStore.attach(userStory);
+		user = userStory;
+		setUserStory(userStory);
 
 	}
+
 	public UserStoryController(Project proy) {
 		projectStore.attach(proy);
-		project=proy;
+		project = proy;
 
 	}
-
 
 	public UserStoryController(String nombre) {
 		this.nombre = nombre;
@@ -102,11 +106,13 @@ public class UserStoryController implements Serializable {
 		us.setDescripcion(descripcion);
 		us.setValorCliente(valorCliente);
 		us.setHistoryPoint(historyPoint);
+//		us.setUsuario(usuario);
 		userStoryStore.insert(us);
 		project.getBacklog().setUserStory(us);
 		us.setProject(project);
 		us.setBacklog(project.getBacklog());
-		//agregue ultima linea para la lista de proyecto
+
+		// agregue ultima linea para la lista de proyecto
 	}
 
 	public void attach(UserStory us) {
@@ -126,26 +132,44 @@ public class UserStoryController implements Serializable {
 	}
 
 	public UserStory getUserStory() {
-		return userStory;
+		return user;
 	}
 
 	public void setUserStory(UserStory userStory) {
-		this.userStory = userStory;
+		this.user = userStory;
 	}
 
-	public void agregarUsertStorieEnSprintBacklog(UserStory user) {
-		//Backlog back = new Backlog("Backlog/sprint");
-		user.setEstaEnBacklogSprint(true);
-		
-		
-		
+
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		return projectStore.getListaDeUserStoryEnSprintBacklog();
+	}
+
+//	public int getComplejidad() {
+//		return userStoryStore.getTotalComplejidad();
+//	}
+
+	public void borrarUserStoryDeListaEnBacklog() {
+		userStoryStore.delete(user);
 
 	}
-	public List<UserStory>getListaDeUserStoryEnSprintBacklog(){
-		return userStoryStore.getListaDeUserStoryEnSprintBacklog();
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	
-	public int getComplejidad(){
-		return userStoryStore.getTotalComplejidad();
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+
+	public void agregarUserStoryABacklogSprint() {
+		getUserStory().setEstaEnBacklogSprint(true);
+		
+	}
+///no tocar funciona
+	public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
+		userStoryStore.attach(modelObject);
+		modelObject.setEstaEnBacklogSprint(true);
+		
+	}
+
 }
