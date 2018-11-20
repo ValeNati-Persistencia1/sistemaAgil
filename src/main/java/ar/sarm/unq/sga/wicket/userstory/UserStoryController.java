@@ -43,6 +43,7 @@ public class UserStoryController implements Serializable {
 	public UserStoryController(UserStory user) {
 		userStoryStore.attach(user);
 		userStory=user;
+		
 
 	}
 	public UserStoryController(Project proy) {
@@ -135,6 +136,7 @@ public class UserStoryController implements Serializable {
 	public void agregarUsertStorieEnSprintBacklog(UserStory user) {
 		//Backlog back = new Backlog("Backlog/sprint");
 		user.setEstaEnBacklogSprint(true);
+		
 		
 		
 

@@ -63,8 +63,8 @@ public class ListaDeUserStoryDelProyectoPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						ListaDeUserStoryDelProyectoPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-						this.setResponsePage(new ListUsersStoriesEnBacklogPage(proyecto));
+						userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+						this.setResponsePage(new SprintBacklogPage());
 
 						
 

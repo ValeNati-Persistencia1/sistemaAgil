@@ -74,7 +74,6 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						ListProjectPage.this.projectController.getBacklog(item.getModelObject());
 						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
 					}
 
