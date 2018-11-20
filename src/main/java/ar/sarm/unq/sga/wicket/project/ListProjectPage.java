@@ -9,15 +9,11 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
 import ar.sarm.unq.sga.wicket.userstory.ListaDeUserStoryDelProyectoPage;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;
 import ar.sarm.unq.sga.wicket.usuario.ListaDeUsuariosDelProyectoPage;
@@ -39,7 +35,6 @@ public class ListProjectPage extends WebPage {
 	public ListProjectPage(Usuario usuario) {
 		this.usuarioController.attach(usuario);
 		this.projectController.setUsuario(usuario);
-		// this.usuarioController.setUsuario(usuario);
 		tablaDeProyectos();
 		botonCancelar();
 		botonVolver();
@@ -47,6 +42,7 @@ public class ListProjectPage extends WebPage {
 	}
 
 	public ListProjectPage(Project proy) {
+		projectController.attach(proy);
 		tablaDeProyectos();
 		botonCancelar();
 		botonVolver();
@@ -78,8 +74,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						// ListProjectPage.this.projectController.getBacklog(item.getModelObject());
-						this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
+//						ListProjectPage.this.projectController.getBacklog(item.getModelObject());
+						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
 					}
 
 				});
@@ -113,22 +109,21 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-
-						// this.setResponsePage(new
-						// UserStoryPage(item.getModelObject()));
+						
+						 this.setResponsePage(new UserStoryPage(item.getModelObject()));
 					}
 
 				});
-				item.add(new Link<String>("listaUserStory") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
-						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
-					}
-
-				});
+//				item.add(new Link<String>("listaUserStory") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+//						// projectController.getListaDeUserStoryDelProyecto(item.getModelObject());
+//						this.setResponsePage(new ListaDeUserStoryDelProyectoPage(item.getModelObject()));
+//					}
+//
+//				});
 				item.add(new Link<String>("agregarProyectoAlUsuario") {
 					private static final long serialVersionUID = 1L;
 
@@ -138,7 +133,7 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
-
+//
 			}
 
 		});

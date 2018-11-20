@@ -37,7 +37,8 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 	}
 	
 	public List<UserStory>getUsersstories(){
-		return userStoryStore.getUsersstories();
+	//	return userStoryStore.getUsersstories();
+		return userStoryStore.getListaDeUserStory();
 	}
 	public void borrarUserStoryDeBacklog(UserStory us){
 		this.getListaUserStoryEnBacklog(backlog).remove(us);

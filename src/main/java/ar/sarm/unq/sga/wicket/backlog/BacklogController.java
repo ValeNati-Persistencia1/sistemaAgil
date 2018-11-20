@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.eclipse.jetty.security.UserStore;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;

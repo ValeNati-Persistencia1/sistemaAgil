@@ -16,7 +16,7 @@ public class UserStory extends Persistible {
 	private String valorCliente;
     
     @Column(name = "historyPoint", nullable = true, length = 10)
-	private String historyPoint;
+	private int historyPoint;
 
 	private boolean estaCompleta= false;
 
@@ -33,7 +33,7 @@ public class UserStory extends Persistible {
 	@ManyToOne
 	private Project project;
 	
-	 
+	private boolean estaEnBacklogSprint = false;
 
 	public UserStory() {
 
@@ -43,7 +43,7 @@ public class UserStory extends Persistible {
 		this.nombre = nombre;
 	}
 
-	public UserStory(String _valorCliente, String _historiePoint, boolean _estaCompleta, Usuario _usuario) {
+	public UserStory(String _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario) {
 		this.valorCliente = _valorCliente;
 		this.historyPoint = _historiePoint;
 		this.estaCompleta = _estaCompleta;
@@ -100,11 +100,11 @@ public class UserStory extends Persistible {
 
 	}
 
-	public String getHistoryPoint() {
+	public int getHistoryPoint() {
 		return historyPoint;
 	}
 
-	public void setHistoryPoint(String historyPoint) {
+	public void setHistoryPoint(int historyPoint) {
 		this.historyPoint = historyPoint;
 	}
 
@@ -114,6 +114,14 @@ public class UserStory extends Persistible {
 
 	public void setProject(Project project) {
 		this.project = project;
+	}
+
+	public boolean isEstaEnBacklogSprint() {
+		return estaEnBacklogSprint;
+	}
+
+	public void setEstaEnBacklogSprint(boolean estaEnBacklogSprint) {
+		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
 	
 

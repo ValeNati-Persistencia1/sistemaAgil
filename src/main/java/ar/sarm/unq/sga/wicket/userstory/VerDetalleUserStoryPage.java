@@ -14,6 +14,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 
 public class VerDetalleUserStoryPage extends WebPage {
 
@@ -51,17 +52,29 @@ public class VerDetalleUserStoryPage extends WebPage {
 				item.add(new Label("valorCliente", us.bind("valorCliente")));
 				item.add(new Label("historyPoint", us.bind("historyPoint")));
 
-				item.add(new Link<String>("agregarUserStoryABacklog") {
-					private static final long serialVersionUID = 1L;
+//				item.add(new Link<String>("agregarUserStoryABacklog") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+//						VerDetalleUserStoryPage.this.userStoryController.agregarUserStoryALaLista();
+//						this.setResponsePage(new ListUsersStoriesEnBacklogPage());
+//
+//					}
+//
+//				});
+				item.add(new Link<String>("agregarUserStoryASprintBacklog") {
+				private static final long serialVersionUID = 1L;
 
-					@Override
-					public void onClick() {
-						VerDetalleUserStoryPage.this.userStoryController.agregarUserStoryALaLista();
-						this.setResponsePage(new ListUsersStoriesEnBacklogPage());
+				@Override
+				public void onClick() {
+					VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+					this.setResponsePage(new SprintBacklogPage());
 
-					}
+				}
 
-				});
+			});
+
 
 				item.add(new Link<String>("borrarUserStory") {
 					private static final long serialVersionUID = 1L;
@@ -80,6 +93,7 @@ public class VerDetalleUserStoryPage extends WebPage {
 		});
 
 	}
+	
 
 	public void salir() {
 		this.add(new Link<String>("salir") {

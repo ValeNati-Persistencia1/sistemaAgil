@@ -17,6 +17,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
+import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.userstory.VerDetalleUserStoryPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
@@ -31,6 +32,9 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	private UserStoryController userStoryController;
 	private UserStory userStory;
 	private Backlog backlog;
+	
+	@SpringBean
+	private ProjectController projectController;
   public ListUsersStoriesEnBacklogPage(){
      this.crearForm();
      this.salir();
@@ -46,10 +50,21 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	     this.volverAHomePage();
 	  }
 
+  public ListUsersStoriesEnBacklogPage(UserStory us){
+      this.userStory=us;
+	     this.crearForm();
+	     this.salir();
+	     this.volverAHomePage();
+	  }
 
-   private void crearForm() {
-	   this.add(new ListView<UserStory>("losUsersStoriesEnBacklog", new PropertyModel<>(this.backlogController, "usersstories")) {
-
+   public ListUsersStoriesEnBacklogPage(Project proyecto) {
+	projectController.attach(proyecto);
+	projectController.setProject(proyecto);
+	backlogController.setProyecto(proyecto);
+	   
+}
+private void crearForm() {
+	 this.add(new ListView<UserStory>("losUsersStoriesEnBacklog", new PropertyModel<>(this.projectController, "listaDeUserStoryDelProyecto")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -73,7 +88,7 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 
 					@Override
 					public void onClick() {
-						
+						ListUsersStoriesEnBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
 						this.setResponsePage(new SprintBacklogPage());
 						
 					}

@@ -48,6 +48,12 @@ public class ProjectController implements Serializable {
 
 	private Usuario user;
 
+	private String descripcion;
+
+	private String valorCliente;
+
+	private int historyPoint;
+
 	public ProjectController() {
 
 	}
@@ -109,9 +115,8 @@ public class ProjectController implements Serializable {
 		this.message = message;
 	}
 
-	public Backlog getBacklog(Project proy) {
-		projectStore.attach(proy);
-		return proy.getBacklog();
+	public Backlog getBacklog() {
+		return proyecto.getBacklog();
 	}
 
 	public void setBacklog(Backlog backlog) {
@@ -133,9 +138,16 @@ public class ProjectController implements Serializable {
 		// return usuarioStore.getVerUsuario(getProyecto());
 	}
 
-	public void addUserStory(UserStory us) { // agregado
-		userStoryStore.insert(us);
-	}
+//	public void addUserStory() { // agregado
+//		UserStory us = new UserStory(getNombre());
+//		us.setDescripcion(descripcion);
+//		us.setValorCliente(valorCliente);
+//		us.setHistoryPoint(historyPoint);
+//		
+//		userStoryStore.insert(us);
+//		
+//
+//	}
 
 	public void agregarProyectoAlUsuario(Usuario modelObject, Project proy) {
 		projectStore.attach(proy);
@@ -153,12 +165,16 @@ public class ProjectController implements Serializable {
 
 	}
 
-	public List<UserStory> getListaDeUserStoryDelProyecto(Project proy) {
-		return proy.getBacklog().getUserStories();
+	public List<UserStory> getListaDeUserStoryDelProyecto() {
+		return proyecto.getBacklog().getUserStories();
 	}
-
+///deberia devolver userstory
 	public void setUsuario(Usuario usuario) {
 		user=usuario;
 		
 	}
+//	public List<UserStory>getListaDeUserStorieDelProyecto(){
+//		return proyecto.getBacklog().getUserStories();
+//	}
+	
 }

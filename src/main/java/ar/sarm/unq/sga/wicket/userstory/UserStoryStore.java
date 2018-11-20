@@ -2,12 +2,10 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
-import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 
 @Component
@@ -20,9 +18,10 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		return findByName(name);
 	}
 
-	public List<UserStory> getUsersstories() {
-		return getSession().createQuery("FROM UserStory", UserStory.class).list();
-	}
+	//cambiado por getlistaUserStory, q va a mostrar los user story q no estan en sprintBacklog
+//	public List<UserStory> getUsersstories() {
+//		return getSession().createQuery("FROM UserStory", UserStory.class).list();
+//	}
 
 	public void agregarUserStory(UserStory user) {
 		getSession().save(user);
@@ -34,6 +33,11 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 				.getResultList();
 	}
 
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+		query.setParameter("estaEnBacklogSprint", true);
+		return query.list();
+	}
 //	public void agregarProjectAUserStory(Project project){ 
 //	Query<UserStory> query= getSession().createQuery("FROM UserStory", UserStory.class);
 //				query.setParameter("project", project);
@@ -42,5 +46,13 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 //         
 //	}
 
-    
+	public List<UserStory> getListaDeUserStory() {
+		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+		query.setParameter("estaEnBacklogSprint", false);
+		return query.list();
+	}
+
+    public int getTotalComplejidad(){
+    	return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u->u.getHistoryPoint()).sum();
+    }
 }

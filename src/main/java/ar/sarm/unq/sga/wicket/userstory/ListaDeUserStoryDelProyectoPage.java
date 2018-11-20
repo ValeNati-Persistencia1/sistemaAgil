@@ -2,9 +2,6 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -17,6 +14,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 
@@ -40,35 +38,35 @@ public class ListaDeUserStoryDelProyectoPage extends WebPage {
 	}
 
 	public ListaDeUserStoryDelProyectoPage(Project proy) {
-		userStoryController.attach(proy.getBacklog().getUserStory());
-		backlog =proy.getBacklog();
-		userStoryController.setProject(proy);
+		 userStoryController.attach(proy.getBacklog().getUserStory());
+		backlog = proy.getBacklog();
+		 userStoryController.setProject(proy);
 		this.proyecto = proy;
+		projectController.attach(proy);
+		projectController.setProject(proy);
 		lista();
 		volverAtras();
 	}
 
 	private void lista() {
 		this.add(new ListView<UserStory>("losUsersStories",
-				new PropertyModel<>(this.userStoryController,"listaDeUerStoryProy")) {
-
+				new PropertyModel<>(this.projectController, "listaDeUserStoryDelProyecto")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombre")));
-//				item.add(new TextArea<>("descripcion", us.bind("descripcion")));
-//				item.add(new Label("valorCliente", us.bind("valorCliente")));
-//				item.add(new Label("historyPoint", us.bind("historyPoint")));
 
-				item.add(new Link<String>("agregarUserStoryABacklog") {
+				item.add(new Link<String>("agregarASprintBacklog") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-						ListaDeUserStoryDelProyectoPage.this.userStoryController.agregarUserStoryALaLista();
-						this.setResponsePage(new ListaDeUserStoryDelProyectoPage());
+//						ListaDeUserStoryDelProyectoPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+						this.setResponsePage(new ListUsersStoriesEnBacklogPage(proyecto));
+
+						
 
 					}
 
@@ -98,7 +96,7 @@ public class ListaDeUserStoryDelProyectoPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListProjectPage());
 
 			}
 
@@ -111,7 +109,7 @@ public class ListaDeUserStoryDelProyectoPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new UserStoryPage());
+				this.setResponsePage(new ListProjectPage());
 
 			}
 

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.TipoDeRol;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
@@ -59,6 +58,7 @@ public class GenerateData {
 		// usuario3.setProyecto(proyecto);
 		// usuario.setProyecto(proy);
 		// proy.setUsuarios(usuarios1);
+		 us.setHistoryPoint(4);
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 
 		projectStore.insert(proyecto);
