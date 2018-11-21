@@ -9,6 +9,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
@@ -21,8 +22,9 @@ public class SprintBacklogPage extends WebPage {
 	@SpringBean
 	private UserStoryController userStoryController;
 	// cambie el nombre por userStoryController;
-@SpringBean
-private ProjectController projectController;
+	@SpringBean
+	private ProjectController projectController;
+	private Backlog  backlog;
 
 	public SprintBacklogPage() {
 		this.agregarAUserStoryFormBacklogsCompletadas();
@@ -33,12 +35,13 @@ private ProjectController projectController;
 		userStoryController.setUserStory(user);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 	}
+
 	public SprintBacklogPage(Project proy) {
+		projectController.attach(proy);
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 	}
-
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
@@ -49,9 +52,8 @@ private ProjectController projectController;
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> backlogCompletado = new CompoundPropertyModel<>(item.getModel());
 				item.add(new Label("nombre", backlogCompletado.bind("nombre")));
-				item.add(new Label("completa",backlogCompletado.bind("estaCompleta")));
-				item.add(new Label("complejidad",backlogCompletado.bind("historyPoint")));
-//			item.add(new TextField<UserStoryController>("complejidad", new PropertyModel<>(userStoryController,"complejidad")));
+				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
+				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
 
 				item.add(new Link<String>("borrarBacklog") {
 					private static final long serialVersionUID = 1L;
@@ -65,41 +67,48 @@ private ProjectController projectController;
 					}
 
 				});
-//				this.add(new Link<String>("salir") {
+//				 item.add(new Link<String>("agregarUserStoryASprint") {
+//						private static final long serialVersionUID = 1L;
 //
-//					private static final long serialVersionUID = 1L;
+//						@Override
+//						public void onClick() {
+//							SprintBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+//							this.setResponsePage(new SprintBacklogPage());
+//						}
 //
-//					@Override
-//					public void onClick() {
-//						// this.setResponsePage(new BacklogPage());
-//						this.setResponsePage(new ListUsersStoriesEnBacklogPage());
-//
-//					}
-//
-//				});
+//					});
+
+				// this.add(new Link<String>("salir") {
+				//
+				// private static final long serialVersionUID = 1L;
+				//
+				// @Override
+				// public void onClick() {
+				// // this.setResponsePage(new BacklogPage());
+				// this.setResponsePage(new ListUsersStoriesEnBacklogPage());
+				//
+				// }
+				//
+				// });
 			}
 
-
-			
 		});
 	}
 }
-			
 
-//				item.add(new Link<String>("sacarDeSublistaBacklogsCompletados") {
+// item.add(new Link<String>("sacarDeSublistaBacklogsCompletados") {
 //
-//					private static final long serialVersionUID = 1L;
+// private static final long serialVersionUID = 1L;
 //
-//					@Override
-//					public void onClick() {
-//						// this.setResponsePage(new
-//						// UserStory(item.getModelObject()));
-//						// this.setResponsePage(new
-//						// SacarBacklogsCompletadosPage(item.getModelObject()));
+// @Override
+// public void onClick() {
+// // this.setResponsePage(new
+// // UserStory(item.getModelObject()));
+// // this.setResponsePage(new
+// // SacarBacklogsCompletadosPage(item.getModelObject()));
 //
-//					}
+// }
 //
-//				});
-			
-		
-//		}
+// });
+
+// }

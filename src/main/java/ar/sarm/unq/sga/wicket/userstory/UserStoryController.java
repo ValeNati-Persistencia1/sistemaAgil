@@ -13,6 +13,7 @@ import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 
@@ -40,19 +41,23 @@ public class UserStoryController implements Serializable {
 	@Autowired
 	private ProjectStore projectStore;
 
+	@Autowired
+	private BacklogStore backlogStore;
+
 	public UserStoryController() {
 
 	}
 
-	public UserStoryController(UserStory userStory) {
-		userStoryStore.attach(userStory);
-		user = userStory;
-		setUserStory(userStory);
-
-	}
+	// public UserStoryController(UserStory userStory) {
+	// userStoryStore.attach(userStory);
+	// user = userStory;
+	// setUserStory(userStory);
+	//
+	// }
 
 	public UserStoryController(Project proy) {
 		projectStore.attach(proy);
+		user.setProject(proy);
 		project = proy;
 
 	}
@@ -106,7 +111,7 @@ public class UserStoryController implements Serializable {
 		us.setDescripcion(descripcion);
 		us.setValorCliente(valorCliente);
 		us.setHistoryPoint(historyPoint);
-//		us.setUsuario(usuario);
+		// us.setUsuario(usuario);
 		userStoryStore.insert(us);
 		project.getBacklog().setUserStory(us);
 		us.setProject(project);
@@ -139,14 +144,13 @@ public class UserStoryController implements Serializable {
 		this.user = userStory;
 	}
 
+	// public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+	// return projectStore.getListaDeUserStoryEnSprintBacklog();
+	// }
 
-	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		return projectStore.getListaDeUserStoryEnSprintBacklog();
-	}
-
-//	public int getComplejidad() {
-//		return userStoryStore.getTotalComplejidad();
-//	}
+	// public int getComplejidad() {
+	// return userStoryStore.getTotalComplejidad();
+	// }
 
 	public void borrarUserStoryDeListaEnBacklog() {
 		userStoryStore.delete(user);
@@ -161,15 +165,21 @@ public class UserStoryController implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public void agregarUserStoryABacklogSprint() {
-		getUserStory().setEstaEnBacklogSprint(true);
-		
-	}
-///no tocar funciona
+	/// no tocar funciona
 	public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
 		modelObject.setEstaEnBacklogSprint(true);
-		
+
+	}
+
+	public void completarUserStory(UserStory modelObject) {
+		userStoryStore.attach(modelObject);
+		modelObject.setEstaCompleta(true);
+
+	}
+
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		return userStoryStore.getListaDeUserStoryEnSprintBacklog();
 	}
 
 }

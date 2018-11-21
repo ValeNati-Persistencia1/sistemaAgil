@@ -39,21 +39,30 @@
 					</thead>
 					<tbody>
 						<tr wicket:id="losUsersStoriesEnBacklog">
-							<td wicket:id="nombre" class="columna" />                           
-                           
-                            <td>	
+							<td wicket:id="nombre" class="columna" />
+							<td wicket:id="completa" class="columna" />
+<!-- 							<td type="button" class="btn btn-primary">Completa <span -->
+<!-- 							class="badge badge-light" , wicket:id="completa"></span> -->
+<!-- 						</td> -->
+							<td>
 								<button wicket:id="borrarUserStory"
-								class="btn btn-warning btn-sm">Borrar UserStory</button>
+									class="btn btn-warning btn-sm">Borrar UserStory</button>
 							</td>
-							<td>	
+									<td>
+								<button wicket:id="completarUserStory"
+									class="btn btn-warning btn-sm">completer</button>
+							</td>
+							<td>
 								<button wicket:id="agregarUserStoryASprint"
-								class="btn btn-warning btn-sm">Agregar A Sprint Backlog</button>
+									class="btn btn-warning btn-sm">Agregar A Sprint
+									Backlog</button>
 							</td>
 						</tr>
 					</tbody>
-						
+
 				</table>
-			<button wicket:id="salir" class="btn btn-primary btn-sn">Salir</button>
+				
+				<button wicket:id="salir" class="btn btn-primary btn-sn">Salir</button>
 			</div>
 			<div class="col-md-12">
 				<a wicket:id="volver">Volver atrás</a>

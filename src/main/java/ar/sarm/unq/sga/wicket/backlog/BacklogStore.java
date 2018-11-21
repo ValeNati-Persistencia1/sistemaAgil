@@ -23,7 +23,7 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 		return null;
 	}
 
-	public void agregarBacklogStore(Backlog back) {		
+	public void agregarBacklogStore(Backlog back) {
 		this.getSession().save(back);
 
 	}
@@ -35,20 +35,18 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 	public void setBacklog(Backlog backlog) {
 		this.backlog = backlog;
 	}
-	
-	public List<UserStory>getUsersstories(){
-	//	return userStoryStore.getUsersstories();
+
+	public List<UserStory> getUsersstories() {
+		// return userStoryStore.getUsersstories();
 		return userStoryStore.getListaDeUserStory();
 	}
-	public void borrarUserStoryDeBacklog(UserStory us){
-		this.getListaUserStoryEnBacklog(backlog).remove(us);
-	}
 
-	public List<UserStory>getListaUserStoryEnBacklog(Backlog back){
-		return getSession().createQuery("FROM Backlog WHERE userStory = : us",UserStory.class)
-				           .setParameterList("us",back.getUserStories())
-				           .getResultList();
-	}
-	
+//	public void borrarUserStoryDeBacklog(UserStory us) {
+//		this.getListaUserStoryEnBacklog(backlog).remove(us);
+//	}
 
+//	public List<UserStory> getListaUserStoryEnBacklog(Backlog back) {
+//		return getSession().createQuery("FROM Backlog WHERE userStory = : us", UserStory.class)
+//				.setParameterList("us", back.getUserStories()).getResultList();
+//	}
 }

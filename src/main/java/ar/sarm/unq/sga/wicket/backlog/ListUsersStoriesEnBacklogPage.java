@@ -31,6 +31,8 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	@SpringBean
 	private ProjectController projectController;
 
+	private Project project;
+
 //	private Project project;
   public ListUsersStoriesEnBacklogPage(){
      this.crearForm();
@@ -47,20 +49,21 @@ public class ListUsersStoriesEnBacklogPage extends WebPage{
 	     this.volverAHomePage();
 	  }
 
-  public ListUsersStoriesEnBacklogPage(UserStory us){
-      this.userStory=us;
-      userStoryController.attach(us);
-	 userStoryController.setUserStory(us);
-      this.crearForm();
-	     this.salir();
-	     this.volverAHomePage();
-	  }
+//  public ListUsersStoriesEnBacklogPage(UserStory us){
+//      this.userStory=us;
+//      userStoryController.attach(us);
+//	 userStoryController.setUserStory(us);
+//      this.crearForm();
+//	     this.salir();
+//	     this.volverAHomePage();
+//	  }
 
    public ListUsersStoriesEnBacklogPage(Project proyecto) {
 	projectController.attach(proyecto);
 	projectController.setProject(proyecto);
 	backlogController.setProyecto(proyecto);
 	userStoryController.setProject(proyecto);
+	project=proyecto;
 	 this.crearForm();
      this.salir();
      this.volverAHomePage();
@@ -73,14 +76,13 @@ private void crearForm() {
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory>us=new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombre")));
-			
-	         item.add(new Link<String>("borrarUserStory") {
+				item.add(new Label("completa", us.bind("estaCompleta")));
+				
+				item.add(new Link<String>("borrarUserStory") {
 				private static final long serialVersionUID = 1L;
 
 				@Override
 				public void onClick() {
-				//	ListUsersStoriesEnBacklogPage.this.projectController.borrarUserStoryDeListaEnBacklog();
-					this.setResponsePage(new ListUsersStoriesEnBacklogPage());
 					
 				}
 
@@ -91,15 +93,23 @@ private void crearForm() {
 					@Override
 					public void onClick() {
 						ListUsersStoriesEnBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-						this.setResponsePage(new SprintBacklogPage());
-//					userStoryController.agregarUserStoryABacklogSprint();
-//						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
-						
+						this.setResponsePage(new SprintBacklogPage(project));
 					}
 
 				});
 		         
-	         
+	         item.add(new Link<String>("completarUserStory") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						ListUsersStoriesEnBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
+						this.setResponsePage(new SprintBacklogPage());
+					}
+
+				});
+		         
+
 
 		}
 

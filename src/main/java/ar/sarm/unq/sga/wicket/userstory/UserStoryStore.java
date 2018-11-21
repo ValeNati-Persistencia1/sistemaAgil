@@ -18,41 +18,35 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		return findByName(name);
 	}
 
-	//cambiado por getlistaUserStory, q va a mostrar los user story q no estan en sprintBacklog
-//	public List<UserStory> getUsersstories() {
-//		return getSession().createQuery("FROM UserStory", UserStory.class).list();
-//	}
+	// cambiado por getlistaUserStory, q va a mostrar los user story q no estan
+	// en sprintBacklog
+	// public List<UserStory> getUsersstories() {
+	// return getSession().createQuery("FROM UserStory",
+	// UserStory.class).list();
+	// }
 
 	public void agregarUserStory(UserStory user) {
 		getSession().save(user);
 	}
-//agregue la query
+
+	// agregue la query
 	public List<UserStory> getBacklogsCompletados() {
 		return getSession().createQuery("FROM UserStory WHERE estaCompleta = : completa", UserStory.class)
-				.setParameter("completa", true)
-				.getResultList();
+				.setParameter("completa", true).getResultList();
 	}
 
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
-//		query.setParameter("estaEnBacklogSprint", true);
-//		return query.list();
-//	}
-//	public void agregarProjectAUserStory(Project project){ 
-//	Query<UserStory> query= getSession().createQuery("FROM UserStory", UserStory.class);
-//				query.setParameter("project", project);
-//				//query.setParameterList("usersStories",this.getListUsersStories());
-//	            ((Session) query).save(project);
-//         
-//	}
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		Query<UserStory> query = getSession()
+				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+		query.setParameter("estaEnBacklogSprint", true);
+		return query.list();
+	}
 
 	public List<UserStory> getListaDeUserStory() {
-		Query<UserStory> query = getSession().createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+		Query<UserStory> query = getSession()
+				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
 		query.setParameter("estaEnBacklogSprint", false);
 		return query.list();
 	}
 
-//    public int getTotalComplejidad(){
-//    	return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u->u.getHistoryPoint()).sum();
-//    }
 }

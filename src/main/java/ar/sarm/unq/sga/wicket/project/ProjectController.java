@@ -144,6 +144,7 @@ public class ProjectController implements Serializable {
 		return proyecto.getUsuarios();
 		// return usuarioStore.getVerUsuario(getProyecto());
 	}
+
 	public void agregarProyectoAlUsuario(Usuario modelObject, Project proy) {
 		projectStore.attach(proy);
 		usuarioStore.attach(modelObject);
@@ -169,12 +170,5 @@ public class ProjectController implements Serializable {
 		user = usuario;
 
 	}
-
-//	public void agregarUserStoryAlBacklogSprint() {
-//		UserStory la = proyecto.getBacklog().getUserStory();
-//		la.setEstaEnBacklogSprint(true);
-//
-//	}
-
 
 }

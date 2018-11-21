@@ -3,14 +3,9 @@ package ar.sarm.unq.sga.wicket.backlog;
 import java.io.Serializable;
 import java.util.List;
 
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.eclipse.jetty.security.UserStore;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +32,6 @@ public class BacklogController implements Serializable {
 	@Autowired
 	private ProjectStore projectStore;
 
-	@Autowired
 	private UserStoryController userStoryController;
 
 	private UserStory userStory;
@@ -129,16 +123,6 @@ public class BacklogController implements Serializable {
 		backlogStore.attach(backlog);
 	}
 
-	// public void agregarUserStoryAListaEnBacklog() {
-	// this.backlog.setUserStory(getUserStory());
-	// userStoryStore.agregarUserStory(getUserStory());
-	// this.getUsersstories().add(getUserStory());
-	// }
-	//
-	// public List<UserStory>getUserStoriesEnBacklog(Backlog backlog){
-	// return backlogStore.getListaUserStoryEnBacklog(backlog);
-	// }
-
 	public List<UserStory> getUsersstories() {
 		return userStoryController.getUsersstories();
 	}
@@ -147,5 +131,4 @@ public class BacklogController implements Serializable {
 		this.usersstories.remove(us);
 
 	}
-
 }
