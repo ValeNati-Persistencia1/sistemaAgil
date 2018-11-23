@@ -43,8 +43,6 @@ public class ListaDeProyectosDelUsuarioPage extends WebPage {
 		salir();
 	}
 
-	//
-	//
 	public void tablaDeProyectosDelUsuario() {
 		this.add(new ListView<Project>("losProyectos",
 				new PropertyModel<>(this.usuarioController, "listaDeProyectosDelUsuario")) {

@@ -17,7 +17,7 @@ public class Backlog extends Persistible {
 
 	@OneToMany(mappedBy = "backlog", cascade = CascadeType.PERSIST)
 	private List<UserStory> userStories = new ArrayList<>();
-	
+
 	private UserStory userStory;
 
 	public Backlog() {
@@ -45,16 +45,12 @@ public class Backlog extends Persistible {
 		this.userStories = userStories;
 	}
 
-	public UserStory getUserStory(){
+	public UserStory getUserStory() {
 		return userStory;
 	}
+
 	public void setUserStory(UserStory us) {
-       this.userStory=us;		
+		this.userStory = us;
 	}
-	
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		return this.getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-//				.collect(Collectors.toList());
-//	}
 
 }

@@ -49,12 +49,12 @@ public class UserStoryController implements Serializable {
 
 	}
 
-	 public UserStoryController(UserStory userStory) {
-	 userStoryStore.attach(userStory);
-	 user = userStory;
-	 setUserStory(userStory);
-	
-	 }
+	public UserStoryController(UserStory userStory) {
+		userStoryStore.attach(userStory);
+		user = userStory;
+		setUserStory(userStory);
+
+	}
 
 	public UserStoryController(Project proy) {
 		projectStore.attach(proy);
@@ -145,9 +145,9 @@ public class UserStoryController implements Serializable {
 		this.user = userStory;
 	}
 
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		return projectStore.getListaDeUserStoryEnSprintBacklog();
-//	}
+	 public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+	 return projectStore.getListaDeUserStoryEnSprintBacklog();
+	 }
 
 	// public int getComplejidad() {
 	// return userStoryStore.getTotalComplejidad();
@@ -178,9 +178,5 @@ public class UserStoryController implements Serializable {
 		modelObject.setEstaCompleta(true);
 
 	}
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		return userStoryStore.getListaDeUserStoryEnSprintBacklog().stream().filter(u -> u.isEstaEnBacklogSprint())
-//				.collect(Collectors.toList());
-//	}
-	
+
 }

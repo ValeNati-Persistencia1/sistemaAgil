@@ -31,7 +31,7 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 
 	// agregue la query
 	public List<UserStory> getBacklogsCompletados() {
-		return getSession().createQuery("FROM UserStory WHERE estaCompleta = : completa", UserStory.class)
+		return getSession().createQuery("FROM UserStory WHERE estaCompleta = : completa ORDER BY estaCompleta = true", UserStory.class)
 				.setParameter("completa", true).getResultList();
 	}
 
@@ -44,7 +44,7 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 
 	public List<UserStory> getListaDeUserStory() {
 		Query<UserStory> query = getSession()
-				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint ", UserStory.class);
 		query.setParameter("estaEnBacklogSprint", false);
 		return query.list();
 	}

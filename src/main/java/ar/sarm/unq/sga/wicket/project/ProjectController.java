@@ -172,8 +172,9 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		return getListaDeUserStoryDelProyecto().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-				.collect(Collectors.toList());
+//		return getListaDeUserStoryDelProyecto().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+//				.collect(Collectors.toList());
+		return projectStore.getListaDeUserStoryEnSprintBacklog();
 	}
 
 	public void borrarUsuario(Usuario modelObject) {

@@ -60,8 +60,15 @@ public class UserStory extends Persistible {
 		this.valorCliente = valorCliente;
 	}
 
-	public boolean isEstaCompleta() {
-		return estaCompleta;
+	public String isEstaCompleta() {
+		if(estaCompleta == true){
+			return "Completa";
+		}
+		else{
+			
+		
+		return "Incompleta";
+		}
 	}
 
 	public void setEstaCompleta(boolean estaCompleta) {
