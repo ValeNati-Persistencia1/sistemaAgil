@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 
 @Entity
@@ -18,6 +19,7 @@ public class UserStory extends Persistible {
     @Column(name = "historyPoint", nullable = true, length = 10)
 	private int historyPoint;
 
+   @OrderBy("estacompleta = true")
 	private boolean estaCompleta= false;
 
 	private Usuario usuario;

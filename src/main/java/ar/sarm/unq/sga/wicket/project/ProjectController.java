@@ -2,6 +2,7 @@ package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -14,7 +15,6 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
-import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
@@ -171,4 +171,14 @@ public class ProjectController implements Serializable {
 
 	}
 
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		return getListaDeUserStoryDelProyecto().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+				.collect(Collectors.toList());
+	}
+
+	public void borrarUsuario(Usuario modelObject) {
+		proyecto.borrarUsuarioDelProyecto(modelObject);
+		
+	}
+	
 }

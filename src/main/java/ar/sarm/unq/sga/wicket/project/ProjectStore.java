@@ -65,4 +65,9 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		return query.list();
 	
 }
+
+	public void borrarUsuarioDelProy(Usuario user) {
+		
+		
+	}
 }

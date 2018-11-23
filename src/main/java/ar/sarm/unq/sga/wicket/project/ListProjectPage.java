@@ -119,16 +119,16 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
-//				item.add(new Link<String>("verAgregarASPrintBacklog") {
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					public void onClick() {
-//						this.setResponsePage(new SprintBacklogPage());
-//					//	this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
-//					}
-//
-//				});
+				item.add(new Link<String>("verListaSprintBacklog") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
+					//	this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
+					}
+
+				});
 				item.add(new Link<String>("agregarProyectoAlUsuario") {
 					private static final long serialVersionUID = 1L;
 

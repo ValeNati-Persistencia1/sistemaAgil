@@ -2,6 +2,7 @@ package ar.sarm.unq.sga.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -50,6 +51,10 @@ public class Backlog extends Persistible {
 	public void setUserStory(UserStory us) {
        this.userStory=us;		
 	}
-
+	
+//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+//		return this.getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+//				.collect(Collectors.toList());
+//	}
 
 }

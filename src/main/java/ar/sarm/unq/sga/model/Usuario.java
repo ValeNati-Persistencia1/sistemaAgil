@@ -3,6 +3,7 @@ package ar.sarm.unq.sga.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -14,7 +15,7 @@ public class Usuario extends Persistible {
 	private String apellido;
 	private String nombre;
 
-	@ManyToMany
+	@ManyToMany(cascade= CascadeType.REMOVE)
 	private List<Project> project = new ArrayList<Project>();
 
 	@OneToOne

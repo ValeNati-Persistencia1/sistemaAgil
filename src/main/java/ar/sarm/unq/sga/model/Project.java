@@ -68,12 +68,16 @@ public class Project extends Persistible {
 		this.usuarios.add(usuarios);
 	}
 
-	// public TipoDeRol getTipoDeRol() {
-	// return tipoDeRol;
-	// }
-	//
-	// public void setTipoDeRol(TipoDeRol tipoDeRol) {
-	// this.tipoDeRol = tipoDeRol;
-	// }
+	public void borrarUsuarioDelProyecto(Usuario user) {
+		usuarios.remove(user);
+
+	}
+
+	// user.getProyecto(). //remove(user);
+	// user.setProyecto(null);
+	// public void removeItem(Item item) {
+	// this.getItems().remove(item);
+	// item.setMaguito(null);
+	// }}
 
 }

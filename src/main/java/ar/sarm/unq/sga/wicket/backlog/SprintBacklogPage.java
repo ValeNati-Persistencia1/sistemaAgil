@@ -24,7 +24,9 @@ public class SprintBacklogPage extends WebPage {
 	// cambie el nombre por userStoryController;
 	@SpringBean
 	private ProjectController projectController;
-	private Backlog  backlog;
+	@SpringBean
+	private BacklogController backlogController;
+	private Backlog backlog;
 
 	public SprintBacklogPage() {
 		this.agregarAUserStoryFormBacklogsCompletadas();
@@ -45,7 +47,9 @@ public class SprintBacklogPage extends WebPage {
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
-				new PropertyModel<>(this.userStoryController, "listaDeUserStoryEnSprintBacklog")) {
+				// new PropertyModel<>(this.userStoryController,
+				// "listaDeUserStoryEnSprintBacklog")) {
+				new PropertyModel<>(this.projectController, "listaDeUserStoryEnSprintBacklog")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -67,16 +71,16 @@ public class SprintBacklogPage extends WebPage {
 					}
 
 				});
-//				 item.add(new Link<String>("agregarUserStoryASprint") {
-//						private static final long serialVersionUID = 1L;
-//
-//						@Override
-//						public void onClick() {
-//							SprintBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-//							this.setResponsePage(new SprintBacklogPage());
-//						}
-//
-//					});
+				// item.add(new Link<String>("agregarUserStoryASprint") {
+				// private static final long serialVersionUID = 1L;
+				//
+				// @Override
+				// public void onClick() {
+				// SprintBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+				// this.setResponsePage(new SprintBacklogPage());
+				// }
+				//
+				// });
 
 				// this.add(new Link<String>("salir") {
 				//

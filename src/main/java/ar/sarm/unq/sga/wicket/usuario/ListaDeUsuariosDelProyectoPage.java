@@ -53,7 +53,7 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						// ListaDeUsuariosDelProyectoPage.this.usuarioController.borrarUsuario(item.getModelObject());
+						 ListaDeUsuariosDelProyectoPage.this.projectController.borrarUsuario(item.getModelObject());
 						// this.setResponsePage(new ListProjectPage());
 					}
 
