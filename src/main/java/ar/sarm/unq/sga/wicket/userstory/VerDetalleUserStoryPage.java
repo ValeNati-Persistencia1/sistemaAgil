@@ -13,8 +13,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
-import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 
 public class VerDetalleUserStoryPage extends WebPage {
 

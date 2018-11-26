@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
+import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
@@ -30,12 +31,14 @@ public class SprintBacklogPage extends WebPage {
 
 	public SprintBacklogPage() {
 		this.agregarAUserStoryFormBacklogsCompletadas();
+		salir();
 	}
 
 	public SprintBacklogPage(UserStory user) {
 		userStoryController.attach(user);
 		userStoryController.setUserStory(user);
 		this.agregarAUserStoryFormBacklogsCompletadas();
+		salir();
 	}
 
 	public SprintBacklogPage(Project proy) {
@@ -43,6 +46,7 @@ public class SprintBacklogPage extends WebPage {
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
 		this.agregarAUserStoryFormBacklogsCompletadas();
+		salir();
 	}
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
@@ -59,18 +63,18 @@ public class SprintBacklogPage extends WebPage {
 				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
 				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
 
-				item.add(new Link<String>("borrarBacklog") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// this.setResponsePage(new
-						// UserStory(item.getModelObject()));
-						// this.setResponsePage(new
-						// EliminarBacklogPage(item.getModelObject()));
-					}
-
-				});
+				// item.add(new Link<String>("borrarBacklog") {
+				// private static final long serialVersionUID = 1L;
+				//
+				// @Override
+				// public void onClick() {
+				// // this.setResponsePage(new
+				// UserStory(item.getModelObject()));
+				// this.setResponsePage(new
+				// EliminarBacklogPage(item.getModelObject()));
+				// }
+				//
+				// });
 				// item.add(new Link<String>("agregarUserStoryASprint") {
 				// private static final long serialVersionUID = 1L;
 				//
@@ -82,18 +86,20 @@ public class SprintBacklogPage extends WebPage {
 				//
 				// });
 
-				// this.add(new Link<String>("salir") {
-				//
-				// private static final long serialVersionUID = 1L;
-				//
-				// @Override
-				// public void onClick() {
-				// // this.setResponsePage(new BacklogPage());
-				// this.setResponsePage(new ListUsersStoriesEnBacklogPage());
-				//
-				// }
-				//
-				// });
+			}
+
+		});
+	}
+
+	private void salir() {
+		this.add(new Link<String>("salir") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListProjectPage());
+
 			}
 
 		});

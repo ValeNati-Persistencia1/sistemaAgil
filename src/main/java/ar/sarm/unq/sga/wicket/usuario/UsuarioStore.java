@@ -2,7 +2,6 @@ package ar.sarm.unq.sga.wicket.usuario;
 
 import java.util.List;
 
-import org.hibernate.hql.internal.classic.SelectParser;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -51,17 +50,5 @@ public class UsuarioStore extends HomeGeneralSession<Usuario> {
 		return getSession().createQuery("FROM Usuario", Usuario.class).list();
 
 	}
-
-	// public void modificarCarrera(Carrera carrera) {
-	// Query<Carrera> query = getSession().createQuery("UPDATE Carrera set
-	// nombre = : nombre WHERE id = id");
-	// query.setParameter("nombre", carrera.getNombre());
-	// query.executeUpdate();
-	//
-
-	// public List<Project> getProyectos(String apellido) {
-	// return getSession().createQuery("FROM Project WHERE apellido = :
-	// apellido", Project.class).list();
-	// }
 
 }

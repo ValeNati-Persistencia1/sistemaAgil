@@ -162,24 +162,21 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryDelProyecto() {
-		return proyecto.getBacklog().getUserStories();
+		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == false)
+				.collect(Collectors.toList());
 	}
 
-	/// deberia devolver el usuario
 	public void setUsuario(Usuario usuario) {
 		user = usuario;
 
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		return getListaDeUserStoryDelProyecto().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-//				.collect(Collectors.toList());
-		return projectStore.getListaDeUserStoryEnSprintBacklog();
+		// return getListaDeUserStoryDelProyecto().stream().filter(u ->
+		// u.isEstaEnBacklogSprint() == true)
+		// .collect(Collectors.toList());
+		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+				.collect(Collectors.toList());
 	}
 
-	public void borrarUsuario(Usuario modelObject) {
-		proyecto.borrarUsuarioDelProyecto(modelObject);
-		
-	}
-	
 }

@@ -40,7 +40,6 @@ public class ListProjectPage extends WebPage {
 		this.projectController.setUsuario(usuario);
 		tablaDeProyectos();
 		botonCancelar();
-		botonVolver();
 		botonAgregar();
 	}
 
@@ -49,16 +48,14 @@ public class ListProjectPage extends WebPage {
 		userStoryController.setProject(proy);
 		tablaDeProyectos();
 		botonCancelar();
-		botonVolver();
 		botonAgregar();
 		projectController.setProject(proy);
-		
+
 	}
 
 	public ListProjectPage() {
 		tablaDeProyectos();
 		botonCancelar();
-		botonVolver();
 		botonAgregar();
 
 	}
@@ -102,8 +99,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
-						this.setResponsePage(new ListProjectPage());
+//						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
+//						this.setResponsePage(new ListProjectPage());
 					}
 
 				});
@@ -113,9 +110,9 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						
-						 this.setResponsePage(new UserStoryPage(item.getModelObject()));
-						 
+
+						this.setResponsePage(new UserStoryPage(item.getModelObject()));
+
 					}
 
 				});
@@ -124,8 +121,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
-					//	this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
+//						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
+						 this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
 					}
 
 				});
@@ -138,24 +135,11 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
-//
+				//
 			}
 
 		});
 
-	}
-
-	public void botonVolver() {
-		this.add(new Link<String>("volver") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				 this.setResponsePage(new HomePage());
-
-			}
-
-		});
 	}
 
 	public void botonCancelar() {

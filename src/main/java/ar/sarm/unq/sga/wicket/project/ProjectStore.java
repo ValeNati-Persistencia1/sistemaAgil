@@ -6,7 +6,6 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
-import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
@@ -59,15 +58,14 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		project.setUsuario(modelObject);
 
 	}
+
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		Query<UserStory> query = getSession().createQuery("from UserStory u WHERE u.estaEnBacklogSprint = : estaEnBacklogSprint ORDER BY u.estaCompleta", UserStory.class);
+		Query<UserStory> query = getSession()
+				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
 		query.setParameter("estaEnBacklogSprint", true);
 		return query.list();
-	
-}
 
-	public void borrarUsuarioDelProy(Usuario user) {
-		
-		
 	}
+	
+
 }

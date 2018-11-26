@@ -2,7 +2,6 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -10,12 +9,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.TipoDeRol;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
-import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 
 @Service
@@ -33,6 +31,7 @@ public class UserStoryController implements Serializable {
 	private String valorCliente;
 	private int historyPoint;
 	private Usuario usuario;
+	private TipoDeRol tipoDeRol;
 
 	@Autowired
 	private UserStoryStore userStoryStore;
@@ -178,5 +177,13 @@ public class UserStoryController implements Serializable {
 		modelObject.setEstaCompleta(true);
 
 	}
+
+//	public TipoDeRol getTipoDeRol() {
+//		return tipoDeRol;
+//	}
+//
+//	public void setTipoDeRol(TipoDeRol tipoDeRol) {
+//		this.tipoDeRol = tipoDeRol;
+//	}
 
 }
