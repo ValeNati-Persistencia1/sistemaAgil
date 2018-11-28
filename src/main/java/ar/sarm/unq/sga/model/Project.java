@@ -15,19 +15,11 @@ public class Project extends Persistible {
 
 	private String nombre;
 
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Backlog backlog;
 
-	@ManyToMany(mappedBy = "project")
+	@ManyToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-
-	// @Column(columnDefinition = "enum('administrador', 'usuario')")
-	// @Enumerated(javax.persistence.EnumType.STRING)
-	// private TipoDeRol tipoDeRol;
-	// @Column(columnDefinition = "enum('MALE','FEMALE')")
-	// @Enumerated(EnumType.STRING)
-	// @Enumerated(javax.persistence.EnumType.STRING)
-	// private List<TipoDeRol> roles = new ArrayList<>();
 
 	public Project() {
 	}

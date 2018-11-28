@@ -66,6 +66,5 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		return query.list();
 
 	}
-	
 
 }

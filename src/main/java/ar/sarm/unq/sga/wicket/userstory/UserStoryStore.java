@@ -37,7 +37,7 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
 		Query<UserStory> query = getSession()
-				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint ORDEY BY estaEnBacklogSprint", UserStory.class);
 		query.setParameter("estaEnBacklogSprint", true);
 		return query.list();
 	}

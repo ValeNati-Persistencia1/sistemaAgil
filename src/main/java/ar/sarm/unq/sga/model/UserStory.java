@@ -28,7 +28,7 @@ public class UserStory extends Persistible {
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
 
-	@ManyToOne(cascade = CascadeType.REFRESH)
+	@ManyToOne
 	private Backlog backlog;
 	
 	@ManyToOne

@@ -78,13 +78,8 @@ public class ListProjectPage extends WebPage {
 					public void onClick() {
 						this.setResponsePage(new ListUsersStoriesEnBacklogPage(item.getModelObject()));
 					}
-
 				});
-
 				item.add(new Link<String>("verUsuarios") {
-					/**
-					 * 
-					 */
 					private static final long serialVersionUID = 1L;
 
 					@Override
@@ -99,8 +94,8 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
-//						this.setResponsePage(new ListProjectPage());
+						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
+						this.setResponsePage(new ListProjectPage());
 					}
 
 				});
@@ -110,9 +105,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-
 						this.setResponsePage(new UserStoryPage(item.getModelObject()));
-
 					}
 
 				});
@@ -121,8 +114,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
-						 this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
+						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
 					}
 
 				});
@@ -135,7 +127,6 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
-				//
 			}
 
 		});

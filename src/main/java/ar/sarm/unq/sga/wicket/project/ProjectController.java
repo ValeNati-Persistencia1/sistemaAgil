@@ -172,11 +172,16 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		// return getListaDeUserStoryDelProyecto().stream().filter(u ->
-		// u.isEstaEnBacklogSprint() == true)
-		// .collect(Collectors.toList());
 		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
 				.collect(Collectors.toList());
+	}
+
+	public int getSumatoriaDeComplejidades() {
+		return this.getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u -> u.getHistoryPoint()).sum();
+	}
+
+	public String getSumatoriaDeComlejidadesString() {
+		return Integer.toString(getSumatoriaDeComplejidades());
 	}
 
 }
