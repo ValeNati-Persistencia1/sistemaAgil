@@ -35,7 +35,7 @@ public class UserStory extends Persistible {
 
 	@ManyToOne
 	private SprintBacklog sprintBacklog;
-	// private boolean estaEnBacklogSprint = false;
+	private boolean estaEnBacklogSprint = false;
 
 	public UserStory() {
 
@@ -129,6 +129,14 @@ public class UserStory extends Persistible {
 
 	public void setSprintBacklog(SprintBacklog sprintBacklog) {
 		this.sprintBacklog = sprintBacklog;
+	}
+
+	public boolean isEstaEnBacklogSprint() {
+		return estaEnBacklogSprint;
+	}
+
+	public void setEstaEnBacklogSprint(boolean estaEnBacklogSprint) {
+		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
 
 }

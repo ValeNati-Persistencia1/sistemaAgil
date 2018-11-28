@@ -12,7 +12,7 @@ public class SprintBacklog extends Persistible {
 
 	private static final long serialVersionUID = 1L;
 	@OneToMany
-	private List<Backlog> backlogs = new ArrayList<>();
+	private List<UserStory> listaUserStory = new ArrayList<>();
 
 	private int posicion;
 
@@ -20,14 +20,6 @@ public class SprintBacklog extends Persistible {
 	private Project project;
 
 	private Boolean estado = false;
-
-	public List<Backlog> getBacklog() {
-		return backlogs;
-	}
-
-	public void setBacklog(List<Backlog> backlog) {
-		this.backlogs = backlog;
-	}
 
 	public int getPosicion() {
 		return posicion;
@@ -45,10 +37,6 @@ public class SprintBacklog extends Persistible {
 		this.estado = estado;
 	}
 
-	public void setSprintBacklog(Backlog back) {
-		this.backlogs.add(back);
-	}
-
 	public Project getProyecto() {
 		return project;
 	}
@@ -56,5 +44,15 @@ public class SprintBacklog extends Persistible {
 	public void setProyecto(Project proyecto) {
 		this.project = proyecto;
 	}
+
+	public List<UserStory> getListaUserStory() {
+		return listaUserStory;
+	}
+
+	public void setListaUserStory(List<UserStory> listaUserStory) {
+		this.listaUserStory = listaUserStory;
+	}
+	
+	
 
 }

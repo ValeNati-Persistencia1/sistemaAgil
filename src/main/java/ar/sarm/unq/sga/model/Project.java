@@ -23,7 +23,7 @@ public class Project extends Persistible {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
 	@OneToMany(mappedBy= "project")
-	private List<SprintBacklog> sprintBacklog;
+	private List<SprintBacklog> sprintBacklogs;
 
 	public Project() {
 	}
@@ -61,12 +61,17 @@ public class Project extends Persistible {
 
 	}
 
-	public List<SprintBacklog> getSprintBacklog() {
-		return sprintBacklog;
+	public List<SprintBacklog> getSprintBacklogs() {
+		return sprintBacklogs;
 	}
 
-	public void setSprintBacklog(List<SprintBacklog> sprintBacklog) {
-		this.sprintBacklog = sprintBacklog;
+	public void setSprintBacklog(SprintBacklog sprintBacklog) {
+		sprintBacklogs.add(sprintBacklog);
+	}
+
+	public void agregarSprintBacklog(SprintBacklog sB) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

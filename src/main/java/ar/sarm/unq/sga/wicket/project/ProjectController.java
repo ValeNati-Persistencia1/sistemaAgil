@@ -98,11 +98,11 @@ public class ProjectController implements Serializable {
 		Project proyecto = new Project(getNombre());
 		SprintBacklog sB = new SprintBacklog();
 		Backlog back = new Backlog("Backlog");
-		sB.setSprintBacklog(back);
 		projectStore.agregarProject(proyecto);
 		backlogStore.agregarBacklogStore(back);
 		sprintBacklogStore.agregarSprintBacklog(sB);
 		proyecto.setBacklog(back);
+		proyecto.agregarSprintBacklog(sB);
 	}
 
 	public List<Project> getProyectos() {
@@ -171,10 +171,10 @@ public class ProjectController implements Serializable {
 
 	}
 
-//	public List<UserStory> getListaDeUserStoryDelProyecto() {
-//		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == false)
-//				.collect(Collectors.toList());
-//	}
+	public List<UserStory> getListaDeUserStoryDelProyecto() {
+		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == false)
+				.collect(Collectors.toList());
+	}
 
 	public void setUsuario(Usuario usuario) {
 		user = usuario;

@@ -127,6 +127,14 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
+				item.add(new Link<String>("agregarSprintBacklog") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+					}
+
+				});
 			}
 
 		});
