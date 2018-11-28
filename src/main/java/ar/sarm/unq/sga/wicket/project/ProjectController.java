@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
@@ -40,6 +42,9 @@ public class ProjectController implements Serializable {
 
 	@Autowired
 	private ProjectStore projectStore;
+	
+	@Autowired
+	private SprintBacklogStore sprintBacklogStore;
 
 	private Backlog backlog;
 
@@ -56,6 +61,8 @@ public class ProjectController implements Serializable {
 	private int historyPoint;
 
 	private UserStory story;
+	
+	private SprintBacklog sprintBacklog;
 
 	public ProjectController() {
 
@@ -89,9 +96,12 @@ public class ProjectController implements Serializable {
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
+		SprintBacklog sB = new SprintBacklog();
 		Backlog back = new Backlog("Backlog");
+		sB.setSprintBacklog(back);
 		projectStore.agregarProject(proyecto);
 		backlogStore.agregarBacklogStore(back);
+		sprintBacklogStore.agregarSprintBacklog(sB);
 		proyecto.setBacklog(back);
 	}
 
@@ -161,22 +171,35 @@ public class ProjectController implements Serializable {
 
 	}
 
-	public List<UserStory> getListaDeUserStoryDelProyecto() {
-		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == false)
-				.collect(Collectors.toList());
-	}
+//	public List<UserStory> getListaDeUserStoryDelProyecto() {
+//		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == false)
+//				.collect(Collectors.toList());
+//	}
 
 	public void setUsuario(Usuario usuario) {
 		user = usuario;
 
 	}
 
-	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		// return getListaDeUserStoryDelProyecto().stream().filter(u ->
-		// u.isEstaEnBacklogSprint() == true)
-		// .collect(Collectors.toList());
-		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-				.collect(Collectors.toList());
+//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+//		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+//				.collect(Collectors.toList());
+//	}
+
+//	public int getSumatoriaDeComplejidades() {
+//		return this.getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u -> u.getHistoryPoint()).sum();
+//	}
+
+//	public String getSumatoriaDeComlejidadesString() {
+//		return Integer.toString(getSumatoriaDeComplejidades());
+//	}
+
+	public SprintBacklog getSprintBacklog() {
+		return sprintBacklog;
+	}
+
+	public void setSprintBacklog(SprintBacklog sprintBacklog) {
+		this.sprintBacklog = sprintBacklog;
 	}
 
 }

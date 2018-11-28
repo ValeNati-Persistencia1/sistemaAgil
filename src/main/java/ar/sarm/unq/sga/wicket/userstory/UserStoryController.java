@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.TipoDeRol;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
@@ -31,7 +30,6 @@ public class UserStoryController implements Serializable {
 	private String valorCliente;
 	private int historyPoint;
 	private Usuario usuario;
-	private TipoDeRol tipoDeRol;
 
 	@Autowired
 	private UserStoryStore userStoryStore;
@@ -144,9 +142,9 @@ public class UserStoryController implements Serializable {
 		this.user = userStory;
 	}
 
-	 public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-	 return projectStore.getListaDeUserStoryEnSprintBacklog();
-	 }
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		return projectStore.getListaDeUserStoryEnSprintBacklog();
+	}
 
 	// public int getComplejidad() {
 	// return userStoryStore.getTotalComplejidad();
@@ -168,7 +166,7 @@ public class UserStoryController implements Serializable {
 	/// no tocar funciona
 	public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
-		modelObject.setEstaEnBacklogSprint(true);
+	//	modelObject.setEstaEnBacklogSprint(true);
 
 	}
 
@@ -178,12 +176,12 @@ public class UserStoryController implements Serializable {
 
 	}
 
-//	public TipoDeRol getTipoDeRol() {
-//		return tipoDeRol;
-//	}
-//
-//	public void setTipoDeRol(TipoDeRol tipoDeRol) {
-//		this.tipoDeRol = tipoDeRol;
-//	}
+	// public TipoDeRol getTipoDeRol() {
+	// return tipoDeRol;
+	// }
+	//
+	// public void setTipoDeRol(TipoDeRol tipoDeRol) {
+	// this.tipoDeRol = tipoDeRol;
+	// }
 
 }

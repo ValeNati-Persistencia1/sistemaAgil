@@ -97,17 +97,17 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 //sino va project
 				});
 
-				item.add(new Link<String>("completarUserStory") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						ListUsersStoriesEnBacklogPage.this.userStoryController
-								.completarUserStory(item.getModelObject());
-					//	this.setResponsePage(new SprintBacklogPage());
-					}
-
-				});
+//				item.add(new Link<String>("completarUserStory") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+//						ListUsersStoriesEnBacklogPage.this.userStoryController
+//								.completarUserStory(item.getModelObject());
+//					//	this.setResponsePage(new SprintBacklogPage());
+//					}
+//
+//				});
 
 			}
 

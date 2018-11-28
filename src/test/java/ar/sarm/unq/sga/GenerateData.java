@@ -11,9 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.SprintBacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
@@ -37,6 +40,9 @@ public class GenerateData {
 	@Autowired
 	private BacklogStore backlogStore;
 
+	@Autowired
+	private SprintBacklogStore sprintBacklogStore;
+
 	protected void generate() {
 		List<Usuario> usuarios = new ArrayList();
 		Backlog back = new Backlog("el back");
@@ -54,11 +60,10 @@ public class GenerateData {
 		proyecto.setUsuario(usuario2);
 		proyecto.setUsuario(usuario3);
 		proyecto.setBacklog(back);
-		 usuario.setProyecto(proyecto);
-		// usuario3.setProyecto(proyecto);
-		// usuario.setProyecto(proy);
-		// proy.setUsuarios(usuarios1);
-		 us.setHistoryPoint(4);
+		usuario.setProyecto(proyecto);
+		SprintBacklog sp = new SprintBacklog();
+		us.setHistoryPoint(4);
+		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 
 		projectStore.insert(proyecto);

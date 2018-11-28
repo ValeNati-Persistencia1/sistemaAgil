@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,8 +14,11 @@ public class Backlog extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-
-	@OneToMany(mappedBy = "backlog", cascade = CascadeType.PERSIST)
+	
+	@ManyToOne
+	private SprintBacklog sprintBacklog;
+	
+	@OneToMany(mappedBy = "backlog", cascade = CascadeType.ALL)
 	private List<UserStory> userStories = new ArrayList<>();
 
 	private UserStory userStory;

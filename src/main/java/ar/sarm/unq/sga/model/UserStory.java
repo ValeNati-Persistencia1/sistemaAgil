@@ -6,35 +6,36 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 
-
 @Entity
 public class UserStory extends Persistible {
 
 	private static final long serialVersionUID = 1L;
-	
-    @Column(name = "valorCliente", nullable = true , length= 10)
+
+	@Column(name = "valorCliente", nullable = true, length = 10)
 	private String valorCliente;
-    
-    @Column(name = "historyPoint", nullable = true, length = 10)
+
+	@Column(name = "historyPoint", nullable = true, length = 10)
 	private int historyPoint;
 
-   @OrderBy("estacompleta = true")
-	private boolean estaCompleta= false;
+	@OrderBy("estacompleta = true")
+	private boolean estaCompleta = false;
 
 	private Usuario usuario;
 
 	private String nombre;
-	
+
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
 
-	@ManyToOne(cascade = CascadeType.REFRESH)
+	@ManyToOne
 	private Backlog backlog;
-	
+
 	@ManyToOne
 	private Project project;
-	
-	private boolean estaEnBacklogSprint = false;
+
+	@ManyToOne
+	private SprintBacklog sprintBacklog;
+	// private boolean estaEnBacklogSprint = false;
 
 	public UserStory() {
 
@@ -60,13 +61,11 @@ public class UserStory extends Persistible {
 	}
 
 	public String isEstaCompleta() {
-		if(estaCompleta == true){
+		if (estaCompleta == true) {
 			return "Completa";
-		}
-		else{
-			
-		
-		return "Incompleta";
+		} else {
+
+			return "Incompleta";
 		}
 	}
 
@@ -124,13 +123,12 @@ public class UserStory extends Persistible {
 		this.project = project;
 	}
 
-	public boolean isEstaEnBacklogSprint() {
-		return estaEnBacklogSprint;
+	public SprintBacklog getSprintBacklog() {
+		return sprintBacklog;
 	}
 
-	public void setEstaEnBacklogSprint(boolean estaEnBacklogSprint) {
-		this.estaEnBacklogSprint = estaEnBacklogSprint;
+	public void setSprintBacklog(SprintBacklog sprintBacklog) {
+		this.sprintBacklog = sprintBacklog;
 	}
-	
 
 }

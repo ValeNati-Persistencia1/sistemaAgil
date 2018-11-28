@@ -15,7 +15,7 @@ public class Usuario extends Persistible {
 	private String apellido;
 	private String nombre;
 
-	@ManyToMany(cascade= CascadeType.REMOVE)
+	@ManyToMany(cascade= CascadeType.ALL)
 	private List<Project> project = new ArrayList<Project>();
 
 	@OneToOne

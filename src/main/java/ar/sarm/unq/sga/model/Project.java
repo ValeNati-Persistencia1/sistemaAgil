@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,19 +16,14 @@ public class Project extends Persistible {
 
 	private String nombre;
 
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Backlog backlog;
 
-	@ManyToMany(mappedBy = "project")
+	@ManyToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
-	// @Column(columnDefinition = "enum('administrador', 'usuario')")
-	// @Enumerated(javax.persistence.EnumType.STRING)
-	// private TipoDeRol tipoDeRol;
-	// @Column(columnDefinition = "enum('MALE','FEMALE')")
-	// @Enumerated(EnumType.STRING)
-	// @Enumerated(javax.persistence.EnumType.STRING)
-	// private List<TipoDeRol> roles = new ArrayList<>();
+	@OneToMany(mappedBy= "project")
+	private List<SprintBacklog> sprintBacklog;
 
 	public Project() {
 	}
@@ -52,14 +48,6 @@ public class Project extends Persistible {
 		this.backlog = backlog;
 	}
 
-	// public List<TipoDeRol> getRoles() {
-	// return roles;
-	// }
-	//
-	// public void setRoles(TipoDeRol roles) {
-	// this.roles.add(roles);
-	// }
-
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
@@ -73,11 +61,12 @@ public class Project extends Persistible {
 
 	}
 
-	// user.getProyecto(). //remove(user);
-	// user.setProyecto(null);
-	// public void removeItem(Item item) {
-	// this.getItems().remove(item);
-	// item.setMaguito(null);
-	// }}
+	public List<SprintBacklog> getSprintBacklog() {
+		return sprintBacklog;
+	}
+
+	public void setSprintBacklog(List<SprintBacklog> sprintBacklog) {
+		this.sprintBacklog = sprintBacklog;
+	}
 
 }

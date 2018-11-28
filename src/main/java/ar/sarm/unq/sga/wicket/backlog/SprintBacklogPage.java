@@ -51,8 +51,6 @@ public class SprintBacklogPage extends WebPage {
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
-				// new PropertyModel<>(this.userStoryController,
-				// "listaDeUserStoryEnSprintBacklog")) {
 				new PropertyModel<>(this.projectController, "listaDeUserStoryEnSprintBacklog")) {
 			private static final long serialVersionUID = 1L;
 
@@ -63,31 +61,16 @@ public class SprintBacklogPage extends WebPage {
 				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
 				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
 
-				// item.add(new Link<String>("borrarBacklog") {
-				// private static final long serialVersionUID = 1L;
-				//
-				// @Override
-				// public void onClick() {
-				// // this.setResponsePage(new
-				// UserStory(item.getModelObject()));
-				// this.setResponsePage(new
-				// EliminarBacklogPage(item.getModelObject()));
-				// }
-				//
-				// });
-				// item.add(new Link<String>("agregarUserStoryASprint") {
-				// private static final long serialVersionUID = 1L;
-				//
-				// @Override
-				// public void onClick() {
-				// SprintBacklogPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-				// this.setResponsePage(new SprintBacklogPage());
-				// }
-				//
-				// });
+				item.add(new Link<String>("completarUserStory") {
+					private static final long serialVersionUID = 1L;
 
+					@Override
+					public void onClick() {
+						SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
+					}
+
+				});
 			}
-
 		});
 	}
 
@@ -105,20 +88,3 @@ public class SprintBacklogPage extends WebPage {
 		});
 	}
 }
-
-// item.add(new Link<String>("sacarDeSublistaBacklogsCompletados") {
-//
-// private static final long serialVersionUID = 1L;
-//
-// @Override
-// public void onClick() {
-// // this.setResponsePage(new
-// // UserStory(item.getModelObject()));
-// // this.setResponsePage(new
-// // SacarBacklogsCompletadosPage(item.getModelObject()));
-//
-// }
-//
-// });
-
-// }
