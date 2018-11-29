@@ -60,7 +60,8 @@ public class SprintBacklogPage extends WebPage {
 				item.add(new Label("nombre", backlogCompletado.bind("nombre")));
 				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
 				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
-
+//				item.add(new Label("total", projectController.getSumarComplejidad()));
+				
 				item.add(new Link<String>("completarUserStory") {
 					private static final long serialVersionUID = 1L;
 
@@ -86,5 +87,9 @@ public class SprintBacklogPage extends WebPage {
 			}
 
 		});
+		
+		this.add(new Label("total", projectController.getSumarComplejidad()));
+
+			}
+
 	}
-}

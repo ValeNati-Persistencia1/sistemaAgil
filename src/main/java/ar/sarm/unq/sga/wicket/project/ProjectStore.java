@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 

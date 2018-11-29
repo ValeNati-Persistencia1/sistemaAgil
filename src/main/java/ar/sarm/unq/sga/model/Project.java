@@ -65,13 +65,11 @@ public class Project extends Persistible {
 		return sprintBacklogs;
 	}
 
-	public void setSprintBacklog(SprintBacklog sprintBacklog) {
+	public void setSprintBacklogs(SprintBacklog sprintBacklog) {
 		sprintBacklogs.add(sprintBacklog);
 	}
 
-	public void agregarSprintBacklog(SprintBacklog sB) {
-		// TODO Auto-generated method stub
-		
-	}
+
+	
 
 }

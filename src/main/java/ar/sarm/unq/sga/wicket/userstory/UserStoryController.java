@@ -166,7 +166,7 @@ public class UserStoryController implements Serializable {
 	/// no tocar funciona
 	public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
-	//	modelObject.setEstaEnBacklogSprint(true);
+		modelObject.setEstaEnBacklogSprint(true);
 
 	}
 

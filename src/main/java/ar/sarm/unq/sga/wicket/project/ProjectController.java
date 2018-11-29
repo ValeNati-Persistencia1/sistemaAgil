@@ -29,8 +29,10 @@ public class ProjectController implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private String nombre;
+
+	private String nombreSprintBacklog;
+
 	@Autowired
 	private UserStoryStore userStoryStore; // agregado
 
@@ -42,7 +44,7 @@ public class ProjectController implements Serializable {
 
 	@Autowired
 	private ProjectStore projectStore;
-	
+
 	@Autowired
 	private SprintBacklogStore sprintBacklogStore;
 
@@ -64,27 +66,25 @@ public class ProjectController implements Serializable {
 	
 	private String nombreUserStory;
 	
-	private String nombreSprintBacklog;
-	
 
 	public ProjectController() {
 
 	}
 
-	public ProjectController(Project proy, Usuario usuario) {
-		projectStore.attach(proy);
-		usuarioStore.attach(usuario);
-		proyecto = proy;
-		user = usuario;
-
-	}
+	// public ProjectController(Project proy, Usuario usuario) {
+	// projectStore.attach(proy);
+	// usuarioStore.attach(usuario);
+	// proyecto = proy;
+	// user = usuario;
+	//
+	// }
 
 	public ProjectController(UserStory user) {
 		userStoryStore.attach(user);
 		story = user;
 		story.setNombre(nombreUserStory);
 	}
-	
+
 	public ProjectController(String name) {
 		this.nombre = name;
 	}
@@ -100,13 +100,13 @@ public class ProjectController implements Serializable {
 	// arreglado con leo
 	public void agregarProyecto() {
 		Project proyecto = new Project(getNombre());
-		SprintBacklog sB = new SprintBacklog();
+		//SprintBacklog sB = new SprintBacklog();
 		Backlog back = new Backlog("Backlog");
 		projectStore.agregarProject(proyecto);
-		backlogStore.agregarBacklogStore(back);
-		sprintBacklogStore.agregarSprintBacklog(sB);
+		//backlogStore.agregarBacklogStore(back);
+		//sprintBacklogStore.agregarSprintBacklog(sB);
 		proyecto.setBacklog(back);
-		proyecto.agregarSprintBacklog(sB);
+		//proyecto.agregarSprintBacklog(sB);
 	}
 
 	public List<Project> getProyectos() {
@@ -114,11 +114,13 @@ public class ProjectController implements Serializable {
 	}
 
 
+
 	public void attach(Project proy) {
 		projectStore.attach(proy);
 	}
 
-		public Backlog getBacklog() {
+
+	public Backlog getBacklog() {
 		return proyecto.getBacklog();
 	}
 
@@ -167,18 +169,19 @@ public class ProjectController implements Serializable {
 
 	}
 
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-//				.collect(Collectors.toList());
-//	}
+	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
+		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
+				.collect(Collectors.toList());
+	}
 
-//	public int getSumatoriaDeComplejidades() {
-//		return this.getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u -> u.getHistoryPoint()).sum();
-//	}
+	// public int getSumatoriaDeComplejidades() {
+	// return this.getListaDeUserStoryEnSprintBacklog().stream().mapToInt(u ->
+	// u.getHistoryPoint()).sum();
+	// }
 
-//	public String getSumatoriaDeComlejidadesString() {
-//		return Integer.toString(getSumatoriaDeComplejidades());
-//	}
+	// public String getSumatoriaDeComlejidadesString() {
+	// return Integer.toString(getSumatoriaDeComplejidades());
+	// }
 
 	public SprintBacklog getSprintBacklog() {
 		return sprintBacklog;
@@ -188,12 +191,13 @@ public class ProjectController implements Serializable {
 		this.sprintBacklog = sprintBacklog;
 	}
 
-	public String getNombreUserStory() {
-		return nombreUserStory;
-	}
-
-	public void setNombreUserStory(String nombreUserStory) {
-		this.nombreUserStory = nombreUserStory;
+	public void crearSprintBacklog() {
+		projectStore.attach(proyecto);
+		sprintBacklog = new SprintBacklog();
+		sprintBacklog.setNombre(nombreSprintBacklog);
+		sprintBacklogStore.agregarSprintBacklog(sprintBacklog);
+		sprintBacklog.setProyecto(getProyecto());
+		proyecto.setSprintBacklogs(sprintBacklog);
 	}
 
 	public String getNombreSprintBacklog() {
@@ -204,4 +208,16 @@ public class ProjectController implements Serializable {
 		this.nombreSprintBacklog = nombreSprintBacklog;
 	}
 
+	public int getSumarComplejidad() {
+	return	proyecto.getBacklog().getUserStories().stream().mapToInt(u->u.getHistoryPoint()).sum();
+		
+	}
+
+         	public String getNombreUserStory() {
+		return nombreUserStory;
+	}
+
+	public void setNombreUserStory(String nombreUserStory) {
+		this.nombreUserStory = nombreUserStory;
+	}
 }

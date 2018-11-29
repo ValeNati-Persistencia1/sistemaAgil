@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.CrearSprintBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
@@ -132,6 +133,7 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
+						this.setResponsePage(new CrearSprintBacklogPage(item.getModelObject()));
 					}
 
 				});
