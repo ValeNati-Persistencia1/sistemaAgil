@@ -73,8 +73,9 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 			@Override
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
-				item.add(new Label("nombre", us.bind("nombre")));
+				item.add(new Label("nombre", us.bind("nombreUserStory")));
 				item.add(new Label("completa", us.bind("estaCompleta")));
+			
 				
 				item.add(new Link<String>("seleccionarSprintBacklog") {
 					private static final long serialVersionUID = 1L;
@@ -95,16 +96,16 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 					}
 
 				});
-				item.add(new Link<String>("agregarUserStoryASprint") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						ListUsersStoriesEnBacklogPage.this.userStoryController
-								.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-						this.setResponsePage(new SprintBacklogPage(project));
-					}
-				});
+//				item.add(new Link<String>("agregarUserStoryASprint") {
+//					private static final long serialVersionUID = 1L;
+//
+//					@Override
+//					public void onClick() {
+//						ListUsersStoriesEnBacklogPage.this.userStoryController
+//								.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+//						this.setResponsePage(new SprintBacklogPage(project));
+//					}
+//				});
 
 			}
 

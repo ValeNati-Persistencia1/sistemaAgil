@@ -11,12 +11,13 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
-public class SprintBacklogPage extends WebPage {
+public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,55 +26,61 @@ public class SprintBacklogPage extends WebPage {
 	// cambie el nombre por userStoryController;
 	@SpringBean
 	private ProjectController projectController;
-	@SpringBean
-	private BacklogController backlogController;
+
 	private Backlog backlog;
 
-	public SprintBacklogPage() {
-		this.agregarAUserStoryFormBacklogsCompletadas();
+	public ListaDeSprintBacklogDeUnProyecto() {
+		this.listaDeSprintBacklogDeUnProyecto();
 		salir();
 	}
 
-	public SprintBacklogPage(UserStory user) {
+	public ListaDeSprintBacklogDeUnProyecto(Project proy, UserStory user) {
 		userStoryController.attach(user);
+		projectController.attach(proy);
 		userStoryController.setUserStory(user);
-		this.agregarAUserStoryFormBacklogsCompletadas();
+		projectController.setSprintBacklog(user.getSprintBacklog());
+		this.listaDeSprintBacklogDeUnProyecto();
 		salir();
 	}
 
-	public SprintBacklogPage(Project proy) {
+	// public SprintBacklogPage(UserStory user) {
+	// userStoryController.attach(user);
+	// userStoryController.setUserStory(user);
+	// projectController.setSprintBacklog(user.getSprintBacklog());
+	// this.agregarAUserStoryFormBacklogsCompletadas();
+	// salir();
+	// }
+
+	public ListaDeSprintBacklogDeUnProyecto(Project proy) {
 		projectController.attach(proy);
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
-		this.agregarAUserStoryFormBacklogsCompletadas();
+		this.listaDeSprintBacklogDeUnProyecto();
 		salir();
 	}
 
-	public void agregarAUserStoryFormBacklogsCompletadas() {
-		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
-				new PropertyModel<>(this.projectController, "listaDeUserStoryEnSprintBacklog")) {
+	public void listaDeSprintBacklogDeUnProyecto() {
+		this.add(new ListView<SprintBacklog>("sublistaSprintBacklogCompletados",
+				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<UserStory> item) {
-				CompoundPropertyModel<UserStory> backlogCompletado = new CompoundPropertyModel<>(item.getModel());
-				item.add(new Label("nombre", backlogCompletado.bind("nombreUserStory")));
-				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
-				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
-//				item.add(new Label("total", projectController.getSumarComplejidad()));
-				
-				item.add(new Link<String>("completarUserStory") {
-					private static final long serialVersionUID = 1L;
+			protected void populateItem(ListItem<SprintBacklog> item) {
+				CompoundPropertyModel<SprintBacklog> sprintBacklog = new CompoundPropertyModel<>(item.getModel());
+				item.add(new Label("nombre", sprintBacklog.bind("getNombreSprintBacklog")));
 
-					@Override
-					public void onClick() {
-						SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
-					}
-
-				});
+				// item.add(new Link<String>("completarUserStory") {
+				// private static final long serialVersionUID = 1L;
+				//
+				// @Override
+				// public void onClick() {
+				// SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
 			}
+
 		});
 	}
+	// });
+	// }
 
 	private void salir() {
 		this.add(new Link<String>("salir") {
@@ -87,9 +94,7 @@ public class SprintBacklogPage extends WebPage {
 			}
 
 		});
-		
-		this.add(new Label("total", projectController.getSumarComplejidad()));
-
-			}
 
 	}
+
+}

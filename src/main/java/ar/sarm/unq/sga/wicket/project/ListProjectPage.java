@@ -14,6 +14,7 @@ import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.CrearSprintBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.backlog.ListaDeSprintBacklogDeUnProyecto;
 import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
@@ -115,7 +116,9 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
+					//	this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
+						//al proyecto le debo pedir la lista de sprint backlog
+						this.setResponsePage(new ListaDeSprintBacklogDeUnProyecto(item.getModelObject()));
 					}
 
 				});

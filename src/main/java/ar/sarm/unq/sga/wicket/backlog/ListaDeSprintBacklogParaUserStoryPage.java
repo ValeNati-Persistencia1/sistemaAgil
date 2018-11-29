@@ -17,12 +17,17 @@ import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.project.ProjectPage;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
 public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 
 	private static final long serialVersionUID = 1L;
 	@SpringBean
 	private ProjectController projectController;
+	@SpringBean
+	private UserStoryController userStoryController;//esto lo agrego vale
+	private Project proyecto;
+	private UserStory userStory;
 	
 	public ListaDeSprintBacklogParaUserStoryPage(Project proyecto){
 		this.projectController.setProject(proyecto);
@@ -30,11 +35,13 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 		this.agregarForm();
 	}
 	//agregue yoooo
-	public ListaDeSprintBacklogParaUserStoryPage(Project proyecto, UserStory user){
-		projectController.attach(proyecto);
-		this.projectController.setProject(proyecto);
+	public ListaDeSprintBacklogParaUserStoryPage(Project proyec, UserStory user){
+		proyecto=proyec;
+		userStory=user;
+		projectController.attach(proyec);
+		this.projectController.setProject(proyec);
 		this.projectController.setBacklog(user.getBacklog());
-		proyecto.getSprintBacklogs();
+		proyec.getSprintBacklogs();
 		this.agregarForm();
 	}
 	
@@ -47,8 +54,14 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 			@Override
 			protected void onSubmit() {
 				//listaDeUserStoryDelProyecto
-			//	ListaDeSprintBacklogParaUserStoryPage.this.projectController.agregarASprintBacklog();
-				this.setResponsePage(new SprintBacklogPage());
+				//ListaDeSprintBacklogParaUserStoryPage.this.projectController.agregarASprintBacklog();
+				//this.setResponsePage(new SprintBacklogPage(userStory,proyecto));
+						ListaDeSprintBacklogParaUserStoryPage.this.userStoryController
+								.agregarUsertStorieEnSprintBacklog(userStory);
+						this.setResponsePage(new SprintBacklogPage(proyecto));
+//					}
+//				});
+
 			}
 
 		};
@@ -56,7 +69,7 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 		crearSprintForm.add(new DropDownChoice<>("proyecto" ,
 				new PropertyModel<>(this.projectController, "sprintBacklog"),
 				new PropertyModel<>(this.projectController, "sprintBacklogs"), 
-				new ChoiceRenderer<>("nombre")
+				new ChoiceRenderer<>("getNombreSprintBacklog")
         ));
 		
 

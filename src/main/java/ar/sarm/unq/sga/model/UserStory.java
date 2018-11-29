@@ -22,7 +22,7 @@ public class UserStory extends Persistible {
 
 	private Usuario usuario;
 
-	private String nombre;
+	private String nombreUserStory;
 
 	@Column(name = "descripcion", nullable = true, length = 1000)
 	private String descripcion;
@@ -42,7 +42,7 @@ public class UserStory extends Persistible {
 	}
 
 	public UserStory(String nombre) {
-		this.nombre = nombre;
+		this.nombreUserStory = nombre;
 	}
 
 	public UserStory(String _valorCliente, int _historiePoint, boolean _estaCompleta, Usuario _usuario) {
@@ -82,12 +82,12 @@ public class UserStory extends Persistible {
 
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreUserStory() {
+		return nombreUserStory;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreUserStory(String nombre) {
+		this.nombreUserStory = nombre;
 	}
 
 	public Backlog getBacklog() {
@@ -138,5 +138,7 @@ public class UserStory extends Persistible {
 	public void setEstaEnBacklogSprint(boolean estaEnBacklogSprint) {
 		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
-
+public String getNombreDelSBQueEstaLaUS(){
+	return getSprintBacklog().getNombreSprintBacklog();
+}
 }

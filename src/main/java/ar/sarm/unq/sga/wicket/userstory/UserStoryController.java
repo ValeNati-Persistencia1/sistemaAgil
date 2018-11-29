@@ -146,10 +146,6 @@ public class UserStoryController implements Serializable {
 		return projectStore.getListaDeUserStoryEnSprintBacklog();
 	}
 
-	// public int getComplejidad() {
-	// return userStoryStore.getTotalComplejidad();
-	// }
-
 	public void borrarUserStoryDeListaEnBacklog() {
 		userStoryStore.delete(user);
 
@@ -176,12 +172,7 @@ public class UserStoryController implements Serializable {
 
 	}
 
-	// public TipoDeRol getTipoDeRol() {
-	// return tipoDeRol;
-	// }
-	//
-	// public void setTipoDeRol(TipoDeRol tipoDeRol) {
-	// this.tipoDeRol = tipoDeRol;
-	// }
-
+	public String getNombreDelSprintBacklogQueEstaLaUS(){
+		return user.getSprintBacklog().getNombreSprintBacklog();
+	}
 }
