@@ -50,8 +50,6 @@ public class ProjectController implements Serializable {
 
 	private Project proyecto;
 
-	private String message;
-
 	private Usuario user;
 
 	private String descripcion;
@@ -63,6 +61,11 @@ public class ProjectController implements Serializable {
 	private UserStory story;
 	
 	private SprintBacklog sprintBacklog;
+	
+	private String nombreUserStory;
+	
+	private String nombreSprintBacklog;
+	
 
 	public ProjectController() {
 
@@ -79,8 +82,9 @@ public class ProjectController implements Serializable {
 	public ProjectController(UserStory user) {
 		userStoryStore.attach(user);
 		story = user;
+		story.setNombre(nombreUserStory);
 	}
-
+	
 	public ProjectController(String name) {
 		this.nombre = name;
 	}
@@ -109,30 +113,12 @@ public class ProjectController implements Serializable {
 		return projectStore.getProyectos();
 	}
 
-	public Project findByName() {
-		try {
-			this.setMessage(null);
-			proyecto = projectStore.findByName(getNombre());
-		} catch (Exception e) {
-			setMessage("no existe el objeto");// TODO: handle exception
-			proyecto = null;
-		}
-		return proyecto;
-	}
 
 	public void attach(Project proy) {
 		projectStore.attach(proy);
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Backlog getBacklog() {
+		public Backlog getBacklog() {
 		return proyecto.getBacklog();
 	}
 
@@ -200,6 +186,22 @@ public class ProjectController implements Serializable {
 
 	public void setSprintBacklog(SprintBacklog sprintBacklog) {
 		this.sprintBacklog = sprintBacklog;
+	}
+
+	public String getNombreUserStory() {
+		return nombreUserStory;
+	}
+
+	public void setNombreUserStory(String nombreUserStory) {
+		this.nombreUserStory = nombreUserStory;
+	}
+
+	public String getNombreSprintBacklog() {
+		return nombreSprintBacklog;
+	}
+
+	public void setNombreSprintBacklog(String nombreSprintBacklog) {
+		this.nombreSprintBacklog = nombreSprintBacklog;
 	}
 
 }

@@ -20,6 +20,8 @@ public class SprintBacklog extends Persistible {
 	private Project project;
 
 	private Boolean estado = false;
+	
+	private String nombreSprintBacklog;
 
 	public int getPosicion() {
 		return posicion;
@@ -52,6 +54,16 @@ public class SprintBacklog extends Persistible {
 	public void setListaUserStory(List<UserStory> listaUserStory) {
 		this.listaUserStory = listaUserStory;
 	}
+
+	public String getNombreSprintBacklog() {
+		return nombreSprintBacklog;
+	}
+
+	public void setNombreSprintBacklog(String nombreSprintBacklog) {
+		this.nombreSprintBacklog = nombreSprintBacklog;
+	}
+
+	
 	
 	
 
