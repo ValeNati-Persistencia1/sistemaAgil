@@ -94,20 +94,7 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 								.agregarUsertStorieEnSprintBacklog(item.getModelObject());
 						this.setResponsePage(new SprintBacklogPage(project));
 					}
-//sino va project
 				});
-
-//				item.add(new Link<String>("completarUserStory") {
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					public void onClick() {
-//						ListUsersStoriesEnBacklogPage.this.userStoryController
-//								.completarUserStory(item.getModelObject());
-//					//	this.setResponsePage(new SprintBacklogPage());
-//					}
-//
-//				});
 
 			}
 
