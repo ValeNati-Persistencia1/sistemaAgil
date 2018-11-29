@@ -67,5 +67,13 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		return query.list();
 
 	}
+	
+	public List<SprintBacklog>getListaSprintBacklogDelProjecto(Project proyecto){
+		return getSession().createQuery("From project proj WHERE sprintBacklogs = :sps",SprintBacklog.class)
+				.setParameter("proj",proyecto)
+				.setParameter("sps",proyecto.getSprintBacklogs())
+				.getResultList();
+		
+	}
 
 }

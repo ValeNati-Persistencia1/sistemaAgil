@@ -21,7 +21,7 @@ public class SprintBacklog extends Persistible {
 
 	private Boolean estado = false;
 
-	private String nombre;
+	private String nombreSprintBacklog;
 
 	public SprintBacklog() {
 
@@ -60,11 +60,11 @@ public class SprintBacklog extends Persistible {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombreSprintBacklog;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreSprintBacklog = nombre;
 	}
 
 }

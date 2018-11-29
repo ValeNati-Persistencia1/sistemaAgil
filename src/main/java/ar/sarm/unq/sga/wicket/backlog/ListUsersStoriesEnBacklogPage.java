@@ -75,13 +75,22 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombre")));
 				item.add(new Label("completa", us.bind("estaCompleta")));
+				
+				item.add(new Link<String>("seleccionarSprintBacklog") {
+					private static final long serialVersionUID = 1L;
 
+					@Override
+				   public void onClick() {
+						this.setResponsePage(new ListaDeSprintBacklogParaUserStoryPage(project));
+					}
+
+				});
 				item.add(new Link<String>("borrarUserStory") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-
+						ListUsersStoriesEnBacklogPage.this.userStoryController.borrarUserStory(userStory);
 					}
 
 				});
