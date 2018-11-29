@@ -192,7 +192,7 @@ public class ProjectController implements Serializable {
 	public void crearSprintBacklog() {
 		projectStore.attach(proyecto);
 		sprintBacklog = new SprintBacklog();
-		sprintBacklog.setNombre(nombreSprintBacklog);
+		sprintBacklog.setNombreSprintBacklog(nombreSprintBacklog);
 		sprintBacklogStore.agregarSprintBacklog(sprintBacklog);
 		sprintBacklog.setProyecto(getProyecto());
 		proyecto.setSprintBacklogs(sprintBacklog);
@@ -204,13 +204,12 @@ public class ProjectController implements Serializable {
 		
 	}
     public String getNombreUserStory() {
-		return nombreUserStory;
+		return  nombreUserStory;
 	}
 	public void setNombreUserStory(String nombreUserStory) {
 		this.nombreUserStory = nombreUserStory;
 	}
 	public List<SprintBacklog>getSprintBacklogs(){
-//		return this.projectStore.getListaSprintBacklogDelProjecto(proyecto);
 		projectStore.attach(proyecto);
 		return this.proyecto.getSprintBacklogs();
 	}

@@ -14,30 +14,29 @@
 		<div class="panel panel-primary"
 			style="margin-top: 20px; text-align: center;">
 			<div class="panel-heading ">
-				<h4>UserStory: <span wicked:id="nombreCarrera"></span></h4>
+				<h4>
+			//		UserStory: <span wicked:id="nombreUserStory"></span>
+				</h4>
 			</div>
 			<div class="panel-body">
 				<form wicket:id="crearSprintForm" class="form-horizontal">
 
 					<div class="form-group">
-						<label for="proyecto" class="col-md-2 control-label"></label>
-						<div class="col-md-1">
-							<select class="form-control" id="proyecto"
-								wicket:id="proyecto"> </select>
+						<label for="proyecto" class="col-md-4 control-label"></label>
+						<div class="col-md-2">
+							<select class="form-control" id="proyecto" wicket:id="proyecto">
+							</select>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-<!-- 							<button type="submit" class="btn-primary">Agregar</button> -->
+							<!-- 							<button type="submit" class="btn-primary">Agregar</button> -->
 							<button type="button" class="btn-primary" wicket:id="cancelar">Cancelar</button>
 						</div>
 					</div>
 				</form>
 			</div>
 
-		</div>
-		<div class="col-md-12">
-			<a wicket:id="volver">Volver atrás</a>
 		</div>
 	</div>
 </body>

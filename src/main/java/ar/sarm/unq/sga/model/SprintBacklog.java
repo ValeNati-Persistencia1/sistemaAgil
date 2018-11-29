@@ -59,11 +59,11 @@ public class SprintBacklog extends Persistible {
 		this.listaUserStory = listaUserStory;
 	}
 
-	public String getNombre() {
+	public String getNombreSprintBacklog() {
 		return nombreSprintBacklog;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombreSprintBacklog(String nombre) {
 		this.nombreSprintBacklog = nombre;
 	}
 

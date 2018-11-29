@@ -81,7 +81,8 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 
 					@Override
 				   public void onClick() {
-						this.setResponsePage(new ListaDeSprintBacklogParaUserStoryPage(project));
+						this.setResponsePage(new ListaDeSprintBacklogParaUserStoryPage(project, item.getModelObject()));
+					//solo pasaba el proyecto
 					}
 
 				});

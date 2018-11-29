@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.SprintBacklog;
+import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
@@ -28,10 +29,18 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 		proyecto.getSprintBacklogs();
 		this.agregarForm();
 	}
+	//agregue yoooo
+	public ListaDeSprintBacklogParaUserStoryPage(Project proyecto, UserStory user){
+		projectController.attach(proyecto);
+		this.projectController.setProject(proyecto);
+		this.projectController.setBacklog(user.getBacklog());
+		proyecto.getSprintBacklogs();
+		this.agregarForm();
+	}
 	
 
 	private void agregarForm() {
-		this.add(new Label("nombreUserStory",new PropertyModel<>(this.projectController,"nombreUserStory")));
+	//	this.add(new Label("nombreUserStory",new PropertyModel<>(this.projectController,"backlog.nombreUserStory")));
 		Form<ProjectController> crearSprintForm = new Form<ProjectController>("crearSprintForm") {
 			private static final long serialVersionUID = -1309536194793150773L;
 
@@ -44,10 +53,10 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage{
 
 		};
 		
-		crearSprintForm.add(new DropDownChoice<>("proyecto",
+		crearSprintForm.add(new DropDownChoice<>("proyecto" ,
 				new PropertyModel<>(this.projectController, "sprintBacklog"),
 				new PropertyModel<>(this.projectController, "sprintBacklogs"), 
-				new ChoiceRenderer<>("nombreSprintBacklog")
+				new ChoiceRenderer<>("nombre")
         ));
 		
 
