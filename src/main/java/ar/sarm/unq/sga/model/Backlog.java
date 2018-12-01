@@ -14,10 +14,10 @@ public class Backlog extends Persistible {
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
-	
+
 	@ManyToOne
 	private SprintBacklog sprintBacklog;
-	
+
 	@OneToMany(mappedBy = "backlog", cascade = CascadeType.ALL)
 	private List<UserStory> userStories = new ArrayList<>();
 
@@ -55,5 +55,5 @@ public class Backlog extends Persistible {
 	public void setUserStory(UserStory us) {
 		this.userStory = us;
 	}
-
+	
 }

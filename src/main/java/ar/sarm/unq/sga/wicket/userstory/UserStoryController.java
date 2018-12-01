@@ -160,11 +160,17 @@ public class UserStoryController implements Serializable {
 	}
 
 	/// no tocar funciona
-	public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
-		userStoryStore.attach(modelObject);
-		modelObject.setEstaEnBacklogSprint(true);
-
-	}
+	// public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
+	// userStoryStore.attach(modelObject);
+	// modelObject.setEstaEnBacklogSprint(true);
+	//
+	// }
+//	public void agregarUsertStorieEnSprintBacklog(Project proy, UserStory modelObject) {
+//		userStoryStore.attach(modelObject);
+//		projectStore.attach(proy);
+//		modelObject.setEstaEnBacklogSprint(true);
+//
+//	}
 
 	public void completarUserStory(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
@@ -172,7 +178,7 @@ public class UserStoryController implements Serializable {
 
 	}
 
-	public String getNombreDelSprintBacklogQueEstaLaUS(){
+	public String getNombreDelSprintBacklogQueEstaLaUS() {
 		return user.getSprintBacklog().getNombreSprintBacklog();
 	}
 }

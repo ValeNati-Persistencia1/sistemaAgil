@@ -15,7 +15,6 @@ import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.backlog.CrearSprintBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
 import ar.sarm.unq.sga.wicket.backlog.ListaDeSprintBacklogDeUnProyecto;
-import ar.sarm.unq.sga.wicket.backlog.SprintBacklogPage;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryPage;
 import ar.sarm.unq.sga.wicket.usuario.ListUsuariosPage;

@@ -60,6 +60,7 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 
 	}
 
+	
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
 		Query<UserStory> query = getSession()
 				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);

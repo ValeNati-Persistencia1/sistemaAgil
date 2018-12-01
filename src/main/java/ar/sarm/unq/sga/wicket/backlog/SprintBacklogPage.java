@@ -34,18 +34,27 @@ public class SprintBacklogPage extends WebPage {
 		salir();
 	}
 
-	public SprintBacklogPage(UserStory user) {
-		userStoryController.attach(user);
-		userStoryController.setUserStory(user);
-		this.agregarAUserStoryFormBacklogsCompletadas();
-		salir();
-	}
+	// public SprintBacklogPage(UserStory user) {
+	// userStoryController.attach(user);
+	// userStoryController.setUserStory(user);
+	// this.agregarAUserStoryFormBacklogsCompletadas();
+	// salir();
+	// }
 
-	public SprintBacklogPage(Project proy) {
-		projectController.attach(proy);
-		projectController.setProject(proy);
-		userStoryController.setProject(proy);
-		this.agregarAUserStoryFormBacklogsCompletadas();
+//	public SprintBacklogPage(Project proy) {
+//		projectController.attach(proy);
+//		projectController.setProject(proy);
+//		userStoryController.setProject(proy);
+//		this.agregarAUserStoryFormBacklogsCompletadas();
+//		salir();
+//	}
+
+	public SprintBacklogPage(Project proyecto, UserStory userStory) {
+		projectController.attach(proyecto);
+		userStoryController.attach(userStory);
+		userStoryController.setUserStory(userStory);
+		projectController.setSprintBacklog(userStory.getSprintBacklog());
+		agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 	}
 
@@ -88,7 +97,7 @@ public class SprintBacklogPage extends WebPage {
 
 		});
 		
-		this.add(new Label("total", projectController.getSumarComplejidad()));
+//		this.add(new Label("total", projectController.getSumarComplejidad()));
 
 			}
 

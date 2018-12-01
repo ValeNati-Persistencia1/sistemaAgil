@@ -178,10 +178,12 @@ public class ProjectController implements Serializable {
 		return proyecto.getBacklog().getUserStories().stream().mapToInt(u -> u.getHistoryPoint()).sum();
 
 	}
-
-	public String getNombreUserStory() {
-		return nombreUserStory;
-	}
+	//// no anda no muestra el nombre!!!
+	// public String getNombreUserStory() {
+	//// return nombreUserStory;
+	// return proyecto.getBacklog().getUserStory().getNombreUserStory();
+	//
+	// }
 
 	public void setNombreUserStory(String nombreUserStory) {
 		this.nombreUserStory = nombreUserStory;
@@ -198,6 +200,12 @@ public class ProjectController implements Serializable {
 
 	public void setNombreSprintBacklog(String nombreSprintBacklog) {
 		this.nombreSprintBacklog = nombreSprintBacklog;
+	}
+
+	// agrega la user story al SB....perdon...!!!soy tu amiga la ansiosa...jajaja
+	public void agregarUsertStorieEnSprintBacklog(UserStory userStory2) {
+		userStory2.setSprintBacklog(this.getSprintBacklog());
+
 	}
 
 }
