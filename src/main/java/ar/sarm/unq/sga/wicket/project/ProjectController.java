@@ -77,6 +77,11 @@ public class ProjectController implements Serializable {
 		userStory.setNombreUserStory(nombreUserStory);
 	}
 
+	// public ProjectController(Project proy, SprintBacklog sprint) {
+	// proyecto = proy;
+	// sprintBacklog = sprint;
+	// }
+
 	public ProjectController(String name) {
 		this.nombre = name;
 	}
@@ -153,8 +158,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		return proyecto.getBacklog().getUserStories().stream().filter(u -> u.isEstaEnBacklogSprint() == true)
-				.collect(Collectors.toList());
+		return projectStore.getListaDeUserStoryEnSprintBacklog();
 	}
 
 	public SprintBacklog getSprintBacklog() {
@@ -178,6 +182,13 @@ public class ProjectController implements Serializable {
 		return proyecto.getBacklog().getUserStories().stream().mapToInt(u -> u.getHistoryPoint()).sum();
 
 	}
+
+	public int getSumarComplejidadUSCompletas() {
+		return projectStore.getListaDeUserStoryEnSprintBacklog().stream().filter(us -> us.estaCompleta == true)
+				.collect(Collectors.toList()).stream().mapToInt(us -> us.getHistoryPoint()).sum();
+
+	}
+
 	//// no anda no muestra el nombre!!!
 	// public String getNombreUserStory() {
 	//// return nombreUserStory;
@@ -190,7 +201,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<SprintBacklog> getSprintBacklogs() {
-		projectStore.attach(proyecto);
+//		projectStore.attach(proyecto);
 		return this.proyecto.getSprintBacklogs();
 	}
 
@@ -202,9 +213,10 @@ public class ProjectController implements Serializable {
 		this.nombreSprintBacklog = nombreSprintBacklog;
 	}
 
-	// agrega la user story al SB....perdon...!!!soy tu amiga la ansiosa...jajaja
 	public void agregarUsertStorieEnSprintBacklog(UserStory userStory2) {
+		userStory2.setEstaEnBacklogSprint(true);
 		userStory2.setSprintBacklog(this.getSprintBacklog());
+		userStory2.setProject(getProyecto());
 
 	}
 

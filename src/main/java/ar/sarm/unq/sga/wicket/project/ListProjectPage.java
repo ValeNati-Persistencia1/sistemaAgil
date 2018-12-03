@@ -44,15 +44,15 @@ public class ListProjectPage extends WebPage {
 		botonAgregar();
 	}
 
-	public ListProjectPage(Project proy) {
-		projectController.attach(proy);
-		userStoryController.setProject(proy);
-		tablaDeProyectos();
-		botonCancelar();
-		botonAgregar();
-		projectController.setProject(proy);
-
-	}
+//	public ListProjectPage(Project proy) {
+//		projectController.attach(proy);
+//		userStoryController.setProject(proy);
+//		tablaDeProyectos();
+//		botonCancelar();
+//		botonAgregar();
+//		projectController.setProject(proy);
+//
+//	}
 
 	public ListProjectPage() {
 		tablaDeProyectos();
@@ -115,8 +115,6 @@ public class ListProjectPage extends WebPage {
 
 					@Override
 					public void onClick() {
-					//	this.setResponsePage(new SprintBacklogPage(item.getModelObject()));
-						//al proyecto le debo pedir la lista de sprint backlog
 						this.setResponsePage(new ListaDeSprintBacklogDeUnProyecto(item.getModelObject()));
 					}
 

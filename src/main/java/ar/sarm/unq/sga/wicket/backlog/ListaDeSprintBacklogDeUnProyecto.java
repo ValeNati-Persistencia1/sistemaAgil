@@ -28,6 +28,10 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 	private ProjectController projectController;
 
 	private Backlog backlog;
+	
+	private Project proyecto;
+	
+	private UserStory userStory;
 
 	public ListaDeSprintBacklogDeUnProyecto() {
 		this.listaDeSprintBacklogDeUnProyecto();
@@ -35,6 +39,8 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 	}
 
 	public ListaDeSprintBacklogDeUnProyecto(Project proy, UserStory user) {
+		proyecto=proy;
+		userStory= user;
 		userStoryController.attach(user);
 		projectController.attach(proy);
 		userStoryController.setUserStory(user);
@@ -52,6 +58,7 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 	// }
 
 	public ListaDeSprintBacklogDeUnProyecto(Project proy) {
+		proyecto=proy;
 		projectController.attach(proy);
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
@@ -59,7 +66,7 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 		salir();
 	}
 
-	public void listaDeSprintBacklogDeUnProyecto() {
+	public <T> void listaDeSprintBacklogDeUnProyecto() {
 		this.add(new ListView<SprintBacklog>("sublistaSprintBacklogCompletados",
 				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
 			private static final long serialVersionUID = 1L;
@@ -69,6 +76,17 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 				CompoundPropertyModel<SprintBacklog> sprintBacklog = new CompoundPropertyModel<>(item.getModel());
 				item.add(new Label("nombre", sprintBacklog.bind("getNombreSprintBacklog")));
 
+				
+				item.add(new Link<String>("listaDeUSSB"){
+
+					@Override
+					public void onClick() {
+					this.setResponsePage(new SprintBacklogPage(proyecto,item.getModelObject()));
+						
+					}
+					
+				});
+				
 				// item.add(new Link<String>("completarUserStory") {
 				// private static final long serialVersionUID = 1L;
 				//

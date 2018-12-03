@@ -3,6 +3,7 @@ package ar.sarm.unq.sga.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -11,7 +12,7 @@ import javax.persistence.OneToMany;
 public class SprintBacklog extends Persistible {
 
 	private static final long serialVersionUID = 1L;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<UserStory> listaUserStory = new ArrayList<>();
 
 	private int posicion;
@@ -55,8 +56,8 @@ public class SprintBacklog extends Persistible {
 		return listaUserStory;
 	}
 
-	public void setListaUserStory(List<UserStory> listaUserStory) {
-		this.listaUserStory = listaUserStory;
+	public void setListaUserStory(UserStory listaUserStory) {
+		this.listaUserStory.add(listaUserStory);
 	}
 
 	public String getNombreSprintBacklog() {

@@ -18,7 +18,7 @@ public class UserStory extends Persistible {
 	private int historyPoint;
 
 	@OrderBy("estacompleta = true")
-	private boolean estaCompleta = false;
+	public boolean estaCompleta = false;
 
 	private Usuario usuario;
 
@@ -36,6 +36,7 @@ public class UserStory extends Persistible {
 	@ManyToOne
 	private SprintBacklog sprintBacklog;
 	private boolean estaEnBacklogSprint = false;
+
 
 	public UserStory() {
 
@@ -69,8 +70,13 @@ public class UserStory extends Persistible {
 		}
 	}
 
+	
 	public void setEstaCompleta(boolean estaCompleta) {
 		this.estaCompleta = estaCompleta;
+	}
+
+	public boolean estaCompleta() {
+		return estaCompleta;
 	}
 
 	public Usuario getUsuario() {
@@ -142,4 +148,5 @@ public class UserStory extends Persistible {
 	public String getNombreDelSBQueEstaLaUS() {
 		return getSprintBacklog().getNombreSprintBacklog();
 	}
+	
 }

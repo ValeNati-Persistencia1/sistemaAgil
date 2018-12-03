@@ -22,7 +22,7 @@ public class Project extends Persistible {
 	@ManyToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
-	@OneToMany(mappedBy= "project")
+	@OneToMany(mappedBy = "project")
 	private List<SprintBacklog> sprintBacklogs;
 
 	public Project() {
@@ -68,8 +68,5 @@ public class Project extends Persistible {
 	public void setSprintBacklogs(SprintBacklog sprintBacklog) {
 		sprintBacklogs.add(sprintBacklog);
 	}
-
-
-	
 
 }

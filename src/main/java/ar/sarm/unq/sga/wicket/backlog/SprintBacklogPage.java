@@ -11,6 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
@@ -28,8 +29,18 @@ public class SprintBacklogPage extends WebPage {
 	@SpringBean
 	private BacklogController backlogController;
 	private Backlog backlog;
+	private Project project;
+	private UserStory user;
 
-	public SprintBacklogPage() {
+	private SprintBacklog sprintBacklog;
+
+	public SprintBacklogPage(Project proyecto, SprintBacklog sprint) {
+		project=proyecto;
+		sprintBacklog= sprint;
+		projectController.attach(proyecto);
+		projectController.attach(sprint.getProyecto());
+		projectController.setProject(proyecto);
+		projectController.setBacklog(proyecto.getBacklog());
 		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 	}
@@ -50,13 +61,20 @@ public class SprintBacklogPage extends WebPage {
 //	}
 
 	public SprintBacklogPage(Project proyecto, UserStory userStory) {
+		project=proyecto;
+		user=userStory;
 		projectController.attach(proyecto);
 		userStoryController.attach(userStory);
 		userStoryController.setUserStory(userStory);
 		projectController.setSprintBacklog(userStory.getSprintBacklog());
+		projectController.setProject(proyecto);
+		
 		agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 	}
+	
+
+	
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
@@ -76,7 +94,7 @@ public class SprintBacklogPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
+	userStoryController.completarUserStory(item.getModelObject());
 					}
 
 				});
@@ -97,8 +115,8 @@ public class SprintBacklogPage extends WebPage {
 
 		});
 		
-//		this.add(new Label("total", projectController.getSumarComplejidad()));
-
+		this.add(new Label("total", projectController.getSumarComplejidad()));
+		this.add(new Label("totalCompletas", projectController.getSumarComplejidadUSCompletas()));
 			}
 
 	}

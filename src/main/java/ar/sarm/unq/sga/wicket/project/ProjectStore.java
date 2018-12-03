@@ -1,6 +1,7 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
@@ -60,21 +61,21 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 
 	}
 
-	
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
 		Query<UserStory> query = getSession()
-				.createQuery("from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
+				.createQuery("from UserStory us WHERE estaEnBacklogSprint = : estaEnBacklogSprint", UserStory.class);
 		query.setParameter("estaEnBacklogSprint", true);
 		return query.list();
 
 	}
-	
-//	public List<SprintBacklog>getListaSprintBacklogDelProjecto(Project proyecto){
-//		return getSession().createQuery("From project proj WHERE sprintBacklogs = :sps",SprintBacklog.class)
-//				.setParameter("proj",proyecto)
-//				.setParameter("sps",proyecto.getSprintBacklogs())
-//				.getResultList();
-//		
-//	}
-//
+
+	// public List<SprintBacklog> getListaSprintBacklogDelProjecto(Project
+	// proyecto) {
+	// return getSession().createQuery("From project proj WHERE sprintBacklogs =
+	// :sps", SprintBacklog.class)
+	// .setParameter("proj", proyecto).setParameter("sps",
+	// proyecto.getSprintBacklogs()).getResultList();
+	//
+	// }
+	//
 }
