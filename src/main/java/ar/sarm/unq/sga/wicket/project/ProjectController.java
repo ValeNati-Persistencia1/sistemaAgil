@@ -77,10 +77,10 @@ public class ProjectController implements Serializable {
 		userStory.setNombreUserStory(nombreUserStory);
 	}
 
-	// public ProjectController(Project proy, SprintBacklog sprint) {
-	// proyecto = proy;
-	// sprintBacklog = sprint;
-	// }
+	 public ProjectController(Project proy, SprintBacklog sprint) {
+	 proyecto = proy;
+	 sprintBacklog = sprint;
+	 }
 
 	public ProjectController(String name) {
 		this.nombre = name;
@@ -214,9 +214,11 @@ public class ProjectController implements Serializable {
 	}
 
 	public void agregarUsertStorieEnSprintBacklog(UserStory userStory2) {
-		userStory2.setEstaEnBacklogSprint(true);
-		userStory2.setSprintBacklog(this.getSprintBacklog());
+		projectStore.attach(proyecto);
 		userStory2.setProject(getProyecto());
+		userStory2.setEstaEnBacklogSprint(true);
+		userStory2.setSprintBacklog(sprintBacklog);
+		
 
 	}
 

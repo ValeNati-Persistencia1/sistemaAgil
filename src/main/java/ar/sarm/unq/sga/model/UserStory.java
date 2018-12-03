@@ -145,8 +145,9 @@ public class UserStory extends Persistible {
 		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
 
-	public String getNombreDelSBQueEstaLaUS() {
-		return getSprintBacklog().getNombreSprintBacklog();
+	public boolean getEstaEnBacklogSprint() {
+		return estaEnBacklogSprint;
 	}
+
 	
 }

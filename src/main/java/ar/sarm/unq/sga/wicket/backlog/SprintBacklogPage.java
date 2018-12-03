@@ -45,12 +45,12 @@ public class SprintBacklogPage extends WebPage {
 		salir();
 	}
 
-	// public SprintBacklogPage(UserStory user) {
-	// userStoryController.attach(user);
-	// userStoryController.setUserStory(user);
-	// this.agregarAUserStoryFormBacklogsCompletadas();
-	// salir();
-	// }
+//	 public SprintBacklogPage(UserStory user) {
+//	 userStoryController.attach(user);
+//	 userStoryController.setUserStory(user);
+//	 this.agregarAUserStoryFormBacklogsCompletadas();
+//	 salir();
+//	 }
 
 //	public SprintBacklogPage(Project proy) {
 //		projectController.attach(proy);

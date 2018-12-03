@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 public class SprintBacklog extends Persistible {
 
 	private static final long serialVersionUID = 1L;
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	private List<UserStory> listaUserStory = new ArrayList<>();
 
 	private int posicion;

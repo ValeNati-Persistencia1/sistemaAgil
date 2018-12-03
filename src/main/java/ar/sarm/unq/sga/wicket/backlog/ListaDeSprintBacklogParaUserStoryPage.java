@@ -41,6 +41,7 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage {
 		projectController.attach(proyec);
 		this.projectController.setProject(proyec);
 		this.projectController.setBacklog(user.getBacklog());
+		this.projectController.setProject(user.getProject());
 
 		proyec.getSprintBacklogs();
 		this.agregarForm();
