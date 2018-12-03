@@ -77,10 +77,10 @@ public class ProjectController implements Serializable {
 		userStory.setNombreUserStory(nombreUserStory);
 	}
 
-	 public ProjectController(Project proy, SprintBacklog sprint) {
-	 proyecto = proy;
-	 sprintBacklog = sprint;
-	 }
+	public ProjectController(Project proy, SprintBacklog sprint) {
+		proyecto = proy;
+		sprintBacklog = sprint;
+	}
 
 	public ProjectController(String name) {
 		this.nombre = name;
@@ -158,7 +158,8 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		return projectStore.getListaDeUserStoryEnSprintBacklog();
+		//return projectStore.getListaDeUserStoryEnSprintBacklog();
+		return projectStore.getListaUsEnSpBacklog(sprintBacklog);
 	}
 
 	public SprintBacklog getSprintBacklog() {
@@ -179,12 +180,11 @@ public class ProjectController implements Serializable {
 	}
 
 	public int getSumarComplejidad() {
-		return proyecto.getBacklog().getUserStories().stream().mapToInt(u -> u.getHistoryPoint()).sum();
-
+		return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(us->us.getHistoryPoint()).sum();
 	}
 
 	public int getSumarComplejidadUSCompletas() {
-		return projectStore.getListaDeUserStoryEnSprintBacklog().stream().filter(us -> us.estaCompleta == true)
+		return getListaDeUserStoryEnSprintBacklog().stream().filter(us -> us.estaCompleta == true)
 				.collect(Collectors.toList()).stream().mapToInt(us -> us.getHistoryPoint()).sum();
 
 	}
@@ -201,7 +201,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<SprintBacklog> getSprintBacklogs() {
-//		projectStore.attach(proyecto);
+		// projectStore.attach(proyecto);
 		return this.proyecto.getSprintBacklogs();
 	}
 
@@ -218,7 +218,6 @@ public class ProjectController implements Serializable {
 		userStory2.setProject(getProyecto());
 		userStory2.setEstaEnBacklogSprint(true);
 		userStory2.setSprintBacklog(sprintBacklog);
-		
 
 	}
 

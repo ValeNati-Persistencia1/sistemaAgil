@@ -40,7 +40,7 @@ public class SprintBacklogPage extends WebPage {
 		projectController.attach(proyecto);
 		projectController.attach(sprint.getProyecto());
 		projectController.setProject(proyecto);
-		projectController.setBacklog(proyecto.getBacklog());
+		projectController.setSprintBacklog(sprintBacklog);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 	}
