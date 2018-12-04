@@ -158,7 +158,6 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		//return projectStore.getListaDeUserStoryEnSprintBacklog();
 		return projectStore.getListaUsEnSpBacklog(sprintBacklog);
 	}
 
@@ -180,7 +179,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public int getSumarComplejidad() {
-		return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(us->us.getHistoryPoint()).sum();
+		return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(us -> us.getHistoryPoint()).sum();
 	}
 
 	public int getSumarComplejidadUSCompletas() {
@@ -221,4 +220,10 @@ public class ProjectController implements Serializable {
 
 	}
 
+	public void cerrarSprintBacklog() {
+		projectStore.attach(proyecto);
+		projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(us -> us.setSprintBacklog(null));
+		projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(c -> c.setEstaEnBacklogSprint(false));
+		
+	}
 }

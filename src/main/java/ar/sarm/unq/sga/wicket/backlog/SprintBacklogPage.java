@@ -35,46 +35,30 @@ public class SprintBacklogPage extends WebPage {
 	private SprintBacklog sprintBacklog;
 
 	public SprintBacklogPage(Project proyecto, SprintBacklog sprint) {
-		project=proyecto;
-		sprintBacklog= sprint;
+		project = proyecto;
+		sprintBacklog = sprint;
 		projectController.attach(proyecto);
 		projectController.attach(sprint.getProyecto());
 		projectController.setProject(proyecto);
 		projectController.setSprintBacklog(sprintBacklog);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
+		cerrar();
 	}
 
-//	 public SprintBacklogPage(UserStory user) {
-//	 userStoryController.attach(user);
-//	 userStoryController.setUserStory(user);
-//	 this.agregarAUserStoryFormBacklogsCompletadas();
-//	 salir();
-//	 }
-
-//	public SprintBacklogPage(Project proy) {
-//		projectController.attach(proy);
-//		projectController.setProject(proy);
-//		userStoryController.setProject(proy);
-//		this.agregarAUserStoryFormBacklogsCompletadas();
-//		salir();
-//	}
-
 	public SprintBacklogPage(Project proyecto, UserStory userStory) {
-		project=proyecto;
-		user=userStory;
+		project = proyecto;
+		user = userStory;
 		projectController.attach(proyecto);
 		userStoryController.attach(userStory);
 		userStoryController.setUserStory(userStory);
 		projectController.setSprintBacklog(userStory.getSprintBacklog());
 		projectController.setProject(proyecto);
-		
+
 		agregarAUserStoryFormBacklogsCompletadas();
 		salir();
+		cerrar();
 	}
-	
-
-	
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",
@@ -87,14 +71,13 @@ public class SprintBacklogPage extends WebPage {
 				item.add(new Label("nombre", backlogCompletado.bind("nombreUserStory")));
 				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
 				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
-//				item.add(new Label("total", projectController.getSumarComplejidad()));
-				
+
 				item.add(new Link<String>("completarUserStory") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-	userStoryController.completarUserStory(item.getModelObject());
+						SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
 					}
 
 				});
@@ -114,9 +97,22 @@ public class SprintBacklogPage extends WebPage {
 			}
 
 		});
-		
+
 		this.add(new Label("total", projectController.getSumarComplejidad()));
 		this.add(new Label("totalCompletas", projectController.getSumarComplejidadUSCompletas()));
+	}
+	private void cerrar() {
+		this.add(new Link<String>("cerrar") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				SprintBacklogPage.this.projectController.cerrarSprintBacklog();
+				this.setResponsePage(new ListProjectPage());
+
 			}
 
+		});
 	}
+}
