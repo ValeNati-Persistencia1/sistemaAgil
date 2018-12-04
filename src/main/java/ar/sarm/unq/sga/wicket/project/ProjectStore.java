@@ -61,7 +61,7 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		project.setUsuario(modelObject);
 
 	}
-//trae todas las us story
+
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
 		Query<UserStory> query = getSession()
 				.createQuery("from UserStory WHERE estaEnBacklogSprint = :estaEnBacklogSprint", UserStory.class);
@@ -69,20 +69,23 @@ public class ProjectStore extends HomeGeneralSession<Project> {
 		return query.list();
 
 	}
-//trae las us del sprint backlog
-	public List<UserStory>getListaUsEnSpBacklog(SprintBacklog sprint){
-		Query<UserStory>query = getSession()
-				.createQuery("FROM UserStory WHERE sprintBacklog_id = :sprintBacklog_id", UserStory.class );
-				query.setParameter("sprintBacklog_id", sprint.getId());
-				return query.list();
+
+	public List<UserStory> getListaUsEnSpBacklog(SprintBacklog sprint) {
+		Query<UserStory> query = getSession().createQuery("FROM UserStory WHERE sprintBacklog_id = :sprintBacklog_id",
+				UserStory.class);
+		query.setParameter("sprintBacklog_id", sprint.getId());
+		return query.list();
 	}
-	// public List<SprintBacklog> getListaSprintBacklogDelProjecto(Project
-	// proyecto) {
-	// return getSession().createQuery("From project proj WHERE sprintBacklogs =
-	// :sps", SprintBacklog.class)
-	// .setParameter("proj", proyecto).setParameter("sps",
-	// proyecto.getSprintBacklogs()).getResultList();
-	//
-	// }
-	//
+
+	public List<UserStory> getListaDeUserStoryEnSprintBacklogIncompletas() {
+		Query<UserStory> query = getSession().createQuery(
+				"from UserStory WHERE estaEnBacklogSprint = :estaEnBacklogSprint AND "
+				+ "estaCompleta = :estaCompleta",
+				UserStory.class);
+		query.setParameter("estaEnBacklogSprint", true);
+		query.setParameter("estaCompleta", false);
+		return query.list();
+
+	}
+
 }

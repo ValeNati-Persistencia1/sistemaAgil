@@ -2,8 +2,10 @@ package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
+import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -158,8 +160,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		//return projectStore.getListaDeUserStoryEnSprintBacklog();
-		return projectStore.getListaUsEnSpBacklog(sprintBacklog);
+				return projectStore.getListaUsEnSpBacklog(sprintBacklog);
 	}
 
 	public SprintBacklog getSprintBacklog() {
@@ -218,7 +219,19 @@ public class ProjectController implements Serializable {
 		userStory2.setProject(getProyecto());
 		userStory2.setEstaEnBacklogSprint(true);
 		userStory2.setSprintBacklog(sprintBacklog);
-
+        
 	}
+	public List<UserStory>getListaDeUserStoryEnSprintBacklogIncompletas(){
+		return projectStore.getListaDeUserStoryEnSprintBacklogIncompletas();
+	}
+
+
+	public void cerrar(){
+	projectStore.attach(proyecto);	
+	projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(us->us.setBacklog(null));
+	projectStore.getListaDeUserStoryEnSprintBacklog().forEach(us->us.getSprintBacklog().setEstado(false));
+		
+	}
+	
 
 }

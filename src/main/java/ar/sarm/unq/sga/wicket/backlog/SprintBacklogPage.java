@@ -23,7 +23,6 @@ public class SprintBacklogPage extends WebPage {
 
 	@SpringBean
 	private UserStoryController userStoryController;
-	// cambie el nombre por userStoryController;
 	@SpringBean
 	private ProjectController projectController;
 	@SpringBean
@@ -43,22 +42,10 @@ public class SprintBacklogPage extends WebPage {
 		projectController.setSprintBacklog(sprintBacklog);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
+		cerrar();
 	}
 
-//	 public SprintBacklogPage(UserStory user) {
-//	 userStoryController.attach(user);
-//	 userStoryController.setUserStory(user);
-//	 this.agregarAUserStoryFormBacklogsCompletadas();
-//	 salir();
-//	 }
 
-//	public SprintBacklogPage(Project proy) {
-//		projectController.attach(proy);
-//		projectController.setProject(proy);
-//		userStoryController.setProject(proy);
-//		this.agregarAUserStoryFormBacklogsCompletadas();
-//		salir();
-//	}
 
 	public SprintBacklogPage(Project proyecto, UserStory userStory) {
 		project=proyecto;
@@ -68,9 +55,9 @@ public class SprintBacklogPage extends WebPage {
 		userStoryController.setUserStory(userStory);
 		projectController.setSprintBacklog(userStory.getSprintBacklog());
 		projectController.setProject(proyecto);
-		
-		agregarAUserStoryFormBacklogsCompletadas();
+		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
+		cerrar();
 	}
 	
 
@@ -114,9 +101,26 @@ public class SprintBacklogPage extends WebPage {
 			}
 
 		});
-		
+	}
+		@SuppressWarnings("unused")
+		private void cerrar() {
+			this.add(new Link<String>("cerrar") {
+
+				private static final long serialVersionUID = 1L;
+                
+				@Override
+				public void onClick() {
+					SprintBacklogPage.this.projectController.cerrar();
+					this.setResponsePage(new SprintBacklogPage(project, user));
+
+				}
+
+			});
+			
+
 		this.add(new Label("total", projectController.getSumarComplejidad()));
 		this.add(new Label("totalCompletas", projectController.getSumarComplejidadUSCompletas()));
+	
 			}
 
 	}
