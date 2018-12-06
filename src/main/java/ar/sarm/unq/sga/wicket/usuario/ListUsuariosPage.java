@@ -55,9 +55,9 @@ public class ListUsuariosPage extends WebPage {
 
 					@Override
 					protected void populateItem(ListItem<Usuario> item) {
-						CompoundPropertyModel<Usuario> elDeveloper = new CompoundPropertyModel<>(item.getModelObject());
-						item.add(new Label("nombre", elDeveloper.bind("nombre")));
-						item.add(new Label("apellido", elDeveloper.bind("apellido")));
+						CompoundPropertyModel<Usuario> usuario = new CompoundPropertyModel<>(item.getModelObject());
+						item.add(new Label("nombre", usuario.bind("nombreUsuario")));
+						item.add(new Label("apellido", usuario.bind("apellido")));
 						item.add(new Link<String>("verProyectos") {
 
 							@Override

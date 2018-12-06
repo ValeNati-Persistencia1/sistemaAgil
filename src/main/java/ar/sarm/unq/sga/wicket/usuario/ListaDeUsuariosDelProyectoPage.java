@@ -45,7 +45,7 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 			protected void populateItem(ListItem<Usuario> item) {
 
 				CompoundPropertyModel<Usuario> elUsuario = new CompoundPropertyModel<>(item.getModelObject());
-				item.add(new Label("nombre", elUsuario.bind("nombre")));
+				item.add(new Label("nombre", elUsuario.bind("nombreUsuario")));
 				item.add(new Label("apellido", elUsuario.bind("apellido")));
 
 				item.add(new Link<String>("borrarUsuario") {

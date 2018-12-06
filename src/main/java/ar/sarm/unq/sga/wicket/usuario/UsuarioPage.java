@@ -33,7 +33,7 @@ public class UsuarioPage extends WebPage{
 					
 		};
 		
-		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(usuarioController, "nombre")));
+		crearDeveloperForm.add(new TextField<>("nombre", new PropertyModel<>(usuarioController, "nombreUsuario")));
 		crearDeveloperForm.add(new TextField<>("apellido", new PropertyModel<>(usuarioController, "apellido")));
 		crearDeveloperForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;
