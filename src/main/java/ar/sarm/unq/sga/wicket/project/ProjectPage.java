@@ -19,9 +19,6 @@ public class ProjectPage extends WebPage {
 	private ProjectController projectController;
 	@SpringBean
 	private UsuarioController usuarioController;
-//
-//	private Project proy;
-//	private Backlog back;
 
 	@SuppressWarnings("serial")
 	public ProjectPage() {

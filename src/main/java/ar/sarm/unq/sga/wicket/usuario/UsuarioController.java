@@ -35,7 +35,7 @@ public class UsuarioController implements Serializable {
 		projectStore.attach(proy);
 		usuarioStore.attach(user);
 		this.proyecto = proy;
-		this.usuario=user;
+		this.usuario = user;
 	}
 
 	public UsuarioController() {
@@ -111,7 +111,6 @@ public class UsuarioController implements Serializable {
 		usuarioStore.attach(user);
 		user.addProyecto(modelObject);
 		modelObject.setUsuario(user);
-		//agregue ultima linea
 
 	}
 

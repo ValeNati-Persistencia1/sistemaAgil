@@ -23,25 +23,30 @@ public class SprintBacklogPage extends WebPage {
 
 	@SpringBean
 	private UserStoryController userStoryController;
-	// cambie el nombre por userStoryController;
+
 	@SpringBean
 	private ProjectController projectController;
+
 	@SpringBean
 	private BacklogController backlogController;
+
 	private Backlog backlog;
+
 	private Project project;
+
 	private UserStory user;
 
 	private SprintBacklog sprintBacklog;
 
 	public SprintBacklogPage(Project proyecto, SprintBacklog sprint) {
+
 		project = proyecto;
 		sprintBacklog = sprint;
 		projectController.attach(proyecto);
 		projectController.attach(sprint.getProyecto());
 		projectController.setProject(proyecto);
 		projectController.setSprintBacklog(sprintBacklog);
-		this.agregarAUserStoryFormBacklogsCompletadas();
+		agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 		cerrar();
 	}
@@ -54,7 +59,6 @@ public class SprintBacklogPage extends WebPage {
 		userStoryController.setUserStory(userStory);
 		projectController.setSprintBacklog(userStory.getSprintBacklog());
 		projectController.setProject(proyecto);
-
 		agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 		cerrar();
@@ -69,7 +73,7 @@ public class SprintBacklogPage extends WebPage {
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> backlogCompletado = new CompoundPropertyModel<>(item.getModel());
 				item.add(new Label("nombre", backlogCompletado.bind("nombreUserStory")));
-				item.add(new Label("completa", backlogCompletado.bind("estaCompleta")));
+				item.add(new Label("completa", backlogCompletado.bind("isEstaCompleta")));
 				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
 
 				item.add(new Link<String>("completarUserStory") {
@@ -101,6 +105,7 @@ public class SprintBacklogPage extends WebPage {
 		this.add(new Label("total", projectController.getSumarComplejidad()));
 		this.add(new Label("totalCompletas", projectController.getSumarComplejidadUSCompletas()));
 	}
+
 	private void cerrar() {
 		this.add(new Link<String>("cerrar") {
 

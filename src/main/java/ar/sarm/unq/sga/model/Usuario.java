@@ -15,11 +15,12 @@ public class Usuario extends Persistible {
 	private String apellido;
 	private String nombre;
 
-	@ManyToMany(cascade= CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Project> project = new ArrayList<Project>();
 
 	@OneToOne
 	private Project proyecto;
+
 	public Usuario(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -58,13 +59,12 @@ public class Usuario extends Persistible {
 	}
 
 	public void setProyecto(Project proyec) {
-		proyecto=proyec;
-		
+		proyecto = proyec;
+
 	}
 
 	public Project getProyecto() {
 		return proyecto;
 	}
-	
 
 }

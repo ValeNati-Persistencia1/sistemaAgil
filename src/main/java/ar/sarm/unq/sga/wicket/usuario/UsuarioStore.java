@@ -33,11 +33,11 @@ public class UsuarioStore extends HomeGeneralSession<Usuario> {
 	}
 
 	// ver en que tabla deberia buscar xq es muchos a muchos!!
-	public List<Project> getListaDeProyectosDeUsuario(Usuario usuario) {
-		return getSession().createQuery("FROM Project WHERE id = : proy", Project.class)
-				.setParameter("proy", usuario.getId()).list();
-		// .getResultList();
-	}
+//	public List<Project> getListaDeProyectosDeUsuario(Usuario usuario) {
+//		return getSession().createQuery("FROM Project WHERE id = : proy", Project.class)
+//				.setParameter("proy", usuario.getId()).list();
+//		// .getResultList();
+//	}
 
 	// bien hecha!!!
 	public List<Usuario> getVerUsuario(Project proy) {

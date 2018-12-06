@@ -3,6 +3,7 @@ package ar.sarm.unq.sga.wicket.project;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -17,6 +18,7 @@ import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.backlog.SprintBacklogStore;
+import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
@@ -34,7 +36,7 @@ public class ProjectController implements Serializable {
 	private String nombreSprintBacklog;
 
 	@Autowired
-	private UserStoryStore userStoryStore; // agregado
+	private UserStoryStore userStoryStore;
 
 	@Autowired
 	private BacklogStore backlogStore;
@@ -62,9 +64,10 @@ public class ProjectController implements Serializable {
 
 	private UserStory userStory;
 
-	private SprintBacklog sprintBacklog;
+	public SprintBacklog sprintBacklog;
 
 	private String nombreUserStory;
+	public int sumarComplejidad;
 
 	public ProjectController() {
 
@@ -158,7 +161,12 @@ public class ProjectController implements Serializable {
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-		return projectStore.getListaUsEnSpBacklog(sprintBacklog);
+		if (sprintBacklog.getEstadoAbierto() == true) {
+			return sprintBacklog.getListaUserStory();
+		} else {
+			return sprintBacklog.getListaUserStoryCompletas();
+		}
+
 	}
 
 	public SprintBacklog getSprintBacklog() {
@@ -178,29 +186,23 @@ public class ProjectController implements Serializable {
 		proyecto.setSprintBacklogs(sprintBacklog);
 	}
 
-	public int getSumarComplejidad() {
-		return getListaDeUserStoryEnSprintBacklog().stream().mapToInt(us -> us.getHistoryPoint()).sum();
-	}
-
 	public int getSumarComplejidadUSCompletas() {
-		return getListaDeUserStoryEnSprintBacklog().stream().filter(us -> us.estaCompleta == true)
-				.collect(Collectors.toList()).stream().mapToInt(us -> us.getHistoryPoint()).sum();
-
+		return sprintBacklog.getSumatoriaComplejidadUsCompletas();
 	}
 
-	//// no anda no muestra el nombre!!!
-	// public String getNombreUserStory() {
-	//// return nombreUserStory;
-	// return proyecto.getBacklog().getUserStory().getNombreUserStory();
-	//
-	// }
+	public int getSumarComplejidad() {
+		return sprintBacklog.getSumatoriaComplejidad();
+	}
+
+	public void setSumarComplejidad(int sumarComplejidad) {
+		this.sumarComplejidad = sumarComplejidad;
+	}
 
 	public void setNombreUserStory(String nombreUserStory) {
 		this.nombreUserStory = nombreUserStory;
 	}
 
 	public List<SprintBacklog> getSprintBacklogs() {
-		// projectStore.attach(proyecto);
 		return this.proyecto.getSprintBacklogs();
 	}
 
@@ -217,13 +219,13 @@ public class ProjectController implements Serializable {
 		userStory2.setProject(getProyecto());
 		userStory2.setEstaEnBacklogSprint(true);
 		userStory2.setSprintBacklog(sprintBacklog);
-
+		sprintBacklog.setSumatoriaComplejidad(sprintBacklog.getSumatoriaComplejidad());
 	}
 
 	public void cerrarSprintBacklog() {
 		projectStore.attach(proyecto);
-		projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(us -> us.setSprintBacklog(null));
-		projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(c -> c.setEstaEnBacklogSprint(false));
-		
+		sprintBacklog.setEstadoAbierto(false);
+		sprintBacklog.getListaUserStoryIncompletas().forEach(us -> us.setEstaEnBacklogSprint(false));
+		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
 	}
 }

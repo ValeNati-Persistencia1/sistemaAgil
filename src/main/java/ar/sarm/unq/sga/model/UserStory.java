@@ -33,10 +33,10 @@ public class UserStory extends Persistible {
 	@ManyToOne
 	private Project project;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private SprintBacklog sprintBacklog;
-	private boolean estaEnBacklogSprint = false;
 
+	private boolean estaEnBacklogSprint = false;
 
 	public UserStory() {
 
@@ -70,12 +70,11 @@ public class UserStory extends Persistible {
 		}
 	}
 
-	
 	public void setEstaCompleta(boolean estaCompleta) {
 		this.estaCompleta = estaCompleta;
 	}
 
-	public boolean estaCompleta() {
+	public boolean getEstaCompleta() {
 		return estaCompleta;
 	}
 
@@ -135,6 +134,7 @@ public class UserStory extends Persistible {
 
 	public void setSprintBacklog(SprintBacklog sprintBacklog) {
 		this.sprintBacklog = sprintBacklog;
+		sprintBacklog.addListaUserStory(this);
 	}
 
 	public boolean isEstaEnBacklogSprint() {
@@ -145,9 +145,4 @@ public class UserStory extends Persistible {
 		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
 
-	public boolean getEstaEnBacklogSprint() {
-		return estaEnBacklogSprint;
-	}
-
-	
 }

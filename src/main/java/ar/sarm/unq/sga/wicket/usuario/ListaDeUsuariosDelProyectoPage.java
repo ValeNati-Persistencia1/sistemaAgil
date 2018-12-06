@@ -53,7 +53,7 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 
 					@Override
 					public void onClick() {
-//						 ListaDeUsuariosDelProyectoPage.this.projectController.borrarUsuario(item.getModelObject());
+						// ListaDeUsuariosDelProyectoPage.this.projectController.borrarUsuario(item.getModelObject());
 						// this.setResponsePage(new ListProjectPage());
 					}
 
@@ -71,25 +71,11 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				 this.setResponsePage(new ListProjectPage());
+				this.setResponsePage(new ListProjectPage());
 
 			}
 
 		});
 	}
-
-	// public void botonCancelar() {
-	// this.add(new Link<String>("cancelar") {
-	//
-	// private static final long serialVersionUID = 1L;
-	//
-	// @Override
-	// public void onClick() {
-	// // this.setResponsePage(new ListProjectPage());
-	//
-	// }
-	//
-	// });
-	// }
 
 }

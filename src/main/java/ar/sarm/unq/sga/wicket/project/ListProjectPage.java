@@ -44,16 +44,6 @@ public class ListProjectPage extends WebPage {
 		botonAgregar();
 	}
 
-//	public ListProjectPage(Project proy) {
-//		projectController.attach(proy);
-//		userStoryController.setProject(proy);
-//		tablaDeProyectos();
-//		botonCancelar();
-//		botonAgregar();
-//		projectController.setProject(proy);
-//
-//	}
-
 	public ListProjectPage() {
 		tablaDeProyectos();
 		botonCancelar();

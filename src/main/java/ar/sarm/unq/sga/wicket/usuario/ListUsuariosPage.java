@@ -28,7 +28,7 @@ public class ListUsuariosPage extends WebPage {
 	@SpringBean
 	private ProjectController projectController;
 
-	private Usuario usuario;
+	//private Usuario usuario;
 	private Project proyecto;
 
 	public ListUsuariosPage(Project proy) {

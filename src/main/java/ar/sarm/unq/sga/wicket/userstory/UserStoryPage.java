@@ -34,7 +34,6 @@ private ProjectController projectController;
 
 	public UserStoryPage(UserStory us) {
 		this.userStoryController.setUserStory(us);
-		this.setUserStory(us);
 		this.agregarForm();
 		this.volverAHomePage();
 		
@@ -132,11 +131,11 @@ private ProjectController projectController;
 		});
 	}
 
-	public UserStory getUserStory() {
-		return userStory;
-	}
-
-	public void setUserStory(UserStory userStory) {
-		this.userStory = userStory;
-	}
+//	public UserStory getUserStory() {
+//		return userStory;
+//	}
+//
+//	public void setUserStory(UserStory userStory) {
+//		this.userStory = userStory;
+//	}
 }

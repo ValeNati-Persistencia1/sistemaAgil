@@ -181,4 +181,7 @@ public class UserStoryController implements Serializable {
 	public String getNombreDelSprintBacklogQueEstaLaUS() {
 		return user.getSprintBacklog().getNombreSprintBacklog();
 	}
+	public int getTotal(){
+		return this.getListaDeUserStoryEnSprintBacklog().stream().mapToInt(us->us.getHistoryPoint()).sum();
+	}
 }

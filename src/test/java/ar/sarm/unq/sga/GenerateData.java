@@ -63,6 +63,7 @@ public class GenerateData {
 		usuario.setProyecto(proyecto);
 		SprintBacklog sp = new SprintBacklog();
 		us.setHistoryPoint(4);
+		sp.setSumatoriaComplejidad(sp.getSumatoriaComplejidad());
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 
