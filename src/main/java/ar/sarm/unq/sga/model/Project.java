@@ -19,11 +19,14 @@ public class Project extends Persistible {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Backlog backlog;
 
-	@ManyToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
-	private List<Usuario> usuarios = new ArrayList<Usuario>();
+	@ManyToMany(mappedBy = "project")
+	private List<Usuario> usuarios=new ArrayList<>();
 
 	@OneToMany(mappedBy = "project")
 	private List<SprintBacklog> sprintBacklogs;
+
+	@OneToMany(mappedBy = "project")
+	private List<Rol> roles=new ArrayList<>();
 
 	public Project() {
 	}
@@ -67,6 +70,18 @@ public class Project extends Persistible {
 
 	public void setSprintBacklogs(SprintBacklog sprintBacklog) {
 		sprintBacklogs.add(sprintBacklog);
+	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRol(Rol rol){
+		this.getRoles().add(rol);
 	}
 
 }
