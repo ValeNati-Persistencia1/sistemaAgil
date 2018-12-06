@@ -3,6 +3,7 @@ package ar.sarm.unq.sga.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 
 @Entity
@@ -19,6 +20,7 @@ public class UserStory extends Persistible {
 	@OrderBy("estacompleta = true")
 	public boolean estaCompleta = false;
 
+	@ManyToOne
 	private Usuario usuario;
 
 	private String nombreUserStory;
@@ -36,6 +38,8 @@ public class UserStory extends Persistible {
 	private SprintBacklog sprintBacklog;
 	private boolean estaEnBacklogSprint = false;
 
+	private Rol rol;
+    
 
 	public UserStory() {
 
@@ -147,6 +151,19 @@ public class UserStory extends Persistible {
 	public boolean getEstaEnBacklogSprint() {
 		return estaEnBacklogSprint;
 	}
+	
+	public Rol getRol(){
+		return this.rol;
+	}
+
+	public void setRol(Rol rol) {
+	   this.rol=rol;
+		
+	}
+
+	
+	
+	
 
 	
 }
