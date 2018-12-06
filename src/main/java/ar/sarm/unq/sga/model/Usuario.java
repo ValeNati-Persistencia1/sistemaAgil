@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,15 +15,18 @@ public class Usuario extends Persistible {
 
 	private static final long serialVersionUID = 1L;
 	private String apellido;
-	private String nombre;
+	private String nombreUsuario;
 
-	@ManyToMany(cascade= CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Project> project = new ArrayList<Project>();
-
 	@OneToOne
 	private Project proyecto;
+	@OneToMany(mappedBy="usuario")
+	private List<UserStory>usersStories=new ArrayList<>();
+	
+
 	public Usuario(String nombre, String apellido) {
-		this.nombre = nombre;
+		this.nombreUsuario = nombre;
 		this.apellido = apellido;
 	}
 
@@ -29,12 +34,12 @@ public class Usuario extends Persistible {
 
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreUsuario(String nombre) {
+		this.nombreUsuario = nombre;
 	}
 
 	public List<Project> getProyectos() {
@@ -54,17 +59,27 @@ public class Usuario extends Persistible {
 	}
 
 	public String getApellidoNombre() {
-		return apellido + nombre;
+		return apellido + nombreUsuario;
 	}
 
 	public void setProyecto(Project proyec) {
-		proyecto=proyec;
-		
+		proyecto = proyec;
+
 	}
 
 	public Project getProyecto() {
 		return proyecto;
 	}
+
+	public List<UserStory> getUsersStories() {
+		return usersStories;
+	}
+
+	public void setUsersStories(List<UserStory> usersStories) {
+		this.usersStories = usersStories;
+	}
+
+	
 	
 
 }
