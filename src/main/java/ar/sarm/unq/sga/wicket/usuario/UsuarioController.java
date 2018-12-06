@@ -4,20 +4,23 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 
-@Controller
+@Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String nombre;
+	private String nombreUsuario;
 	private String apellido;
 	@Autowired
 	private UsuarioStore usuarioStore;
@@ -29,13 +32,11 @@ public class UsuarioController implements Serializable {
 
 	private Project proyecto;
 
-	private String message;
-
 	public UsuarioController(Project proy, Usuario user) {
 		projectStore.attach(proy);
 		usuarioStore.attach(user);
 		this.proyecto = proy;
-		this.usuario=user;
+		this.usuario = user;
 	}
 
 	public UsuarioController() {
@@ -43,16 +44,16 @@ public class UsuarioController implements Serializable {
 	}
 
 	public UsuarioController(String nombre, String apellido) {
-		this.nombre = nombre;
+		this.nombreUsuario = nombre;
 		this.apellido = apellido;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreUsuario(String nombre) {
+		this.nombreUsuario = nombre;
 	}
 
 	public String getApellido() {
@@ -63,34 +64,28 @@ public class UsuarioController implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public void agregarUsuario() {
-		Usuario dev = new Usuario(getNombre(), getApellido());
-		usuarioStore.insert(dev);
-
-	}
+	 public void agregarUsuario() {
+	 Usuario dev = new Usuario();
+	 dev.setNombreUsuario(nombreUsuario);
+	 dev.setApellido(apellido);
+	 dev.setProyecto(proyecto);
+	 usuarioStore.insert(dev);
+	
+	 }
+//	public void agregarUsuario() {
+//		projectStore.attach(proyecto);
+//		usuarioStore.attach(usuario);
+//		usuario=new Usuario();
+//		usuario.setNombreUsuario(nombreUsuario);
+//		usuario.setApellido(apellido);
+//		usuarioStore.insert(usuario);
+//		usuario.setProyecto(proyecto);
+//		proyecto.setUsuario(usuario);
+//	}
 
 	public void attach(Usuario developer) {
 		usuarioStore.attach(developer);
 
-	}
-
-	public Usuario findByName() {
-		try {
-			this.setMessage(null);
-			usuario = usuarioStore.findByName(getNombre());
-		} catch (Exception e) {
-			setMessage("no existe el objeto");// TODO: handle exception
-			usuario = null;
-		}
-		return usuario;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -111,7 +106,6 @@ public class UsuarioController implements Serializable {
 		usuarioStore.attach(user);
 		user.addProyecto(modelObject);
 		modelObject.setUsuario(user);
-		//agregue ultima linea
 
 	}
 

@@ -1,6 +1,7 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,52 +11,55 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.Rol;
+import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class UserStoryController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private String nombre;
 	private String descripcion;
 	private String valorCliente;
 	private int historyPoint;
-	private Usuario usuario;
-
+	private Rol rol;
+    private Usuario usuario;
 	@Autowired
 	private UserStoryStore userStoryStore;
-	private UserStory user;
+	private UserStory story;
 	private Project project;
-
 	@Autowired
 	private ProjectStore projectStore;
-
+	@Autowired
+    private UsuarioStore usuarioStore;
 	@Autowired
 	private BacklogStore backlogStore;
 
+	private String nombreRol;
+	private List<Rol> roles = new ArrayList<> ();
+	
 	public UserStoryController() {
 
 	}
 
 	public UserStoryController(UserStory userStory) {
 		userStoryStore.attach(userStory);
-		user = userStory;
+		story = userStory;
 		setUserStory(userStory);
 
 	}
 
 	public UserStoryController(Project proy) {
 		projectStore.attach(proy);
-		user.setProject(proy);
+		story.setProject(proy);
 		project = proy;
 
 	}
@@ -105,19 +109,21 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void agregarUserStoryALaLista() {
-		UserStory us = new UserStory(getNombre());
-		us.setDescripcion(descripcion);
-		us.setValorCliente(valorCliente);
-		us.setHistoryPoint(historyPoint);
-		// us.setUsuario(usuario);
-		userStoryStore.insert(us);
-		project.getBacklog().setUserStory(us);
-		us.setProject(project);
-		us.setBacklog(project.getBacklog());
-
-		// agregue ultima linea para la lista de proyecto
+		story= new UserStory(getNombre());
+		story.setDescripcion(descripcion);
+		story.setValorCliente(valorCliente);
+		story.setHistoryPoint(historyPoint);
+		story.setUsuario(usuario);
+		usuario.setNombreUsuario(this.getNombreUsuario());
+        story.setRol(rol);
+        rol.setNombreRol(this.getNombreRol());
+		project.getBacklog().setUserStory(story);
+		story.setProject(project);
+		story.setBacklog(project.getBacklog());
+		userStoryStore.insert(story);
 	}
-
+	
+	
 	public void attach(UserStory us) {
 		userStoryStore.attach(us);
 	}
@@ -135,11 +141,11 @@ public class UserStoryController implements Serializable {
 	}
 
 	public UserStory getUserStory() {
-		return user;
+		return story;
 	}
 
 	public void setUserStory(UserStory userStory) {
-		this.user = userStory;
+		this.story = userStory;
 	}
 
 	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
@@ -147,19 +153,11 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void borrarUserStoryDeListaEnBacklog() {
-		userStoryStore.delete(user);
+		userStoryStore.delete(story);
 
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	/// no tocar funciona
 	// public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
 	// userStoryStore.attach(modelObject);
 	// modelObject.setEstaEnBacklogSprint(true);
@@ -179,6 +177,50 @@ public class UserStoryController implements Serializable {
 	}
 
 	public String getNombreDelSprintBacklogQueEstaLaUS() {
-		return user.getSprintBacklog().getNombreSprintBacklog();
+		return story.getSprintBacklog().getNombreSprintBacklog();
 	}
+	
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+	
+	public Usuario getUsuario(){
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	public List<Rol>getRoles(){
+		return project.getRoles();
+	}
+	
+	public List<Usuario>getUsuarios(){
+		return this.project.getUsuarios();
+	}
+
+	public String getNombreRol() {
+		return this.nombreRol;
+	}
+
+	public String getNombreUsuario() {
+		return this.usuario.getNombreUsuario();
+	}
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
+	}
+
+	
+
+	
+	
+	
 }
+
