@@ -30,6 +30,7 @@ public class ListaDeProyectosDelUsuarioPage extends WebPage {
 	private UsuarioController usuarioController;
 
 	public ListaDeProyectosDelUsuarioPage(Usuario usuario) {
+		usuarioController.attach(usuario);
 		usuarioController.setUsuario(usuario);
 		tablaDeProyectosDelUsuario();
 		volver();

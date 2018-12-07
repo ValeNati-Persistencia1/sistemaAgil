@@ -36,7 +36,19 @@ public class ListProjectPage extends WebPage {
 	private Usuario user;
 	private Project proyecto;
 
+//	public ListProjectPage(Usuario usuario, Project proy) {
+//		user = usuario;
+//		proyecto = proy;
+//		this.usuarioController.attach(usuario);
+//		this.projectController.setUsuario(usuario);
+//		this.projectController.setProject(proy);
+//		tablaDeProyectos();
+//		botonCancelar();
+//		botonAgregar();
+//	}
+
 	public ListProjectPage(Usuario usuario) {
+		user = usuario;
 		this.usuarioController.attach(usuario);
 		this.projectController.setUsuario(usuario);
 		tablaDeProyectos();
@@ -49,6 +61,15 @@ public class ListProjectPage extends WebPage {
 		botonCancelar();
 		botonAgregar();
 
+	}
+
+	public ListProjectPage(Project proy) {
+		proyecto = proy;
+		projectController.attach(proy);
+		projectController.setProject(proyecto);
+		tablaDeProyectos();
+		botonCancelar();
+		botonAgregar();
 	}
 
 	private void tablaDeProyectos() {
@@ -86,7 +107,7 @@ public class ListProjectPage extends WebPage {
 					@Override
 					public void onClick() {
 						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
-						this.setResponsePage(new ListProjectPage());
+						this.setResponsePage(new ProjectPage());
 					}
 
 				});

@@ -20,6 +20,7 @@ import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.backlog.SprintBacklogStore;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryStore;
+import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
 
 @Controller
@@ -85,6 +86,12 @@ public class ProjectController implements Serializable {
 		sprintBacklog = sprint;
 	}
 
+	public ProjectController(Project proy) {
+		projectStore.attach(proy);
+		proyecto = proy;
+
+	}
+
 	public ProjectController(String name) {
 		this.nombre = name;
 	}
@@ -125,6 +132,8 @@ public class ProjectController implements Serializable {
 	}
 
 	public void borrarProyecto(Project proy) {
+		projectStore.attach(proy);
+		proy.getUsuarios().forEach(us -> us.borrarProyecto(proy));
 		projectStore.deleteProject(proy);
 
 	}
@@ -227,5 +236,9 @@ public class ProjectController implements Serializable {
 		sprintBacklog.setEstadoAbierto(false);
 		sprintBacklog.getListaUserStoryIncompletas().forEach(us -> us.setEstaEnBacklogSprint(false));
 		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
+	}
+
+	public List<SprintBacklog> getSprintBacklogsCerrados() {
+		return proyecto.getSprintBacklogsCerrados();
 	}
 }

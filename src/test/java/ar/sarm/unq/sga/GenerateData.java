@@ -60,7 +60,7 @@ public class GenerateData {
 		proyecto.setUsuario(usuario2);
 		proyecto.setUsuario(usuario3);
 		proyecto.setBacklog(back);
-		usuario.setProyecto(proyecto);
+//		usuario.setProyecto(proyecto);
 		SprintBacklog sp = new SprintBacklog();
 		us.setHistoryPoint(4);
 		sp.setSumatoriaComplejidad(sp.getSumatoriaComplejidad());
