@@ -9,6 +9,13 @@ public class Rol extends Persistible {
 
 	@ManyToOne
 	private Project project;
+	
+	private String nombreRol;
+
+	
+	public Rol (String nombre){
+		this.nombreRol=nombre;
+	}
 
 	public Project getProject() {
 		return project;
@@ -17,7 +24,18 @@ public class Rol extends Persistible {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+
+	public String getNombreRol() {
+		return nombreRol;
+	}
+
+	public void setNombreRol(String nombre) {
+		this.nombreRol = nombre;
+	}
+
 	
+
+
 	
 
 }
