@@ -23,7 +23,6 @@ public class SprintBacklogPage extends WebPage {
 
 	@SpringBean
 	private UserStoryController userStoryController;
-
 	@SpringBean
 	private ProjectController projectController;
 
@@ -39,9 +38,8 @@ public class SprintBacklogPage extends WebPage {
 	private SprintBacklog sprintBacklog;
 
 	public SprintBacklogPage(Project proyecto, SprintBacklog sprint) {
-
-		project = proyecto;
-		sprintBacklog = sprint;
+		project=proyecto;
+		sprintBacklog= sprint;
 		projectController.attach(proyecto);
 		projectController.attach(sprint.getProyecto());
 		projectController.setProject(proyecto);
@@ -51,18 +49,23 @@ public class SprintBacklogPage extends WebPage {
 		cerrar();
 	}
 
+
+
 	public SprintBacklogPage(Project proyecto, UserStory userStory) {
-		project = proyecto;
-		user = userStory;
+		project=proyecto;
+		user=userStory;
 		projectController.attach(proyecto);
 		userStoryController.attach(userStory);
 		userStoryController.setUserStory(userStory);
 		projectController.setSprintBacklog(userStory.getSprintBacklog());
 		projectController.setProject(proyecto);
-		agregarAUserStoryFormBacklogsCompletadas();
+		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
 		cerrar();
 	}
+	
+
+	
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("sublistaSprintBacklogCompletados",

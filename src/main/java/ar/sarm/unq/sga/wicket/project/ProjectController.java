@@ -2,9 +2,11 @@ package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -65,7 +67,7 @@ public class ProjectController implements Serializable {
 
 	private UserStory userStory;
 
-	public SprintBacklog sprintBacklog;
+	private SprintBacklog sprintBacklog;
 
 	private String nombreUserStory;
 	public int sumarComplejidad;
@@ -237,6 +239,7 @@ public class ProjectController implements Serializable {
 		sprintBacklog.getListaUserStoryIncompletas().forEach(us -> us.setEstaEnBacklogSprint(false));
 		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
 	}
+	
 
 	public List<SprintBacklog> getSprintBacklogsCerrados() {
 		return proyecto.getSprintBacklogsCerrados();

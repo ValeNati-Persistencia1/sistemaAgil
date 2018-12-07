@@ -17,8 +17,6 @@ public class SprintBacklog extends Persistible {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "sprintBacklog", cascade = CascadeType.ALL)
 	public List<UserStory> listaUserStory = new ArrayList<>();
 
-	private int posicion;
-
 	@ManyToOne
 	private Project project;
 
@@ -30,14 +28,6 @@ public class SprintBacklog extends Persistible {
 
 	public SprintBacklog() {
 
-	}
-
-	public int getPosicion() {
-		return posicion;
-	}
-
-	public void setPosicion(int posicion) {
-		this.posicion = posicion;
 	}
 
 	public Boolean getEstadoAbierto() {
