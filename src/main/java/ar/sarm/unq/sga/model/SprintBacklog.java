@@ -46,8 +46,8 @@ public class SprintBacklog extends Persistible {
 		return listaUserStory;
 	}
 
-	public void setListaUserStory(UserStory listaUserStory) {
-		this.listaUserStory.add(listaUserStory);
+	public void setListaUserStory(UserStory userStory) {
+		this.listaUserStory.add(userStory);
 	}
 
 	public String getNombreSprintBacklog() {

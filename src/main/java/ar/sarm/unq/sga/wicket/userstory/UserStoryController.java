@@ -2,6 +2,7 @@ package ar.sarm.unq.sga.wicket.userstory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,26 +44,29 @@ public class UserStoryController implements Serializable {
 	@Autowired
 	private BacklogStore backlogStore;
 
-	private String nombreRol;
 	private List<Rol> roles = new ArrayList<> ();
 	
 	public UserStoryController() {
-
+		
+        
 	}
+//
+//	public UserStoryController(UserStory userStory) {
+//		userStoryStore.attach(userStory);
+//		story = userStory;
+//		setUserStory(userStory);
+//
+//	}
+//	
 
-	public UserStoryController(UserStory userStory) {
-		userStoryStore.attach(userStory);
-		story = userStory;
-		setUserStory(userStory);
-
-	}
-
-	public UserStoryController(Project proy) {
-		projectStore.attach(proy);
-		story.setProject(proy);
-		project = proy;
-
-	}
+//	public UserStoryController(Project proy) {
+//		projectStore.attach(proy);
+//		story.setProject(proy);
+//		project = proy;
+//		this.agregarProyectoAlRol(rol);
+//		rol.setProject(project);
+//        story.setProject(project);
+//	}
 
 	public UserStoryController(String nombre) {
 		this.nombre = nombre;
@@ -115,8 +119,8 @@ public class UserStoryController implements Serializable {
 		story.setHistoryPoint(historyPoint);
 		story.setUsuario(usuario);
 		usuario.setNombreUsuario(this.getNombreUsuario());
+		rol=new Rol(this.getNombreRol());
         story.setRol(rol);
-        rol.setNombreRol(this.getNombreRol());
 		project.getBacklog().setUserStory(story);
 		story.setProject(project);
 		story.setBacklog(project.getBacklog());
@@ -197,25 +201,41 @@ public class UserStoryController implements Serializable {
 		this.usuario = usuario;
 	}
 	
-	public List<Rol>getRoles(){
-		return project.getRoles();
-	}
+//	public List<String>getStringsRoles(){
+//		List<String>nombreR=Arrays.asList(this.getRol().getNombreRol());
+//		return nombreR;
+//	}
 	
 	public List<Usuario>getUsuarios(){
 		return this.project.getUsuarios();
 	}
 
 	public String getNombreRol() {
-		return this.nombreRol;
+		return this.rol.getNombreRol();
 	}
 
 	public String getNombreUsuario() {
 		return this.usuario.getNombreUsuario();
 	}
-
-	public void setNombreRol(String nombreRol) {
-		this.nombreRol = nombreRol;
+	public List<Rol>getRoles(){
+		return this.roles;
 	}
+	
+	
+	public void agregarProyectoAlRol(Rol rol){	
+		rol.setProject(project);
+		Rol rol1=new Rol("Developer");
+		Rol rol2=new Rol("Management");
+		Rol rol3=new Rol("Management");
+		roles.add(rol1);
+		roles.add(rol2);
+		roles.add(rol3);
+		project.setRoles(this.getRoles());
+		
+
+		}
+
+		
 
 	
 

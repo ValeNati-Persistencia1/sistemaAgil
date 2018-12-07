@@ -29,6 +29,8 @@ public class UserStoryPage extends WebPage {
 	@SuppressWarnings("unused")
 	private Project project;
 	private UserStory userStory;
+	private Usuario usuario;
+	private Rol rol;
 
 	public UserStoryPage() {
 		this.agregarForm();
@@ -36,26 +38,27 @@ public class UserStoryPage extends WebPage {
 
 	}
 
-	public UserStoryPage(UserStory us) {
-		this.userStoryController.setUserStory(us);
-		this.setUserStory(us);
-		this.agregarForm();
-		this.volverAHomePage();
-
-	}
-
-	public UserStoryPage(Project proy) {
-		projectController.attach(proy);
-		userStoryController.setProject(proy);
-		this.agregarForm();
-		this.volverAHomePage();
-	}
+//	public UserStoryPage(UserStory us) {
+//		this.userStoryController.setUserStory(us);
+//		this.setUserStory(us);
+//		this.agregarForm();
+//		this.volverAHomePage();
+//
+//	}
+//Este es el que se usa primero
+//	public UserStoryPage(Project proy) {
+//		projectController.attach(proy);
+//		userStoryController.setProject(proy);
+//		this.agregarForm();
+//		this.volverAHomePage();
+//	}
 	
-	public UserStoryPage(Project proy, Usuario usuario,Rol rol){
+	public UserStoryPage(Project proy){
 		projectController.attach(proy);
 		userStoryController.setUserStory(userStory);
+		userStoryController.agregarProyectoAlRol(rol);
 		proy.setUsuario(usuario);
-		proy.addRol(rol);
+		//proy.addRol(rol);
 		proy.getBacklog().setUserStory(userStory);
 		usuario.setProyecto(proy);
 		rol.setProject(proy);
@@ -86,7 +89,7 @@ public class UserStoryPage extends WebPage {
 		crearUserStoryForm
 				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
 
-		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol"),
+		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol.nombreRol"),
 				new PropertyModel<>(this.userStoryController, "roles"), new ChoiceRenderer<>("nombreRol")));
 
 		crearUserStoryForm.add(new DropDownChoice<>("usuario", new PropertyModel<>(this.userStoryController, "usuario"),

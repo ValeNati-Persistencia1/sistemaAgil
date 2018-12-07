@@ -137,6 +137,16 @@ public class ListProjectPage extends WebPage {
 					}
 
 				});
+				item.add(new Link<String>("historiaProyecto") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						this.setResponsePage(new HistoriaProyectoPage(item.getModelObject()));
+					}
+
+				});
+				
 			}
 
 		});

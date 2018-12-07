@@ -71,8 +71,6 @@ public class ListUsuariosPage extends WebPage {
 							@Override
 							public void onClick() {
 								ListUsuariosPage.this.usuarioController.borrarUsuario(item.getModelObject());
-								// la idea es que vaya a la lista de sus
-								// proyectos
 
 							}
 

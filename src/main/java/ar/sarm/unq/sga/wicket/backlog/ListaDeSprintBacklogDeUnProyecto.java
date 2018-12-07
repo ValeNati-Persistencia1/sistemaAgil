@@ -23,7 +23,7 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 
 	@SpringBean
 	private UserStoryController userStoryController;
-	// cambie el nombre por userStoryController;
+
 	@SpringBean
 	private ProjectController projectController;
 

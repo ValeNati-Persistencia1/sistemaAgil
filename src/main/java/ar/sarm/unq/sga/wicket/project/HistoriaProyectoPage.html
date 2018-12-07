@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<title>Lista de sprint/Backlog</title>
+<style>
+.recuadro {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: DarkBlue;
+	border-radius: 4px;
+}
+
+.columna {
+	font-size: smaller;
+}
+</style>
+</head>
+<body style="background-color: #F5FAF3;">
+	<div class="container">
+		<div class="panel panel-primary"
+			;  style="margin-top: 20px; text-align: left";>
+			<div class="panel-heading";>
+				<h4>Historia del Proyecto</h4>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<th>SprintBacklog anterior</th>
+						
+					</thead>
+					<tbody>
+						<tr wicket:id="sprintsBacklogsAnteriores">
+	                         <td wicket:id="nombre" class="columna" />
+
+							<td>
+								<button wicket:id="tareasIncompletas"
+									class=" btn-primary btn-sm">Tareas Incompletas</button>
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="row" text-align:center>
+				<div class="col-md-5">
+					<button wicket:id="cancelar" class="btn-primary">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

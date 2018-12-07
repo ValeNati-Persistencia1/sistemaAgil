@@ -1,11 +1,10 @@
 package ar.sarm.unq.sga.wicket.project;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.stream.Collectors;
 
-import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
+import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
@@ -36,7 +36,7 @@ public class ProjectController implements Serializable {
 	private String nombreSprintBacklog;
 
 	@Autowired
-	private UserStoryStore userStoryStore; // agregado
+	private UserStoryStore userStoryStore; 
 
 	@Autowired
 	private BacklogStore backlogStore;
@@ -67,9 +67,13 @@ public class ProjectController implements Serializable {
 	private SprintBacklog sprintBacklog;
 
 	private String nombreUserStory;
+	
+	
+	private Rol rol;
+
 
 	public ProjectController() {
-
+       
 	}
 
 	public ProjectController(UserStory user) {
@@ -87,6 +91,7 @@ public class ProjectController implements Serializable {
 	public ProjectController(String name) {
 		this.nombre = name;
 	}
+	
 
 	public String getNombre() {
 		return nombre;
@@ -190,19 +195,11 @@ public class ProjectController implements Serializable {
 
 	}
 
-	//// no anda no muestra el nombre!!!
-	// public String getNombreUserStory() {
-	//// return nombreUserStory;
-	// return proyecto.getBacklog().getUserStory().getNombreUserStory();
-	//
-	// }
-
 	public void setNombreUserStory(String nombreUserStory) {
 		this.nombreUserStory = nombreUserStory;
 	}
 
 	public List<SprintBacklog> getSprintBacklogs() {
-		// projectStore.attach(proyecto);
 		return this.proyecto.getSprintBacklogs();
 	}
 
@@ -221,17 +218,17 @@ public class ProjectController implements Serializable {
 		userStory2.setSprintBacklog(sprintBacklog);
         
 	}
-	public List<UserStory>getListaDeUserStoryEnSprintBacklogIncompletas(){
-		return projectStore.getListaDeUserStoryEnSprintBacklogIncompletas();
-	}
-
-
+	
 	public void cerrar(){
 	projectStore.attach(proyecto);	
-	projectStore.getListaDeUserStoryEnSprintBacklogIncompletas().forEach(us->us.setBacklog(null));
+	projectStore.getListaDeUserStoryEnSprintBacklog().forEach(us->us.setSprintBacklog(null));
 	projectStore.getListaDeUserStoryEnSprintBacklog().forEach(us->us.getSprintBacklog().setEstado(false));
 		
 	}
+
+	
+	
 	
 
+   
 }

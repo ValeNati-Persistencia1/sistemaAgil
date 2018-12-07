@@ -25,7 +25,7 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage {
 	@SpringBean
 	private ProjectController projectController;
 	@SpringBean
-	private UserStoryController userStoryController;// esto lo agrego vale
+	private UserStoryController userStoryController;
 	private Project proyecto;
 	private UserStory userStory;
 
