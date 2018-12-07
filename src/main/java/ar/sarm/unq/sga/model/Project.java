@@ -26,7 +26,7 @@ public class Project extends Persistible {
 	private List<SprintBacklog> sprintBacklogs;
 
 	@OneToMany(mappedBy = "project")
-	private List<Rol> roles=new ArrayList<>();
+	private List<Rol> roles;
 
 	public Project() {
 	}
@@ -81,7 +81,7 @@ public class Project extends Persistible {
 	}
 	
 	public void addRol(Rol rol){
-		this.getRoles().add(rol);
+		this.roles.add(rol);
 	}
 
 }
