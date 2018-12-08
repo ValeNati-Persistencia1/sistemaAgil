@@ -21,11 +21,13 @@ public class HistoriaProyectoPage extends WebPage {
 	private ProjectController projectController;
 
 	public HistoriaProyectoPage(Project modelObject) {
+		projectController.attach(modelObject);
+		projectController.setProject(modelObject);
 		this.tablaSprintsAnteriores();
 		this.botonCancelar();
 	}
 
-	private void tablaSprintsAnteriores(){ 	
+	public  void tablaSprintsAnteriores(){ 	
 		this.add(new ListView<SprintBacklog>("sprintsBacklogsAnteriores",
 				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
 			private static final long serialVersionUID = 1L;
@@ -36,15 +38,15 @@ public class HistoriaProyectoPage extends WebPage {
 				item.add(new Label("nombre", sprintAnterior.bind("nombreSprintBacklog")));
 			
 				
-//				item.add(new Link<String>("tareasIncompletas") {
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					public void onClick() {
-//	                 this.setResponsePage(new SprintBacklogPage(proyecto, sprint));
-//					}
-//
-//				});
+				item.add(new Link<String>("tareasIncompletas") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+	                // this.setResponsePage(new SprintBacklogPage(proyecto, sprint));
+					}
+
+				});
 			}
 		});
 	}
