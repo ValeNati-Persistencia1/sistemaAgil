@@ -13,6 +13,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.ListUsersStoriesEnBacklogPage;
+import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 
 public class VerDetalleUserStoryPage extends WebPage {
 
@@ -27,53 +29,29 @@ public class VerDetalleUserStoryPage extends WebPage {
 	public VerDetalleUserStoryPage() {
 		this.addForm();
 		this.salir();
-		this.volverAtras();
 	}
 
 	public VerDetalleUserStoryPage(UserStory us, Project proy) {
 		this.userStory = us;
 		this.addForm();
 		this.salir();
-		this.volverAtras();
 	}
 
 	private void addForm() {
 		this.add(new ListView<UserStory>("losUsersStories",
-				new PropertyModel<>(this.userStoryController, "usersstories")) {
+				new PropertyModel<>(this.userStoryController, "listaDeUserStoryEnSprintBacklog")) {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
-				item.add(new Label("nombre", us.bind("nombre")));
+				item.add(new Label("nombre", us.bind("nombreUserStory")));
 				item.add(new TextArea<>("descripcion", us.bind("descripcion")));
 				item.add(new Label("valorCliente", us.bind("valorCliente")));
 				item.add(new Label("historyPoint", us.bind("historyPoint")));
 
-//				item.add(new Link<String>("agregarUserStoryASprintBacklog") {
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					public void onClick() {
-						// VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-						// this.setResponsePage(new SprintBacklogPage());
 
-//					}
-
-//				});
-
-				item.add(new Link<String>("borrarUserStory") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						VerDetalleUserStoryPage.this.userStoryController.borrarUserStory(item.getModelObject());
-						this.setResponsePage(new VerDetalleUserStoryPage());
-
-					}
-
-				});
 
 			}
 
@@ -87,24 +65,12 @@ public class VerDetalleUserStoryPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListProjectPage());
 
 			}
 
 		});
 	}
 
-	public void volverAtras() {
-		this.add(new Link<String>("volver") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new UserStoryPage());
-
-			}
-
-		});
 	}
 
-}

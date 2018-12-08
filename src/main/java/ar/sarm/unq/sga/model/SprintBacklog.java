@@ -50,7 +50,7 @@ public class SprintBacklog extends Persistible {
 		return listaUserStory;
 	}
 
-	public void setListaUserStory(UserStory userStory) {
+	public void addListaUserStory(UserStory userStory) {
 		this.listaUserStory.add(userStory);
 	}
 

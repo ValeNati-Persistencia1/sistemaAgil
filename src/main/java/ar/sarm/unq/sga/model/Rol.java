@@ -2,6 +2,9 @@ package ar.sarm.unq.sga.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Rol extends Persistible {
 
@@ -9,12 +12,14 @@ public class Rol extends Persistible {
 
 	@ManyToOne
 	private Project project;
-	
+	@Type(type = "text")
 	private String nombreRol;
 
-	
-	public Rol (String nombre){
-		this.nombreRol=nombre;
+	public Rol() {
+	}
+
+	public Rol(String nombre) {
+		this.nombreRol = nombre;
 	}
 
 	public Project getProject() {
@@ -32,10 +37,5 @@ public class Rol extends Persistible {
 	public void setNombreRol(String nombre) {
 		this.nombreRol = nombre;
 	}
-
-	
-
-
-	
 
 }

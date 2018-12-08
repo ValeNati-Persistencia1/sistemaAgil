@@ -40,8 +40,8 @@ public class UserStory extends Persistible {
 
 	private boolean estaEnBacklogSprint = false;
 
+	@OneToOne
 	private Rol rol;
-    
 
 	public UserStory() {
 
@@ -75,7 +75,6 @@ public class UserStory extends Persistible {
 		}
 	}
 
-	
 	public void setEstaCompleta(boolean estaCompleta) {
 		this.estaCompleta = estaCompleta;
 	}
@@ -151,13 +150,13 @@ public class UserStory extends Persistible {
 		this.estaEnBacklogSprint = estaEnBacklogSprint;
 	}
 
-	public Rol getRol(){
+	public Rol getRol() {
 		return this.rol;
 	}
 
 	public void setRol(Rol rol) {
-	   this.rol=rol;
-		
+		this.rol = rol;
+
 	}
 
 }

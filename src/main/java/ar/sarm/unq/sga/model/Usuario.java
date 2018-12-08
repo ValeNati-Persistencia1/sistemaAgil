@@ -15,13 +15,13 @@ public class Usuario extends Persistible {
 
 	private static final long serialVersionUID = 1L;
 	private String apellido;
-	private String nombreUsuario;
-
+	// private String nombreUsuario;
+	private String nombre;
 	@ManyToMany
 	private List<Project> project = new ArrayList<Project>();
+	@OneToMany
+	private List<UserStory> usersStories = new ArrayList<>();
 
-	@OneToOne
-	private Project proyecto;
 	public Usuario(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -32,11 +32,11 @@ public class Usuario extends Persistible {
 	}
 
 	public String getNombreUsuario() {
-		return nombreUsuario;
+		return nombre;
 	}
 
 	public void setNombreUsuario(String nombre) {
-		this.nombreUsuario = nombre;
+		this.nombre = nombre;
 	}
 
 	public List<Project> getProyectos() {
@@ -56,15 +56,11 @@ public class Usuario extends Persistible {
 	}
 
 	public String getApellidoNombre() {
-		return apellido + nombreUsuario;
+		return apellido + nombre;
 	}
 
 	public void borrarProyecto(Project proyecto) {
 		this.project.remove(proyecto);
-	}
-
-	public Project getProyecto() {
-		return proyecto;
 	}
 
 	public List<UserStory> getUsersStories() {
@@ -75,7 +71,9 @@ public class Usuario extends Persistible {
 		this.usersStories = usersStories;
 	}
 
-	
-	
+	// public void setProyecto(Project proy) {
+	// this.proyecto=proy;
+	//
+	// }
 
 }

@@ -68,7 +68,7 @@ public class UsuarioController implements Serializable {
 	 Usuario dev = new Usuario();
 	 dev.setNombreUsuario(nombreUsuario);
 	 dev.setApellido(apellido);
-	 dev.setProyecto(proyecto);
+	 dev.addProyecto(proyecto);
 	 usuarioStore.insert(dev);
 	
 	 }

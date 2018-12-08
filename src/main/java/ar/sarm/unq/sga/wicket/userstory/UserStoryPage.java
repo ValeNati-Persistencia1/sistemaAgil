@@ -35,33 +35,12 @@ public class UserStoryPage extends WebPage {
 	public UserStoryPage() {
 		this.agregarForm();
 		this.volverAHomePage();
-		
+
 	}
 
-//	public UserStoryPage(UserStory us) {
-//		this.userStoryController.setUserStory(us);
-//		this.setUserStory(us);
-//		this.agregarForm();
-//		this.volverAHomePage();
-//en uso ahora
-//	}
-//Este es el que se usa primero
-//	public UserStoryPage(Project proy) {
-//		projectController.attach(proy);
-//		userStoryController.setProject(proy);
-//		this.agregarForm();
-//		this.volverAHomePage();
-//	}
-	
-	public UserStoryPage(Project proy){
+	public UserStoryPage(Project proy) {
 		projectController.attach(proy);
-		userStoryController.setUserStory(userStory);
-		userStoryController.agregarProyectoAlRol(rol);
-		proy.setUsuario(usuario);
-		//proy.addRol(rol);
-		proy.getBacklog().setUserStory(userStory);
-		usuario.setProyecto(proy);
-		rol.setProject(proy);
+		userStoryController.setProject(proy);
 		this.agregarForm();
 		this.volverAHomePage();
 	}
@@ -89,32 +68,11 @@ public class UserStoryPage extends WebPage {
 		crearUserStoryForm
 				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
 
-		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol.nombreRol"),
+		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol"),
 				new PropertyModel<>(this.userStoryController, "roles"), new ChoiceRenderer<>("nombreRol")));
 
 		crearUserStoryForm.add(new DropDownChoice<>("usuario", new PropertyModel<>(this.userStoryController, "usuario"),
 				new PropertyModel<>(this.userStoryController, "usuarios"), new ChoiceRenderer<>("nombreUsuario")));
-
-		// crearUserStoryForm.add(new Link<String>("verDetalleUserStory") {
-		// private static final long serialVersionUID = 1L;
-		//
-		// @Override
-		// public void onClick() {
-		// this.setResponsePage(new VerDetalleUserStoryPage());
-		//
-		// }
-		//
-		// });
-		// crearUserStoryForm.add(new
-		// Link<String>("verListaUserStoriesEnBacklog") {
-		// private static final long serialVersionUID = 1L;
-		//
-		// @Override
-		// public void onClick() {
-		// this.setResponsePage(new ListUsersStoriesEnBacklogPage());
-		// }
-		//
-		// });
 
 		crearUserStoryForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;
@@ -126,16 +84,6 @@ public class UserStoryPage extends WebPage {
 			}
 
 		});
-		// crearUserStoryForm.add(new Link<String>("verListaSprintBacklog") {
-		// private static final long serialVersionUID = 1L;
-		//
-		// @Override
-		// public void onClick() {
-		// this.setResponsePage(new SprintBacklogPage());
-		// }
-		//
-		// });
-		//
 		this.add(crearUserStoryForm);
 
 	}
@@ -153,11 +101,4 @@ public class UserStoryPage extends WebPage {
 		});
 	}
 
-//	public UserStory getUserStory() {
-//		return userStory;
-//	}
-//
-//	public void setUserStory(UserStory userStory) {
-//		this.userStory = userStory;
-//	}
 }

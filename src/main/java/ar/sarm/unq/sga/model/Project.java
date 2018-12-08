@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Project extends Persistible {
@@ -28,7 +28,8 @@ public class Project extends Persistible {
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	private List<SprintBacklog> sprintBacklogs;
 
-	@OneToMany(mappedBy = "project")
+	@OneToMany(mappedBy = "project", cascade=CascadeType.ALL)
+	@Type(type="longtext")
 	private List<Rol> roles;
 
 	public Project() {
@@ -82,13 +83,8 @@ public class Project extends Persistible {
 		return roles;
 	}
 
-	public void setRoles(List<Rol> roles) {
-		this.roles = roles;
-	}
-	
-	public void addRol(Rol rol){
+	public void addRol(Rol rol) {
 		this.roles.add(rol);
 	}
-
 
 }

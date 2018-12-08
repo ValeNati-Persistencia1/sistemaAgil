@@ -16,6 +16,7 @@ import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
+import ar.sarm.unq.sga.wicket.userstory.VerDetalleUserStoryPage;
 
 public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 
@@ -78,6 +79,16 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 					}
 
 				});
+				 item.add(new Link<String>("verDetalleUserStory") {
+					 private static final long serialVersionUID = 1L;
+					
+					 @Override
+					 public void onClick() {
+					 this.setResponsePage(new VerDetalleUserStoryPage());
+					
+					 }
+					
+				 });
 
 			}
 

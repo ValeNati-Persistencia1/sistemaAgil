@@ -87,15 +87,6 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 					}
 
 				});
-				item.add(new Link<String>("borrarUserStory") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						ListUsersStoriesEnBacklogPage.this.userStoryController.borrarUserStory(userStory);
-					}
-
-				});
 
 			}
 

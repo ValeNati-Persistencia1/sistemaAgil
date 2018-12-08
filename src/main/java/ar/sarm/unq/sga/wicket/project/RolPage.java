@@ -9,20 +9,21 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.wicket.HomePage;
-import ar.sarm.unq.sga.wicket.usuario.UsuarioController;
 
-public class ProjectPage extends WebPage {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@SpringBean
+public class RolPage extends WebPage{
+
+	@SpringBean 
 	private ProjectController projectController;
-	@SpringBean
-	private UsuarioController usuarioController;
-
-	@SuppressWarnings("serial")
-	public ProjectPage() {
+	private Project proy;
+	private Project project;
+	public RolPage(){
+		agregarForm();
+	}
+	
+	public RolPage(Project proy) {
+		project= proy;
+		projectController.attach(project);
+		projectController.setProject(project);
 		agregarForm();
 	}
 
@@ -32,16 +33,16 @@ public class ProjectPage extends WebPage {
 
 			@Override
 			protected void onSubmit() {
-				ProjectPage.this.projectController.agregarProyecto();
+				RolPage.this.projectController.agregarRol();
 				this.setResponsePage(new ListProjectPage());
 			}
 
 		};
-		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombre")));
+		crearProjectForm.add(new TextField<>("nombre", new PropertyModel<>(this.projectController, "nombreRol")));
 
 		crearProjectForm.add(new Link<String>("cancelar") {
 			private static final long serialVersionUID = 1L;
-
+			
 			@Override
 			public void onClick() {
 				this.setResponsePage(new HomePage());
@@ -51,4 +52,6 @@ public class ProjectPage extends WebPage {
 
 		this.add(crearProjectForm);
 	}
+
+
 }

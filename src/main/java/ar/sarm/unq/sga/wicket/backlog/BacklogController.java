@@ -125,7 +125,7 @@ public class BacklogController implements Serializable {
 	}
 
 	public List<UserStory> getUsersstories() {
-		return userStoryController.getUsersstories();
+		return (List<UserStory>) userStoryController.getUserStory();
 	}
 
 	public void borrarUserStoryDeListaEnBacklog(UserStory us) {

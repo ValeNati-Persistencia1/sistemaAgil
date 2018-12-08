@@ -22,18 +22,6 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		getSession().save(user);
 	}
 
-//	public List<UserStory> getBacklogsCompletados() {
-//		return getSession().createQuery("FROM UserStory WHERE estaCompleta = : completa ORDER BY estaCompleta = true",
-//				UserStory.class).setParameter("completa", true).getResultList();
-//	}
-//
-//	public List<UserStory> getListaDeUserStoryEnSprintBacklog() {
-//		Query<UserStory> query = getSession().createQuery(
-//				"from UserStory WHERE estaEnBacklogSprint = : estaEnBacklogSprint ORDEY BY estaEnBacklogSprint",
-//				UserStory.class);
-//		query.setParameter("estaEnBacklogSprint", true);
-//		return query.list();
-//	}
 
 	public List<UserStory> getListaDeUserStory() {
 		Query<UserStory> query = getSession()
