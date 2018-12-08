@@ -83,7 +83,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public ProjectController(UserStory user) {
-		this.getSprintBacklogs();
+		//this.getSprintBacklogs();
 		userStoryStore.attach(user);
 		userStory = user;
 		userStory.setNombreUserStory(nombreUserStory);
@@ -185,6 +185,8 @@ public class ProjectController implements Serializable {
 		}
 
 	}
+	
+	
 
 	public SprintBacklog getSprintBacklog() {
 		return sprintBacklog;
@@ -245,6 +247,7 @@ public class ProjectController implements Serializable {
 		sprintBacklog.getListaUserStoryIncompletas().forEach(us -> us.setEstaEnBacklogSprint(false));
 		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
 	}
+<<<<<<< HEAD
 
 	public List<SprintBacklog> getSprintBacklogsCerrados() {
 		return proyecto.getSprintBacklogsCerrados();
@@ -265,4 +268,11 @@ public class ProjectController implements Serializable {
 		rol.setProject(proyecto);
 		proyecto.addRol(rol);
 	}
+=======
+	
+	public List<SprintBacklog> getSprintBacklogsCerrados() {
+		return proyecto.getSprintBacklogsCerrados();
+	}
+	
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 }

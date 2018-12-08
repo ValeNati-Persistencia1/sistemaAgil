@@ -24,10 +24,8 @@ public class UsuarioController implements Serializable {
 	private String apellido;
 	@Autowired
 	private UsuarioStore usuarioStore;
-
 	@Autowired
 	private ProjectStore projectStore;
-
 	private Usuario usuario;
 
 	private Project proyecto;

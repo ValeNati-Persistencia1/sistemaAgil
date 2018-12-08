@@ -15,6 +15,7 @@ public class Usuario extends Persistible {
 
 	private static final long serialVersionUID = 1L;
 	private String apellido;
+<<<<<<< HEAD
 	// private String nombreUsuario;
 	private String nombre;
 	@ManyToMany
@@ -22,6 +23,14 @@ public class Usuario extends Persistible {
 	@OneToMany
 	private List<UserStory> usersStories = new ArrayList<>();
 
+=======
+    private String nombre;
+	@ManyToMany
+	private List<Project> project = new ArrayList<Project>();
+	@OneToMany
+    private List<UserStory> usersStories=new ArrayList<>();
+		
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 	public Usuario(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;

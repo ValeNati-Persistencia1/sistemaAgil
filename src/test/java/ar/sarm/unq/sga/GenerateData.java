@@ -48,7 +48,6 @@ public class GenerateData {
 		Backlog back = new Backlog("el back");
 
 		Project proyecto = new Project("proyectito2");
-		Project proy = new Project("proyecto3");
 
 		Usuario usuario = new Usuario("lara", "larroque");
 		Usuario usuario2 = new Usuario("Brisa", "rivarola");
@@ -60,7 +59,6 @@ public class GenerateData {
 		proyecto.setUsuario(usuario2);
 		proyecto.setUsuario(usuario3);
 		proyecto.setBacklog(back);
-//		usuario.setProyecto(proyecto);
 		SprintBacklog sp = new SprintBacklog();
 		us.setHistoryPoint(4);
 		sp.setSumatoriaComplejidad(sp.getSumatoriaComplejidad());
@@ -68,7 +66,6 @@ public class GenerateData {
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 
 		projectStore.insert(proyecto);
-		projectStore.insert(proy);
 		backlogStore.insert(back);
 		usuarioStore.insert(usuario);
 		usuarioStore.insert(usuario2);

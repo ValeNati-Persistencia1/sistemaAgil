@@ -1,10 +1,12 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
+import java.awt.Button;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,7 @@ import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.wicket.BotonConfirmar;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
@@ -40,13 +43,13 @@ public class UserStoryController implements Serializable {
 	private UserStoryStore userStoryStore;
 	private UserStory story;
 	private Project project;
-
 	@Autowired
 	private ProjectStore projectStore;
 	@Autowired
 	private UsuarioStore usuarioStore;
 	@Autowired
 	private BacklogStore backlogStore;
+<<<<<<< HEAD
 
 	private List<Rol> roles = new ArrayList<>();
 
@@ -66,8 +69,24 @@ public class UserStoryController implements Serializable {
 		story.setProject(proy);
 		project = proy;
 
+=======
+//    private List<Usuario>usuarios=new ArrayList<>();
+//	private List<Rol> roles = new ArrayList<> ();
+	public boolean camposCompletos=false;
+	
+	
+	
+
+	public UserStoryController() {
+		
 	}
 
+	public boolean isCamposCompletos() {
+		return camposCompletos;
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
+	}
+
+	
 	public UserStoryController(String nombre) {
 		this.nombreUserStory = nombre;
 	}
@@ -85,7 +104,8 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+			this.descripcion = descripcion;
+		
 	}
 
 	public String getValorCliente() {
@@ -112,6 +132,7 @@ public class UserStoryController implements Serializable {
 		this.project = project;
 	}
 
+<<<<<<< HEAD
 	// public void agregarUserStoryALaLista() {
 	// UserStory us = new UserStory(getNombre());
 	// us.setDescripcion(descripcion);
@@ -148,7 +169,32 @@ public class UserStoryController implements Serializable {
 
 	public String getNombreDeUsuario() {
 		return usuario.getNombreUsuario();
+=======
+	
+	public void agregarUserStoryALaLista(){
+		if(!(descripcion == null && valorCliente == null && historyPoint == 0 && rol == null)){
+		//this.camposCompletos=false;
+		story=new UserStory(getNombre());
+		story.setDescripcion(descripcion);
+		story.setValorCliente(valorCliente);
+		story.setHistoryPoint(historyPoint);
+//		story.setUsuario(usuario);
+		userStoryStore.insert(story);
+		project.getBacklog().setUserStory(story);
+		story.setProject(project);
+		story.setBacklog(project.getBacklog());
+		}
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 	}
+	
+	
+	public String getNombreRol() {
+		return rol.getNombreRol();
+	}
+
+	public String getNombreDeUsuario() {
+	return usuario.getNombreUsuario();
+}
 
 	public void attach(UserStory us) {
 		userStoryStore.attach(us);
@@ -193,6 +239,7 @@ public class UserStoryController implements Serializable {
 	}
 	
 
+<<<<<<< HEAD
 	// public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
 	// userStoryStore.attach(modelObject);
 	// modelObject.setEstaEnBacklogSprint(true);
@@ -210,6 +257,8 @@ public class UserStoryController implements Serializable {
 		this.rol = rol;
 	}
 
+=======
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 	public void completarUserStory(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
 		modelObject.setEstaCompleta(true);
@@ -226,6 +275,7 @@ public class UserStoryController implements Serializable {
 
 	public Rol getRol() {
 		return rol;
+<<<<<<< HEAD
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -235,4 +285,24 @@ public class UserStoryController implements Serializable {
 	public List<Rol>getRoles(){
 		return project.getRoles();
 	}
+=======
+    }
+
+    public List<Usuario> getUsuarios() {
+		return project.getUsuarios();
+	}
+
+	public List<Rol> getRoles() {
+		return project.getRoles();
+	}
+
+
+	
+	
+        
+  
+     
+        
+       
+>>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 }

@@ -13,14 +13,17 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.wicket.HomePage;
 
+
 public class HistoriaProyectoPage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
 	@SpringBean
 	private ProjectController projectController;
+	private Project proyecto;
 
 	public HistoriaProyectoPage(Project modelObject) {
+		proyecto=modelObject;
 		projectController.attach(modelObject);
 		projectController.setProject(modelObject);
 		this.tablaSprintsAnteriores();
@@ -28,7 +31,7 @@ public class HistoriaProyectoPage extends WebPage {
 	}
 
 	public  void tablaSprintsAnteriores(){ 	
-		this.add(new ListView<SprintBacklog>("sprintsBacklogsAnteriores",
+		this.add(new ListView<SprintBacklog>("listaDetodasUserStoryEnSprintBacklog",
 				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
 			private static final long serialVersionUID = 1L;
 
@@ -38,12 +41,12 @@ public class HistoriaProyectoPage extends WebPage {
 				item.add(new Label("nombre", sprintAnterior.bind("nombreSprintBacklog")));
 			
 				
-				item.add(new Link<String>("tareasIncompletas") {
+				item.add(new Link<String>("todaslastareas") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-	                // this.setResponsePage(new SprintBacklogPage(proyecto, sprint));
+	                  this.setResponsePage(new SprintBacklogConTodasLasUsersStoriesPage(proyecto, item.getModelObject()));
 					}
 
 				});
