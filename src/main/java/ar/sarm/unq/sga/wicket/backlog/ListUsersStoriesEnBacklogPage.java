@@ -25,7 +25,9 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 	private BacklogController backlogController;
 	@SpringBean
 	private UserStoryController userStoryController;
+
 	private UserStory userStory;
+
 	private Backlog backlog;
 
 	@SpringBean
@@ -38,22 +40,22 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 		this.salir();
 	}
 
-	public ListUsersStoriesEnBacklogPage(Backlog back, UserStory us) {
-		this.backlogController.attach(back);
-		this.userStory = us;
-		back.setUserStory(us);
-		this.backlog = back;
-		this.crearForm();
-		// this.salir();
-	}
+	// public ListUsersStoriesEnBacklogPage(Backlog back, UserStory us) {
+	// this.backlogController.attach(back);
+	// this.userStory = us;
+	// back.setUserStory(us);
+	// this.backlog = back;
+	// this.crearForm();
+	// // this.salir();
+	// }
 
-	public ListUsersStoriesEnBacklogPage(UserStory us) {
-		this.userStory = us;
-		userStoryController.attach(us);
-		userStoryController.setUserStory(us);
-		this.crearForm();
-		this.salir();
-	}
+	// public ListUsersStoriesEnBacklogPage(UserStory us) {
+	// this.userStory = us;
+	// userStoryController.attach(us);
+	// userStoryController.setUserStory(us);
+	// this.crearForm();
+	// this.salir();
+	// }
 
 	public ListUsersStoriesEnBacklogPage(Project proyecto) {
 		projectController.attach(proyecto);
@@ -74,16 +76,14 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 			protected void populateItem(ListItem<UserStory> item) {
 				CompoundPropertyModel<UserStory> us = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", us.bind("nombreUserStory")));
-				item.add(new Label("completa", us.bind("estaCompleta")));
-			
-				
+				item.add(new Label("completa", us.bind("isEstaCompleta")));
+
 				item.add(new Link<String>("seleccionarSprintBacklog") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
-				   public void onClick() {
+					public void onClick() {
 						this.setResponsePage(new ListaDeSprintBacklogParaUserStoryPage(project, item.getModelObject()));
-					//solo pasaba el proyecto
 					}
 
 				});
@@ -96,16 +96,6 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 					}
 
 				});
-//				item.add(new Link<String>("agregarUserStoryASprint") {
-//					private static final long serialVersionUID = 1L;
-//
-//					@Override
-//					public void onClick() {
-//						ListUsersStoriesEnBacklogPage.this.userStoryController
-//								.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-//						this.setResponsePage(new SprintBacklogPage(project));
-//					}
-//				});
 
 			}
 

@@ -93,7 +93,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public void borrarUsuario(Usuario dev) {
-		usuarioStore.borrarUsuario(dev);
+		usuarioStore.update(dev);
 
 	}
 
@@ -110,6 +110,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public List<Project> listaDeProyectosDelUsuario() {
+		usuarioStore.attach(usuario);
 		return usuario.getProyectos();
 	}
 
@@ -119,6 +120,11 @@ public class UsuarioController implements Serializable {
 
 	public Usuario getUsuario() {
 		return usuario;
+	}
+
+	public void borrarUsuario(Project proy) {
+		proy.getUsuarios().forEach(p -> p.addProyecto(null));
+
 	}
 
 }

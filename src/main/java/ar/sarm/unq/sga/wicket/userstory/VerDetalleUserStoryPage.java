@@ -38,7 +38,8 @@ public class VerDetalleUserStoryPage extends WebPage {
 	}
 
 	private void addForm() {
-		this.add(new ListView<UserStory>("losUsersStories",new PropertyModel<>(this.userStoryController, "usersstories")) {
+		this.add(new ListView<UserStory>("losUsersStories",
+				new PropertyModel<>(this.userStoryController, "usersstories")) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -50,29 +51,17 @@ public class VerDetalleUserStoryPage extends WebPage {
 				item.add(new Label("valorCliente", us.bind("valorCliente")));
 				item.add(new Label("historyPoint", us.bind("historyPoint")));
 
-//				item.add(new Link<String>("agregarUserStoryABacklog") {
+//				item.add(new Link<String>("agregarUserStoryASprintBacklog") {
 //					private static final long serialVersionUID = 1L;
 //
 //					@Override
 //					public void onClick() {
-//						VerDetalleUserStoryPage.this.userStoryController.agregarUserStoryALaLista();
-//						this.setResponsePage(new ListUsersStoriesEnBacklogPage());
-//
+						// VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
+						// this.setResponsePage(new SprintBacklogPage());
+
 //					}
-//
+
 //				});
-				item.add(new Link<String>("agregarUserStoryASprintBacklog") {
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				public void onClick() {
-//					VerDetalleUserStoryPage.this.userStoryController.agregarUsertStorieEnSprintBacklog(item.getModelObject());
-//					this.setResponsePage(new SprintBacklogPage());
-
-				}
-
-			});
-
 
 				item.add(new Link<String>("borrarUserStory") {
 					private static final long serialVersionUID = 1L;
@@ -91,7 +80,6 @@ public class VerDetalleUserStoryPage extends WebPage {
 		});
 
 	}
-	
 
 	public void salir() {
 		this.add(new Link<String>("salir") {

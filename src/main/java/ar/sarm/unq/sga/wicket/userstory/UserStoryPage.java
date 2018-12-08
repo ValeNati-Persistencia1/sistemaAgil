@@ -35,7 +35,7 @@ public class UserStoryPage extends WebPage {
 	public UserStoryPage() {
 		this.agregarForm();
 		this.volverAHomePage();
-
+		
 	}
 
 //	public UserStoryPage(UserStory us) {
@@ -43,7 +43,7 @@ public class UserStoryPage extends WebPage {
 //		this.setUserStory(us);
 //		this.agregarForm();
 //		this.volverAHomePage();
-//
+//en uso ahora
 //	}
 //Este es el que se usa primero
 //	public UserStoryPage(Project proy) {
@@ -153,11 +153,11 @@ public class UserStoryPage extends WebPage {
 		});
 	}
 
-	public UserStory getUserStory() {
-		return userStory;
-	}
-
-	public void setUserStory(UserStory userStory) {
-		this.userStory = userStory;
-	}
+//	public UserStory getUserStory() {
+//		return userStory;
+//	}
+//
+//	public void setUserStory(UserStory userStory) {
+//		this.userStory = userStory;
+//	}
 }

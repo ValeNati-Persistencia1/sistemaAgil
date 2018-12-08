@@ -28,9 +28,9 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 	private ProjectController projectController;
 
 	private Backlog backlog;
-	
+
 	private Project proyecto;
-	
+
 	private UserStory userStory;
 
 	public ListaDeSprintBacklogDeUnProyecto() {
@@ -39,26 +39,19 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 	}
 
 	public ListaDeSprintBacklogDeUnProyecto(Project proy, UserStory user) {
-		proyecto=proy;
-		userStory= user;
+		proyecto = proy;
+		userStory = user;
 		userStoryController.attach(user);
 		projectController.attach(proy);
 		userStoryController.setUserStory(user);
 		projectController.setSprintBacklog(user.getSprintBacklog());
+
 		this.listaDeSprintBacklogDeUnProyecto();
 		salir();
 	}
 
-	// public SprintBacklogPage(UserStory user) {
-	// userStoryController.attach(user);
-	// userStoryController.setUserStory(user);
-	// projectController.setSprintBacklog(user.getSprintBacklog());
-	// this.agregarAUserStoryFormBacklogsCompletadas();
-	// salir();
-	// }
-
 	public ListaDeSprintBacklogDeUnProyecto(Project proy) {
-		proyecto=proy;
+		proyecto = proy;
 		projectController.attach(proy);
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
@@ -76,29 +69,20 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 				CompoundPropertyModel<SprintBacklog> sprintBacklog = new CompoundPropertyModel<>(item.getModel());
 				item.add(new Label("nombre", sprintBacklog.bind("getNombreSprintBacklog")));
 
-				
-				item.add(new Link<String>("listaDeUSSB"){
+				item.add(new Link<String>("listaDeUSSB") {
 
 					@Override
 					public void onClick() {
-					this.setResponsePage(new SprintBacklogPage(proyecto,item.getModelObject()));
-						
+						this.setResponsePage(new SprintBacklogPage(proyecto, item.getModelObject()));
+
 					}
-					
+
 				});
-				
-				// item.add(new Link<String>("completarUserStory") {
-				// private static final long serialVersionUID = 1L;
-				//
-				// @Override
-				// public void onClick() {
-				// SprintBacklogPage.this.userStoryController.completarUserStory(item.getModelObject());
+
 			}
 
 		});
 	}
-	// });
-	// }
 
 	private void salir() {
 		this.add(new Link<String>("salir") {

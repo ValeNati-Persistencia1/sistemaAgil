@@ -2,9 +2,12 @@ package ar.sarm.unq.sga.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -20,9 +23,9 @@ public class Project extends Persistible {
 	private Backlog backlog;
 
 	@ManyToMany(mappedBy = "project")
-	private List<Usuario> usuarios=new ArrayList<>();
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 
-	@OneToMany(mappedBy = "project")
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	private List<SprintBacklog> sprintBacklogs;
 
 	@OneToMany(mappedBy = "project")
@@ -59,13 +62,16 @@ public class Project extends Persistible {
 		this.usuarios.add(usuarios);
 	}
 
-	public void borrarUsuarioDelProyecto(Usuario user) {
-		usuarios.remove(user);
-
+	public void borrarUsuarios() {
+		this.usuarios.remove(getUsuarios());
 	}
 
 	public List<SprintBacklog> getSprintBacklogs() {
 		return sprintBacklogs;
+	}
+
+	public List<SprintBacklog> getSprintBacklogsCerrados() {
+		return sprintBacklogs.stream().filter(sp -> sp.getEstadoAbierto() == true).collect(Collectors.toList());
 	}
 
 	public void setSprintBacklogs(SprintBacklog sprintBacklog) {
@@ -83,5 +89,6 @@ public class Project extends Persistible {
 	public void addRol(Rol rol){
 		this.roles.add(rol);
 	}
+
 
 }

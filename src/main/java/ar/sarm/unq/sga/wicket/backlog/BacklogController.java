@@ -39,6 +39,7 @@ public class BacklogController implements Serializable {
 	private Backlog backlog;
 
 	private Object back;
+
 	private String message;
 
 	private UserStoryStore userStoryStore;
@@ -131,5 +132,5 @@ public class BacklogController implements Serializable {
 		this.usersstories.remove(us);
 
 	}
-	
+
 }

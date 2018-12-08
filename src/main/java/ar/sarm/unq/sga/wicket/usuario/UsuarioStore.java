@@ -26,17 +26,23 @@ public class UsuarioStore extends HomeGeneralSession<Usuario> {
 		getSession().delete(dev);
 	}
 
+	public void actualizarUsuario(Usuario dev) {
+		getSession().update(dev);
+	}
+
 	@Override
 	public Usuario findByName(String name) {
 		return this.getSession().createQuery("FROM Usuario WHERE nombreUsuario = : name", Usuario.class)
 				.setParameter("name", name).getSingleResult();
 	}
 
+	// ver en que tabla deberia buscar xq es muchos a muchos!!
 	public List<Project> getListaDeProyectosDeUsuario(Usuario usuario) {
 		return getSession().createQuery("FROM Project WHERE id = : proy", Project.class)
 				.setParameter("proy", usuario.getId()).list();
 	}
 
+	
 	public List<Usuario> getVerUsuario(Project proy) {
 		Query<Usuario> query = getSession().createQuery("FROM Usuario WHERE project_id = : id", Usuario.class);
 		query.setParameter("id", proy.getId());

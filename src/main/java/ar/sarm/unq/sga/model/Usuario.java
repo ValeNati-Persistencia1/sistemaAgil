@@ -17,16 +17,13 @@ public class Usuario extends Persistible {
 	private String apellido;
 	private String nombreUsuario;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Project> project = new ArrayList<Project>();
+
 	@OneToOne
 	private Project proyecto;
-	@OneToMany(mappedBy="usuario")
-	private List<UserStory>usersStories=new ArrayList<>();
-	
-
 	public Usuario(String nombre, String apellido) {
-		this.nombreUsuario = nombre;
+		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
@@ -62,9 +59,8 @@ public class Usuario extends Persistible {
 		return apellido + nombreUsuario;
 	}
 
-	public void setProyecto(Project proyec) {
-		proyecto = proyec;
-
+	public void borrarProyecto(Project proyecto) {
+		this.project.remove(proyecto);
 	}
 
 	public Project getProyecto() {

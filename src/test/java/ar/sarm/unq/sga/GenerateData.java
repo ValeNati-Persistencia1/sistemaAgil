@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
@@ -61,10 +60,11 @@ public class GenerateData {
 		proyecto.setUsuario(usuario2);
 		proyecto.setUsuario(usuario3);
 		proyecto.setBacklog(back);
-		usuario.setProyecto(proyecto);
+//		usuario.setProyecto(proyecto);
 		SprintBacklog sp = new SprintBacklog();
 		us.setHistoryPoint(4);
-
+		sp.setSumatoriaComplejidad(sp.getSumatoriaComplejidad());
+		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 
 		projectStore.insert(proyecto);

@@ -19,7 +19,6 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 
 	@Override
 	public Backlog findByName(String name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -37,16 +36,7 @@ public class BacklogStore extends HomeGeneralSession<Backlog> {
 	}
 
 	public List<UserStory> getUsersstories() {
-		// return userStoryStore.getUsersstories();
 		return userStoryStore.getListaDeUserStory();
 	}
 
-//	public void borrarUserStoryDeBacklog(UserStory us) {
-//		this.getListaUserStoryEnBacklog(backlog).remove(us);
-//	}
-
-//	public List<UserStory> getListaUserStoryEnBacklog(Backlog back) {
-//		return getSession().createQuery("FROM Backlog WHERE userStory = : us", UserStory.class)
-//				.setParameterList("us", back.getUserStories()).getResultList();
-//	}
 }
