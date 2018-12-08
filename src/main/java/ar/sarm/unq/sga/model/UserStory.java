@@ -1,5 +1,6 @@
 package ar.sarm.unq.sga.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
