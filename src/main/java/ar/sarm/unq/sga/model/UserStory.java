@@ -140,7 +140,7 @@ public class UserStory extends Persistible {
 
 	public void setSprintBacklog(SprintBacklog sprintBacklog) {
 		this.sprintBacklog = sprintBacklog;
-		sprintBacklog.addListaUserStory(this);
+		sprintBacklog.setListaUserStory(this);
 	}
 
 	public boolean isEstaEnBacklogSprint() {
