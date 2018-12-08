@@ -78,7 +78,7 @@ public class ProjectController implements Serializable {
 	}
 
 	public ProjectController(UserStory user) {
-		this.getSprintBacklogs();
+		//this.getSprintBacklogs();
 		userStoryStore.attach(user);
 		userStory = user;
 		userStory.setNombreUserStory(nombreUserStory);
@@ -180,6 +180,8 @@ public class ProjectController implements Serializable {
 		}
 
 	}
+	
+	
 
 	public SprintBacklog getSprintBacklog() {
 		return sprintBacklog;
@@ -241,8 +243,8 @@ public class ProjectController implements Serializable {
 		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
 	}
 	
-
 	public List<SprintBacklog> getSprintBacklogsCerrados() {
 		return proyecto.getSprintBacklogsCerrados();
 	}
+	
 }

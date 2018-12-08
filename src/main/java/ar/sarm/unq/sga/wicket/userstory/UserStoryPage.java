@@ -1,5 +1,7 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
+import java.util.function.Function;
+
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -14,6 +16,7 @@ import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.wicket.BotonConfirmar;
 import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
@@ -28,9 +31,7 @@ public class UserStoryPage extends WebPage {
 	private ProjectController projectController;
 	@SuppressWarnings("unused")
 	private Project project;
-	private UserStory userStory;
-	private Usuario usuario;
-	private Rol rol;
+	
 
 	public UserStoryPage() {
 		this.agregarForm();
@@ -38,46 +39,31 @@ public class UserStoryPage extends WebPage {
 		
 	}
 
-//	public UserStoryPage(UserStory us) {
-//		this.userStoryController.setUserStory(us);
-//		this.setUserStory(us);
-//		this.agregarForm();
-//		this.volverAHomePage();
-//en uso ahora
-//	}
-//Este es el que se usa primero
-//	public UserStoryPage(Project proy) {
-//		projectController.attach(proy);
-//		userStoryController.setProject(proy);
-//		this.agregarForm();
-//		this.volverAHomePage();
-//	}
-	
-	public UserStoryPage(Project proy){
+	public UserStoryPage(Project proy) {
 		projectController.attach(proy);
-		userStoryController.setUserStory(userStory);
-		userStoryController.agregarProyectoAlRol(rol);
-		proy.setUsuario(usuario);
-		//proy.addRol(rol);
-		proy.getBacklog().setUserStory(userStory);
-		usuario.setProyecto(proy);
-		rol.setProject(proy);
+		userStoryController.setProject(proy);
 		this.agregarForm();
 		this.volverAHomePage();
 	}
+	
+
 
 	private void agregarForm() {
 		Form<UserStoryController> crearUserStoryForm = new Form<UserStoryController>("crearUserStoryForm") {
 			private static final long serialVersionUID = 1L;
+			
 
 			@Override
-			protected void onSubmit() {
+			protected void onSubmit() {	
+//				if(userStoryController.isCamposCompletos()==true){
+//					this.add(new BotonConfirmar("submit", "*Por favor complete todos los campos"));}
+//			else {
 				UserStoryPage.this.userStoryController.agregarUserStoryALaLista();
 				this.setResponsePage(new ListProjectPage());
-
-			}
+//			 }	
+	      	}
 		};
-
+		
 		crearUserStoryForm.add(new TextField<>("nombre", new PropertyModel<>(this.userStoryController, "nombre")));
 
 		crearUserStoryForm
@@ -89,7 +75,7 @@ public class UserStoryPage extends WebPage {
 		crearUserStoryForm
 				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
 
-		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol.nombreRol"),
+		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol"),
 				new PropertyModel<>(this.userStoryController, "roles"), new ChoiceRenderer<>("nombreRol")));
 
 		crearUserStoryForm.add(new DropDownChoice<>("usuario", new PropertyModel<>(this.userStoryController, "usuario"),
@@ -153,11 +139,4 @@ public class UserStoryPage extends WebPage {
 		});
 	}
 
-//	public UserStory getUserStory() {
-//		return userStory;
-//	}
-//
-//	public void setUserStory(UserStory userStory) {
-//		this.userStory = userStory;
-//	}
 }

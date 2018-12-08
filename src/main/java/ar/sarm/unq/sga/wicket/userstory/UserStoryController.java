@@ -1,10 +1,12 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
+import java.awt.Button;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,7 @@ import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.wicket.BotonConfirmar;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
@@ -40,35 +43,28 @@ public class UserStoryController implements Serializable {
 	private UserStoryStore userStoryStore;
 	private UserStory story;
 	private Project project;
-
 	@Autowired
 	private ProjectStore projectStore;
 	@Autowired
     private UsuarioStore usuarioStore;
 	@Autowired
 	private BacklogStore backlogStore;
-
-	private List<Rol> roles = new ArrayList<> ();
+//    private List<Usuario>usuarios=new ArrayList<>();
+//	private List<Rol> roles = new ArrayList<> ();
+	public boolean camposCompletos=false;
 	
+	
+	
+
 	public UserStoryController() {
 		
-        
 	}
 
-	public UserStoryController(UserStory userStory) {
-		userStoryStore.attach(userStory);
-		user = userStory;
-		setUserStory(userStory);
-
+	public boolean isCamposCompletos() {
+		return camposCompletos;
 	}
 
-	public UserStoryController(Project proy) {
-		projectStore.attach(proy);
-		user.setProject(proy);
-		project = proy;
-
-	}
-
+	
 	public UserStoryController(String nombre) {
 		this.nombre = nombre;
 	}
@@ -86,7 +82,8 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+			this.descripcion = descripcion;
+		
 	}
 
 	public String getValorCliente() {
@@ -113,19 +110,30 @@ public class UserStoryController implements Serializable {
 		this.project = project;
 	}
 
-	public void agregarUserStoryALaLista() {
-		UserStory us = new UserStory(getNombre());
-		us.setDescripcion(descripcion);
-		us.setValorCliente(valorCliente);
-		us.setHistoryPoint(historyPoint);
-		// us.setUsuario(usuario);
-		userStoryStore.insert(us);
-		project.getBacklog().setUserStory(us);
-		us.setProject(project);
-		us.setBacklog(project.getBacklog());
-
-		// agregue ultima linea para la lista de proyecto
+	
+	public void agregarUserStoryALaLista(){
+		if(!(descripcion == null && valorCliente == null && historyPoint == 0 && rol == null)){
+		//this.camposCompletos=false;
+		story=new UserStory(getNombre());
+		story.setDescripcion(descripcion);
+		story.setValorCliente(valorCliente);
+		story.setHistoryPoint(historyPoint);
+//		story.setUsuario(usuario);
+		userStoryStore.insert(story);
+		project.getBacklog().setUserStory(story);
+		story.setProject(project);
+		story.setBacklog(project.getBacklog());
+		}
 	}
+	
+	
+	public String getNombreRol() {
+		return rol.getNombreRol();
+	}
+
+	public String getNombreDeUsuario() {
+	return usuario.getNombreUsuario();
+}
 
 	public void attach(UserStory us) {
 		userStoryStore.attach(us);
@@ -168,18 +176,6 @@ public class UserStoryController implements Serializable {
 		this.usuario = usuario;
 	}
 
-	// public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
-	// userStoryStore.attach(modelObject);
-	// modelObject.setEstaEnBacklogSprint(true);
-	//
-	// }
-//	public void agregarUsertStorieEnSprintBacklog(Project proy, UserStory modelObject) {
-//		userStoryStore.attach(modelObject);
-//		projectStore.attach(proy);
-//		modelObject.setEstaEnBacklogSprint(true);
-//
-//	}
-
 	public void completarUserStory(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
 		modelObject.setEstaCompleta(true);
@@ -194,5 +190,22 @@ public class UserStoryController implements Serializable {
 	}
         public Rol getRol() {
 		return rol;
-}
+    }
+
+    public List<Usuario> getUsuarios() {
+		return project.getUsuarios();
+	}
+
+	public List<Rol> getRoles() {
+		return project.getRoles();
+	}
+
+
+	
+	
+        
+  
+     
+        
+       
 }

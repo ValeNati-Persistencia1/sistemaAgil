@@ -24,10 +24,8 @@ public class UsuarioController implements Serializable {
 	private String apellido;
 	@Autowired
 	private UsuarioStore usuarioStore;
-
 	@Autowired
 	private ProjectStore projectStore;
-
 	private Usuario usuario;
 
 	private Project proyecto;
@@ -68,7 +66,7 @@ public class UsuarioController implements Serializable {
 	 Usuario dev = new Usuario();
 	 dev.setNombreUsuario(nombreUsuario);
 	 dev.setApellido(apellido);
-	 dev.setProyecto(proyecto);
+	 dev.addProyecto(proyecto);
 	 usuarioStore.insert(dev);
 	
 	 }

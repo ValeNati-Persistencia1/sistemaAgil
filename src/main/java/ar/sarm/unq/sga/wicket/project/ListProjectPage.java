@@ -107,7 +107,7 @@ public class ListProjectPage extends WebPage {
 					@Override
 					public void onClick() {
 						ListProjectPage.this.projectController.borrarProyecto(item.getModelObject());
-						this.setResponsePage(new ProjectPage());
+						this.setResponsePage(new ListProjectPage());
 					}
 
 				});
