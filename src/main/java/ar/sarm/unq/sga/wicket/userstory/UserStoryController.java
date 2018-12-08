@@ -49,44 +49,24 @@ public class UserStoryController implements Serializable {
 	private UsuarioStore usuarioStore;
 	@Autowired
 	private BacklogStore backlogStore;
-<<<<<<< HEAD
 
-	private List<Rol> roles = new ArrayList<>();
+	public boolean camposCompletos = false;
 
 	public UserStoryController() {
 
 	}
-
-	// public UserStoryController(UserStory userStory) {
-	// userStoryStore.attach(userStory);
-	// story = userStory;
-	// setUserStory(userStory);
-	//
-	// }
 
 	public UserStoryController(Project proy) {
 		// projectStore.attach(proy);
 		story.setProject(proy);
 		project = proy;
 
-=======
-//    private List<Usuario>usuarios=new ArrayList<>();
-//	private List<Rol> roles = new ArrayList<> ();
-	public boolean camposCompletos=false;
-	
-	
-	
-
-	public UserStoryController() {
-		
 	}
 
 	public boolean isCamposCompletos() {
 		return camposCompletos;
->>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 	}
 
-	
 	public UserStoryController(String nombre) {
 		this.nombreUserStory = nombre;
 	}
@@ -104,8 +84,8 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void setDescripcion(String descripcion) {
-			this.descripcion = descripcion;
-		
+		this.descripcion = descripcion;
+
 	}
 
 	public String getValorCliente() {
@@ -132,7 +112,6 @@ public class UserStoryController implements Serializable {
 		this.project = project;
 	}
 
-<<<<<<< HEAD
 	// public void agregarUserStoryALaLista() {
 	// UserStory us = new UserStory(getNombre());
 	// us.setDescripcion(descripcion);
@@ -148,19 +127,21 @@ public class UserStoryController implements Serializable {
 	// }
 
 	public void agregarUserStoryALaLista() {
-		story = new UserStory(getNombre());
-		story.setDescripcion(descripcion);
-		story.setValorCliente(valorCliente);
-		story.setHistoryPoint(historyPoint);
-		story.setUsuario(usuario);
-		usuario.setNombreUsuario(this.getNombreDeUsuario());
-//		rol = new Rol(getNombreRol());
-		rol.setNombreRol(getNombreRol());
-		story.setRol(rol);
-		project.getBacklog().setUserStory(story);
-		story.setProject(project);
-		story.setBacklog(project.getBacklog());
-		userStoryStore.insert(story);
+		if (!(descripcion == null && valorCliente == null && historyPoint == 0 && rol == null)) {
+			// this.camposCompletos=false;
+			story = new UserStory(getNombre());
+			story.setDescripcion(descripcion);
+			story.setValorCliente(valorCliente);
+			story.setHistoryPoint(historyPoint);
+			story.setUsuario(usuario);
+			usuario.setNombreUsuario(this.getNombreDeUsuario());
+			rol.setNombreRol(getNombreRol());
+			story.setRol(rol);
+			project.getBacklog().setUserStory(story);
+			story.setProject(project);
+			story.setBacklog(project.getBacklog());
+			userStoryStore.insert(story);
+		}
 	}
 
 	public String getNombreRol() {
@@ -169,49 +150,16 @@ public class UserStoryController implements Serializable {
 
 	public String getNombreDeUsuario() {
 		return usuario.getNombreUsuario();
-=======
-	
-	public void agregarUserStoryALaLista(){
-		if(!(descripcion == null && valorCliente == null && historyPoint == 0 && rol == null)){
-		//this.camposCompletos=false;
-		story=new UserStory(getNombre());
-		story.setDescripcion(descripcion);
-		story.setValorCliente(valorCliente);
-		story.setHistoryPoint(historyPoint);
-//		story.setUsuario(usuario);
-		userStoryStore.insert(story);
-		project.getBacklog().setUserStory(story);
-		story.setProject(project);
-		story.setBacklog(project.getBacklog());
-		}
->>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
-	}
-	
-	
-	public String getNombreRol() {
-		return rol.getNombreRol();
-	}
 
-	public String getNombreDeUsuario() {
-	return usuario.getNombreUsuario();
-}
+	}
 
 	public void attach(UserStory us) {
 		userStoryStore.attach(us);
 	}
 
-//	public void borrarUserStory(UserStory userStory) {
-//		userStoryStore.attach(userStory);
-//		userStoryStore.borrarUserStory(userStory);
-//	}
-
 	public void agregarUserStoryABacklog(UserStory modelObject) {
 		userStoryStore.insert(modelObject);
 	}
-
-//	public List<UserStory> getUsersstories() {
-//		return getListaDeUserStory();
-//	}
 
 	public UserStory getUserStory() {
 		return story;
@@ -237,28 +185,13 @@ public class UserStoryController implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
 
-<<<<<<< HEAD
-	// public void agregarUsertStorieEnSprintBacklog(UserStory modelObject) {
-	// userStoryStore.attach(modelObject);
-	// modelObject.setEstaEnBacklogSprint(true);
-	//
-	// }
-	// public void agregarUsertStorieEnSprintBacklog(Project proy, UserStory
-	// modelObject) {
-	// userStoryStore.attach(modelObject);
-	// projectStore.attach(proy);
-	// modelObject.setEstaEnBacklogSprint(true);
-	//
-	// }
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
 
-=======
->>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
+
 	public void completarUserStory(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
 		modelObject.setEstaCompleta(true);
@@ -275,34 +208,16 @@ public class UserStoryController implements Serializable {
 
 	public Rol getRol() {
 		return rol;
-<<<<<<< HEAD
 	}
 
 	public List<Usuario> getUsuarios() {
 		return project.getUsuarios();
 	}
 
-	public List<Rol>getRoles(){
-		return project.getRoles();
-	}
-=======
-    }
-
-    public List<Usuario> getUsuarios() {
-		return project.getUsuarios();
-	}
-
 	public List<Rol> getRoles() {
 		return project.getRoles();
+
 	}
 
 
-	
-	
-        
-  
-     
-        
-       
->>>>>>> f9e8b3715441d491814c2717f42c91aa7dcbd625
 }

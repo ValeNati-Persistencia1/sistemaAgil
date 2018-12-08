@@ -16,7 +16,7 @@ import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.wicket.backlog.BacklogController;
 import ar.sarm.unq.sga.wicket.userstory.UserStoryController;
 
-public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage{
+public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage {
 
 	/**
 	 * 
@@ -37,23 +37,20 @@ public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage{
 	private UserStory user;
 
 	private SprintBacklog sprintBacklog;
-	
-	public SprintBacklogConTodasLasUsersStoriesPage(Project proyecto, SprintBacklog sprint){
-	project=proyecto;
-	sprintBacklog= sprint;
-	projectController.attach(proyecto);
-	projectController.attach(sprint.getProyecto());
-	projectController.setProject(proyecto);
-	projectController.setSprintBacklog(sprintBacklog);
-	agregarAUserStoryFormBacklogsCompletadas();
-	salir();
-	cerrar();
+
+	public SprintBacklogConTodasLasUsersStoriesPage(Project proyecto, SprintBacklog sprint) {
+		project = proyecto;
+		sprintBacklog = sprint;
+		projectController.attach(proyecto);
+		projectController.attach(sprint.getProyecto());
+		projectController.setProject(proyecto);
+		projectController.setSprintBacklog(sprintBacklog);
+		agregarAUserStoryFormBacklogsCompletadas();
+		salir();
 	}
 
-
 	public SprintBacklogConTodasLasUsersStoriesPage(UserStory userStory) {
-//		project=proyecto;
-		user=userStory;
+		user = userStory;
 		projectController.attach(project);
 		userStoryController.attach(userStory);
 		userStoryController.setUserStory(userStory);
@@ -61,11 +58,7 @@ public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage{
 		projectController.setProject(project);
 		this.agregarAUserStoryFormBacklogsCompletadas();
 		salir();
-		cerrar();
 	}
-	
-
-	
 
 	public void agregarAUserStoryFormBacklogsCompletadas() {
 		this.add(new ListView<UserStory>("usersStoriesEnSprint",
@@ -74,17 +67,18 @@ public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage{
 
 			@Override
 			protected void populateItem(ListItem<UserStory> item) {
-				CompoundPropertyModel<UserStory> backlogCompletado = new CompoundPropertyModel<>(item.getModel());
-				item.add(new Label("nombre", backlogCompletado.bind("nombreUserStory")));
-				item.add(new Label("completa", backlogCompletado.bind("isEstaCompleta")));
-				item.add(new Label("complejidad", backlogCompletado.bind("historyPoint")));
+				CompoundPropertyModel<UserStory> historia = new CompoundPropertyModel<>(item.getModel());
+				item.add(new Label("nombre", historia.bind("nombreUserStory")));
+				item.add(new Label("completa", historia.bind("isEstaCompleta")));
+				item.add(new Label("complejidad", historia.bind("historyPoint")));
 
 				item.add(new Link<String>("completarUserStory") {
 					private static final long serialVersionUID = 1L;
 
 					@Override
 					public void onClick() {
-						SprintBacklogConTodasLasUsersStoriesPage.this.userStoryController.completarUserStory(item.getModelObject());
+						SprintBacklogConTodasLasUsersStoriesPage.this.userStoryController
+								.completarUserStory(item.getModelObject());
 					}
 
 				});
@@ -109,18 +103,4 @@ public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage{
 		this.add(new Label("totalCompletas", projectController.getSumarComplejidadUSCompletas()));
 	}
 
-	private void cerrar() {
-		this.add(new Link<String>("cerrar") {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				SprintBacklogConTodasLasUsersStoriesPage.this.projectController.cerrarSprintBacklog();
-				this.setResponsePage(new ListProjectPage());
-
-			}
-
-		});
-	}
 }
