@@ -7,6 +7,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class UserStory extends Persistible {
 

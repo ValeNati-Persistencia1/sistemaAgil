@@ -45,7 +45,7 @@ public class RolPage extends WebPage{
 			
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListProjectPage());
 			}
 
 		});

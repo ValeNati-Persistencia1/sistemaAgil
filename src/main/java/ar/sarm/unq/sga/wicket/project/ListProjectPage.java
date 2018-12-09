@@ -36,17 +36,6 @@ public class ListProjectPage extends WebPage {
 	private Usuario user;
 	private Project proyecto;
 
-	// public ListProjectPage(Usuario usuario, Project proy) {
-	// user = usuario;
-	// proyecto = proy;
-	// this.usuarioController.attach(usuario);
-	// this.projectController.setUsuario(usuario);
-	// this.projectController.setProject(proy);
-	// tablaDeProyectos();
-	// botonCancelar();
-	// botonAgregar();
-	// }
-
 	public ListProjectPage(Usuario usuario) {
 		user = usuario;
 		this.usuarioController.attach(usuario);
