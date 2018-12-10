@@ -40,23 +40,6 @@ public class ListUsersStoriesEnBacklogPage extends WebPage {
 		this.salir();
 	}
 
-	// public ListUsersStoriesEnBacklogPage(Backlog back, UserStory us) {
-	// this.backlogController.attach(back);
-	// this.userStory = us;
-	// back.setUserStory(us);
-	// this.backlog = back;
-	// this.crearForm();
-	// // this.salir();
-	// }
-
-	// public ListUsersStoriesEnBacklogPage(UserStory us) {
-	// this.userStory = us;
-	// userStoryController.attach(us);
-	// userStoryController.setUserStory(us);
-	// this.crearForm();
-	// this.salir();
-	// }
-
 	public ListUsersStoriesEnBacklogPage(Project proyecto) {
 		projectController.attach(proyecto);
 		projectController.setProject(proyecto);

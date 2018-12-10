@@ -20,19 +20,18 @@
 				<form wicket:id="crearUserStoryForm" class="form-horizontal">
 
 					<div class="form-group">
-						<label for="rol" class="col-md-1 control-label">Rol*</label>
-						<div>
-							<select class="form-control;col-md-1;" id="rol" wicket:id="rol">
+						<label for="rol" class="col-md-2 control-label"> Rol*</label>
+						<div class="col-md-2";>
+							<select class="form-control" id="rol" wicket:id="rol">
 							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="usuario" class="col-md-1 control-label">
+						<label for="usuario" class="col-md-2 control-label">
 							Usuario</label>
-						<div>
-							<select class="form-control;col-md-1;" id="usuario"
-								wicket:id="usuario">
+						<div class="col-md-2";>
+							<select class="form-control" id="usuario" wicket:id="usuario">
 							</select>
 						</div>
 					</div>
@@ -40,7 +39,7 @@
 					<div class="form-group">
 						<label for="nombre" class="col-md-2 control-label">Nombre
 							de la user story*</label>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<input type="text" class="form-control" id="nombre"
 								wicket:id="nombre"> </input>
 						</div>
@@ -62,7 +61,7 @@
 					</div>
 					<div class="form-group">
 						<label for="historyPoint" class="col-md-2 control-label">History
-							Point*</label>
+							Point</label>
 						<div class="col-md-1">
 							<input type="text" class="form-control" id="historyPoint"
 								wicket:id="historyPoint"> </input>
@@ -73,16 +72,15 @@
 
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit" class="btn-primary">Dar de alta</button>
-							<button type="button" class="btn-primary" wicket:id="cancelar">Cancelar</button>
+							<button type="submit" class="btn-primary btn-sm">Dar de
+								alta</button>
+							<button type="button" class="btn-primary btn-sm"
+								wicket:id="cancelar">Cancelar</button>
 						</div>
 					</div>
 				</form>
 			</div>
 
-		</div>
-		<div class="col-md-12">
-			<a wicket:id="volver">Volver atrás</a>
 		</div>
 	</div>
 </body>

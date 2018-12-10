@@ -31,39 +31,35 @@ public class UserStoryPage extends WebPage {
 	private ProjectController projectController;
 	@SuppressWarnings("unused")
 	private Project project;
-	
 
 	public UserStoryPage() {
 		this.agregarForm();
-		this.volverAHomePage();
 
 	}
 
 	public UserStoryPage(Project proy) {
 		projectController.attach(proy);
+		projectController.setProject(proy);
 		userStoryController.setProject(proy);
 		this.agregarForm();
-		this.volverAHomePage();
 	}
-	
-
 
 	private void agregarForm() {
 		Form<UserStoryController> crearUserStoryForm = new Form<UserStoryController>("crearUserStoryForm") {
 			private static final long serialVersionUID = 1L;
-			
 
 			@Override
-			protected void onSubmit() {	
-//				if(userStoryController.isCamposCompletos()==true){
-//					this.add(new BotonConfirmar("submit", "*Por favor complete todos los campos"));}
-//			else {
+			protected void onSubmit() {
+				// if(userStoryController.isCamposCompletos()==true){
+				// this.add(new BotonConfirmar("submit", "*Por favor complete
+				// todos los campos"));}
+				// else {
 				UserStoryPage.this.userStoryController.agregarUserStoryALaLista();
 				this.setResponsePage(new ListProjectPage());
-//			 }	
-	      	}
+				// }
+			}
 		};
-		
+
 		crearUserStoryForm.add(new TextField<>("nombre", new PropertyModel<>(this.userStoryController, "nombre")));
 
 		crearUserStoryForm
@@ -93,19 +89,6 @@ public class UserStoryPage extends WebPage {
 		});
 		this.add(crearUserStoryForm);
 
-	}
-
-	public void volverAHomePage() {
-		this.add(new Link<String>("volver") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new HomePage());
-
-			}
-
-		});
 	}
 
 }

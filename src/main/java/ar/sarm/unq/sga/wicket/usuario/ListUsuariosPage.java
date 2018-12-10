@@ -28,10 +28,11 @@ public class ListUsuariosPage extends WebPage {
 	@SpringBean
 	private ProjectController projectController;
 
-	//private Usuario usuario;
+	// private Usuario usuario;
 	private Project proyecto;
 
 	public ListUsuariosPage(Project proy) {
+		proyecto = proy;
 		this.proyecto = proy;
 		this.projectController.setProject(proy);
 		tablaDeDevelopers();
@@ -63,15 +64,6 @@ public class ListUsuariosPage extends WebPage {
 							@Override
 							public void onClick() {
 								setResponsePage(new ListaDeProyectosDelUsuarioPage(item.getModelObject()));
-							}
-
-						});
-						item.add(new Link<String>("borrarUsuario") {
-
-							@Override
-							public void onClick() {
-								ListUsuariosPage.this.usuarioController.borrarUsuario(item.getModelObject());
-
 							}
 
 						});

@@ -20,18 +20,20 @@
 			</div>
 			<div class="panel-body">
 				<form wicket:id="crearSprintForm" class="form-horizontal">
+
 					<div class="form-group">
-						<label for="proyecto" class="col-md-1 control-label"></label>
-						<div>
-							<select class="form-control;col-md-1;" id="proyecto"
-								wicket:id="proyecto">
+						<label for="proyecto" class="col-md-5 control-label">
+							Agregar al sprint backlog: </label>
+						<div class="col-md-4";>
+							<select class="form-control" id="proyecto" wicket:id="proyecto">
 							</select>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<button type="submit" class="btn-primary">Agregar</button>
-							<button type="button" class="btn-primary" wicket:id="cancelar">Cancelar</button>
+							<button type="submit" class="btn-primary btn-sm ">Agregar</button>
+							<button type="button" class="btn-primary btn-sm "
+								wicket:id="cancelar">Cancelar</button>
 						</div>
 					</div>
 				</form>

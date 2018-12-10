@@ -11,6 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Usuario;
+import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 
@@ -47,17 +48,6 @@ public class ListaDeUsuariosDelProyectoPage extends WebPage {
 				CompoundPropertyModel<Usuario> elUsuario = new CompoundPropertyModel<>(item.getModelObject());
 				item.add(new Label("nombre", elUsuario.bind("nombreUsuario")));
 				item.add(new Label("apellido", elUsuario.bind("apellido")));
-
-				item.add(new Link<String>("borrarUsuario") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						// ListaDeUsuariosDelProyectoPage.this.projectController.borrarUsuario(item.getModelObject());
-						// this.setResponsePage(new ListProjectPage());
-					}
-
-				});
 
 			}
 

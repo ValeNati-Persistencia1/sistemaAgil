@@ -62,24 +62,24 @@ public class UsuarioController implements Serializable {
 		this.apellido = apellido;
 	}
 
-	 public void agregarUsuario() {
-	 Usuario dev = new Usuario();
-	 dev.setNombreUsuario(nombreUsuario);
-	 dev.setApellido(apellido);
-	 dev.addProyecto(proyecto);
-	 usuarioStore.insert(dev);
-	
-	 }
-//	public void agregarUsuario() {
-//		projectStore.attach(proyecto);
-//		usuarioStore.attach(usuario);
-//		usuario=new Usuario();
-//		usuario.setNombreUsuario(nombreUsuario);
-//		usuario.setApellido(apellido);
-//		usuarioStore.insert(usuario);
-//		usuario.setProyecto(proyecto);
-//		proyecto.setUsuario(usuario);
-//	}
+	public void agregarUsuario() {
+		Usuario dev = new Usuario();
+		dev.setNombreUsuario(nombreUsuario);
+		dev.setApellido(apellido);
+		dev.addProyecto(proyecto);
+		usuarioStore.insert(dev);
+
+	}
+	// public void agregarUsuario() {
+	// projectStore.attach(proyecto);
+	// usuarioStore.attach(usuario);
+	// usuario=new Usuario();
+	// usuario.setNombreUsuario(nombreUsuario);
+	// usuario.setApellido(apellido);
+	// usuarioStore.insert(usuario);
+	// usuario.setProyecto(proyecto);
+	// proyecto.setUsuario(usuario);
+	// }
 
 	public void attach(Usuario developer) {
 		usuarioStore.attach(developer);
@@ -88,11 +88,6 @@ public class UsuarioController implements Serializable {
 
 	public List<Usuario> getUsuarios() {
 		return usuarioStore.getVerUsuario(proyecto);
-	}
-
-	public void borrarUsuario(Usuario dev) {
-		usuarioStore.update(dev);
-
 	}
 
 	public List<Usuario> getListadoDeUsuarios() {
@@ -118,11 +113,6 @@ public class UsuarioController implements Serializable {
 
 	public Usuario getUsuario() {
 		return usuario;
-	}
-
-	public void borrarUsuario(Project proy) {
-		proy.getUsuarios().forEach(p -> p.addProyecto(null));
-
 	}
 
 }
