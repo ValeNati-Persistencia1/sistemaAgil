@@ -7,24 +7,6 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <title>Lista de sprint/Backlog con todas la users stories</title>
-<style>
-.recuadro {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 15px;
-	padding-right: 15px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: DarkBlue;
-	border-radius: 4px;
-}
-
-.columna {
-	font-size: smaller;
-}
-</style>
 </head>
 <body style="background-color: #F5FAF3;">
 	<div class="container">
@@ -38,19 +20,14 @@
 					<thead>
 						<th>Nombre de User Story</th>
 						<th>Estado</th>
-						<th>Completar</th>
 						<th>Complejidad</th>
 
 					</thead>
 					<tbody>
 						<tr wicket:id="usersStoriesEnSprint">
 							<td wicket:id="nombre"></td>
-							<td type="button"  class="btn btn-primary btn-sm">Estado <span
+							<td type="button" class="btn btn-primary btn-sm">Estado <span
 								class="badge badge-light" , wicket:id="completa"></span>
-							</td>
-							<td>
-								<button wicket:id="completarUserStory"
-									class=" btn-primary btn-sm">Completar user Story</button>
 							</td>
 							<td wicket:id="complejidad"></td>
 						</tr>
@@ -65,7 +42,7 @@
 					Sumatoria complejidad <span class="badge badge-light"
 						, wicket:id="total"></span>
 				</div>
-				<div type="button"  disabled="true" class="btn btn-primary btn-sm">
+				<div type="button" disabled="true" class="btn btn-primary btn-sm">
 					Sumatoria complejidad Completas <span class="badge badge-light"
 						, wicket:id="totalCompletas"></span>
 				</div>

@@ -71,8 +71,11 @@ public class Project extends Persistible {
 		return sprintBacklogs;
 	}
 
-	public List<SprintBacklog> getSprintBacklogsCerrados() {
+	public List<SprintBacklog> getSprintBacklogsAbiertos() {
 		return sprintBacklogs.stream().filter(sp -> sp.getEstadoAbierto() == true).collect(Collectors.toList());
+	}
+	public List<SprintBacklog> getSprintBacklogsCerrados() {
+		return sprintBacklogs.stream().filter(sp -> sp.getEstadoAbierto() == false).collect(Collectors.toList());
 	}
 
 	public void setSprintBacklogs(SprintBacklog sprintBacklog) {

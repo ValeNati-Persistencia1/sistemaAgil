@@ -64,7 +64,7 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage {
 
 		crearSprintForm
 				.add(new DropDownChoice<>("proyecto", new PropertyModel<>(this.projectController, "sprintBacklog"),
-						new PropertyModel<>(this.projectController, "sprintBacklogsCerrados"),
+						new PropertyModel<>(this.projectController, "sprintBacklogsAbiertos"),
 						new ChoiceRenderer<>("getNombreSprintBacklog")));
 
 		crearSprintForm.add(new Link<String>("cancelar") {
@@ -72,7 +72,7 @@ public class ListaDeSprintBacklogParaUserStoryPage extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListProjectPage());
 			}
 
 		});

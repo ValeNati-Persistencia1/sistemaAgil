@@ -248,8 +248,8 @@ public class ProjectController implements Serializable {
 		sprintBacklogStore.updateSprintBacklog(sprintBacklog);
 	}
 
-	public List<SprintBacklog> getSprintBacklogsCerrados() {
-		return proyecto.getSprintBacklogsCerrados();
+	public List<SprintBacklog> getSprintBacklogsAbiertos() {
+		return proyecto.getSprintBacklogsAbiertos();
 	}
 
 	public String getNombreRol() {
@@ -268,5 +268,7 @@ public class ProjectController implements Serializable {
 		proyecto.addRol(rol);
 	}
 	
-	
+	public List<SprintBacklog> getSprintBacklogsCerrados() {
+		return proyecto.getSprintBacklogsCerrados();
+	}
 }

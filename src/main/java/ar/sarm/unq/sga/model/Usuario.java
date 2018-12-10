@@ -18,7 +18,7 @@ public class Usuario extends Persistible {
 	 private String nombreUsuario;
 	@ManyToMany
 	private List<Project> project = new ArrayList<Project>();
-	@OneToMany
+	@OneToMany(mappedBy= "usuario")
 	private List<UserStory> usersStories = new ArrayList<>();
 
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -18,10 +19,8 @@ public class Backlog extends Persistible {
 	@ManyToOne
 	private SprintBacklog sprintBacklog;
 
-	@OneToMany(mappedBy = "backlog", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "backlog", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<UserStory> userStories = new ArrayList<>();
-
-	private UserStory userStory;
 
 	public Backlog() {
 
@@ -44,16 +43,8 @@ public class Backlog extends Persistible {
 		return userStories;
 	}
 
-	public void setUserStories(List<UserStory> userStories) {
-		this.userStories = userStories;
+	public void setUserStories(UserStory userStories) {
+		this.userStories.add(userStories);
 	}
 
-	public UserStory getUserStory() {
-		return userStory;
-	}
-
-	public void setUserStory(UserStory us) {
-		this.userStory = us;
-	}
-	
 }

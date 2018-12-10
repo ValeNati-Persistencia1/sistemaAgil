@@ -38,6 +38,8 @@ public class UserStoryPage extends WebPage {
 	}
 
 	public UserStoryPage(Project proy) {
+		project=proy;
+		//agregue la de arriba
 		projectController.attach(proy);
 		projectController.setProject(proy);
 		userStoryController.setProject(proy);
@@ -55,6 +57,7 @@ public class UserStoryPage extends WebPage {
 				// todos los campos"));}
 				// else {
 				UserStoryPage.this.userStoryController.agregarUserStoryALaLista();
+				//agregru parametro
 				this.setResponsePage(new ListProjectPage());
 				// }
 			}

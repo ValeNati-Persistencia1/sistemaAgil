@@ -12,6 +12,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.wicket.HomePage;
+import ar.sarm.unq.sga.wicket.backlog.ListaDeSprintBacklogDeUnProyecto;
 
 
 public class HistoriaProyectoPage extends WebPage {
@@ -32,7 +33,7 @@ public class HistoriaProyectoPage extends WebPage {
 
 	public  void tablaSprintsAnteriores(){ 	
 		this.add(new ListView<SprintBacklog>("listaDetodasUserStoryEnSprintBacklog",
-				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
+				new PropertyModel<>(this.projectController, "getSprintBacklogs")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override

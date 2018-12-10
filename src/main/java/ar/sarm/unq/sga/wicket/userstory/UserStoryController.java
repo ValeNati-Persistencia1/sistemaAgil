@@ -112,32 +112,17 @@ public class UserStoryController implements Serializable {
 		this.project = project;
 	}
 
-	// public void agregarUserStoryALaLista() {
-	// UserStory us = new UserStory(getNombre());
-	// us.setDescripcion(descripcion);
-	// us.setValorCliente(valorCliente);
-	// us.setHistoryPoint(historyPoint);
-	// // us.setUsuario(usuario);
-	// userStoryStore.insert(us);
-	// project.getBacklog().setUserStory(us);
-	// us.setProject(project);
-	// us.setBacklog(project.getBacklog());
-	//
-	//
-	// }
-
 	public void agregarUserStoryALaLista() {
-		if (!(descripcion == null && valorCliente == null && historyPoint == 0 && rol == null)) {
+		if (descripcion != null && valorCliente != null && historyPoint != 0 && rol != null) {
 			// this.camposCompletos=false;
 			story = new UserStory(getNombre());
 			story.setDescripcion(descripcion);
 			story.setValorCliente(valorCliente);
 			story.setHistoryPoint(historyPoint);
 			story.setUsuario(usuario);
-			usuario.setNombreUsuario(this.getNombreDeUsuario());
 			rol.setNombreRol(getNombreRol());
 			story.setRol(rol);
-			project.getBacklog().setUserStory(story);
+			project.getBacklog().setUserStories(story);
 			story.setProject(project);
 			story.setBacklog(project.getBacklog());
 			userStoryStore.insert(story);
@@ -186,11 +171,9 @@ public class UserStoryController implements Serializable {
 		this.usuario = usuario;
 	}
 
-
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-
 
 	public void completarUserStory(UserStory modelObject) {
 		userStoryStore.attach(modelObject);
@@ -218,6 +201,5 @@ public class UserStoryController implements Serializable {
 		return project.getRoles();
 
 	}
-
 
 }

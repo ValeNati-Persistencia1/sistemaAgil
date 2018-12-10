@@ -72,16 +72,6 @@ public class SprintBacklogConTodasLasUsersStoriesPage extends WebPage {
 				item.add(new Label("completa", historia.bind("isEstaCompleta")));
 				item.add(new Label("complejidad", historia.bind("historyPoint")));
 
-				item.add(new Link<String>("completarUserStory") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						SprintBacklogConTodasLasUsersStoriesPage.this.userStoryController
-								.completarUserStory(item.getModelObject());
-					}
-
-				});
 			}
 		});
 	}

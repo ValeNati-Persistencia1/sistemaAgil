@@ -62,7 +62,7 @@ public class ListaDeSprintBacklogDeUnProyecto extends WebPage {
 
 	public <T> void listaDeSprintBacklogDeUnProyecto() {
 		this.add(new ListView<SprintBacklog>("sublistaSprintBacklogCompletados",
-				new PropertyModel<>(this.projectController, "sprintBacklogs")) {
+				new PropertyModel<>(this.projectController, "getSprintBacklogsAbiertos")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override

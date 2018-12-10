@@ -74,7 +74,7 @@ public class BacklogController implements Serializable {
 			this.setMessage(null);
 			Backlog back = backlogStore.findByName(getNombre());
 		} catch (Exception e) {
-			setMessage("no existe el objeto");// TODO: handle exception
+			setMessage("no existe el objeto");
 			back = null;
 		}
 		return (Backlog) back;
