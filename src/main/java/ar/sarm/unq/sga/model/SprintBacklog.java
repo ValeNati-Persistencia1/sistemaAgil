@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 public class SprintBacklog extends Persistible {
 
 	private static final long serialVersionUID = 1L;
-//	@OneToMany(fetch = FetchType.EAGER, mappedBy = "sprintBacklog", cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "sprintBacklog", cascade = CascadeType.ALL)
 	public List<UserStory> listaUserStory = new ArrayList<>();
 

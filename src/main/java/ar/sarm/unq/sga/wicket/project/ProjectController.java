@@ -83,7 +83,6 @@ public class ProjectController implements Serializable {
 	}
 
 	public ProjectController(UserStory user) {
-		//this.getSprintBacklogs();
 		userStoryStore.attach(user);
 		userStory = user;
 		userStory.setNombreUserStory(nombreUserStory);
