@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.sarm.unq.sga.model.Backlog;
+import ar.sarm.unq.sga.model.Fibonacci;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Rol;
 import ar.sarm.unq.sga.model.SprintBacklog;
@@ -77,10 +78,11 @@ public class ProjectController implements Serializable {
 	private String nombreUserStory;
 
 	public int sumarComplejidad;
-
+	
+	
 	public ProjectController() {
-
 	}
+
 
 	public ProjectController(UserStory user) {
 		userStoryStore.attach(user);

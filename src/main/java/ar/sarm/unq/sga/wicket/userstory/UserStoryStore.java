@@ -6,6 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import ar.sarm.unq.sga.home.HomeGeneralSession;
+import ar.sarm.unq.sga.model.Fibonacci;
 import ar.sarm.unq.sga.model.UserStory;
 
 @Component
@@ -30,4 +31,8 @@ public class UserStoryStore extends HomeGeneralSession<UserStory> {
 		return query.list();
 	}
 
+//	public void sumstories() {
+//		Fibonacci fib = Fibonacci.CINCO;
+//		Double fibD = fib.getNumero();
+//	}
 }

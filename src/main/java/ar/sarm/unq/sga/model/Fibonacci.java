@@ -1,19 +1,19 @@
 package ar.sarm.unq.sga.model;
 
 public enum Fibonacci {
-	UNO(1.0), DOS(2.0), TRES(3.0), CINCO(5.0), INFINITO(Double.POSITIVE_INFINITY);
+	UNO(1), DOS(2), TRES(3), CINCO(5), INFINITO(Integer.MAX_VALUE);
 
-	private double numero;
+	private int numero;
 
-	private Fibonacci(Double numero) {
+	private Fibonacci(int numero) {
 		this.setNumero(numero);
 	}
 
-	public double getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(double numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 }

@@ -1,7 +1,5 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
-import java.util.function.Function;
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -13,11 +11,6 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.sarm.unq.sga.model.Project;
-import ar.sarm.unq.sga.model.Rol;
-import ar.sarm.unq.sga.model.UserStory;
-import ar.sarm.unq.sga.model.Usuario;
-import ar.sarm.unq.sga.wicket.BotonConfirmar;
-import ar.sarm.unq.sga.wicket.HomePage;
 import ar.sarm.unq.sga.wicket.project.ListProjectPage;
 import ar.sarm.unq.sga.wicket.project.ProjectController;
 
@@ -51,12 +44,9 @@ public class UserStoryPage extends WebPage {
 
 			@Override
 			protected void onSubmit() {
-//				 if(userStoryController.isCamposCompletos()==true){
-//				 this.add(new BotonConfirmar("submit", "*Por favor complete  todos los campos"));}
-//				 else {
-				UserStoryPage.this.userStoryController.agregarUserStoryALaLista();
-				this.setResponsePage(new ListProjectPage());
-//				 }
+					UserStoryPage.this.userStoryController.agregarUserStoryALaLista();
+					this.setResponsePage(new ListProjectPage());
+				
 			}
 		};
 
@@ -68,9 +58,13 @@ public class UserStoryPage extends WebPage {
 		crearUserStoryForm
 				.add(new TextField<>("valorCliente", new PropertyModel<>(this.userStoryController, "valorCliente")));
 
-		crearUserStoryForm
-				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
-
+//		crearUserStoryForm
+//				.add(new TextField<>("historyPoint", new PropertyModel<>(this.userStoryController, "historyPoint")));
+		
+		//Agregar dropchoise, pedir listFibonachi que está en el controller
+		crearUserStoryForm.add(new DropDownChoice<>("fibonacci", new PropertyModel<>(this.userStoryController, "fibonacci"),
+				new PropertyModel<>(this.userStoryController, "listFibonachi"), new ChoiceRenderer<>("numero")));
+		
 		crearUserStoryForm.add(new DropDownChoice<>("rol", new PropertyModel<>(this.userStoryController, "rol"),
 				new PropertyModel<>(this.userStoryController, "roles"), new ChoiceRenderer<>("nombreRol")));
 

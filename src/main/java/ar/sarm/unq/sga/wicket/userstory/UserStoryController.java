@@ -1,24 +1,20 @@
 package ar.sarm.unq.sga.wicket.userstory;
 
-import java.awt.Button;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.apache.wicket.AttributeModifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.sarm.unq.sga.model.Fibonacci;
 import ar.sarm.unq.sga.model.Project;
 import ar.sarm.unq.sga.model.Rol;
-import ar.sarm.unq.sga.model.SprintBacklog;
 import ar.sarm.unq.sga.model.UserStory;
 import ar.sarm.unq.sga.model.Usuario;
-import ar.sarm.unq.sga.wicket.BotonConfirmar;
 import ar.sarm.unq.sga.wicket.backlog.BacklogStore;
 import ar.sarm.unq.sga.wicket.project.ProjectStore;
 import ar.sarm.unq.sga.wicket.usuario.UsuarioStore;
@@ -49,11 +45,32 @@ public class UserStoryController implements Serializable {
 	private UsuarioStore usuarioStore;
 	@Autowired
 	private BacklogStore backlogStore;
+	public List<Fibonacci> listFibonachi = new ArrayList<>();
+	
+	public Fibonacci fibonacci;
 
-	public boolean camposCompletos = false;
+	public Fibonacci getFibonacci() {
+		return fibonacci;
+	}
+
+	public void setFibonacci(Fibonacci fibonacci) {
+		this.fibonacci = fibonacci;
+	}
+
+	public List<Fibonacci> getListFibonachi() {
+		return listFibonachi;
+	}
+	
+	private void setFibonachi() {
+		this.listFibonachi.add(Fibonacci.UNO);
+		this.listFibonachi.add(Fibonacci.DOS);
+		this.listFibonachi.add(Fibonacci.TRES);
+		this.listFibonachi.add(Fibonacci.CINCO);
+		this.listFibonachi.add(Fibonacci.INFINITO);
+	}
 
 	public UserStoryController() {
-
+		this.setFibonachi();
 	}
 
 	public UserStoryController(Project proy) {
@@ -61,10 +78,6 @@ public class UserStoryController implements Serializable {
 		story.setProject(proy);
 		project = proy;
 
-	}
-
-	public boolean isCamposCompletos() {
-		return camposCompletos;
 	}
 
 	public UserStoryController(String nombre) {
@@ -113,12 +126,11 @@ public class UserStoryController implements Serializable {
 	}
 
 	public void agregarUserStoryALaLista() {
-		if (descripcion != null && valorCliente != null && historyPoint != 0 && rol != null) {
-			// this.camposCompletos=false;
+		if (descripcion != null && valorCliente != null && fibonacci != null && rol != null) {
 			story = new UserStory(getNombre());
 			story.setDescripcion(descripcion);
 			story.setValorCliente(valorCliente);
-			story.setHistoryPoint(historyPoint);
+			story.setHistoryPoint(this.getFibonacci().getNumero());
 			story.setUsuario(usuario);
 			rol.setNombreRol(getNombreRol());
 			story.setRol(rol);
